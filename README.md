@@ -294,3 +294,13 @@ All numbers in the revised manuscript come from `repo/analysis` (run with `pytho
 Outputs: `analysis/results_A`, `analysis/results_B` (scores, per-pair predictions, JSON summaries).
 
 Note: `analysis/data/pairs.csv` holds the protocol pairs plus the regime-B (`hard_independent`) and regime-C (`tfidf_independent`) negative pools (31,992 rows); the package copy omits the regime-C rows.
+
+### Additional outputs used in the final manuscript
+
+* `analysis/results_{A,B,C}/e8_tuned.json`: tuned JPlag (minimum match 5) and Dolos (k=35, window 25) test F1 and AUROC, reported in the fixed-weight baselines table.
+* `analysis/results_{A,B,C}lo/`, `analysis/tables_lo/`: log-odds-fusion gate runs and the tables generated from them; `analysis/rebuild_all_tables.sh` regenerates every manuscript table in the correct order (`make_tables.py` through `make_tables5.py`; run the whole script, since `make_tables.py` alone omits the merged regime-C part (b)).
+* `analysis/gen/`: generator-probe seeds, model outputs and the reading-audit files.
+
+### Not included in this repository
+
+Large caches and model weights (`*.pkl`, `*.pth`, `*.npz`), run logs, the per-pair tool-score CSVs, and the generator scripts and data of the cross-language derived cohorts (the `xl_cohort` files) are omitted. The cohort summaries quoted in the manuscript can be regenerated with the cohort scripts listed above.
