@@ -1,45 +1,56 @@
 # Enhancing Plagiarism Detection in AI-Generated Code: Dynamic Multi-Modal Semantic-Structural Analysis
 
-Code and results for a gated late-fusion detector that screens AI-obfuscated code plagiarism. Three fixed experts (CodeBERT semantic similarity, AST structural similarity, token 5-gram Jaccard) are combined by a small gating network that outputs per-pair expert weights. The evaluation uses problem-grouped splits (no problem group is shared between training and test), three negative regimes (A random, B mined with the expert scores, C mined by identifier overlap), cluster-aware statistics, real baseline tools (JPlag, Dolos) and cohort screening on real student programs.
+Code, data and results for a gated late-fusion detector that screens AI-obfuscated code plagiarism. Three fixed experts (CodeBERT semantic similarity, AST structural similarity, token 5-gram Jaccard) are combined by a small gating network that outputs per-pair expert weights. The evaluation uses problem-grouped splits (no problem group is shared between training and test), three negative regimes (A random, B mined with the expert scores, C mined by identifier overlap), cluster-aware statistics, real baseline tools (JPlag, Dolos) and cohort screening on real student programs.
 
-## Data source
+This README is organised for review: **Section 1** says where each dataset is, **Section 2** maps every table and figure of the paper to the script and result file that produce it, **Section 3** explains how to rerun.
 
-The benchmark is GPTCloneBench (https://github.com/srlabUsask/GPTCloneBench; Zenodo record 10198952), built from SemanticCloneBench seeds and LLM-generated clones. This repository uses its stand-alone true-clone, cross-language (`cross_language.zip`, `cross_language_part_2.zip`) and false-pair archives. Cohort data come from the Maisch et al. replication package (PROGpedia assignments, Zenodo 10.5281/zenodo.18089904, CC BY 4.0) and IR-Plag.
+## 1. Datasets
 
-## Evaluation pipeline
+All pair tables are CSV files in `analysis/data/`. The program text behind every key is exported as plain JSONL in `dataset/snippets/` (a pair row refers to snippets by `key`, e.g. `java:c87cd5ff4d784d6d`; each JSONL line is `{"key", "lang", "code"}`). Regenerate the JSONL with `python -I analysis/export_dataset.py`.
 
-All numbers in the manuscript come from `analysis/` (run with `python -I <script>` from that folder; fixed seeds reproduce every model).
+| Dataset (paper section) | Pair / label table | Snippet text | Size |
+| :--- | :--- | :--- | :--- |
+| GPTCloneBench benchmark, problem-grouped protocol, regimes A / B / C (III-A, III-B; Table 1) | `analysis/data/pairs.csv` (31,992 rows: protocol pairs plus the regime-B `hard_independent` and regime-C `tfidf_independent` negative pools; columns `split`, `slice`, `label`, `key1`, `key2`, `group1`, `group2`, `source`), `problem_group_manifest.csv`, `cross_language_problem_manifest.csv`, `protocol_stats.json` | `dataset/snippets/benchmark_snippets.jsonl` | 10,506 snippets |
+| Independent-convergence pairs (IV-I) | `analysis/data/convergence_pairs.csv` | benchmark snippets | 193 pairs |
+| PROGpedia same-author / cross-author check (III-I, IV-I) | `analysis/data/progpedia_pairs.csv` | `dataset/snippets/progpedia_snippets.jsonl` | 4,144 files |
+| Cohorts with derived submissions: PROGpedia (2 assignments) and IR-Plag (7 tasks) (III-J, IV-H) | `analysis/data/cohort_pairs.csv`, `cohort_meta.csv`, `cohort_subs.csv` | `dataset/snippets/cohort_snippets.jsonl` | 771 programs |
+| Cross-language cohorts: 100 cohorts whose derived submission is an AI-written translation of an honest Java program (III-J, IV-H) | `analysis/data/xl2_cohort_pairs.csv`, `xl2_cohort_meta.csv`, `xl2_cohort_subs.csv` | `dataset/snippets/cross_language_cohort_snippets.jsonl` | 155 programs |
+| Generator probe: seeds and outputs of four current models (IV-K) | `analysis/data/probe2_pairs.csv`; seeds and raw outputs in `analysis/gen/seeds`, `analysis/gen/out`; reading audit in `analysis/gen/audit` | `dataset/snippets/generator_probe_snippets.jsonl` | 2,991 snippets |
+| Lexical attack A1 (IV-L) | `analysis/data/e4_pairs.csv` (`key1`/`key2` original, `akey2` attacked second snippet) | `dataset/snippets/benchmark_snippets.jsonl` and `attack_a1_snippets.jsonl` | 300 positives, 300 negatives each of regime A and B |
 
-| Script | Purpose |
-| :--- | :--- |
-| `build_protocol.py` | Builds problem groups (connected components of snippet hashes), the train/val/test split, positives and regime-A (random independent) negatives; writes `data/pairs.csv`, `data/problem_group_manifest.csv`, `data/cross_language_problem_manifest.csv`, `data/protocol_stats.json`. Needs the GPTCloneBench release (Zenodo 10198952) and `eval_dataset/`. |
-| `feature_pipeline.py`, `compute_pair_features.py` | One-pass snippet features (CodeBERT windows, tree-sitter AST vector and 5-gram tokens, cyclomatic complexity) and the six gate inputs per pair. |
-| `build_hard_negatives.py` | Regime-B nearest-neighbour independent negatives. |
-| `run_experiments.py`, `evaluate_all.py`, `post_analysis.py` | Hyper-parameter grid, 8-seed training of gate / direct classifier / ablations, decision rules, cluster-aware statistics, threshold study, operating points (`REGIME=A|B`). |
-| `run_jplag.py` | Real JPlag 6.3.0 (+ `--normalize`) on same-language pairs (needs a JDK and the JPlag jar, not included). |
-| `build_probe_claude.py`, `eval_probe2.py` | Zero-shot probe: translations and same-language rewrites by four current models (seeds in `gen/seeds`, outputs in `gen/out`). |
-| `make_tables.py` | Generates every LaTeX table of the manuscript. |
-| `build_cohorts.py`, `encode_unixcoder_cohort.py`, `jplag_cohort.py` | Cohort sets with real derived submissions: PROGpedia assignments Progpedia19/56 from the Maisch et al. replication package (Zenodo 10.5281/zenodo.18089904, CC BY 4.0) and the seven IR-Plag tasks (Karnalim et al.); one cohort per derived file; JPlag run once per assignment. Download both datasets yourself into `tools/maisch_dl/x/datasets` and `tools/irplag_dl/x/IR-Plag-Dataset`. |
-| `eval_cohorts.py`, `analyze_cohorts.py`, `sens_filter.py` | Frozen models scored on every cohort pair (plain and boilerplate-removed features), cohort AUROC, detection and false-flag rates, the label-free adaptive threshold per cohort, cluster-bootstrap intervals, and the boilerplate-filter sensitivity sweep (`results_*/cohort_eval.json`, `results_A/sens_filter.json`). |
-| `dolos_benchmark.py`, `dolos_cohort.py`, `dolos_cohort_runs.py`, `dolos_bench_stats.py` | Dolos 2.10.0 (official container `ghcr.io/dodona-edu/dolos-cli`, pulled with Docker) on the benchmark's same-language pairs and on the cohorts (one run per cohort, default and `-M 0.5`), plus the cluster-bootstrap comparison with the gate and JPlag. |
-| `eval_cohort_variants.py`, `eval_probe2_ux.py`, `encode_unixcoder_probe2.py` | Robustness of the boilerplate filter on the gate's inputs, and the generator probe repeated with the UniXcoder expert (`REGIME=A|B SEM=ux`). |
-| `e1_baselines.py`, `e2_retrained_ablation.py`, `e3_encoder_control.py` | Fixed-weight and non-routing baselines (best convex weights, hand-coded rule, gradient-boosted trees), ablation by retraining without an expert, and the encoder / pooling / normalization control. |
-| `compute_whiten_feature.py` (`SEM=wh`) | Whitened CodeBERT semantic expert (training-split ZCA) used as a drop-in replacement; `run_experiments.py` and `e1_baselines.py` then run with `SEM=wh`. |
-| `e4_build.py`, `e4_tools.py`, `e4_eval.py` | Lexical attack A1 (rename declared identifiers, mask string literals) on same-language pairs; JPlag, Dolos and the learned systems on original and attacked pairs. |
-| `e6_weights_and_tasks.py`, `e7_probe_reanalysis.py` | Per-assignment cohort AUROC and gate weights on derived versus honest pairs; probe AUROC, recall at fixed FPR and cluster-bootstrap intervals over seed problems. |
-| `e8_tune_tools.py`, `e8_tool_metrics.py`, `failure_pooled.py`, `make_pr_figure.py`, `make_tables4.py` | Tuning of JPlag / Dolos settings, operating-point metrics of every system, failure analysis pooled over seeds, stacked precision-recall figure, tables of these experiments. |
-| `make_tables2.py`, `make_tables3.py` | Stronger-encoder, external-check and cohort tables and Fig. `fig_cohort.pdf` (run after `make_tables.py`). |
+Sources: GPTCloneBench (https://github.com/srlabUsask/GPTCloneBench, Zenodo record 10198952), the Maisch et al. replication package (PROGpedia assignments Progpedia19 / Progpedia56, Zenodo 10.5281/zenodo.18089904, CC BY 4.0) and IR-Plag (Apache-2.0).
 
-Outputs: `analysis/results_A`, `analysis/results_B`, `analysis/results_C` (scores, per-pair predictions, JSON summaries).
+As the paper states: the 100 translated derived submissions of the cross-language cohorts and the probe outputs were written by AI models and were checked only for syntactic validity, not for behavioural equivalence; the audits of the mined negatives and of the probe positives were done by a single AI-assisted rater (see the manuscript's Acknowledgment).
 
-Note: `analysis/data/pairs.csv` holds the protocol pairs plus the regime-B (`hard_independent`) and regime-C (`tfidf_independent`) negative pools (31,992 rows).
+## 2. Paper to repository map
 
-## Additional outputs
+Table and figure numbers are those of the manuscript. "Run" is the script that writes the result file; the LaTeX tables are generated from the result JSONs by the `make_tables*.py` scripts (`analysis/rebuild_all_tables.sh` runs them in the right order; output in `analysis/tables/`).
 
-* `analysis/results_{A,B,C}/e8_tuned.json`: tuned JPlag (minimum match 5) and Dolos (k=35, window 25) test F1 and AUROC, reported in the fixed-weight baselines table.
-* `analysis/results_{A,B,C}lo/`, `analysis/tables_lo/`: log-odds-fusion gate runs and the tables generated from them; `analysis/rebuild_all_tables.sh` regenerates every manuscript table in the correct order (`make_tables.py` through `make_tables5.py`; run the whole script, since `make_tables.py` alone omits the merged regime-C part (b)).
-* `analysis/gen/`: generator-probe seeds, model outputs and the reading-audit files.
+| Paper item | Result files (`analysis/results_{A,B,C}/`) | Run | Table script |
+| :--- | :--- | :--- | :--- |
+| Table 1 protocol sizes (III-B) | `data/protocol_stats.json` | `build_protocol.py`, `build_hard_negatives.py`, `build_negatives_c.py` | `make_tables.py` |
+| Tables 2-4 comparison with baselines, clone-type recall, same-language comparison | `main_eval.json`, `post_analysis.json`, `e8_tools.json` | `run_experiments.py`, `evaluate_all.py`, `post_analysis.py`, `run_jplag.py`, `dolos_benchmark.py` | `make_tables.py` |
+| Table 5 component ablation (leave-one-out, decision rules) | `post_analysis.json` | `post_analysis.py` | `make_tables.py` |
+| Table 6 fixed-weight and non-routing baselines (incl. tuned JPlag and Dolos rows) | `e1_baselines.json`, `e8_tuned.json` | `e1_baselines.py`, `e8_tune_tools.py` | `make_tables4.py` |
+| Table 7 ablation by retraining | `e2_retrained.json` | `e2_retrained_ablation.py` | `make_tables4.py` |
+| Table 8 regime C and split re-draws | `main_eval.json`, `split_variance.json` | `run_experiments.py`, `split_variance.py` | `make_tables.py`, `make_tables5.py` |
+| Tables 9-10 stronger encoder, encoder control | `results_{A,B,C}ux/`, `e3_encoder.json`, `embedding_baselines.json` | `encode_unixcoder.py`, `e3_encoder_control.py` | `make_tables2.py`, `make_tables4.py` |
+| Tables 11-12 log-odds repair on the benchmark and on real / cross-language cohorts | `results_{A,B,C}lo/`, `logit_headline.json`, `gate_variants*.json`, `gate_shortcut.json`, `gate_cohort_filt.json`, `xl2_eval.json` | `logit_headline.py`, `rerun_logit_ablations.py`, `gate_variants.py`, `gate_shortcut.py`, `eval_xl2_cohorts.py` | `make_tables3.py`, `make_tables5.py` |
+| Tables 13-15 cohort screening, filtered paired differences, flagging behaviour (IV-H) | `cohort_eval.json`, `cohort_variants.json`, `sens_filter.json`, `e6_cohort_detail.json`, `gate_cohort_filt.json` | `build_cohorts.py`, `eval_cohorts.py`, `analyze_cohorts.py`, `sens_filter.py`, `dolos_cohort_runs.py`, `jplag_cohort.py` | `make_tables3.py`, `make_tables5.py` |
+| Table 16 same-author / convergence check (IV-I) | `external.json` | `build_progpedia.py`, `build_convergence.py`, `eval_external.py` | `make_tables.py`, `make_tables2.py` |
+| Table 17 operating points, Fig. 2 precision-recall curves (IV-J) | `post_analysis.json`, `pr_curves.png` | `post_analysis.py`, `make_pr_figure.py` | `make_tables.py` |
+| Tables 18-19 diagnostic cases, threshold sensitivity (IV-J) | `post_analysis.json` | `post_analysis.py` | `make_tables.py` |
+| Tables 20-21 generator probe (IV-K) | `probe2.json`, `e7_probe.json` | `build_probe_claude.py`, `eval_probe2.py`, `e7_probe_reanalysis.py` | `make_tables.py`, `make_tables4.py` |
+| Table 22 lexical attack A1 (IV-L) | `e4_attack.json` | `e4_build.py`, `e4_tools.py`, `e4_eval.py` | `make_tables4.py` |
+| V-A failure analysis | `failure_pooled.json` | `failure_pooled.py` | prose |
+| III-J cross-language cohorts (generation, evaluation) | `xl2_eval.json` | `eval_xl2_cohorts.py` (the cohort tables `xl2_cohort_*.csv` are provided; the AI-written translations themselves are in `dataset/snippets/cross_language_cohort_snippets.jsonl`) | `make_tables5.py` |
 
-## Not included
+The scripts are named after the experiment they run; each file starts with a docstring that states its inputs and outputs.
 
-Large caches and model weights (`*.pkl`, `*.pth`, `*.npz`), run logs, the per-pair tool-score CSVs, and the generator scripts and data of the cross-language derived cohorts (the `xl_cohort` files) are omitted. The cohort summaries quoted in the manuscript can be regenerated with the cohort scripts listed above.
+## 3. Reproducing
+
+Run scripts from `analysis/` with `python -I <script>`. Seeds are fixed, so trained models and tables reproduce exactly (no GPU needed). Requirements: Python 3.11, PyTorch, `transformers` (microsoft/codebert-base, microsoft/unixcoder-base), tree-sitter with the Java, Python, C and C# grammars. JPlag 6.3.0 needs a JDK and the JPlag jar, and Dolos 2.10.0 runs from its official container; neither is included. To regenerate all manuscript tables from the stored results run `bash analysis/rebuild_all_tables.sh` (the whole script; `make_tables.py` alone omits the merged regime-C part (b)).
+
+## 4. Not included
+
+Large caches and model weights (`*.pkl`, `*.pth`, `*.npz`: feature caches and UniXcoder embeddings, regenerated by `feature_pipeline.py` and the `encode_unixcoder_*.py` scripts), run logs and the per-pair tool-score CSVs are omitted. The snippet text of every dataset is in `dataset/snippets/`.
