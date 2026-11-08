@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Five representative test pairs (regime B gate, seed 0): in each category the pair whose $S_{\text{sem}}$ is closest to the category median. The gate column is the fused score (log-odds fusion, Eq.~\ref{eq:logit}); the static column is the unweighted mean of the three scores.}
+\label{tab:diagnostic-cases}
+\footnotesize
+\begin{tabular}{lcccccccccl}
+\toprule
+\textbf{Category} & $S_{\text{sem}}$ & $S_{\text{str}}$ & $S_{\text{syn}}$ & $D_{\text{lang}}$ & $w_{\text{sem}}$ & $w_{\text{str}}$ & $w_{\text{syn}}$ & Gate / Static & Outcome \\
+\midrule
+Exact & 0.998 & 0.905 & 0.414 & 0 & 0.046 & 0.376 & 0.578 & 0.955 / 0.772 & Flagged \\
+Renamed & 0.998 & 0.923 & 0.511 & 0 & 0.052 & 0.377 & 0.571 & 0.969 / 0.811 & Flagged \\
+Refactored & 0.992 & 0.904 & 0.461 & 0 & 0.058 & 0.378 & 0.564 & 0.962 / 0.786 & Flagged \\
+Cross-language & 0.986 & 0.713 & 0.185 & 1 & 0.316 & 0.355 & 0.329 & 0.969 / 0.628 & Flagged \\
+Hard negative & 0.990 & 0.895 & 0.036 & 0 & 0.000 & 0.008 & 0.992 & 0.148 / 0.640 & Not flagged \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,352 @@
+[
+ {
+  "id": "T673",
+  "task": "translate",
+  "row": 673,
+  "source_lang": "java",
+  "code": "public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {\n    String lsStart = \"\";\n    String lsInsert = \"\";\n    String lsEnd = \"\";\n    String lsText = \"\";\n    Log.d (\"debug\", moPattern.toString ());\n    Log.d (\"debug\", \"source: \" + source + \", start: \" + start + \", end:\" + end + \", dest: \" + dest + \", dstart: \" + dstart + \", dend: \" + dend);\n    lsText = dest.toString ();\n    if (lsText.length () > 0) {\n        lsStart = lsText.substring (0, dstart);\n        Log.d (\"debug\", \"lsStart : \" + lsStart);\n        if (source != \"\") {\n            lsInsert = source.toString ();\n            Log.d (\"debug\", \"lsInsert: \" + lsInsert);\n        }\n        lsEnd = lsText.substring (dend);\n        Log.d (\"debug\", \"lsEnd   : \" + lsEnd);\n        lsText = lsStart + lsInsert + lsEnd;\n        Log.d (\"debug\", \"lsText  : \" + lsText);\n    }\n    Matcher loMatcher = moPattern.matcher (lsText);\n    Log.d (\"debug\", \"loMatcher.matches(): \" + loMatcher.matches () + \", lsText: \" + lsText);\n    if (! loMatcher.matches ()) {\n        return \"\";\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T452",
+  "task": "translate",
+  "row": 452,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String str = \"my name is khan\";\n    String words [] = str.split (\"\\\\s\");\n    String capitalizedWord = \"\";\n    for (String w : words) {\n        String first = w.substring (0, 1);\n        String f_after = w.substring (1);\n        capitalizedWord += first.toUpperCase () + f_after + \" \";\n    }\n    System.out.println (capitalizedWord);\n}"
+ },
+ {
+  "id": "T186",
+  "task": "translate",
+  "row": 186,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String input = \"(A,Name1,200), (A,Name1,200), (R,Name1,200), (A,Name2,900), (A,Name2,500)\";\n    String [] scoreSets = input.split (\"\\\\),\");\n    List < Score > scoreList = new ArrayList < Score > ();\n    for (String score : scoreSets) {\n        score = score.trim ().substring (1);\n        int closeBrace = score.indexOf (')');\n        if (closeBrace == score.length () - 1) {\n            score = score.substring (0, score.length () - 1);\n        }\n        String [] tokens = score.split (\",\");\n        scoreList.add (new Score (tokens [0], tokens [1], Double.valueOf (tokens [2])));\n    }\n}"
+ },
+ {
+  "id": "T271",
+  "task": "translate",
+  "row": 271,
+  "source_lang": "java",
+  "code": "public static void main (String...args) {\n    List < List < Integer > > array = new ArrayList < List < Integer > > ();\n    Scanner input = new Scanner (System.in);\n    out.println (\"Enter n:\");\n    int n = input.nextInt ();\n    out.println (\"Enter m:\");\n    int m = input.nextInt ();\n    out.println (\"Enter the values:\");\n    for (int i = 0;\n    i < n; i ++) {\n        List < Integer > list = new ArrayList < Integer > ();\n        array.add (list);\n        for (int j = 0;\n        j < m; j ++) {\n            list.add (input.nextInt ());\n        }\n    }\n    out.println (\"Result:\");\n    out.println (array);\n}"
+ },
+ {
+  "id": "T597",
+  "task": "translate",
+  "row": 597,
+  "source_lang": "java",
+  "code": "public ResponseEntity < ? > match (@PathVariable\nString matchId,@RequestBody\nString body, HttpServletRequest request, HttpServletResponse response) {\n    Product p;\n    try {\n        p = service.getProduct (request.getProductId ());\n    } catch (Exception ex) {\n        return new ResponseEntity < String > (HttpStatus.BAD_REQUEST);\n    }\n    return new ResponseEntity (p, HttpStatus.OK);\n}"
+ },
+ {
+  "id": "T341",
+  "task": "translate",
+  "row": 341,
+  "source_lang": "java",
+  "code": "public static String output (String [] fourLetter, String [] fiveLetter, String [] sixLetter) {\n    String answer = \"\";\n    int count = 1;\n    for (int i = 0;\n    i < Math.max (Math.max (fourLetter.length, fiveLetter.length), sixLetter.length); i ++) {\n        if (sixLetter.length > i) {\n            answer += sixLetter [i] + \" \";\n        }\n        if (fiveLetter.length > i) {\n            answer += fiveLetter [i] + \" \";\n        }\n        if (fourLetter.length > i) {\n            answer += fourLetter [i];\n        }\n        answer += \"\\n\";\n        for (int j = 0;\n        j < count; j ++) {\n            answer += \"\\t\";\n        }\n        count ++;\n    }\n    return answer;\n}"
+ },
+ {
+  "id": "T350",
+  "task": "translate",
+  "row": 350,
+  "source_lang": "java",
+  "code": "public String getName (String value) {\n    StringBuilder buffer = new StringBuilder ();\n    String high, low;\n    if (value.length () < getPartDivider ()) {\n        high = \"\";\n        low = value;\n    } else {\n        int index = value.length () - getPartDivider ();\n        high = value.substring (0, index);\n        low = value.substring (index);\n    }\n    String highName = getHighProcessor ().getName (high);\n    String lowName = getLowProcessor ().getName (low);\n    if (! \"\".equals (highName)) {\n        buffer.append (highName);\n        buffer.append (SEPARATOR);\n        buffer.append (getToken ());\n        if (! \"\".equals (lowName)) {\n            buffer.append (SEPARATOR);\n        }\n    }\n    if (! \"\".equals (lowName)) {\n        buffer.append (lowName);\n    }\n    return buffer.toString ();\n}"
+ },
+ {
+  "id": "T815",
+  "task": "translate",
+  "row": 815,
+  "source_lang": "java",
+  "code": "public String getNextMonth (boolean maxDate) {\n    Calendar calendar = Calendar.getInstance ();\n    calendar.set (year, monthNo, 1);\n    calendar.add (Calendar.MONTH, 1);\n    if (maxDate) {\n        int maxD = calendar.getActualMaximum (Calendar.DAY_OF_MONTH);\n        calendar.set (Calendar.DAY_OF_MONTH, maxD);\n    } else {\n        calendar.set (Calendar.DAY_OF_MONTH, day);\n    }\n    String date = (calendar.get (Calendar.YEAR)) + \"-\" + (calendar.get (Calendar.MONTH) + 1) + \"-\" + calendar.get (Calendar.DAY_OF_MONTH);\n    calendar.clear ();\n    return date;\n}"
+ },
+ {
+  "id": "T359",
+  "task": "translate",
+  "row": 359,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) throws InterruptedException {\n    BlockingQueue < Object > expensiveObjects = new LinkedBlockingQueue < > ();\n    expensiveObjects.put (new Object ());\n    expensiveObjects.put (new Object ());\n    expensiveObjects.put (new Object ());\n    expensiveObjects.put (new Object ());\n    ExecutorService executorService = Executors.newFixedThreadPool (4);\n    for (int i = 0;\n    i < 4; i ++) {\n        executorService.execute (new MyRunnable (expensiveObjects));\n    }\n    executorService.shutdown ();\n    executorService.awaitTermination (5, TimeUnit.SECONDS);\n    System.out.println (\"Final: \" + outputCount.get ());\n}"
+ },
+ {
+  "id": "T448",
+  "task": "translate",
+  "row": 448,
+  "source_lang": "java",
+  "code": "public static boolean isBalanced (String str) {\n    boolean result = false;\n    if (str.length () < 2) return false;\n    Stack < Character > stack = new Stack < > ();\n    for (int i = 0;\n    i < str.length (); i ++) {\n        char ch = str.charAt (i);\n        if (! parenthesesMapRight.containsKey (ch) && ! parenthesesMapLeft.containsKey (ch)) {\n            continue;\n        }\n        if (parenthesesMapLeft.containsKey (ch)) {\n            stack.push (ch);\n        } else {\n            if (! stack.isEmpty () && stack.pop () == parenthesesMapRight.get (ch).charValue ()) {\n                result = true;\n            } else {\n                return false;\n            }\n        }\n    }\n    if (! stack.isEmpty ()) return result = false;\n    return result;\n}"
+ },
+ {
+  "id": "T561",
+  "task": "translate",
+  "row": 561,
+  "source_lang": "java",
+  "code": "public static void main (String...args) throws Exception {\n    List < char [] > myArray = new ArrayList < char [] > ();\n    myArray.add (\"string1\".toCharArray ());\n    myArray.add (\"string2\".toCharArray ());\n    myArray.add (\"string3\".toCharArray ());\n    char [] [] charArray2D = myArray.toArray (new char [0] [0]);\n    System.out.println (charArray2D.length);\n    StringBuilder s = new StringBuilder ();\n    for (char [] c : myArray) {\n        s.append (String.copyValueOf (c));\n    }\n    char [] charArray1D = s.toString ().toCharArray ();\n    System.out.println (charArray1D.length);\n}"
+ },
+ {
+  "id": "T171",
+  "task": "translate",
+  "row": 171,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    Set < Integer > leaves = new HashSet < > ();\n    for (int i = 0;\n    i < A.length; i ++) {\n        leaves.add (A [i]);\n        if (leaves.contains (X) && leaves.size () == X) return i;\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T533",
+  "task": "translate",
+  "row": 533,
+  "source_lang": "java",
+  "code": "public void run () {\n    Object o = object;\n    for (;;) {\n        try {\n            sleep (Long.MAX_VALUE);\n        } catch (InterruptedException e) {\n        }\n    }\n}"
+ },
+ {
+  "id": "T111",
+  "task": "translate",
+  "row": 111,
+  "source_lang": "java",
+  "code": "public static int singleNumber (int [] nums) {\n    int answer = 0;\n    ArrayList al = new ArrayList ();\n    for (int i = 0;\n    i < nums.length; i ++) {\n        al.add (nums [i]);\n    }\n    for (int i = 0;\n    i < nums.length; i ++) {\n        int test = nums [i];\n        if (al.indexOf (test) == al.lastIndexOf (test)) {\n            answer = nums [i];\n        }\n    }\n    return answer;\n}"
+ },
+ {
+  "id": "T224",
+  "task": "translate",
+  "row": 224,
+  "source_lang": "java",
+  "code": "public static void main (String args []) {\n    String inputString;\n    Scanner s = new Scanner (System.in);\n    inputString = s.nextLine ();\n    if (! inputString.matches (\"([+-]?([0-9]*[.])?[0-9]+)\")) {\n        System.out.println (\"Not a Number\");\n    } else {\n        Double result2 = getNumber (inputString);\n        System.out.println (\"result = \" + result2);\n    }\n}"
+ },
+ {
+  "id": "T479",
+  "task": "translate",
+  "row": 479,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    int first, second;\n    Scanner myScanner = new Scanner (System.in);\n    System.out.println (\"Enter first integer: \");\n    int numOne;\n    numOne = myScanner.nextInt ();\n    System.out.println (\"You have keyed in \" + numOne);\n    System.out.println (\"Enter second integer: \");\n    int numTwo;\n    numTwo = myScanner.nextInt ();\n    System.out.println (\"You have keyed in \" + numTwo);\n    Random generator = new Random ();\n    int num = (int) (Math.random () * numTwo);\n    System.out.println (\"Random number: \" + ((num > numOne) ? num : numOne + num));\n}"
+ },
+ {
+  "id": "T212",
+  "task": "translate",
+  "row": 212,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String needle = \"ABC\";\n    String haystack = \"ABCDSGDABCSAGAABCCCCAAABAABC\";\n    int numberOfOccurences = 0;\n    int index = haystack.indexOf (needle);\n    while (index != - 1) {\n        numberOfOccurences ++;\n        haystack = haystack.substring (index + needle.length ());\n        index = haystack.indexOf (needle);\n    }\n    System.out.println (\"\" + numberOfOccurences);\n}"
+ },
+ {
+  "id": "T170",
+  "task": "translate",
+  "row": 170,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    Set < Integer > set = new HashSet < Integer > ();\n    int sum1 = 0, sum2 = 0;\n    for (int i = 0;\n    i <= X; i ++) {\n        sum1 += i;\n    }\n    for (int i = 0;\n    i < A.length; i ++) {\n        if (set.contains (A [i])) continue;\n        set.add (A [i]);\n        sum2 += A [i];\n        if (sum1 == sum2) return i;\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T508",
+  "task": "translate",
+  "row": 508,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String output = \"\";\n    Multiset < String > wordsMultiset = HashMultiset.create ();\n    String [] words = \"AAABBBBCC\".split (\"\");\n    wordsMultiset.addAll (Arrays.asList (words));\n    for (Entry < String > string : wordsMultiset.entrySet ()) {\n        if (! string.getElement ().isEmpty ()) output += string.getCount () + \"\" + string.getElement ();\n    }\n    System.out.println (output);\n}"
+ },
+ {
+  "id": "T241",
+  "task": "translate",
+  "row": 241,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    HashMap < Character, Integer > hm = new HashMap < Character, Integer > ();\n    System.out.println (\"Enter an String:\");\n    Scanner sc = new Scanner (System.in);\n    String s1 = sc.nextLine ();\n    for (int i = 0;\n    i < s1.length (); i ++) {\n        if (! hm.containsKey (s1.charAt (i))) {\n            hm.put (s1.charAt (i), (Integer) 1);\n        } else {\n            hm.put (s1.charAt (i), hm.get (s1.charAt (i)) + 1);\n        }\n    }\n    System.out.println (\"The Charecters are:\" + hm);\n}"
+ },
+ {
+  "id": "T238",
+  "task": "translate",
+  "row": 238,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String name = \"AnuvratAnuvra\";\n    char [] arr = name.toCharArray ();\n    HashMap < Character, Integer > map = new HashMap < Character, Integer > ();\n    for (char val : arr) {\n        map.put (val, map.containsKey (val) ? map.get (val) + 1 : 1);\n    }\n    for (Entry < Character, Integer > entry : map.entrySet ()) {\n        if (entry.getValue () > 1) {\n            Character key = entry.getKey ();\n            Object value = entry.getValue ();\n            System.out.println (key + \":\" + value);\n        }\n    }\n}"
+ },
+ {
+  "id": "T202",
+  "task": "translate",
+  "row": 202,
+  "source_lang": "java",
+  "code": "public static void copyFolder (Path src, Path dest) {\n    try {\n        Files.walk (src).forEach (s -> {\n            try {\n                Path d = dest.resolve (src.relativize (s));\n                if (Files.isDirectory (s)) {\n                    if (! Files.exists (d)) Files.createDirectory (d);\n                    return;\n                }\n                Files.copy (s, d);\n            } catch (Exception e) {\n                e.printStackTrace ();\n            }\n        });\n    } catch (Exception ex) {\n        ex.printStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "T693",
+  "task": "translate",
+  "row": 693,
+  "source_lang": "java",
+  "code": "int findCombinationsCount (int amount, int coins [], int checkFromIndex) {\n    if (amount == 0) return 1;\n    else if (amount < 0 || coins.length == checkFromIndex) return 0;\n    else {\n        int withFirstCoin = findCombinationsCount (amount - coins [checkFromIndex], coins, checkFromIndex);\n        int withoutFirstCoin = findCombinationsCount (amount, coins, checkFromIndex + 1);\n        return withFirstCoin + withoutFirstCoin;\n    }\n}"
+ },
+ {
+  "id": "T347",
+  "task": "translate",
+  "row": 347,
+  "source_lang": "java",
+  "code": "public String getName (String value) {\n    StringBuilder buffer = new StringBuilder ();\n    int number;\n    if (\"\".equals (value)) {\n        number = 0;\n    } else if (value.length () > 4) {\n        number = Integer.valueOf (value.substring (value.length () - 4), 10);\n    } else {\n        number = Integer.valueOf (value, 10);\n    }\n    number %= 1000;\n    if (number >= 100) {\n        buffer.append (unitProcessor.getName (number / 100));\n        buffer.append (SEPARATOR);\n        buffer.append (SCALE.getName (EXPONENT));\n    }\n    String tensName = tensProcessor.getName (number % 100);\n    if (! \"\".equals (tensName) && (number >= 100)) {\n        buffer.append (SEPARATOR);\n    }\n    buffer.append (tensName);\n    return buffer.toString ();\n}"
+ },
+ {
+  "id": "T253",
+  "task": "translate",
+  "row": 253,
+  "source_lang": "java",
+  "code": "static void shuffleArray (int [] ar) {\n    Random rnd = ThreadLocalRandom.current ();\n    for (int i = ar.length - 1;\n    i > 0; i --) {\n        int index = rnd.nextInt (i + 1);\n        int a = ar [index];\n        ar [index] = ar [i];\n        ar [i] = a;\n    }\n}"
+ },
+ {
+  "id": "R8549838705",
+  "task": "refactor",
+  "key": "c:8549838705c8c9e2",
+  "lang": "c",
+  "code": "int main () {\n    int i;\n    const int array_a [3] = {2, 4, 6}, array_b [3] = {1, 3, 5};\n    int array_c [6];\n    concat (array_a, array_b, array_c, 3);\n    for (i = 0; i < 6; i++) {\n        printf (\"array_c[%d]=%d\\n\", i, array_c [i]);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "Reec8438c4b",
+  "task": "refactor",
+  "key": "c:eec8438c4b1a754c",
+  "lang": "c",
+  "code": "int main () {\n    FILE *fin;\n    FILE *fout;\n    int character;\n    fin = fopen (\"in.txt\", \"r\");\n    fout = fopen (\"out.txt\", \"w\");\n    while ((character = fgetc (fin)) != EOF) {\n        printCharWithSpaces(character, fin, fout);\n    }\n    fclose (fin);\n    fclose (fout);\n    printf (\"\\nFile has been created...\\n\");\n    return 0;\n}"
+ },
+ {
+  "id": "Rd776867156",
+  "task": "refactor",
+  "key": "java:d7768671561d3ad5",
+  "lang": "java",
+  "code": "public static void close (Statement...statements) {\n    for (Statement stmt : statements) {\n        try {\n            if (stmt != null) stmt.close ();\n        } catch (SQLException se) {\n        }\n    }\n}"
+ },
+ {
+  "id": "Rb67c7892a4",
+  "task": "refactor",
+  "key": "java:b67c7892a4af29e2",
+  "lang": "java",
+  "code": "public void run () {\n    try {\n        for (int i = 0;\n        i < 2; i ++) {\n            System.out.println (\"tic\");\n        }\n    } catch (Exception e) {\n        e.getStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "R8818908361",
+  "task": "refactor",
+  "key": "c:8818908361446a3d",
+  "lang": "c",
+  "code": "int main () {\n    char months [] = \"JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC\";\n    char **tokens;\n    printf (\"months=[%s]\\n\\n\", months);\n    tokens = str_split (months, ',');\n    if (tokens) {\n        int i;\n        for (i = 0; *(tokens + i); i++) {\n            printf (\"month=[%s]\\n\", * (tokens + i));\n            free (* (tokens + i));\n        }\n        printf (\"\\n\");\n        free (tokens);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "Rd613be00ca",
+  "task": "refactor",
+  "key": "java:d613be00ca02acdc",
+  "lang": "java",
+  "code": "public static byte [] readBytes (InputStream inputStream) throws IOException {\n    byte [] buffer = new byte [32 * 1024];\n    int bufferSize = 0;\n    for (;;) {\n        int read = inputStream.read (buffer, bufferSize, buffer.length - bufferSize);\n        if (read == - 1) {\n            return Arrays.copyOf (buffer, bufferSize);\n        }\n        bufferSize += read;\n        if (bufferSize == buffer.length) {\n            buffer = Arrays.copyOf (buffer, bufferSize * 2);\n        }\n    }\n}"
+ },
+ {
+  "id": "R84ca6c9dcf",
+  "task": "refactor",
+  "key": "java:84ca6c9dcf896447",
+  "lang": "java",
+  "code": "public void actionPerformed (ActionEvent e) {\n    Color c = label.getBackground ();\n    if (FLASH_COLOR.equals (c)) {\n        label.setBackground (null);\n        label.setForeground (Color.black);\n    } else {\n        label.setBackground (FLASH_COLOR);\n        label.setForeground (Color.white);\n    }\n}"
+ },
+ {
+  "id": "Ra1d335a7d8",
+  "task": "refactor",
+  "key": "c:a1d335a7d8b379ea",
+  "lang": "c",
+  "code": "int main (void) {\n    char str [] = \"This is abc test abc string\";\n    char *in = str;\n    char *delim = \"abc\";\n    char *token;\n    do {\n        token = strstr (in, delim);\n        if (token)\n            *token = '\\0';\n        printf (\"%s\\n\", in);\n        in = token + strlen (delim);\n    }\n    while (token != NULL);\n    return 0;\n}"
+ },
+ {
+  "id": "R73286ffa0d",
+  "task": "refactor",
+  "key": "java:73286ffa0d20a130",
+  "lang": "java",
+  "code": "public static void main (String [] args) {\n    CustomClassLoader loader = new CustomClassLoader ();\n    try {\n        Class < ? > c = loader.findClass (\"sample.Sample\");\n        Object o = c.newInstance ();\n    } catch (ClassNotFoundException e) {\n        e.printStackTrace ();\n    } catch (InstantiationException e) {\n        e.printStackTrace ();\n    } catch (IllegalAccessException e) {\n        e.printStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "Rf3a21bb32a",
+  "task": "refactor",
+  "key": "csharp:f3a21bb32a9b582d",
+  "lang": "csharp",
+  "code": "private static void ExpandItemWithInitialExpandedAttribute (PropertyGrid propertyGrid, GridItem gridItem) {\n    if (gridItem != null) {\n        if (gridItem.GridItemType == GridItemType.Property && gridItem.Expandable) {\n            object [] objs = gridItem.Value.GetType ().GetCustomAttributes (typeof (PropertyGridInitialExpandedAttribute), false);\n            if (objs.Length > 0) {\n                if (((PropertyGridInitialExpandedAttribute) objs [0]).InitialExpanded) {\n                    gridItem.Expanded = true;\n                }\n            }\n        }\n        foreach (GridItem childItem in gridItem.GridItems) {\n            ExpandItemWithInitialExpandedAttribute (propertyGrid, childItem);\n        }\n    }\n}"
+ },
+ {
+  "id": "R9955954078",
+  "task": "refactor",
+  "key": "csharp:9955954078bcdb20",
+  "lang": "csharp",
+  "code": "public static IEnumerable < IEnumerable < T > > GetPermutations < T > (IEnumerable < IEnumerable < T > > lists) {\n    if (! lists.Any ()) {\n        yield break;\n    }\n    List < IEnumerator < T > > iterators = new List < IEnumerator < T > > ();\n    foreach (var list in lists) {\n        var it = list.GetEnumerator ();\n        if (! it.MoveNext ()) {\n            continue;\n        }\n        iterators.Add (it);\n    }\n    bool done = false;\n    while (! done) {\n        yield return from it in iterators\n            select it.Current;\n        bool recurse = false;\n        var mainIt = iterators.GetEnumerator ();\n        mainIt.MoveNext ();\n        do\n            {\n                recurse = false;\n                var subIt = mainIt.Current;\n                if (! subIt.MoveNext ()) {\n                    subIt.Reset ();\n                    subIt.MoveNext ();\n                    if (! mainIt.MoveNext ()) {\n                        done = true;\n                    } else {\n                        recurse = true;\n                    }\n                }\n            } while (recurse);\n    }\n}"
+ },
+ {
+  "id": "Rbcd6619d12",
+  "task": "refactor",
+  "key": "java:bcd6619d12364bb7",
+  "lang": "java",
+  "code": "public static void main (String [] args) throws InterruptedException, ExecutionException {\n    CompletableFuture < String > future = readPage ();\n    CompletableFuture < Void > future2 = future.thenAccept (page -> {\n        System.out.println (page);\n        throw new IllegalArgumentException (\"unexpected exception\");\n    });\n    future2.exceptionally (e -> {\n        e.printStackTrace (System.err);\n        return null;\n    });\n}"
+ },
+ {
+  "id": "R1ff2f32faf",
+  "task": "refactor",
+  "key": "python:1ff2f32fafd86e59",
+  "lang": "python",
+  "code": "def update(self, instance, validated_data) :\n\tuser_data = validated_data.pop('user', {})\n\tuser_serializer = UserSerializer(instance.user, data = user_data, partial = True)\n\tuser_serializer.is_valid(raise_exception = True)\n\tuser_serializer.update(instance.user, user_data)\n\tsuper(ProfileSerializer, self).update(instance, validated_data)\n\treturn instance"
+ },
+ {
+  "id": "Rb3104c30c4",
+  "task": "refactor",
+  "key": "csharp:b3104c30c461db1d",
+  "lang": "csharp",
+  "code": "[Route (\"Login\")] public HttpResponseMessage GetLogin () {\n    string scope = HttpUtility.UrlEncode (\"Space Seperated list of scopes\");\n    string redirectUri = HttpUtility.UrlEncode (\"http://YourWebsiteURL/api/Account/OAuthCallback\");\n    string accessType = \"Either online or offline\";\n    string requestUri = string.Format (\"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id={0}&redirect_uri={1}&scope={2}&access_type={3}&approval_prompt=auto&include_granted_scopes=true\", _clientId, redirectUri, scope, accessType);\n    HttpResponseMessage response = Request.CreateResponse (HttpStatusCode.MovedPermanently);\n    response.Headers.Location = new Uri (requestUri);\n    return response;\n}"
+ },
+ {
+  "id": "R7ec3eaaa23",
+  "task": "refactor",
+  "key": "c:7ec3eaaa234b3579",
+  "lang": "c",
+  "code": "int main () {\n    {\n        int i, n = 6;\n        arr m = makearr (1, (int []) {n});\n        for (i = 0; i < n; i++)\n            *elem (m, i) = i;\n        for (i = 0; i < n; i++, printf (\" \"))\n            printf (\"%d\", *elem (m, i));\n    }\n    puts (\"\\n\");\n    {\n        int i, j, n = 4;\n        arr m = makearr (2, (int []) {n, n});\n        for (i = 0; i < n; i++)\n            for (j = 0; j < n; j++)\n                *elem (m, i, j) = i * n + j;\n        for (i = 0; i < n; i++, printf (\"\\n\"))\n            for (j = 0; j < n; j++, printf (\" \"))\n                printf (\"%d\", *elem (m, i, j));\n    }\n    puts (\"\\n\");\n    {\n        int i, j, k, n = 3;\n        arr m = makearr (3, (int []) {n, n, n});\n        for (i = 0; i < n; i++)\n            for (j = 0; j < n; j++)\n                for (k = 0; k < n; k++)\n                    *elem (m, i, j, k) = (i * n + j) * n + k;\n        for (i = 0; i < n; i++, printf (\"\\n\"))\n            for (j = 0; j < n; j++, printf (\"\\n\"))\n                for (k = 0; k < n; k++, printf (\" \"))\n                    printf (\"%d\", *elem (m, i, j, k));\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "Rf2339edd09",
+  "task": "refactor",
+  "key": "python:f2339edd095f007f",
+  "lang": "python",
+  "code": "def checkLen() :\n\tdays = [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"]\n\tif \"Monday\" in days :\n\t\tprint(\"found\")\n\t\tprint (days.index(\"Monday\"))"
+ },
+ {
+  "id": "R4dea8b0dc2",
+  "task": "refactor",
+  "key": "python:4dea8b0dc2ea0b82",
+  "lang": "python",
+  "code": "def graphWriter() :\n\tdata = {}\n\tfor file in g.glob('*.TXT') :\n\t\tdata [file] = np.fromregex(file, '\\d*\\.\\d*',\n\t\tdtype = [('1', float), ('2', float),\n\t\t('3', float), ('4', float)])\n\tfig, ax = plt.subplots()\n\tfor d in data.itervalues() :\n\t\tax.plot(d ['3'], d ['4'])\n\tplt.show()\n\tplt.close(fig)"
+ },
+ {
+  "id": "Rd85db6db53",
+  "task": "refactor",
+  "key": "python:d85db6db5321a24e",
+  "lang": "python",
+  "code": "def unique(x) :\n\toutput = []\n\ty = {}\n\tfor item in x :\n\t\ty [item] = \"\"\n\tfor item in x :\n\t\tif item in y :\n\t\t\toutput.append(item)\n\treturn output"
+ },
+ {
+  "id": "Rbc3ee3aa80",
+  "task": "refactor",
+  "key": "java:bc3ee3aa801b4df6",
+  "lang": "java",
+  "code": "boolean isPalindrome (String s) {\n    int n = s.length ();\n    for (int i = 0;\n    i < (n / 2); ++ i) {\n        if (s.charAt (i) != s.charAt (n - i - 1)) {\n            return false;\n        }\n    }\n    return true;\n}"
+ },
+ {
+  "id": "R429c244914",
+  "task": "refactor",
+  "key": "c:429c244914b60b20",
+  "lang": "c",
+  "code": "int main () {\n    int ret = 0;\n    double num = -1;\n    printf (\"Enter a positive number:\");\n    ret = scanf (\"%lf\", &num);\n    while (num < 0) {\n        if (ret != 1) {\n            while (getchar () != '\\n')\n                ;\n            printf (\"Error! Please enter a number: \");\n        }\n        else {\n            printf (\"Error! Please enter a positive number: \");\n        }\n        ret = scanf (\"%lf\", &num);\n    }\n    printf (\"Your number is %.2lf\", num);\n    return 0;\n}"
+ },
+ {
+  "id": "Rd469f2767c",
+  "task": "refactor",
+  "key": "c:d469f2767c1538b6",
+  "lang": "c",
+  "code": "int main (void) {\n    const char *str = \"Polly\";\n    unsigned int len = strlen (str);\n    char buffer [len + 1];\n    int end = (int) len - 1;\n    while (end >= 0) {\n        size_t start = 0;\n        while (start < len) {\n            slice_str (str, buffer, start, end);\n            printf (\"%s\\n\", buffer);\n            start++;\n        }\n        end--;\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R8fb5cc8c61",
+  "task": "refactor",
+  "key": "python:8fb5cc8c6101a6e0",
+  "lang": "python",
+  "code": "def rev(test) :\n\ttest = list(test)\n\ti = len(test) - 1\n\tresult = []\n\tprint test\n\twhile i > = 0 :\n\t\tresult.append(test.pop(i))\n\t\ti -= 1\n\treturn \"\".join(result)"
+ },
+ {
+  "id": "R1016fe8c54",
+  "task": "refactor",
+  "key": "c:1016fe8c54d74004",
+  "lang": "c",
+  "code": "int main () {\n    char c;\n    while (scanf (\"%c\", &c) > 0) {\n        if(c != 'q' && c != 'Q') {\n            printf (\"%c\", c);\n        }\n    }\n}"
+ },
+ {
+  "id": "R7847bddc00",
+  "task": "refactor",
+  "key": "c:7847bddc008f9019",
+  "lang": "c",
+  "code": "int main () {\n    int array [TABLES] [ROWS] [COLS] = {{{10, 20}, {30, 40}, {50, 60}, {70, 80}, {90, 100}}, {{18, 21}, {3, 4}, {5, 6}, {7, 81}, {9, 11}}};\n    int (*table_ptr) [ROWS] [COLS] = array;\n    size_t i = 0, j = 0, k = 0;\n    for (i = 0; i < TABLES; ++i) {\n        int (*row_ptr) [COLS] = *table_ptr++;\n        for (j = 0; j < ROWS; ++j) {\n            int *col_ptr = *row_ptr++;\n            for (k = 0; k < COLS; ++k) {\n                printf (\"(%lu, %lu, %lu): %u\\n\", (unsigned long) i, (unsigned long) j, (unsigned long) k, * col_ptr ++);\n            }\n        }\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R209b6aeaa2",
+  "task": "refactor",
+  "key": "python:209b6aeaa29862f9",
+  "lang": "python",
+  "code": "def __init__(self) :\n\twx.Frame.__init__(self, None, - 1, \"Test\", size = (500, 270))\n\tpanel = wx.Panel(self, - 1)\n\tself.buttonStart = wx.Button(panel, - 1, label = \"Start thread\", pos = (0, 0))\n\tself.buttonChange = wx.Button(panel, - 1, label = \"Change var\", pos = (0, 30))\n\tpanel.Bind(wx.EVT_BUTTON, self.startThread, id = self.buttonStart.GetId())\n\tpanel.Bind(wx.EVT_BUTTON, self.changeVar, id = self.buttonChange.GetId())"
+ }
+]

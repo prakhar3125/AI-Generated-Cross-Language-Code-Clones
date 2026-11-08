@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\caption{Overall performance on the 5{,}652-pair test partition (2{,}652 derived, 3{,}000 non-derived pairs), for the two negative regimes. Every system uses a decision threshold tuned on the validation partition. Trained systems: mean $\pm$ s.d.\ over eight seeds; JPlag is deterministic (single run, no dispersion, no $\pm$). Cross-language pairs receive score 0 from JPlag, which compares one language per run.}
+\label{tab:comparison-models}
+\footnotesize
+\begin{tabular}{l|ccccc|ccccc}
+\toprule
+ & \multicolumn{5}{c|}{Regime A: random independent negatives} & \multicolumn{5}{c}{Regime B: hard negatives} \\
+\textbf{System} & Acc. & Prec. & Rec. & Spec. & $F_1$ & Acc. & Prec. & Rec. & Spec. & $F_1$ \\
+\midrule
+Gating network (log-odds fusion) & 91.1 & 88.3 & 93.4 & 89.0 & 90.8\,{\scriptsize$\pm$0.3} & 90.8 & 89.6 & 91.1 & 90.6 & 90.3\,{\scriptsize$\pm$0.7} \\
+Direct classifier (equal capacity) & 91.5 & 88.7 & 93.9 & 89.4 & 91.2\,{\scriptsize$\pm$0.5} & 90.7 & 87.4 & 93.7 & 88.0 & 90.4\,{\scriptsize$\pm$0.5} \\
+Logistic regression & 90.6 & 89.9 & 90.2 & 91.0 & 90.0 & 87.2 & 83.3 & 91.1 & 83.8 & 87.0 \\
+Static averaging & 78.9 & 73.9 & 85.2 & 73.4 & 79.1 & 46.8 & 46.8 & 99.2 & 0.4 & 63.6 \\
+CodeBERT only & 72.6 & 67.6 & 80.2 & 66.0 & 73.3 & 47.1 & 47.0 & 99.3 & 1.0 & 63.8 \\
+AST only & 65.5 & 58.8 & 88.6 & 45.1 & 70.7 & 46.9 & 46.9 & 100.0 & 0.0 & 63.9 \\
+Token $k$-gram only & 92.2 & 93.9 & 89.1 & 94.9 & 91.4 & 84.0 & 79.3 & 89.1 & 79.5 & 83.9 \\
+JPlag 6.3.0 & 67.2 & 97.8 & 30.8 & 99.4 & 46.8 & 65.4 & 87.4 & 30.8 & 96.1 & 45.5 \\
+JPlag + token normalization & 67.0 & 97.8 & 30.4 & 99.4 & 46.3 & 65.3 & 87.4 & 30.4 & 96.1 & 45.1 \\
+Dolos 2.10.0 & 78.4 & 91.5 & 59.5 & 95.1 & 72.1 & 70.3 & 71.7 & 60.7 & 78.8 & 65.8 \\
+\bottomrule
+\end{tabular}
+\end{table*}

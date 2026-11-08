@@ -1,0 +1,352 @@
+[
+ {
+  "id": "A050",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "void main () {\n    char buf [201];\n    printf (\"enter string :\\n\");\n    fgets (buf, sizeof(buf), stdin);\n    unsigned char str_len = strlen (buf);\n    unsigned char bytearray [100];\n    for (unsigned char k = 0, j = 0; j < str_len - 1; j += 2) {\n        bytearray[k++] = converttohex (&buf[j]);\n        printf (\" %02X\", bytearray [k - 1]);\n    }\n}",
+  "code2": "int solution (int N) {\n    int gap = 0;\n    char binaryStr[100]; \n    itoa (N, binaryStr, 2); \n    char *zeroArrays = strtok (binaryStr, \"1\");\n    while (zeroArrays !=  NULL) {\n        gap = strlen (zerosArray) > gap ? strlen (zeroArray) : gap;\n        zeroArrays = strtok (NULL, \"1\"); \n    } \n    return gap; \n}"
+ },
+ {
+  "id": "A051",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public int readNumber () {\n    int x = - 1;\n    while (x < 0) {\n        System.out.println (\"Please enter a positive number.\");\n        try {\n            x = keyboard.nextInt ();\n        } catch (java.util.InputMismatchException e) {\n        }\n    }\n    return x;\n}",
+  "code2": "int main () {\n    int ret = 0;\n    double num = -1;\n    printf (\"Enter a positive number:\");\n    ret = scanf (\"%lf\", &num);\n    while (num < 0) {\n        if (ret != 1) {\n            while (getchar () != '\\n')\n                ;\n            printf (\"Error! Please enter a number: \");\n        }\n        else {\n            printf (\"Error! Please enter a positive number: \");\n        }\n        ret = scanf (\"%lf\", &num);\n    }\n    printf (\"Your number is %.2lf\", num);\n    return 0;\n}"
+ },
+ {
+  "id": "A052",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "protected void paintComponent (Graphics g) {\n    super.paintComponent (g);\n    g.setFont(new Font(\"DialogInput\", Font.PLAIN, 24));\n    g.drawString(\"Decades ago, in a separate galaxy\", 300, 200);\n}",
+  "code2": "def paintComponent (self, g):\n    super().paintComponent (g)\n    gg = Graphics2D (g)\n    gg.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)\n    font = Font (\"Arial\", Font.PLAIN, 15)\n    string = \"Time (s)\"\n    metrics = g.getFontMetrics (font)\n    width = metrics.stringWidth (string)\n    height = metrics.getHeight ()\n    gg.setFont (font)\n    drawRotate (gg, self.getWidth (), (self.getHeight () + width) / 2, 270, string)"
+ },
+ {
+  "id": "A053",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public static void main(String[] args) {\n\t    Scanner scan = new Scanner (System.in);\n\t    int numOfItems = 20;\n\t    String[] arrayOfNames = new String[numOfItems];\n\t    String temp;\n\t    int maxItems;\n\t    while (maxItems < arrayOfNames.length) {\n\t      System.out.print(\"Enter Item \" + (maxItems + 1) + \" : \");\n\t      temp = scan.nextLine();\n\t      if (arrOfNames[0].equals(temp)) {\n\t\tmaxItems = maxItems;\n\t\tbreak;\n\t      } else {\n\t\tarrayOfNames[maxItems] = temp;\n\t\tmaxItems++;\n\t      }\n\t    }\n\t    for (int i = 0; i < maxItems; i++) {\n\t      System.out.print(\"Item # \" + (i + 1) + \" : \");\n\t      System.out.println(arrayOfNames[i] + \"\\n\");\n\t    }\n}",
+  "code2": "public static List<Int32> FindSubset(Byte[] superSet, Byte[] subSet) \n{ \n    if ((superSet == null) || (subSet == null)) \n    { \n        throw new ArgumentNullException(); \n    } \n    if ((superSet.Length < subSet.Length) || (superSet.Length == 0) || (subSet.Length == 0)) \n    { \n        return new List<Int32>(); \n    } \n    List<Int32> startingPoints = FindStartingPoints(superSet, subSet); \n    List<Int32> result = new List<Int32>(); \n    foreach (Int32 start in startingPoints) \n    { \n        Int32 matches = CountMatches(superSet, start, subSet); \n        if (matches == subSet.Length) \n        { \n            result.Add(start); \n        } \n    } \n    return result; \n}"
+ },
+ {
+  "id": "A054",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def download(url, fileName = None):\n    if not fileName:\n        fileName = url[url.rfind('/') + 1:]",
+  "code2": "def save(self, * args, ** kwargs) :\n\tif self.image_url :\n\t\timport request, os\n\t\tfile_save_dir = self.upload_path\n\t\tfilename = self.image_url.rsplit('/', 1) [- 1]\n\t\trequest.urlretrieve(url, os.path.join(file_save_dir, filename))\n\t\tself.image = os.path.join(file_save_dir, filename)\n\t\tself.image_url = ''\n\tsuper(tweet_photos, self).save()"
+ },
+ {
+  "id": "A055",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "int main () {\n    double sum = 0;\n    int j;\n    for (j = 1; j < (parts + 1); j++) {\n        sum += (step * fabs ((x + (step * j)) * (x + (step * j)) + 4));\n    }\n    printf (\"%f\\n\", sum);\n    return 0;\n}",
+  "code2": "int main () {\n    char **s = (char **) malloc (1000 * sizeof (char *));\n    char tmpstr [1000];\n    int i;\n    while (-1 != getline (tmpstr)) {\n        s[i++] = strdup (tmpstr);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A056",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public void run() {\n    int i = 0;\n    while(i < 100) {\n        Object richObj = richObjects.loan();\n        String taskResult = executeTask();\n        richObjects.giveBack(richObj);\n        if(taskResult != null) {\n            i = resultCounter.increaseAndGet();\n            System.out.println(i);\n        }\n    }\n}",
+  "code2": "public void tick (float delta) {\n    for (Iterator<Entity> iterator = entities.iterator(); iterator.hasNext(); ) {\n        Entity e = iterator.next();\n        e.tick (delta);\n        if (e.checkStrength()) {\n            entities.remove(e);\n            break;\n        }\n    }\n    player.tick (delta);\n}"
+ },
+ {
+  "id": "A057",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "static int [] sort (int arr []) {\n    for (int i = 0;\n    i < arr.length; i ++) {\n        for (int j = i;\n        j < arr.length; j ++) {\n            if (arr [j] < arr [i]) {\n                int temp = arr [i];\n                arr [i] = arr [j];\n                arr [j] = temp;\n            }\n        }\n    }\n    return arr;\n}",
+  "code2": "int main (void) {\n    int i;\n    int arr [5] = {1, 2, 3, 4, 5};\n    slide_arr (arr, 5, 2);\n    for (i = 0; i < 5; i++) {\n        printf (\"%d, \", arr [i]);\n    }\n    return EXIT_SUCCESS;\n}"
+ },
+ {
+  "id": "A058",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public static void throwException (String className) throws CheckedException, UncheckedException {\n    Class < ? > exceptionClass;\n    try {\n        exceptionClass = Class.forName (className);\n    } catch (ClassNotFoundException e) {\n        throw new IllegalArgumentException (e);\n    }\n    try {\n        if (CheckedException.class.isAssignableFrom (exceptionClass)) {\n            throw exceptionClass.asSubclass (CheckedException.class).newInstance ();\n        } else if (UncheckedException.class.isAssignableFrom (exceptionClass)) {\n            throw exceptionClass.asSubclass (UncheckedException.class).newInstance ();\n        } else {\n            throw new IllegalArgumentException (\"Not a valid exception type: \" + exceptionClass.getName ());\n        }\n    } catch (InstantiationException | IllegalAccessException e) {\n        throw new IllegalStateException (e);\n    }\n}",
+  "code2": "def run():\n try:\n  for i in range(2):\n   print(\"tac\")\n except Exception as e:\n  print(e)"
+ },
+ {
+  "id": "A059",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "int main () {\n    register int count;\n    int n;\n    long factorial;\n    printf (\"Compute the factorial of what number? \");\n    scanf (\"%d\", & n);\n    for (factorial = 1L, count = 1; count <= n; count++)\n        factorial *= count;\n    printf (\"%d! = %ld\\n\", n, factorial);\n    return 0;\n}",
+  "code2": "int main () {\n    register int count;\n    int n;\n    long factorial;\n    printf (\"Compute the factorial of what number? \");\n    scanf (\"%d\", & n);\n    factorial = 1L;\n    count = 1;\n    while (count <= n)\n        factorial *= count++;\n    printf (\"%d! = %ld\\n\", n, factorial);\n    return 0;\n}"
+ },
+ {
+  "id": "A060",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def future6(A):\n    known = []\n    result = []\n    for index in range(len(A)-1, -1, -1):\n        current_value = A[index]\n        for item in known[:]:\n            if item[1] > current_value:\n                known.remove(item)\n        if len(known) > 0: \n            result.append(known[-1][0])\n        else:\n            result.append(-1)\n        tup = (index,current_value)\n        known.append(tup)\n    return np.array(result)[::-1]",
+  "code2": "def solution(X, A): \n    if X > len(A): \n        return -1\n    isFilled = [0] * X \n    jumped = 0 \n    for i in range(len(A)): \n        x = A[i] \n        if x <= X: \n            if isFilled[x-1] == 0: \n                isFilled[x-1] = 1 \n                jumped += 1 \n                if jumped == X: \n                    return i \n    return -1"
+ },
+ {
+  "id": "A061",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public boolean isExpectedPassword (final String password, final byte [] salt, final byte [] hash) {\n    Validate.notNull (password, \"Password must not be null\");\n    Validate.notNull (salt, \"Salt must not be null\");\n    Validate.notNull (hash, \"Hash must not be null\");\n    try {\n        final byte [] passwordBytes = password.getBytes (\"UTF-8\");\n        final byte [] all = ArrayUtils.addAll (passwordBytes, salt);\n        SHA3.DigestSHA3 md = new SHA3.Digest512 ();\n        md.update (all);\n        final byte [] digest = md.digest ();\n        return Arrays.equals (digest, hash);\n    } catch (UnsupportedEncodingException e) {\n        final String message = String.format (\"Caught UnsupportedEncodingException e: <%s>\", e.getMessage ());\n        LOGGER.error (message);\n    }\n    return false;\n}",
+  "code2": "def __call__(self, file):\n    hash = self.algorithm()\n    for chunk in open(file, 'rb').read(4096):\n        if not chunk: break\n        hash.update(chunk)"
+ },
+ {
+  "id": "A062",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def onRequestPermissionsResult(requestCode, permissions, grantResults):\n    super().onRequestPermissionsResult(requestCode, permissions, grantResults)\n    if requestCode == REQUEST_READ_PHONE_STATE:\n        if grantResults.length > 0 and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n            Toast.makeText(LoginActivity.this, \"Permission granted.\", Toast.LENGTH_SHORT).show()\n            finish()\n            startActivity(getIntent())\n        else:\n            Toast.makeText(LoginActivity.this, \"The app was not allowed to get your phone state. Hence, it cannot function properly. Please consider granting it this permission\", Toast.LENGTH_LONG).show()\n    elif requestCode == REQUEST_ACCESS_FINE_LOCATION:\n        if grantResults.length > 0 and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n            Toast.makeText(LoginActivity.this, \"Permission granted.\", Toast.LENGTH_SHORT).show()\n            finish()\n            startActivity(getIntent())\n        else:\n            Toast.makeText(LoginActivity.this, \"The app was not allowed to get your location. Hence, it cannot function properly. Please consider granting it this permission\", Toast.LENGTH_LONG).show()\n    elif requestCode == REQUEST_WRITE_STORAGE:\n        if grantResults.length > 0 and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n            Toast.makeText(LoginActivity.this, \"Permission granted.\", Toast.LENGTH_SHORT).show()\n            finish()\n            startActivity(getIntent())\n        else:\n            Toast.makeText(LoginActivity.this, \"The app was not allowed to write to your storage. Hence, it cannot function properly. Please consider granting it this permission\", Toast.LENGTH_LONG).show()",
+  "code2": "def main (args):\n    root = None\n    op = 0\n\n    while op != 6:\n        print(\"Enter Option:\\n1:Insert Front 2:Delete Front 3:Insert Rear 4:Delete Rear 5:Display List 6:Exit\")\n        op = int(input())\n\n        if op == 1:\n            val = int(input(\"Enter Value: \"))\n            root = insertNodeFront(val, root)\n            display(root)\n        elif op == 2:\n            root = removeNodeFront(root)\n            display(root)\n        elif op == 3:\n            val = int(input(\"Enter Value: \"))\n            root = insertNodeRear(val, root)\n            display(root)\n        elif op == 4:\n            root = removeNodeRear(root)\n            display(root)\n        elif op == 5:\n            display(root)\n        else:\n            print(\"Invalid Option\")\n    \n    print(\"Exited!!!\")"
+ },
+ {
+  "id": "A063",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def treeToList(node, order = Order.INORDER) :\n    if node is None :\n        return []\n    preorder = treeToList(node.right, order)\n    middle = [node.data]\n    postorder = treeToList(node.down, order)\n    if order == Order.PREORDER :\n        return middle + preorder + postorder\n    elif order == Order.INORDER :\n        return preorder + middle + postorder\n    elif Order.POSTORDER :\n        return postorder + preorder + middle",
+  "code2": "def func():\n     query = \"select some rows\"\n     database = connect_database()\n     pos = 0\n     data = database.fetch_by_position(query,pos)\n     while data is not None:\n          yield data\n          pos += 1\n          data = database.fetch_by_position(query,pos)\n     database.disconnect()"
+ },
+ {
+  "id": "A064",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "using System;\n\npublic class CountChars\n{\n    public static void Main (string [] args)\n    {\n        string test = \"The quick brown fox jumped over the lazy dog.\";\n        int countA = 0, countO = 0, countSpace = 0, countDot = 0;\n        for (int i = 0; i < test.Length; i++)\n        {\n            switch (test[i])\n            {\n                case 'a':\n                case 'A':\n                    countA++;\n                    break;\n                case 'o':\n                case 'O':\n                    countO++;\n                    break;\n                case ' ':\n                    countSpace++;\n                    break;\n                case '.':\n                    countDot++;\n                    break;\n            }\n        }\n        Console.WriteLine(\"A: {0}\\nO: {1}\\nSpace: {2}\\nDot: {3}\", countA, countO, countSpace, countDot);\n    }\n}",
+  "code2": "[Test] public void test() {\n    int[] test = new int[10];\n    for (int i = 0; i < test.Length; i++) {\n        test[i] = MyMath.Random(100);\n    }\n    Console.WriteLine(\"result:\");\n    foreach (int i in test) {\n        Console.WriteLine(i);\n    }\n}"
+ },
+ {
+  "id": "A065",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static void main (String [] args) {\n    System.out.println (\"Main Method Started\");\n    Scanner in = new Scanner (System.in);\n    System.out.println (\"Enter the size of the arr\");\n    int size = in.nextInt ();\n    System.out.println (\"Enter the maximum value of the arr\");\n    int max = in.nextInt ();\n    int [] arr = initializeArr (max, size);\n    print (arr);\n    findMinMax (arr);\n    System.out.println (\"Main Method Ended\");\n}",
+  "code2": "int main () {\n    int *ptr_int;\n    char *ptr_char;\n    ptr_int = (int *) calloc (3, sizeof (int));\n    ptr_int = func (3);\n    ptr_char = (char *) calloc (4, sizeof (char));\n    ptr_char = func (4);\n    fprintf (stdout, \"int value = %d\\n\", * ptr_int);\n    fprintf (stdout, \"char value = %c\\n\", * ptr_char);\n    free (ptr_int);\n    free (ptr_char);\n    return 0;\n}"
+ },
+ {
+  "id": "A066",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def download_file(service, file_id):\n    request = service.files().get_media(fileId=file_id)\n    download_path = \"/path/to/download\"",
+  "code2": "def download(url, fileName = None) :\n    if (fileName == None):\n      fileName = url.split('/').pop()"
+ },
+ {
+  "id": "A067",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "public void actionPerformed (ActionEvent e) \n{\n    Console.WriteLine ();\n    Console.WriteLine (\"Create Dialog\");\n    JDialog dialog = new JDialog ();\n    dialog.getContentPane ().setLayout (null);\n    for (int i = 0; i < 200; i ++) {\n        dialog.add (new JTextField (\"some text\"));\n    }\n    dialog.setTitle (\"Dialog \" + count ++);\n    dialog.setLocation (count * 25, count * 25);\n    dialog.setVisible (true);\n    Console.WriteLine (\"\\tCreated \" + dialog.getTitle ());\n}",
+  "code2": "private static bool AlreadyRunning () {\n    Process [] processes = Process.GetProcesses ();\n    Process currentProc = Process.GetCurrentProcess ();\n    logger.LogDebug (\"Current proccess: {0}\", currentProc.ProcessName);\n    foreach (Process process in processes) {\n        if (currentProc.ProcessName == process.ProcessName && currentProc.Id != process.Id) {\n            logger.LogInformation (\"Another instance of this process is already running: {pid}\", process.Id);\n            return true;\n        }\n    }\n    return false;\n}"
+ },
+ {
+  "id": "A068",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "static int [] sort (int arr []) {\n    for (int i = 0;\n    i < arr.length; i ++) {\n        for (int j = i;\n        j < arr.length; j ++) {\n            if (arr [j] < arr [i]) {\n                int temp = arr [i];\n                arr [i] = arr [j];\n                arr [j] = temp;\n            }\n        }\n    }\n    return arr;\n}",
+  "code2": "# include <stdbool.h>\n \nbool twoDuplicates (int values[], int n) \n{\n    for (int i=0; i< n; i++) {\n        int counter = 0;\n        for (int z=i+1; z > n-1; z++) {\n            if (values[i] == values[z]) {\n                counter ++;\n                if (counter == 2)\n                    return true;\n            }\n        }\n    }\n    return false;\n}"
+ },
+ {
+  "id": "A069",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "static boolean isAnagram (String s1, String s2) {\n    if (s1.length () != s2.length ()) return false;\n    int n = s1.length ();\n    int [] charMap = new int [256];\n    for (int i = 0;\n    i < n; i ++) {\n        char c1 = s1.charAt (i);\n        charMap [c1] ++;\n        char c2 = s2.charAt (i);\n        charMap [c2] --;\n    }\n    for (int i = 0;\n    i < charMap.length; i ++) {\n        if (charMap [i] != 0) return false;\n    }\n    return true;\n}",
+  "code2": "def solution(X, A):\n    listA = A\n    summed_val = 0\n    searchVal = X\n    required_sum = searchVal * (searchVal + 1) / 2 \n    already_encountered = []\n    for iii in range(len(listA)):\n        if listA[iii] <= searchVal and listA[iii] not in already_encountered:\n            summed_val += listA[iii]\n            if summed_val == required_sum:\n                return iii\n            already_encountered.append(listA[iii])\n    return -1"
+ },
+ {
+  "id": "A070",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "int main () {\n    double sum = 0;\n    int j;\n    for (j = 1; j < (parts + 1); j++) {\n        sum += (step * fabs ((x + (step * j)) * (x + (step * j)) + 4));\n    }\n    printf (\"%f\\n\", sum);\n    return 0;\n}",
+  "code2": "int main(){\n      int i, j;\n      for(i = 5; i > 0; i--){\n        int temp = 4, sum = 0;\n        for(j=i; j>0; j--){\n          sum = j == i ? j : sum + temp--;\n          printf(\"%d \", sum);\n        }\n        printf(\"\\n\");\n      }\n}"
+ },
+ {
+  "id": "A071",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "void main () {\n    char buf [201];\n    printf (\"enter string :\\n\");\n    fgets (buf, sizeof(buf), stdin);\n    unsigned char str_len = strlen (buf);\n    unsigned char bytearray [100];\n    for (unsigned char k = 0, j = 0; j < str_len - 1; j += 2) {\n        bytearray[k++] = converttohex (&buf[j]);\n        printf (\" %02X\", bytearray [k - 1]);\n    }\n}",
+  "code2": "int main () {\n    int k, i, j;\n    for (i = 1; i <= 5; i++) {\n        k = i;\n        for (j = 1; j <= i; j++) {\n            printf (\"%d \", k);\n            k = k + (5 - j);\n        }\n        printf (\"\\n\");\n    }\n}"
+ },
+ {
+  "id": "A072",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "#include<stdio.h> \n  \nint main() \n{ \n    int num = 0; \n    int rem = 0; \n    int i = 0; \n      \n    printf(\"Enter Number to convert into words: \"); \n    scanf(\"%d\", &num); \n      \n    while(num > 0)  \n    { \n        if (i == 0)  \n        { \n            rem = num % 1000; \n            printText(rem); \n            num = num / 1000; \n            i++; \n        } \n        else if (num > 0)  \n        { \n            rem = num % 100; \n            if (rem > 0) \n                text = denom.values()[i - 1] + \" \" + text; \n            printText(rem); \n            num = num / 100; \n            i++; \n        } \n    } \n    if (i > 0) \n        printf (\"%s\", text); \n    else\n        printf (\"Zero\"); \n    return 0; \n}",
+  "code2": "int main (void) {\n    int num;\n    printf (\"Enter a two digit number: \");\n    scanf (\"%d\", & num);\n    if (num > 10 && num < 20) {\n        badnums (num);\n    }\n    else {\n        goodnums (num);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A073",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public void actionPerformed (ActionEvent e) {\n    System.out.println ();\n    System.out.println (\"Creating Dialog\");\n    JDialog dialog = new JDialog ();\n    dialog.getContentPane ().setLayout (new GridLayout(10,20));\n    for (int i = 0; i < 200; i ++) {\n        dialog.add (new JLabel(\"Label\" + i));\n    }\n    dialog.setTitle (\"JDialog \" + count ++);\n    dialog.setLocation (count * 50, count * 50);\n    dialog.pack();\n    dialog.setVisible (true);\n    System.out.println (\"Created \" + dialog.getTitle ());\n}",
+  "code2": "public void actionPerformed (ActionEvent e) {\n            dialog.dispose ();\n}"
+ },
+ {
+  "id": "A074",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "static Boolean Main ()\n{\n    HiResTimer timer = new HiResTimer ();\n    Int64 counterAtStart = timer.Value;\n    int incrementValue;\n    for (int count = 0; count < 10000; count ++) {\n        incrementValue = count + 1;\n        incrementValue--;\n    }\n    Int64 counterAtEnd = timer.Value;\n    Int64 timeElapsedInTicks = counterAtEnd - counterAtStart;\n    Int64 timeElapseInTenthsOfMilliseconds = (timeElapsedInTicks * 10000) / timer.Frequency;\n    MessageBox.Show (\"Time Spent in operation (tenths of ms) \" + timeElapseInTenthsOfMilliseconds + \"\\nCounter Value At Start: \" + counterAtStart + \"\\nCounter Value At End : \" + counterAtEnd + \"\\nCounter Frequency : \" + timer.Frequency);\n    return true;\n}",
+  "code2": "public static DataTable GetWorksheetAsDataTable(ExcelWorksheet worksheet) {\n    DataTable dt = new DataTable(worksheet.Name);\n    List<DataColumn> dataColumns = GetDataColumns(worksheet).ToList();\n    dt.Columns.AddRange(dataColumns.ToArray());\n    int headerOffset = 1;\n    int width = dt.Columns.Count;\n    int depth = GetTableDepth(worksheet, headerOffset);\n    for (int rowNum = 1; rowNum <= depth; rowNum++) { \n        DataRow row = dt.NewRow();\n        for (int colNum = 1; colNum <= width; colNum++) {\n            object val = worksheet.Cells[rowNum + headerOffset, colNum].Value;\n            row[colNum - 1] = val == null ? null : val.ToString();\n        }\n        dt.Rows.Add(row);\n    } \n    return dt;\n}"
+ },
+ {
+  "id": "A075",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "private BSTNode mirrorViewOne (BSTNode node) {\n    if(node!=null){\n        mirrorViewOne(node.left);\n        node.swapChildren();\n        mirrorViewOne(node.right);\n    }\n    return node;\n}",
+  "code2": "int main (void) {\n    do {\n        int boundary = getBoundary ();\n        int ssq = computeSSQ (boundary);\n        printf (\"The sum of the squares of integers from 0 to %d is %d\\n\", boundary, ssq);\n    }\n    while (again ());\n    return 0;\n}"
+ },
+ {
+  "id": "A076",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "// Type 3 Code Clone Variants\npublic static boolean isPalindrome (String str) {\n    str = str.toUpperCase ();\n    char [] strChars = str.toCharArray ();\n    List<Character> word = new ArrayList <> ();\n    for (char c : strChars) {\n        word.add (c);\n    }\n    while (true) {\n        if ((word.size () == 1) || (word.size () == 0)) {\n            return true;\n        }\n        if (word.get (0).equalsIgnoreCase(word.get (word.size () - 1))) {\n            word.remove (0);\n            word.remove (word.size () - 1);\n        } else {\n            return false;\n        }\n    }\n}",
+  "code2": "public static bool StartWithUpperCase(string str){\n    if (string.IsNullOrEmpty(str))\n        return false;\n    return char.IsUpper(str[0]);\n}"
+ },
+ {
+  "id": "A077",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def treeToList(node, order = Order.INORDER) :\n    if node is None :\n        return []\n    preorder = treeToList(node.right, order)\n    middle = [node.data]\n    postorder = treeToList(node.down, order)\n    if order == Order.PREORDER :\n        return middle + preorder + postorder\n    elif order == Order.INORDER :\n        return preorder + middle + postorder\n    elif Order.POSTORDER :\n        return postorder + preorder + middle",
+  "code2": "def merge_sort(data) :\n\tif len(data) == 1 :\n\t\treturn data\n\tmiddle = len(data) / / 2\n\tleft_data = merge_sort(data [: middle])\n\tright_data = merge_sort(data [middle :])\n\treturn merge(left_data, right_data)"
+ },
+ {
+  "id": "A078",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static String compress (String text) {\n    String result = \"\";\n    int index = 0;\n    while (index < text.length ()) {\n        char c = text.charAt (index);\n        int count = count (text, index);\n        if (count == 1) result += \"\" + c;\n        else result += \"\" + count + c;\n        index += count;\n    }\n    return result;\n}",
+  "code2": "int maxBlock(char* str) {\n    int max = 0;\n    int count = 1;\n    char o = ' ';\n    for (int i = 0; i < strlen(str); i++) {\n        char c = str[i];\n        if (c == o) {\n            count++;\n            if (count > max) {\n                max = count;\n            }\n        } else {\n            count = 1;\n            if (count > max) {\n                max = count;\n            }\n        }\n        o = c;\n    }\n    return max;\n}"
+ },
+ {
+  "id": "A079",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public static void main (String [] args) {\n    int a = 150, b = 1500, c = 15000, d = b, e = a, f;\n    Random randomValue = new Random();\n    for(int i = 0; i < c; i++){\n        f = a + (int)(Math.random() * b);\n        if (f<a || f>b) System.err.println (\"Number Out of Range :\" + f);\n        else System.out.println(f);\n        d = Math.min(f, d); e = Math.max(f, e);\n    }\n    System.out.println(\"Generated \"+ c +\" numbers from \"+ d +\" to \"+ e);\n}",
+  "code2": "def sublist(a, b) :\n\ti = -1\n\tfor e in a :\n\t\ttry:\n\t\t\ti = b.index(e, i + 1)\n\t\t\tif i == -1 :\n\t\t\t\treturn False\n\t\texcept ValueError :\n\t\t\treturn False\n\treturn True"
+ },
+ {
+  "id": "A080",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def onRequestPermissionsResult(requestCode, permissions, grantResults):\n    super().onRequestPermissionsResult(requestCode, permissions, grantResults)\n    if requestCode == REQUEST_READ_PHONE_STATE:\n        if grantResults.length > 0 and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n            Toast.makeText(LoginActivity.this, \"Permission granted.\", Toast.LENGTH_SHORT).show()\n            finish()\n            startActivity(getIntent())\n        else:\n            Toast.makeText(LoginActivity.this, \"The app was not allowed to get your phone state. Hence, it cannot function properly. Please consider granting it this permission\", Toast.LENGTH_LONG).show()\n    elif requestCode == REQUEST_ACCESS_FINE_LOCATION:\n        if grantResults.length > 0 and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n            Toast.makeText(LoginActivity.this, \"Permission granted.\", Toast.LENGTH_SHORT).show()\n            finish()\n            startActivity(getIntent())\n        else:\n            Toast.makeText(LoginActivity.this, \"The app was not allowed to get your location. Hence, it cannot function properly. Please consider granting it this permission\", Toast.LENGTH_LONG).show()\n    elif requestCode == REQUEST_WRITE_STORAGE:\n        if grantResults.length > 0 and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n            Toast.makeText(LoginActivity.this, \"Permission granted.\", Toast.LENGTH_SHORT).show()\n            finish()\n            startActivity(getIntent())\n        else:\n            Toast.makeText(LoginActivity.this, \"The app was not allowed to write to your storage. Hence, it cannot function properly. Please consider granting it this permission\", Toast.LENGTH_LONG).show()",
+  "code2": "def onRequestPermissionsResult(self, requestCode, permissions, grantResults):\n    super().onRequestPermissionsResult(requestCode, permissions, grantResults)\n    if requestCode == REQUEST_CODE_CAMERA and grantResults[0] == PackageManager.PERMISSION_GRANTED:\n        pass\n    else:\n        pass"
+ },
+ {
+  "id": "A081",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "int main () {\n    register int count;\n    int n;\n    long factorial;\n    printf (\"Compute the factorial of what number? \");\n    scanf (\"%d\", & n);\n    for (factorial = 1L, count = 1; count <= n; count++)\n        factorial *= count;\n    printf (\"%d! = %ld\\n\", n, factorial);\n    return 0;\n}",
+  "code2": "int main () {\n    register int count;\n    int n;\n    long factorial;\n    printf (\"Compute the factorial of what number? \");\n    scanf (\"%d\", & n);\n    factorial = 1L;\n    count = 1;\n    while (count <= n)\n        factorial *= count++;\n    printf (\"%d! = %ld\\n\", n, factorial);\n    return 0;\n}"
+ },
+ {
+  "id": "A082",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "protected void paintComponent (Graphics g) {\n    super.paintComponent (g);\n    g.setFont(new Font(\"DialogInput\", Font.PLAIN, 24));\n    g.drawString(\"Decades ago, in a separate galaxy\", 300, 200);\n}",
+  "code2": "def __init__(self):\n    super().__init__(None, -1, title='Test', size=(500, 270))\n    panel = wx.Panel(parent=self, id=-1)\n    self.btnStart = wx.Button(parent=panel, id=-1, label='Start thread', pos=(0, 0))"
+ },
+ {
+  "id": "A083",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public ListNode switchPairs () {\n    if (this == null || this.next == null) return this;\n    ListNode top = this.next;\n    ListNode first = this;\n    ListNode second = first.next;\n    do {\n        ListNode third = second.next;\n        second.next = first;\n        first.next = third;\n        first = third;\n        System.out.println (\"@@@ \" + this.toString ());\n        if (first != null) {\n            second.next.next = first.next;\n            second = first.next;\n        }\n    } while (first != null && second != null);\n    return top;\n}",
+  "code2": "#include <stdio.h>\n#include <stdlib.h>\n#include <time.h>\n\nint main(void) {\n\tint first, second;\n\tprintf(\"Enter first integer: \");\n\tscanf(\"%d\", &first);\n\tprintf(\"You have keyed in %d\\n\", first);\n\tprintf(\"Enter second integer: \");\n\tscanf(\"%d\", &second);\n\tprintf(\"You have keyed in %d\\n\", second);\n\t\n\tsrand((unsigned) time(NULL));\n\n    int random_number = (rand() % ((second - first) + 1)) + first;\n\tprintf(\"Random number: %d\\n\", random_number);\n\n\treturn 0;\n}"
+ },
+ {
+  "id": "A084",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "static boolean isAnagram (String s1, String s2) {\n    if (s1.length () != s2.length ()) return false;\n    int n = s1.length ();\n    int [] charMap = new int [256];\n    for (int i = 0;\n    i < n; i ++) {\n        char c1 = s1.charAt (i);\n        charMap [c1] ++;\n        char c2 = s2.charAt (i);\n        charMap [c2] --;\n    }\n    for (int i = 0;\n    i < charMap.length; i ++) {\n        if (charMap [i] != 0) return false;\n    }\n    return true;\n}",
+  "code2": "def isAnagram(s1, s2): \n    if len(s1) != len(s2): \n        return False\n  \n    s1 = s1.lower() \n    s2 = s2.lower() \n    s1 = sorted(s1) \n    s2 = sorted(s2) \n\n    if s1 == s2: \n        return True\n    else: \n        return False"
+ },
+ {
+  "id": "A085",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public void itemStateChanged(ItemEvent e){\n    size = Integer.parseInt(box.getSelectedItem().toString());\n    if(e.getStateChange() == ItemEvent.SELECTED) {\n        List<Integer> numbers = IntStream.rangeClosed(1, size).boxed().collect(Collectors.toList());\n        numbers.forEach(num -> System.out.print(num + \" \"));\n        System.out.println();\n    }\n}",
+  "code2": "int main()\n{\n    map_t* map = map_alloc();\n    map_put(map, new_A(), \"abc\");\n    map_put(map, new_A(), \"def\");\n\n    int size = map_size(map);\n    for (int i = 0; i < size; i++)\n    {\n        printf(\"Bucket: %d, Entry: %s\\n\", i, bucketToString(map->buckets[i]->entry));\n    }\n}"
+ },
+ {
+  "id": "A086",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static String compress (String text) {\n    String result = \"\";\n    int index = 0;\n    while (index < text.length ()) {\n        char c = text.charAt (index);\n        int count = count (text, index);\n        if (count == 1) result += \"\" + c;\n        else result += \"\" + count + c;\n        index += count;\n    }\n    return result;\n}",
+  "code2": "char *capitalize(char *s)\n{\n    if(s == NULL || strlen(s) == 0) {\n        return \"\";\n    }\n\n    int first = s[0];\n    if(isupper(first)) {\n        return s;\n    } else {\n        int new_len = strlen(s);\n        char *result = malloc(new_len + 1);\n        *result = toupper(first);\n        strcpy(result + 1, s + 1);\n        return result;\n    }\n}"
+ },
+ {
+  "id": "A087",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public void actionPerformed (ActionEvent e) {\n    System.out.println ();\n    System.out.println (\"Creating Dialog\");\n    JDialog dialog = new JDialog ();\n    dialog.getContentPane ().setLayout (new GridLayout(10,20));\n    for (int i = 0; i < 200; i ++) {\n        dialog.add (new JLabel(\"Label\" + i));\n    }\n    dialog.setTitle (\"JDialog \" + count ++);\n    dialog.setLocation (count * 50, count * 50);\n    dialog.pack();\n    dialog.setVisible (true);\n    System.out.println (\"Created \" + dialog.getTitle ());\n}",
+  "code2": "public void shuffle (String input) {\n    List < Character > characters = new ArrayList < Character > ();\n    for (char c : input.toCharArray ()) {\n        characters.add (c);\n    }\n    StringBuilder output = new StringBuilder (input.length ());\n    while (characters.size () != 0) {\n        int randPicker = (int) (Math.random () * characters.size ());\n        output.append (characters.remove (randPicker));\n    }\n    System.out.println (output.toString ());\n}"
+ },
+ {
+  "id": "A088",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "protected Node getTrueParent () {\n    if (getEdges () != null && ! getEdges ().isEmpty ()) {\n        for (Edge e : getEdges ()) {\n            if (e != null && e.getNode2 () == this && ! e.isPseudo ()) {\n                return e.getNode1 ();\n            }\n        }\n    }\n    return null;\n}",
+  "code2": "def sublist(a, b) :\n\ti = -1\n\tfor e in a :\n\t\ttry:\n\t\t\ti = b.index(e, i + 1)\n\t\t\tif i == -1 :\n\t\t\t\treturn False\n\t\texcept ValueError :\n\t\t\treturn False\n\treturn True"
+ },
+ {
+  "id": "A089",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public void tick (float delta) {\n    for (Iterator<Entity> iterator = entities.iterator(); iterator.hasNext(); ) {\n        Entity e = iterator.next();\n        e.tick (delta);\n        if (e.checkStrength()) {\n            entities.remove(e);\n            break;\n        }\n    }\n    player.tick (delta);\n}",
+  "code2": "public Node reverse(Node previous, Node current)\n{\n    if (previous == null) return null;\n    if (previous.equals(head)) previous.Next = null;\n    if (current == null)\n    {\n        head = previous;\n        return head;\n    }\n    else\n    {\n        Node temp = current.Next;\n        current.Next = previous;\n        reverse(current, temp);\n    }\n    return null;\n}"
+ },
+ {
+  "id": "A090",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static void main (String [] args) {\n    Address address = new Address ();\n    address.setSomeCrap (null);\n    Person person = new Person ();\n    person.setAddress (address);\n    long startTime = System.currentTimeMillis ();\n    for (int i = 0;\n    i < 1000000; i ++) {\n        try {\n            System.out.println (person.getAddress ().getSomeCrap () == null ? \"\" : person.getAddress ().getSomeCrap ().getCrap ());\n        } catch (NullPointerException npe) {\n        }\n    }\n    long endTime = System.currentTimeMillis ();\n    System.out.println ((endTime - startTime) / 1000F);\n    long startTime1 = System.currentTimeMillis ();\n    for (int i = 0;\n    i < 1000000; i ++) {\n        if (person != null && person.getAddress () != null && person.getAddress ().getSomeCrap () != null) {\n            System.out.println (person.getAddress ().getSomeCrap ().getCrap ());\n        }\n    }\n    long endTime1 = System.currentTimeMillis ();\n    System.out.println ((endTime1 - startTime1) / 1000F);\n}",
+  "code2": "unsigned long sumOfColTwo(unsigned long *data){\n    unsigned long sum = 0;\n    for(int i=0;i<9;i++)\n        sum += data[i];\n    return sum;\n}"
+ },
+ {
+  "id": "A091",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def download_file(service, file_id):\n    request = service.files().get_media(fileId=file_id)\n    download_path = \"/path/to/download\"",
+  "code2": "def access(obj, indexes) :\n\ttry :\n\t\treturn reduce(list.__getitem__, indexes, obj)\n\texcept Exception :\n\t\treturn None"
+ },
+ {
+  "id": "A092",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public int readNumber () {\n    int x = - 1;\n    while (x < 0) {\n        System.out.println (\"Please enter a positive number.\");\n        try {\n            x = keyboard.nextInt ();\n        } catch (java.util.InputMismatchException e) {\n        }\n    }\n    return x;\n}",
+  "code2": "int main () {\n    int input [1];\n    int total = 0;\n    int n;\n    while(n > 0) {\n        printf (\"Please enter integer %d: \", (n));\n        scanf (\"%d\", & input [n-1]);\n        n--;\n    }\n    for (int i = 0; i < n; i++) {\n        total = total + input[i];\n    }\n    printf (\"The sum is = \", total);\n}"
+ },
+ {
+  "id": "A093",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static void main (String [] args) {\n    System.out.println (\"Main Method Started\");\n    Scanner in = new Scanner (System.in);\n    System.out.println (\"Enter the size of the arr\");\n    int size = in.nextInt ();\n    System.out.println (\"Enter the maximum value of the arr\");\n    int max = in.nextInt ();\n    int [] arr = initializeArr (max, size);\n    print (arr);\n    findMinMax (arr);\n    System.out.println (\"Main Method Ended\");\n}",
+  "code2": "int main(){\n    char *arr[20];\n    int i, j, k;\n    int size;\n    printf(\" enter the number of words\\n\");\n    scanf(\"%d\",&size);\n    for(i=0;i<size;i++){\n        arr[i] = (char*)malloc(100 * sizeof(char));\n        scanf(\"%s\", arr[i]);\n    }\n    j=0;\n    k=size-1;\n    while(j < k){\n        char temp[20];\n        strcpy(temp,arr[k]);\n        strcpy(arr[k],arr[j]);\n        strcpy(arr[j],temp);\n        j++;\n        k--;\n    }\n    printf(\" the reversed sentence is: \");\n    for(i=0;i<size;i++){\n        printf(\"%s \",arr[i]);\n    }\n    printf(\"\\n\");\n    for(i=0;i<size;i++){\n        free(arr[i]);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A094",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public static void duplication() {\n    int[] array = IntStream.generate(() -> new Random().nextInt(100) + 1).distinct().limit(20).toArray();\n}",
+  "code2": "def postalValidate(S):\n    S = S.replace(\" \",\"\")\n    return S.upper() if (len(S) == 6 and all(c.isalpha() for c in S[::2]) and all(c.isdigit() for c in S[1::2])) else False"
+ },
+ {
+  "id": "A095",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static void main (String [] args) {\n    int temp = 0;\n    out : for (int i = 0;\n    i < 3; ++ i) {\n        System.out.println (\"I am here\");\n        for (int j = 0;\n        j < 20; ++ j) {\n            if (temp == 0) {\n                System.out.println (\"j: \" + j);\n                if (j == 1) {\n                    temp = j;\n                    continue out;\n                }\n            }\n        }\n    }\n    System.out.println (\"temp = \" + temp);\n}",
+  "code2": "int main (void) {\n    int inputArr [999];\n    int c = 0;\n    int length = 0;\n    int gotdigit = 0;\n    while ((c = getchar ()) != '\\n' && c != EOF) {\n        if (isdigit (c) && !gotdigit) {\n            inputArr[length] = c - '0';\n            length++;\n            if (length >= 999) {\n                break;\n            }\n            gotdigit = 1;\n        }\n        else {\n            if (c == ' ') {\n                gotdigit = 0;\n            }\n            else {\n                printf (\"Wrong Input Format!\\n\");\n            }\n        }\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A096",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "#include <stdio.h>\n#include <string.h>\nint main() {\n\t\tchar line[] = \"- Here's, a fancier, sample string.\";\n\t\tchar *seg;\n\t\tseg = strtok (line, \" ,.-\");\n\t\tprintf (\"Splitting string \\\"%s\\\" into tokens:\\n\", line);\n\t\tdo {\n\t\t\tprintf (\"%s\\n\", seg);\n\t\t\tseg = strtok (NULL, \" ,.-\");\n\t\t} while(seg != NULL);\n\t\treturn 0;\n}",
+  "code2": "#include <stdio.h>\n#include <string.h>\nint main(){\n    char line[530];\n    FILE *my_file = fopen(\"inbox.txt\", \"r\");\n    while(fgets(line, sizeof line, my_file)){\n        char *username = strtok(line, \" \");\n        char *text = strtok(NULL, \"\");\n        printf(\"user:%s\\n\", username);\n        printf(\"text:\\n%s\\n\", text);\n    }\n    fclose(my_file);\n    return 0;\n}"
+ },
+ {
+  "id": "A097",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public String inputStreamToString (InputStream inputStream) throws IOException {\n        int character;\n        String result = \"\";\n        while ((character = inputStream.read()) != -1) {\n             result += (char) character;\n        }\n        return result;\n}",
+  "code2": "static byte [] StreamToByteArray (Stream inputStream) {\n    if (! inputStream.CanRead) {\n        throw new ArgumentException ();\n    }\n    if (inputStream.CanSeek) {\n        inputStream.Seek (0, SeekOrigin.Begin);\n    }\n    byte [] output = new byte [inputStream.Length];\n    int bytesRead = inputStream.Read (output, 0, output.Length);\n    Debug.Assert (bytesRead == output.Length, \"Bytes read from stream matches stream length\");\n    return output;\n}"
+ },
+ {
+  "id": "A098",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public void start (final Stage primaryStage) {\n    Alert alert = new Alert (Alert.AlertType.CONFIRMATION);\n    alert.setTitle (\"Title\");\n    alert.setHeaderText (\"Some Text\");\n    alert.setContentText (\"Choose your option.\");\n    ButtonType buttonTypeOne = new ButtonType (\"Yes\");\n    alert.initModality (Modality.NONE);\n    ButtonType buttonTypeCancel = new ButtonType (\"No\", ButtonBar.ButtonData.CANCEL_CLOSE);\n    alert.getButtonTypes ().setAll (buttonTypeOne, buttonTypeCancel);\n    Button b = new Button (\"close alert\");\n    b.setOnAction ((ActionEvent event) -> {\n        for (ButtonType bt : alert.getDialogPane ().getButtonTypes ()) {\n            System.out.println (\"bt = \" + bt);\n            if (bt.getButtonData () == ButtonBar.ButtonData.CANCEL_CLOSE) {\n                Button cancelButton = (Button) alert.getDialogPane ().lookupButton (bt);\n                cancelButton.fire ();\n                break;\n            }\n        }\n    });\n    final Scene scene = new Scene (new Group (b), 400, 300);\n    primaryStage.setScene (scene);\n    primaryStage.show ();\n    Optional < ButtonType > result = alert.showAndWait ();\n    if (result.get () == buttonTypeOne) {\n        System.out.println (\"one \");\n    } else if (result.get () == buttonTypeCancel) {\n        System.out.println (\"cancel \");\n    }\n}",
+  "code2": "def getName(value):\n    negative = False\n    if value.startswith(\"-\"):\n        negative = True\n        value = value[1:]\n    decimals = value.find(\".\")\n    decimalValue = None\n    if decimals >= 0:\n        decimalValue = value[decimals + 1:]\n        value = value[:decimals]\n\n    name = processor.getName(value)\n    if name == \"\":\n        name = ZERO_TOKEN\n    elif negative:\n        name = MINUS + SEPARATOR + name\n\n    if decimalValue is not None and decimalValue != \"\":\n        zeroDecimalValue = \"0\" * len(decimalValue)\n        if decimalValue == zeroDecimalValue:\n            name += (SEPARATOR + UNION_AND + SEPARATOR + \n                    \"zero\" + SEPARATOR + SCALE.getName(-len(decimalValue)))\n        else:\n            name += (SEPARATOR + UNION_AND + SEPARATOR + \n                    processor.getName(decimalValue) + SEPARATOR + \n                    SCALE.getName(-len(decimalValue)))\n    return name"
+ },
+ {
+  "id": "A099",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public static void main (String [] args) {\n    String needle = \"ABC\";\n    String haystack = \"ABCDSGDABCSAGAABCCCCAAABAABC\";\n    int numberOfOccurences = 0;\n    int index = haystack.indexOf (needle);\n    while (index != - 1) {\n        numberOfOccurences ++;\n        haystack = haystack.substring (index + needle.length ());\n        index = haystack.indexOf (needle);\n    }\n    System.out.println (\"\" + numberOfOccurences);\n}",
+  "code2": "public void shuffle (String input) {\n    List < Character > characters = new ArrayList < Character > ();\n    for (char c : input.toCharArray ()) {\n        characters.add (c);\n    }\n    StringBuilder output = new StringBuilder (input.length ());\n    while (characters.size () != 0) {\n        int randPicker = (int) (Math.random () * characters.size ());\n        output.append (characters.remove (randPicker));\n    }\n    System.out.println (output.toString ());\n}"
+ }
+]

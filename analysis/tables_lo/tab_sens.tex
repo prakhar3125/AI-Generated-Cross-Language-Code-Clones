@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Sensitivity of the adaptive threshold (Eq.~\ref{eq:eq12}) to its constants, gate, mean of eight seeds: $k_{\mathrm{simple}}\in\{1.2,1.5,1.8,2.1\}$ with $k_{\mathrm{complex}}=k_{\mathrm{simple}}-0.6$, complexity cut $CC\le\{3,5,8,10\}$, clamp $\in\{[0.40,0.80],[0.30,0.90],[0.50,0.70]\}$ (48 settings). The reported setting is $k=1.8/1.2$, $CC\le5$, $[0.40,0.80]$.}
+\label{tab:sensitivity}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Regime / setting} & Acc. & $F_1$ & Rec. & FPR \\
+\midrule
+A: reported & 92.1 & 91.7 & 92.3 & 8.0 \\
+A: grid range & 90.1--92.8 & 90.0--92.3 & 91.2--94.4 & 5.7--13.6 \\
+\midrule
+B: reported & 91.4 & 90.9 & 91.6 & 8.7 \\
+B: grid range & 90.1--91.4 & 89.9--91.0 & 89.1--93.8 & 7.3--13.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

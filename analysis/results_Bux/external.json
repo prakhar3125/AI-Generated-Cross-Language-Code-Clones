@@ -1,0 +1,525 @@
+{
+ "regime": "B",
+ "gate": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.9460152797543255,
+     0.006939748098755541
+    ],
+    "flag_rate_cross_author": [
+     0.7092876344086021,
+     0.02552143151602246
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     0.9473295454545454,
+     0.011406898169790179
+    ],
+    "flag_rate_cross_author": [
+     0.7213020833333333,
+     0.02275845004852287
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.9255234505862646,
+     0.006228902362921128
+    ],
+    "flag_rate_cross_author": [
+     0.5601785714285714,
+     0.03451729940965538
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.9851140556860114,
+     0.0026892732611611984
+    ],
+    "flag_rate_cross_author": [
+     0.8157291666666666,
+     0.024202815738722214
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.7946891191709844,
+    0.013264219790864111
+   ],
+   "n": 193
+  }
+ },
+ "direct": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.934808254063366,
+     0.006888652166983644
+    ],
+    "flag_rate_cross_author": [
+     0.6689919354838709,
+     0.02727663452737858
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     0.9427272727272727,
+     0.006130949992930972
+    ],
+    "flag_rate_cross_author": [
+     0.6875781249999999,
+     0.02360280658986662
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.9051716917922947,
+     0.01029744558713335
+    ],
+    "flag_rate_cross_author": [
+     0.5022023809523809,
+     0.03551412162037968
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.9824723247232472,
+     0.0023906104109334228
+    ],
+    "flag_rate_cross_author": [
+     0.7777604166666667,
+     0.028510421288080075
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.741580310880829,
+    0.024993143650459976
+   ],
+   "n": 193
+  }
+ },
+ "token": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.955583851396899,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.7819354838709678,
+     0.0
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     1.0,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.9498958333333334,
+     0.0
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.9021775544388609,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.21976190476190477,
+     0.0
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.9969808788996981,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.9379166666666666,
+     0.0
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.5751295336787565,
+    0.0
+   ],
+   "n": 193
+  }
+ },
+ "static": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.9639727361246349,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.7732795698924732,
+     0.0
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     0.9747727272727272,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.8172916666666666,
+     0.0
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.9445561139028475,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.549047619047619,
+     0.0
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.9869171418986917,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.8814583333333333,
+     0.0
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.6217616580310881,
+    0.0
+   ],
+   "n": 193
+  }
+ },
+ "codebert": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.9689161860534792,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.8703763440860215,
+     0.0
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     0.9638636363636364,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.875625,
+     0.0
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.959463986599665,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.7521428571428571,
+     0.0
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.9953035893995303,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.9633333333333334,
+     0.0
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.9015544041450777,
+    0.0
+   ],
+   "n": 193
+  }
+ },
+ "ast": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     1.0,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     1.0,
+     0.0
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     1.0,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     1.0,
+     0.0
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     1.0,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     1.0,
+     0.0
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     1.0,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     1.0,
+     0.0
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    1.0,
+    0.0
+   ],
+   "n": 193
+  }
+ },
+ "jplag": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.8608343944273837,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.4650537634408602,
+     0.0
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     0.9595454545454546,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.7021875,
+     0.0
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.7899497487437186,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.12047619047619047,
+     0.0
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.8570949345857095,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.29229166666666667,
+     0.0
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.11398963730569948,
+    0.0
+   ],
+   "n": 193
+  }
+ },
+ "tokennorm": {
+  "progpedia": {
+   "all": {
+    "recall_same_author": [
+     0.8574638603849899,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.4501612903225806,
+     0.0
+    ],
+    "n_pos": 13351,
+    "n_neg": 18600
+   },
+   "java": {
+    "recall_same_author": [
+     0.96,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.6970833333333334,
+     0.0
+    ],
+    "n_pos": 4400,
+    "n_neg": 9600
+   },
+   "python": {
+    "recall_same_author": [
+     0.7899497487437186,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.12047619047619047,
+     0.0
+    ],
+    "n_pos": 5970,
+    "n_neg": 4200
+   },
+   "c": {
+    "recall_same_author": [
+     0.8413284132841329,
+     0.0
+    ],
+    "flag_rate_cross_author": [
+     0.24479166666666666,
+     0.0
+    ],
+    "n_pos": 2981,
+    "n_neg": 4800
+   }
+  },
+  "convergence": {
+   "flag_rate": [
+    0.11398963730569948,
+    0.0
+   ],
+   "n": 193
+  }
+ },
+ "auc_progpedia": {
+  "gate": {
+   "all": 0.8745877941566135,
+   "java": 0.8774635890151515,
+   "python": 0.8952542873095637,
+   "c": 0.9053150159342502
+  },
+  "direct": {
+   "all": 0.7938475914574479,
+   "java": 0.8106533972537879,
+   "python": 0.8150838318577012,
+   "c": 0.7846425975623393
+  },
+  "token": {
+   "all": 0.8754732338522425,
+   "java": 0.9128840317234849,
+   "python": 0.9194746749621121,
+   "c": 0.9331262230235939
+  },
+  "static": {
+   "all": 0.8834035850079289,
+   "java": 0.8998001657196969,
+   "python": 0.9116191473239212,
+   "c": 0.9106458962316897
+  },
+  "codebert": {
+   "all": 0.873091834770542,
+   "java": 0.8735236624053031,
+   "python": 0.8974666985722263,
+   "c": 0.9016651640948227
+  },
+  "ast": {
+   "all": 0.750988496693494,
+   "java": 0.7695025449810606,
+   "python": 0.7754131171731674,
+   "c": 0.7736060326512355
+  },
+  "jplag": {
+   "all": 0.8488948937013296,
+   "java": 0.8959383522727274,
+   "python": 0.8698544907075059,
+   "c": 0.876516304651683
+  },
+  "tokennorm": {
+   "all": 0.8489877021817059,
+   "java": 0.8967923532196971,
+   "python": 0.8698544907075059,
+   "c": 0.8742588127585824
+  }
+ }
+}

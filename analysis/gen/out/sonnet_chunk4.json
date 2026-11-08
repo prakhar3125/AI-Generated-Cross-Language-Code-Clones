@@ -1,0 +1,302 @@
+[
+ {
+  "id": "T297",
+  "outputs": {
+   "python": "def switch_pairs(self):\n    if self is None or self.next is None:\n        return self\n    top = self.next\n    first = self\n    second = first.next\n    while True:\n        third = second.next\n        second.next = first\n        first.next = third\n        first = third\n        print(\"@@@ \" + str(self))\n        if first is not None:\n            second.next.next = first.next\n            second = first.next\n        if not (first is not None and second is not None):\n            break\n    return top",
+   "c": "ListNode *switchPairs(ListNode *self) {\n    if (self == NULL || self->next == NULL) return self;\n    ListNode *top = self->next;\n    ListNode *first = self;\n    ListNode *second = first->next;\n    do {\n        ListNode *third = second->next;\n        second->next = first;\n        first->next = third;\n        first = third;\n        printf(\"@@@ %s\\n\", listNodeToString(self));\n        if (first != NULL) {\n            second->next->next = first->next;\n            second = first->next;\n        }\n    } while (first != NULL && second != NULL);\n    return top;\n}",
+   "csharp": "public ListNode SwitchPairs()\n{\n    if (this == null || this.next == null) return this;\n    ListNode top = this.next;\n    ListNode first = this;\n    ListNode second = first.next;\n    do\n    {\n        ListNode third = second.next;\n        second.next = first;\n        first.next = third;\n        first = third;\n        Console.WriteLine(\"@@@ \" + this.ToString());\n        if (first != null)\n        {\n            second.next.next = first.next;\n            second = first.next;\n        }\n    } while (first != null && second != null);\n    return top;\n}"
+  }
+ },
+ {
+  "id": "T252",
+  "outputs": {
+   "python": "def action_performed(self, e):\n    try:\n        with open(self.file, \"rb\") as is_:\n            self.model = pickle.load(is_)\n            self.table.set_model(self.model)\n    except IOError as ex:\n        traceback.print_exc()",
+   "c": "void actionPerformed(void *e) {\n    FILE *is = fopen(file, \"rb\");\n    if (is == NULL) {\n        perror(\"fopen\");\n        return;\n    }\n    model = readTableModel(is);\n    if (model == NULL) {\n        perror(\"read\");\n        fclose(is);\n        return;\n    }\n    tableSetModel(table, model);\n    fclose(is);\n}",
+   "csharp": "public void ActionPerformed(object sender, EventArgs e)\n{\n    try\n    {\n        using (Stream input = new BufferedStream(new FileStream(file, FileMode.Open)))\n        {\n            var serializer = new XmlSerializer(typeof(DataTable));\n            model = (DataTable)serializer.Deserialize(input);\n            table.DataSource = model;\n        }\n    }\n    catch (IOException ex)\n    {\n        Console.WriteLine(ex);\n    }\n}"
+  }
+ },
+ {
+  "id": "T10",
+  "outputs": {
+   "python": "def reverse(self, n, p):\n    if n is None:\n        return None\n    if n.next is None:\n        n.next = p\n        return n\n    r = self.reverse(n.next, n)\n    n.next = p\n    return r",
+   "c": "Node *reverse(Node *n, Node *p) {\n    if (n == NULL) return NULL;\n    if (n->next == NULL) {\n        n->next = p;\n        return n;\n    }\n    Node *r = reverse(n->next, n);\n    n->next = p;\n    return r;\n}",
+   "csharp": "Node Reverse(Node n, Node p)\n{\n    if (n == null) return null;\n    if (n.next == null)\n    {\n        n.next = p;\n        return n;\n    }\n    Node r = Reverse(n.next, n);\n    n.next = p;\n    return r;\n}"
+  }
+ },
+ {
+  "id": "T146",
+  "outputs": {
+   "python": "def solution(X, A):\n    hset = set()\n    for i in range(len(A)):\n        if A[i] <= X:\n            hset.add(A[i])\n        if len(hset) == X:\n            return i\n    return -1",
+   "c": "int solution(int X, int A[], int n) {\n    int *seen = (int *)malloc(sizeof(int) * (n > 0 ? n : 1));\n    int size = 0;\n    for (int i = 0; i < n; i++) {\n        if (A[i] <= X) {\n            int found = 0;\n            for (int j = 0; j < size; j++) {\n                if (seen[j] == A[i]) { found = 1; break; }\n            }\n            if (!found) seen[size++] = A[i];\n        }\n        if (size == X) {\n            free(seen);\n            return i;\n        }\n    }\n    free(seen);\n    return -1;\n}",
+   "csharp": "public int Solution(int X, int[] A)\n{\n    HashSet<int> hset = new HashSet<int>();\n    for (int i = 0; i < A.Length; i++)\n    {\n        if (A[i] <= X) hset.Add(A[i]);\n        if (hset.Count == X) return i;\n    }\n    return -1;\n}"
+  }
+ },
+ {
+  "id": "T110",
+  "outputs": {
+   "python": "def main():\n    throw_catch_time = 0\n    new_exception_time = 0\n    new_object_time = 0\n    no_stack_exception_time = 0\n    for i in range(30):\n        throw_catch_time += throw_catch_loop()\n        new_exception_time += new_exception_loop()\n        new_object_time += new_object_loop()\n        no_stack_exception_time += new_no_stack_exception_loop()\n    print(\"throwCatchTime = \" + str(throw_catch_time // 30))\n    print(\"newExceptionTime = \" + str(new_exception_time // 30))\n    print(\"newStringTime = \" + str(new_object_time // 30))\n    print(\"noStackExceptionTime = \" + str(no_stack_exception_time // 30))",
+   "c": "int main(void) {\n    long long throwCatchTime = 0, newExceptionTime = 0, newObjectTime = 0, noStackExceptionTime = 0;\n    for (int i = 0; i < 30; i++) {\n        throwCatchTime += throwCatchLoop();\n        newExceptionTime += newExceptionLoop();\n        newObjectTime += newObjectLoop();\n        noStackExceptionTime += newNoStackExceptionLoop();\n    }\n    printf(\"throwCatchTime = %lld\\n\", throwCatchTime / 30);\n    printf(\"newExceptionTime = %lld\\n\", newExceptionTime / 30);\n    printf(\"newStringTime = %lld\\n\", newObjectTime / 30);\n    printf(\"noStackExceptionTime = %lld\\n\", noStackExceptionTime / 30);\n    return 0;\n}",
+   "csharp": "public static void Main(string[] args)\n{\n    long throwCatchTime = 0, newExceptionTime = 0, newObjectTime = 0, noStackExceptionTime = 0;\n    for (int i = 0; i < 30; i++)\n    {\n        throwCatchTime += ThrowCatchLoop();\n        newExceptionTime += NewExceptionLoop();\n        newObjectTime += NewObjectLoop();\n        noStackExceptionTime += NewNoStackExceptionLoop();\n    }\n    Console.WriteLine(\"throwCatchTime = \" + throwCatchTime / 30);\n    Console.WriteLine(\"newExceptionTime = \" + newExceptionTime / 30);\n    Console.WriteLine(\"newStringTime = \" + newObjectTime / 30);\n    Console.WriteLine(\"noStackExceptionTime = \" + noStackExceptionTime / 30);\n}"
+  }
+ },
+ {
+  "id": "T34",
+  "outputs": {
+   "python": "def on_activity_result(self, request_code, result_code, data):\n    super().on_activity_result(request_code, result_code, data)\n    if request_code == IMAGE_CAPTURE and result_code == Activity.RESULT_OK:\n        db_helper = DBHelper(self)\n        sql = db_helper.get_writable_database()\n        sql.exec_sql(\"insert statement for inserting path to database\")\n        sql.close()\n        db_helper.close()",
+   "c": "void onActivityResult(Activity *self, int requestCode, int resultCode, Intent *data) {\n    superOnActivityResult(self, requestCode, resultCode, data);\n    if (requestCode == IMAGE_CAPTURE && resultCode == RESULT_OK) {\n        DBHelper *dbHelper = newDBHelper(self);\n        SQLiteDatabase *sql = getWritableDatabase(dbHelper);\n        execSQL(sql, \"insert statement for inserting path to database\");\n        closeDatabase(sql);\n        closeDBHelper(dbHelper);\n    }\n}",
+   "csharp": "protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)\n{\n    base.OnActivityResult(requestCode, resultCode, data);\n    if (requestCode == IMAGE_CAPTURE && resultCode == Result.Ok)\n    {\n        DBHelper dbHelper = new DBHelper(this);\n        SQLiteDatabase sql = dbHelper.WritableDatabase;\n        sql.ExecSQL(\"insert statement for inserting path to database\");\n        sql.Close();\n        dbHelper.Close();\n    }\n}"
+  }
+ },
+ {
+  "id": "T314",
+  "outputs": {
+   "python": "def get_name(self, value):\n    buffer = []\n    if len(value) < self.get_part_divider():\n        high = \"\"\n        low = value\n    else:\n        index = len(value) - self.get_part_divider()\n        high = value[:index]\n        low = value[index:]\n    high_name = self.get_high_processor().get_name(high)\n    low_name = self.get_low_processor().get_name(low)\n    if high_name != \"\":\n        buffer.append(high_name)\n        buffer.append(SEPARATOR)\n        buffer.append(self.get_token())\n        if low_name != \"\":\n            buffer.append(SEPARATOR)\n    if low_name != \"\":\n        buffer.append(low_name)\n    return \"\".join(buffer)",
+   "c": "char *getName(const char *value) {\n    char *buffer = (char *)calloc(1024, 1);\n    const char *high, *low;\n    char *highAlloc = NULL;\n    size_t len = strlen(value);\n    int divider = getPartDivider();\n    if ((int)len < divider) {\n        highAlloc = strdup(\"\");\n        low = value;\n    } else {\n        int index = (int)len - divider;\n        highAlloc = (char *)malloc(index + 1);\n        memcpy(highAlloc, value, index);\n        highAlloc[index] = '\\0';\n        low = value + index;\n    }\n    high = highAlloc;\n    char *highName = getHighProcessor()->getName(high);\n    char *lowName = getLowProcessor()->getName(low);\n    if (strlen(highName) != 0) {\n        strcat(buffer, highName);\n        strcat(buffer, SEPARATOR);\n        strcat(buffer, getToken());\n        if (strlen(lowName) != 0) {\n            strcat(buffer, SEPARATOR);\n        }\n    }\n    if (strlen(lowName) != 0) {\n        strcat(buffer, lowName);\n    }\n    free(highAlloc);\n    return buffer;\n}",
+   "csharp": "public string GetName(string value)\n{\n    StringBuilder buffer = new StringBuilder();\n    string high, low;\n    if (value.Length < GetPartDivider())\n    {\n        high = \"\";\n        low = value;\n    }\n    else\n    {\n        int index = value.Length - GetPartDivider();\n        high = value.Substring(0, index);\n        low = value.Substring(index);\n    }\n    string highName = GetHighProcessor().GetName(high);\n    string lowName = GetLowProcessor().GetName(low);\n    if (highName.Length != 0)\n    {\n        buffer.Append(highName);\n        buffer.Append(SEPARATOR);\n        buffer.Append(GetToken());\n        if (lowName.Length != 0)\n        {\n            buffer.Append(SEPARATOR);\n        }\n    }\n    if (lowName.Length != 0)\n    {\n        buffer.Append(lowName);\n    }\n    return buffer.ToString();\n}"
+  }
+ },
+ {
+  "id": "T22",
+  "outputs": {
+   "python": "def main():\n    i = 0\n    while i < 9:\n        j = 0\n        while j < 9:\n            k = 0\n            while k < 9:\n                if condition1:\n                    print(\"Breaking from Loop K and J\")\n                    k = 9\n                    j = 9\n                if condition2:\n                    print(\"Breaking from Loop K, J and I\")\n                    k = 9\n                    j = 9\n                    i = 9\n                k += 1\n            j += 1\n        i += 1\n    print(\"End of I , J , K\")",
+   "c": "int main(void) {\n    for (int i = 0; i < 9; i++) {\n        for (int j = 0; j < 9; j++) {\n            for (int k = 0; k < 9; k++) {\n                if (condition1) {\n                    printf(\"Breaking from Loop K and J\\n\");\n                    k = 9;\n                    j = 9;\n                }\n                if (condition2) {\n                    printf(\"Breaking from Loop K, J and I\\n\");\n                    k = 9;\n                    j = 9;\n                    i = 9;\n                }\n            }\n        }\n    }\n    printf(\"End of I , J , K\\n\");\n    return 0;\n}",
+   "csharp": "public static void Main(string[] args)\n{\n    for (int i = 0; i < 9; i++)\n    {\n        for (int j = 0; j < 9; j++)\n        {\n            for (int k = 0; k < 9; k++)\n            {\n                if (condition1)\n                {\n                    Console.WriteLine(\"Breaking from Loop K and J\");\n                    k = 9;\n                    j = 9;\n                }\n                if (condition2)\n                {\n                    Console.WriteLine(\"Breaking from Loop K, J and I\");\n                    k = 9;\n                    j = 9;\n                    i = 9;\n                }\n            }\n        }\n    }\n    Console.WriteLine(\"End of I , J , K\");\n}"
+  }
+ },
+ {
+  "id": "T543",
+  "outputs": {
+   "python": "def action_performed(self, e):\n    duration = int(time.time() * 1000) - self.start_time\n    progress = float(duration) / float(RUN_TIME)\n    self.line_point = Point()\n    self.line_point.x = self.get_width() // 2\n    if progress < 0.5:\n        self.line_point.y = int(math.floor(self.get_height() * (progress * 2) + 0.5))\n    else:\n        if progress > 1.0:\n            progress = 1.0\n            e.get_source().stop()\n            self.line_point = None\n            self.ball_point = None\n        else:\n            self.line_point.y = int(math.floor(self.get_height() * (progress * 2) + 0.5))\n            self.line_point.y = self.get_height() - (self.line_point.y - self.get_height())\n            self.ball_point.y = self.line_point.y\n    self.repaint()",
+   "c": "void actionPerformed(Panel *self, ActionEvent *e) {\n    long long duration = currentTimeMillis() - self->startTime;\n    float progress = (float)duration / (float)RUN_TIME;\n    self->linePoint = (Point *)malloc(sizeof(Point));\n    self->linePoint->x = getWidth(self) / 2;\n    self->linePoint->y = 0;\n    if (progress < 0.5f) {\n        self->linePoint->y = (int)floorf(getHeight(self) * (progress * 2) + 0.5f);\n    } else {\n        if (progress > 1.0f) {\n            progress = 1.0f;\n            stopTimer((Timer *)e->source);\n            free(self->linePoint);\n            self->linePoint = NULL;\n            self->ballPoint = NULL;\n        } else {\n            self->linePoint->y = (int)floorf(getHeight(self) * (progress * 2) + 0.5f);\n            self->linePoint->y = getHeight(self) - (self->linePoint->y - getHeight(self));\n            self->ballPoint->y = self->linePoint->y;\n        }\n    }\n    repaint(self);\n}",
+   "csharp": "public void ActionPerformed(object sender, EventArgs e)\n{\n    long duration = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - startTime;\n    float progress = (float)duration / (float)RUN_TIME;\n    linePoint = new Point();\n    linePoint.X = Width / 2;\n    if (progress < 0.5f)\n    {\n        linePoint.Y = (int)Math.Floor(Height * (progress * 2) + 0.5f);\n    }\n    else\n    {\n        if (progress > 1f)\n        {\n            progress = 1f;\n            ((Timer)sender).Stop();\n            linePoint = null;\n            ballPoint = null;\n        }\n        else\n        {\n            linePoint.Y = (int)Math.Floor(Height * (progress * 2) + 0.5f);\n            linePoint.Y = Height - (linePoint.Y - Height);\n            ballPoint.Y = linePoint.Y;\n        }\n    }\n    Invalidate();\n}"
+  }
+ },
+ {
+  "id": "T653",
+  "outputs": {
+   "python": "def action_performed(self, e):\n    width_icon = ImageIcon(\"LR-arrows.png\")\n    scale_width = show_input_dialog(None, \"What should the new width be?\", \"\", QUESTION_MESSAGE, width_icon, None, None)\n    height_icon = ImageIcon(\"UD-arrows.png\")\n    scale_height = show_input_dialog(None, \"What should the new height be?\", \"\", QUESTION_MESSAGE, width_icon, None, None)\n    x = float(scale_width)\n    y = float(scale_height)\n    new_width = int(x)\n    new_height = int(y)\n    self.frame.set_size(new_width, new_height)\n    self.scale(new_width, new_height)",
+   "c": "void actionPerformed(void *e) {\n    char scaleWidth[64], scaleHeight[64];\n    ImageIcon *widthIcon = newImageIcon(\"LR-arrows.png\");\n    showInputDialog(\"What should the new width be?\", \"\", widthIcon, scaleWidth, sizeof(scaleWidth));\n    ImageIcon *heightIcon = newImageIcon(\"UD-arrows.png\");\n    showInputDialog(\"What should the new height be?\", \"\", widthIcon, scaleHeight, sizeof(scaleHeight));\n    double x = strtod(scaleWidth, NULL);\n    double y = strtod(scaleHeight, NULL);\n    int newWidth = (int)x;\n    int newHeight = (int)y;\n    frameSetSize(frame, newWidth, newHeight);\n    scale(newWidth, newHeight);\n}",
+   "csharp": "public void ActionPerformed(object sender, EventArgs e)\n{\n    Image widthIcon = Image.FromFile(\"LR-arrows.png\");\n    string scaleWidth = ShowInputDialog(\"What should the new width be?\", \"\", widthIcon);\n    Image heightIcon = Image.FromFile(\"UD-arrows.png\");\n    string scaleHeight = ShowInputDialog(\"What should the new height be?\", \"\", widthIcon);\n    double x = double.Parse(scaleWidth);\n    double y = double.Parse(scaleHeight);\n    int newWidth = (int)x;\n    int newHeight = (int)y;\n    frame.Size = new Size(newWidth, newHeight);\n    Scale(newWidth, newHeight);\n}"
+  }
+ },
+ {
+  "id": "T229",
+  "outputs": {
+   "python": "def run(self):\n    try:\n        with self.lock:\n            for i in range(5):\n                while self.id != self.token % N:\n                    self.lock.wait()\n                print(str(self.id) + \" \" + str(i))\n                self.token += 1\n                self.lock.notify_all()\n    except KeyboardInterrupt:\n        traceback.print_exc()",
+   "c": "void *run(void *arg) {\n    pthread_mutex_lock(&lock);\n    for (int i = 0; i < 5; i++) {\n        while (id != token % N) {\n            pthread_cond_wait(&cond, &lock);\n        }\n        printf(\"%d %d\\n\", id, i);\n        token++;\n        pthread_cond_broadcast(&cond);\n    }\n    pthread_mutex_unlock(&lock);\n    return NULL;\n}",
+   "csharp": "public void Run()\n{\n    try\n    {\n        lock (lockObj)\n        {\n            for (int i = 0; i < 5; i++)\n            {\n                while (id != token % N) Monitor.Wait(lockObj);\n                Console.WriteLine(id + \" \" + i);\n                token++;\n                Monitor.PulseAll(lockObj);\n            }\n        }\n    }\n    catch (ThreadInterruptedException e)\n    {\n        Console.WriteLine(e);\n    }\n}"
+  }
+ },
+ {
+  "id": "T147",
+  "outputs": {
+   "python": "def solution(X, A):\n    empty_position = set()\n    for i in range(1, X + 1):\n        empty_position.add(i)\n    for i in range(len(A)):\n        empty_position.discard(A[i])\n        if len(empty_position) == 0:\n            return i\n    return -1",
+   "c": "int solution(int X, int A[], int n) {\n    int size = X > 0 ? X : 0;\n    char *present = (char *)malloc(size + 1);\n    for (int i = 1; i <= size; i++) present[i] = 1;\n    int count = size;\n    for (int i = 0; i < n; i++) {\n        if (A[i] >= 1 && A[i] <= size && present[A[i]]) {\n            present[A[i]] = 0;\n            count--;\n        }\n        if (count == 0) {\n            free(present);\n            return i;\n        }\n    }\n    free(present);\n    return -1;\n}",
+   "csharp": "public int Solution(int X, int[] A)\n{\n    ISet<int> emptyPosition = new HashSet<int>();\n    for (int i = 1; i <= X; i++)\n    {\n        emptyPosition.Add(i);\n    }\n    for (int i = 0; i < A.Length; i++)\n    {\n        emptyPosition.Remove(A[i]);\n        if (emptyPosition.Count == 0)\n        {\n            return i;\n        }\n    }\n    return -1;\n}"
+  }
+ },
+ {
+  "id": "T124",
+  "outputs": {
+   "python": "def solution(X, A):\n    length = len(A)\n    if X > length:\n        return -1\n    is_filled = [0] * X\n    jumped = 0\n    for i in range(length):\n        x = A[i]\n        if x <= X:\n            if is_filled[x - 1] == 0:\n                is_filled[x - 1] = 1\n                jumped += 1\n                if jumped == X:\n                    return i\n    return -1",
+   "c": "int solution(int X, int A[], int len) {\n    if (X > len) {\n        return -1;\n    }\n    int *isFilled = (int *)calloc(X > 0 ? X : 1, sizeof(int));\n    int jumped = 0;\n    for (int i = 0; i < len; i++) {\n        int x = A[i];\n        if (x <= X) {\n            if (isFilled[x - 1] == 0) {\n                isFilled[x - 1] = 1;\n                jumped += 1;\n                if (jumped == X) {\n                    free(isFilled);\n                    return i;\n                }\n            }\n        }\n    }\n    free(isFilled);\n    return -1;\n}",
+   "csharp": "public int Solution(int X, int[] A)\n{\n    int len = A.Length;\n    if (X > len)\n    {\n        return -1;\n    }\n    int[] isFilled = new int[X];\n    int jumped = 0;\n    Array.Fill(isFilled, 0);\n    for (int i = 0; i < len; i++)\n    {\n        int x = A[i];\n        if (x <= X)\n        {\n            if (isFilled[x - 1] == 0)\n            {\n                isFilled[x - 1] = 1;\n                jumped += 1;\n                if (jumped == X)\n                {\n                    return i;\n                }\n            }\n        }\n    }\n    return -1;\n}"
+  }
+ },
+ {
+  "id": "T614",
+  "outputs": {
+   "python": "def filter(self, source, start, end, dest, dstart, dend):\n    ls_start = \"\"\n    ls_insert = \"\"\n    ls_end = \"\"\n    ls_text = \"\"\n    log_d(\"debug\", str(self.mo_pattern))\n    log_d(\"debug\", \"source: \" + str(source) + \", start: \" + str(start) + \", end:\" + str(end) + \", dest: \" + str(dest) + \", dstart: \" + str(dstart) + \", dend: \" + str(dend))\n    ls_text = str(dest)\n    if len(ls_text) > 0:\n        ls_start = ls_text[:dstart]\n        log_d(\"debug\", \"lsStart : \" + ls_start)\n        if source is not \"\":\n            ls_insert = str(source)\n            log_d(\"debug\", \"lsInsert: \" + ls_insert)\n        ls_end = ls_text[dend:]\n        log_d(\"debug\", \"lsEnd   : \" + ls_end)\n        ls_text = ls_start + ls_insert + ls_end\n        log_d(\"debug\", \"lsText  : \" + ls_text)\n    lo_matcher = self.mo_pattern.fullmatch(ls_text)\n    log_d(\"debug\", \"loMatcher.matches(): \" + str(lo_matcher is not None) + \", lsText: \" + ls_text)\n    if lo_matcher is None:\n        return \"\"\n    return None",
+   "c": "const char *filter(const char *source, int start, int end, const char *dest, int dstart, int dend) {\n    char lsStart[1024] = \"\";\n    char lsInsert[1024] = \"\";\n    char lsEnd[1024] = \"\";\n    char lsText[3072] = \"\";\n    logD(\"debug\", moPatternSource);\n    logD(\"debug\", \"source/dest logged\");\n    strncpy(lsText, dest, sizeof(lsText) - 1);\n    if (strlen(lsText) > 0) {\n        strncpy(lsStart, lsText, dstart);\n        lsStart[dstart] = '\\0';\n        logD(\"debug\", lsStart);\n        if (strcmp(source, \"\") != 0) {\n            strncpy(lsInsert, source, sizeof(lsInsert) - 1);\n            logD(\"debug\", lsInsert);\n        }\n        strncpy(lsEnd, lsText + dend, sizeof(lsEnd) - 1);\n        logD(\"debug\", lsEnd);\n        snprintf(lsText, sizeof(lsText), \"%s%s%s\", lsStart, lsInsert, lsEnd);\n        logD(\"debug\", lsText);\n    }\n    regmatch_t m;\n    int matches = (regexec(&moPattern, lsText, 1, &m, 0) == 0\n                   && m.rm_so == 0 && m.rm_eo == (regoff_t)strlen(lsText));\n    logD(\"debug\", matches ? \"matches: true\" : \"matches: false\");\n    if (!matches) {\n        return \"\";\n    }\n    return NULL;\n}",
+   "csharp": "public ICharSequence Filter(ICharSequence source, int start, int end, ISpanned dest, int dstart, int dend)\n{\n    string lsStart = \"\";\n    string lsInsert = \"\";\n    string lsEnd = \"\";\n    string lsText = \"\";\n    Log.D(\"debug\", moPattern.ToString());\n    Log.D(\"debug\", \"source: \" + source + \", start: \" + start + \", end:\" + end + \", dest: \" + dest + \", dstart: \" + dstart + \", dend: \" + dend);\n    lsText = dest.ToString();\n    if (lsText.Length > 0)\n    {\n        lsStart = lsText.Substring(0, dstart);\n        Log.D(\"debug\", \"lsStart : \" + lsStart);\n        if (!ReferenceEquals(source.ToString(), \"\"))\n        {\n            lsInsert = source.ToString();\n            Log.D(\"debug\", \"lsInsert: \" + lsInsert);\n        }\n        lsEnd = lsText.Substring(dend);\n        Log.D(\"debug\", \"lsEnd   : \" + lsEnd);\n        lsText = lsStart + lsInsert + lsEnd;\n        Log.D(\"debug\", \"lsText  : \" + lsText);\n    }\n    Match loMatcher = moPattern.Match(lsText);\n    bool matches = loMatcher.Success && loMatcher.Index == 0 && loMatcher.Length == lsText.Length;\n    Log.D(\"debug\", \"loMatcher.matches(): \" + matches + \", lsText: \" + lsText);\n    if (!matches)\n    {\n        return new Java.Lang.String(\"\");\n    }\n    return null;\n}"
+  }
+ },
+ {
+  "id": "T592",
+  "outputs": {
+   "python": "def rand_nums(self, total, n):\n    results = [0] * n\n    if total == 0:\n        return results\n    total_plus1 = total + 1\n    while True:\n        rs = [random.getrandbits(256) for _ in range(n)]\n        s = 0\n        for r in rs:\n            s += r\n        if s == 0:\n            continue\n        for i in range(n):\n            results[i] = (s % rs[i]) % total_plus1\n        return results",
+   "c": "int *randNums(int total, int n) {\n    int *results = (int *)calloc(n, sizeof(int));\n    if (total == 0) {\n        return results;\n    }\n    mpz_t *rs = (mpz_t *)malloc(sizeof(mpz_t) * n);\n    mpz_t totalPlus1, sum, tmp;\n    mpz_init_set_si(totalPlus1, (long)total + 1L);\n    mpz_init(sum);\n    mpz_init(tmp);\n    for (int i = 0; i < n; i++) mpz_init(rs[i]);\n    while (1) {\n        for (int i = 0; i < n; ++i) {\n            mpz_urandomb(rs[i], randState, 256);\n        }\n        mpz_set_ui(sum, 0);\n        for (int i = 0; i < n; i++) {\n            mpz_add(sum, sum, rs[i]);\n        }\n        if (mpz_cmp_ui(sum, 0) == 0) {\n            continue;\n        }\n        for (int i = 0; i < n; ++i) {\n            mpz_mod(tmp, sum, rs[i]);\n            mpz_mod(tmp, tmp, totalPlus1);\n            results[i] = (int)mpz_get_si(tmp);\n        }\n        break;\n    }\n    for (int i = 0; i < n; i++) mpz_clear(rs[i]);\n    free(rs);\n    mpz_clear(totalPlus1);\n    mpz_clear(sum);\n    mpz_clear(tmp);\n    return results;\n}",
+   "csharp": "private int[] RandNums(int total, int n)\n{\n    int[] results = new int[n];\n    if (total == 0)\n    {\n        Array.Fill(results, 0);\n        return results;\n    }\n    BigInteger[] rs = new BigInteger[n];\n    BigInteger totalPlus1 = new BigInteger(total + 1L);\n    while (true)\n    {\n        for (int i = 0; i < n; ++i)\n        {\n            byte[] bytes = new byte[33];\n            rand.NextBytes(bytes);\n            bytes[32] = 0;\n            rs[i] = new BigInteger(bytes);\n        }\n        BigInteger sum = BigInteger.Zero;\n        foreach (BigInteger r in rs)\n        {\n            sum = BigInteger.Add(sum, r);\n        }\n        if (sum.CompareTo(BigInteger.Zero) == 0)\n        {\n            continue;\n        }\n        for (int i = 0; i < n; ++i)\n        {\n            results[i] = (int)BigInteger.Remainder(BigInteger.Remainder(sum, rs[i]), totalPlus1);\n        }\n        return results;\n    }\n}"
+  }
+ },
+ {
+  "id": "T633",
+  "outputs": {
+   "python": "def unzip(self):\n    try:\n        with zipfile.ZipFile(self._zip_file, \"r\") as zin:\n            for ze in zin.infolist():\n                print(\"Decompress: Unzipping \" + ze.filename)\n                if ze.is_dir():\n                    self._dir_checker(ze.filename)\n                else:\n                    with open(self._location + ze.filename, \"wb\") as bufout:\n                        with zin.open(ze) as entry:\n                            while True:\n                                buffer = entry.read(1024)\n                                if not buffer:\n                                    break\n                                bufout.write(buffer)\n        print(\"Unzip: Unzipping complete. path :  \" + self._location)\n    except Exception as e:\n        print(\"Decompress: unzip\", e)\n        print(\"Unzip: Unzipping failed\")",
+   "c": "void unzip(void) {\n    unzFile zin = unzOpen(_zipFile);\n    if (zin == NULL) {\n        fprintf(stderr, \"Decompress: unzip failed\\n\");\n        printf(\"Unzip: Unzipping failed\\n\");\n        return;\n    }\n    int ok = 1;\n    int rc = unzGoToFirstFile(zin);\n    while (rc == UNZ_OK) {\n        char name[512];\n        unz_file_info info;\n        unzGetCurrentFileInfo(zin, &info, name, sizeof(name), NULL, 0, NULL, 0);\n        printf(\"Decompress: Unzipping %s\\n\", name);\n        size_t nlen = strlen(name);\n        if (nlen > 0 && name[nlen - 1] == '/') {\n            _dirChecker(name);\n        } else {\n            char path[1024];\n            snprintf(path, sizeof(path), \"%s%s\", _location, name);\n            FILE *fout = fopen(path, \"wb\");\n            if (fout == NULL || unzOpenCurrentFile(zin) != UNZ_OK) {\n                ok = 0;\n                break;\n            }\n            unsigned char buffer[1024];\n            int read;\n            while ((read = unzReadCurrentFile(zin, buffer, sizeof(buffer))) > 0) {\n                fwrite(buffer, 1, read, fout);\n            }\n            fclose(fout);\n            unzCloseCurrentFile(zin);\n        }\n        rc = unzGoToNextFile(zin);\n    }\n    unzClose(zin);\n    if (ok) {\n        printf(\"Unzip: Unzipping complete. path :  %s\\n\", _location);\n    } else {\n        printf(\"Unzip: Unzipping failed\\n\");\n    }\n}",
+   "csharp": "public void Unzip()\n{\n    try\n    {\n        using (FileStream fin = new FileStream(_zipFile, FileMode.Open))\n        using (ZipArchive zin = new ZipArchive(fin, ZipArchiveMode.Read))\n        {\n            foreach (ZipArchiveEntry ze in zin.Entries)\n            {\n                Console.WriteLine(\"Decompress: Unzipping \" + ze.FullName);\n                if (ze.FullName.EndsWith(\"/\"))\n                {\n                    _dirChecker(ze.FullName);\n                }\n                else\n                {\n                    using (FileStream fout = new FileStream(_location + ze.FullName, FileMode.Create))\n                    using (BufferedStream bufout = new BufferedStream(fout))\n                    using (Stream entry = ze.Open())\n                    {\n                        byte[] buffer = new byte[1024];\n                        int read = 0;\n                        while ((read = entry.Read(buffer, 0, buffer.Length)) > 0)\n                        {\n                            bufout.Write(buffer, 0, read);\n                        }\n                    }\n                }\n            }\n        }\n        Console.WriteLine(\"Unzip: Unzipping complete. path :  \" + _location);\n    }\n    catch (Exception e)\n    {\n        Console.WriteLine(\"Decompress: unzip \" + e);\n        Console.WriteLine(\"Unzip: Unzipping failed\");\n    }\n}"
+  }
+ },
+ {
+  "id": "T837",
+  "outputs": {
+   "python": "def run(self):\n    with self.cond:\n        for i in range(10):\n            while len(self.list) == 0:\n                print(\"Consumer is waiting\")\n                try:\n                    self.cond.wait()\n                except KeyboardInterrupt:\n                    traceback.print_exc()\n            k = self.list.pop(0)\n            print(\"consume=\" + str(k))\n            self.cond.notify_all()\n            try:\n                time.sleep(0.5)\n            except KeyboardInterrupt:\n                traceback.print_exc()",
+   "c": "void *run(void *arg) {\n    pthread_mutex_lock(&listLock);\n    for (int i = 0; i < 10; i++) {\n        while (listSize == 0) {\n            printf(\"Consumer is waiting\\n\");\n            pthread_cond_wait(&listCond, &listLock);\n        }\n        int k = listData[0];\n        for (int j = 1; j < listSize; j++) {\n            listData[j - 1] = listData[j];\n        }\n        listSize--;\n        printf(\"consume=%d\\n\", k);\n        pthread_cond_broadcast(&listCond);\n        usleep(500 * 1000);\n    }\n    pthread_mutex_unlock(&listLock);\n    return NULL;\n}",
+   "csharp": "public void Run()\n{\n    lock (list)\n    {\n        for (int i = 0; i < 10; i++)\n        {\n            while (list.Count == 0)\n            {\n                Console.WriteLine(\"Consumer is waiting\");\n                try\n                {\n                    Monitor.Wait(list);\n                }\n                catch (ThreadInterruptedException ex)\n                {\n                    Console.WriteLine(ex);\n                }\n            }\n            int k = list[0];\n            list.RemoveAt(0);\n            Console.WriteLine(\"consume=\" + k);\n            Monitor.PulseAll(list);\n            try\n            {\n                Thread.Sleep(500);\n            }\n            catch (ThreadInterruptedException ex)\n            {\n                Console.WriteLine(ex);\n            }\n        }\n    }\n}"
+  }
+ },
+ {
+  "id": "T692",
+  "outputs": {
+   "python": "def find_combinations_count(amount, coins, check_from_index):\n    if amount == 0:\n        return 1\n    elif amount < 0 or len(coins) == check_from_index:\n        return 0\n    else:\n        with_first_coin = find_combinations_count(amount - coins[check_from_index], coins, check_from_index)\n        without_first_coin = find_combinations_count(amount, coins, check_from_index + 1)\n        return with_first_coin + without_first_coin",
+   "c": "int findCombinationsCount(int amount, int coins[], int coinsLength, int checkFromIndex) {\n    if (amount == 0) return 1;\n    else if (amount < 0 || coinsLength == checkFromIndex) return 0;\n    else {\n        int withFirstCoin = findCombinationsCount(amount - coins[checkFromIndex], coins, coinsLength, checkFromIndex);\n        int withoutFirstCoin = findCombinationsCount(amount, coins, coinsLength, checkFromIndex + 1);\n        return withFirstCoin + withoutFirstCoin;\n    }\n}",
+   "csharp": "int FindCombinationsCount(int amount, int[] coins, int checkFromIndex)\n{\n    if (amount == 0) return 1;\n    else if (amount < 0 || coins.Length == checkFromIndex) return 0;\n    else\n    {\n        int withFirstCoin = FindCombinationsCount(amount - coins[checkFromIndex], coins, checkFromIndex);\n        int withoutFirstCoin = FindCombinationsCount(amount, coins, checkFromIndex + 1);\n        return withFirstCoin + withoutFirstCoin;\n    }\n}"
+  }
+ },
+ {
+  "id": "T512",
+  "outputs": {
+   "python": "def find_min(A, c):\n    x = A[c]\n    position = c\n    while c < len(A):\n        if x > A[c]:\n            x = A[c]\n            position = c\n        c += 1\n    return position",
+   "c": "static int findMIN(int A[], int length, int c) {\n    int x = A[c];\n    int position = c;\n    while (c < length) {\n        if (x > A[c]) {\n            x = A[c];\n            position = c;\n        }\n        c++;\n    }\n    return position;\n}",
+   "csharp": "static int FindMIN(int[] A, int c)\n{\n    int x = A[c];\n    int position = c;\n    while (c < A.Length)\n    {\n        if (x > A[c])\n        {\n            x = A[c];\n            position = c;\n        }\n        c++;\n    }\n    return position;\n}"
+  }
+ },
+ {
+  "id": "T14",
+  "outputs": {
+   "python": "def reverse(self, previous, current):\n    if previous is None:\n        return None\n    if previous == self.head:\n        previous.set_next(None)\n    if current is None:\n        self.head = previous\n        return self.head\n    else:\n        temp = current.get_next()\n        current.set_next(previous)\n        self.reverse(current, temp)\n    return None",
+   "c": "Node *reverse(Node *previous, Node *current) {\n    if (previous == NULL) return NULL;\n    if (previous == head) previous->next = NULL;\n    if (current == NULL) {\n        head = previous;\n        return head;\n    } else {\n        Node *temp = current->next;\n        current->next = previous;\n        reverse(current, temp);\n    }\n    return NULL;\n}",
+   "csharp": "public Node Reverse(Node previous, Node current)\n{\n    if (previous == null) return null;\n    if (previous.Equals(head)) previous.SetNext(null);\n    if (current == null)\n    {\n        head = previous;\n        return head;\n    }\n    else\n    {\n        Node temp = current.GetNext();\n        current.SetNext(previous);\n        Reverse(current, temp);\n    }\n    return null;\n}"
+  }
+ },
+ {
+  "id": "T249",
+  "outputs": {
+   "python": "def main(*a):\n    print(\"Enter the String\", end=\"\")\n    st = input()\n    ar = [0] * 256\n    for i in range(len(st)):\n        ar[ord(st[i])] = ar[ord(st[i])] + 1\n    for i in range(256):\n        ch = chr(i)\n        if ar[i] > 0:\n            if ar[i] == 1:\n                print(ch, end=\"\")\n            else:\n                print(ch + \"\" + str(ar[i]), end=\"\")",
+   "c": "int main(int argc, char *argv[]) {\n    char st[4096];\n    int ar[256];\n    memset(ar, 0, sizeof(ar));\n    printf(\"Enter the String\");\n    if (fgets(st, sizeof(st), stdin) == NULL) st[0] = '\\0';\n    st[strcspn(st, \"\\r\\n\")] = '\\0';\n    for (int i = 0; i < (int)strlen(st); i++) {\n        ar[(unsigned char)st[i]] = ar[(unsigned char)st[i]] + 1;\n    }\n    for (int i = 0; i < 256; i++) {\n        char ch = (char)i;\n        if (ar[i] > 0) {\n            if (ar[i] == 1) {\n                printf(\"%c\", ch);\n            } else {\n                printf(\"%c%d\", ch, ar[i]);\n            }\n        }\n    }\n    return 0;\n}",
+   "csharp": "public static void Main(string[] a)\n{\n    Console.Write(\"Enter the String\");\n    string st = Console.ReadLine();\n    int[] ar = new int[256];\n    for (int i = 0; i < st.Length; i++)\n    {\n        ar[st[i]] = ar[st[i]] + 1;\n    }\n    for (int i = 0; i < 256; i++)\n    {\n        char ch = (char)i;\n        if (ar[i] > 0)\n        {\n            if (ar[i] == 1)\n            {\n                Console.Write(ch);\n            }\n            else\n            {\n                Console.Write(ch + \"\" + ar[i]);\n            }\n        }\n    }\n}"
+  }
+ },
+ {
+  "id": "T372",
+  "outputs": {
+   "python": "def capitalize(s):\n    if s is None or len(s) == 0:\n        return \"\"\n    first = s[0]\n    if first.isupper():\n        return s\n    else:\n        return first.upper() + s[1:]",
+   "c": "static char *capitalize(const char *s) {\n    if (s == NULL || strlen(s) == 0) {\n        return strdup(\"\");\n    }\n    char *result = strdup(s);\n    if (!isupper((unsigned char)result[0])) {\n        result[0] = (char)toupper((unsigned char)result[0]);\n    }\n    return result;\n}",
+   "csharp": "private string Capitalize(string s)\n{\n    if (s == null || s.Length == 0)\n    {\n        return \"\";\n    }\n    char first = s[0];\n    if (char.IsUpper(first))\n    {\n        return s;\n    }\n    else\n    {\n        return char.ToUpper(first) + s.Substring(1);\n    }\n}"
+  }
+ },
+ {
+  "id": "T60",
+  "outputs": {
+   "python": "def is_permutation(str1, str2):\n    x = sorted(str1)\n    y = sorted(str2)\n    if x == y:\n        return True\n    return False",
+   "c": "static int cmpChar(const void *a, const void *b) {\n    return (*(const char *)a) - (*(const char *)b);\n}\n\nbool isPermutation(const char *str1, const char *str2) {\n    char *x = strdup(str1);\n    char *y = strdup(str2);\n    qsort(x, strlen(x), sizeof(char), cmpChar);\n    qsort(y, strlen(y), sizeof(char), cmpChar);\n    bool result = strcmp(x, y) == 0;\n    free(x);\n    free(y);\n    if (result) return true;\n    return false;\n}",
+   "csharp": "public static bool IsPermutation(string str1, string str2)\n{\n    char[] x = str1.ToCharArray();\n    char[] y = str2.ToCharArray();\n    Array.Sort(x);\n    Array.Sort(y);\n    if (x.SequenceEqual(y)) return true;\n    return false;\n}"
+  }
+ },
+ {
+  "id": "T172",
+  "outputs": {
+   "python": "def is_available(self):\n    url = \"URL HERE\"\n    connection = http.client.HTTPConnection(urlparse(url).netloc, timeout=10)\n    connection.request(\"GET\", urlparse(url).path or \"/\", headers={\"Connection\": \"close\"})\n    if connection.getresponse().status == 200:\n        return True\n    else:\n        return False",
+   "c": "bool isAvailable(void) {\n    CURL *curl = curl_easy_init();\n    long code = 0;\n    curl_easy_setopt(curl, CURLOPT_URL, \"URL HERE\");\n    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT_MS, 10000L);\n    struct curl_slist *headers = curl_slist_append(NULL, \"Connection: close\");\n    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);\n    curl_easy_perform(curl);\n    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &code);\n    curl_slist_free_all(headers);\n    curl_easy_cleanup(curl);\n    if (code == 200) {\n        return true;\n    } else return false;\n}",
+   "csharp": "public bool IsAvailable()\n{\n    Uri url = new Uri(\"URL HERE\");\n    HttpWebRequest connection = (HttpWebRequest)WebRequest.Create(url);\n    connection.KeepAlive = false;\n    connection.Timeout = 10000;\n    using (HttpWebResponse response = (HttpWebResponse)connection.GetResponse())\n    {\n        if ((int)response.StatusCode == 200)\n        {\n            return true;\n        }\n        else return false;\n    }\n}"
+  }
+ },
+ {
+  "id": "T713",
+  "outputs": {
+   "python": "def set_cursor_color(view, color):\n    try:\n        drawable_res_id = getattr(view, \"mCursorDrawableRes\")\n        editor = getattr(view, \"mEditor\")\n        drawable = ContextCompat.get_drawable(view.get_context(), drawable_res_id)\n        drawable.set_color_filter(color, PorterDuff.Mode.SRC_IN)\n        drawables = [drawable, drawable]\n        setattr(editor, \"mCursorDrawable\", drawables)\n    except Exception:\n        pass",
+   "c": "void setCursorColor(EditText *view, int color) {\n    int drawableResId = getIntField(view, \"mCursorDrawableRes\");\n    void *editor = getObjectField(view, \"mEditor\");\n    if (drawableResId < 0 || editor == NULL) {\n        return;\n    }\n    Drawable *drawable = getDrawable(getContext(view), drawableResId);\n    if (drawable == NULL) {\n        return;\n    }\n    setColorFilter(drawable, color, PORTER_DUFF_SRC_IN);\n    Drawable *drawables[2] = {drawable, drawable};\n    setObjectField(editor, \"mCursorDrawable\", drawables);\n}",
+   "csharp": "public static void SetCursorColor(EditText view, int color)\n{\n    try\n    {\n        FieldInfo field = typeof(TextView).GetField(\"mCursorDrawableRes\", BindingFlags.NonPublic | BindingFlags.Instance);\n        int drawableResId = (int)field.GetValue(view);\n        field = typeof(TextView).GetField(\"mEditor\", BindingFlags.NonPublic | BindingFlags.Instance);\n        object editor = field.GetValue(view);\n        Drawable drawable = ContextCompat.GetDrawable(view.Context, drawableResId);\n        drawable.SetColorFilter(color, PorterDuff.Mode.SrcIn);\n        Drawable[] drawables = { drawable, drawable };\n        field = editor.GetType().GetField(\"mCursorDrawable\", BindingFlags.NonPublic | BindingFlags.Instance);\n        field.SetValue(editor, drawables);\n    }\n    catch (Exception)\n    {\n    }\n}"
+  }
+ },
+ {
+  "id": "Rbf38b9a69d",
+  "output": "private void transform (XSSFWorkbook workbookOld, HSSFWorkbook workbookNew, Integer hash, XSSFCellStyle styleOld, HSSFCellStyle styleNew) {\n    styleNew.setVerticalAlignment (styleOld.getVerticalAlignment ());\n    styleNew.setWrapText (styleOld.getWrapText ());\n    styleNew.setLocked (styleOld.getLocked ());\n    styleNew.setIndention (styleOld.getIndention ());\n    styleNew.setHidden (styleOld.getHidden ());\n    short dataFormat = this.transform (workbookOld, workbookNew, styleOld.getDataFormat ());\n    styleNew.setDataFormat (dataFormat);\n    styleNew.setFont (this.transform (workbookNew, (XSSFFont) styleOld.getFont ()));\n    styleNew.setFillPattern (styleOld.getFillPattern ());\n    styleNew.setFillForegroundColor (styleOld.getFillForegroundColor ());\n    styleNew.setFillBackgroundColor (styleOld.getFillBackgroundColor ());\n    styleNew.setBorderTop (styleOld.getBorderTop ());\n    styleNew.setBorderRight (styleOld.getBorderRight ());\n    styleNew.setBorderLeft (styleOld.getBorderLeft ());\n    styleNew.setBorderBottom (styleOld.getBorderBottom ());\n    styleNew.setAlignment (styleOld.getAlignment ());\n    this.styleMap.put (hash, styleNew);\n}"
+ },
+ {
+  "id": "Rb9c3635eed",
+  "output": "public static void main (String args []) {\n    inp = new Scanner (System.in);\n    String str = inp.nextLine ();\n    char [] chars = str.toCharArray ();\n    List < Character > arrlist = new ArrayList < Character > ();\n    for (char c : chars) {\n        arrlist.add (c);\n    }\n    int idx = 0;\n    while (idx < chars.length) {\n        char current = chars [idx];\n        int freq = Collections.frequency (arrlist, current);\n        System.out.println (\"Frequency of \" + current + \"  is:   \" + freq);\n        idx ++;\n    }\n}"
+ },
+ {
+  "id": "Rea67761d7d",
+  "output": "public static void main (String [] args) {\n    String [] samples = {\"\", null, \"Starts with upper case\", \"starts with lower case\"};\n    for (String sample : samples) {\n        System.out.println (startWithUpperCase (sample));\n    }\n}"
+ },
+ {
+  "id": "R357f96f327",
+  "output": "public static DataTable GetWorksheetAsDataTable(ExcelWorksheet worksheet) {\n    DataTable dt = new DataTable(worksheet.Name);\n    dt.Columns.AddRange(GetDataColumns(worksheet).ToArray());\n    const int headerOffset = 1;\n    int width = dt.Columns.Count;\n    int depth = GetTableDepth(worksheet, headerOffset);\n    int rowNum = 1;\n    while (rowNum <= depth) {\n        DataRow row = dt.NewRow();\n        int col = 0;\n        while (col < width) {\n            object val = worksheet.Cells[rowNum + headerOffset, col + 1].Value;\n            if (val == null) {\n                row[col] = null;\n            } else {\n                row[col] = val.ToString();\n            }\n            col++;\n        }\n        dt.Rows.Add(row);\n        rowNum++;\n    }\n    return dt;\n}"
+ },
+ {
+  "id": "Re3d1dfab68",
+  "output": "def create_lookup_list(messages, labels) :\n  return [{\"message\": message, \"label\": label} for message, label in zip(messages, labels)]"
+ },
+ {
+  "id": "Rfe9a432a46",
+  "output": "public override void OnException (ExceptionContext filterContext) {\n    var response = filterContext.HttpContext.Response;\n    var routeValues = filterContext.RouteData.Values;\n    var model = new HandleErrorInfo (filterContext.Exception, (string) routeValues [\"controller\"], (string) routeValues [\"action\"]);\n    filterContext.ExceptionHandled = true;\n    response.ClearContent ();\n    response.TrySkipIisCustomErrors = true;\n    var viewData = new ViewDataDictionary < HandleErrorInfo > (model);\n    filterContext.Result = new ViewResult {\n        ViewName = View,\n        MasterName = Master,\n        ViewData = viewData,\n        TempData = filterContext.Controller.TempData\n    };\n    filterContext.Exception = null;\n}"
+ },
+ {
+  "id": "Rb8f6c8b5d0",
+  "output": "int main (void) {\n    char s [1000], alp [1000];\n    int num [1000];\n    int m = 0, n = 0;\n    int i, j;\n    unsigned char ch;\n    scanf (\"%999[^\\n]\", s);\n    i = 0;\n    while ((ch = s[i]) != 0) {\n        if (isalpha (ch)) {\n            alp[n] = s[i];\n            n++;\n        }\n        else if (!isdigit (ch)) {\n            printf (\"include invalid character (%c).\\n\", ch);\n            return -1;\n        }\n        else {\n            num[m] = 0;\n            for (; isdigit (ch = s[i]); i++) {\n                num[m] = num[m] * 10 + s[i] - '0';\n            }\n            m++;\n            i--;\n        }\n        i++;\n    }\n    for (i = 0; i < m; i++) {\n        j = 0;\n        while (j < num[i]) {\n            putchar (alp[i]);\n            j++;\n        }\n    }\n    puts (\"\");\n    return 0;\n}"
+ },
+ {
+  "id": "R8b80f20070",
+  "output": "int main () {\n    double v;\n    if (scanf (\"%lf\", &v) != 1) {\n        printf (\"read failed\\n\");\n        return 0;\n    }\n    printf (\"%lf\\n\", v);\n    return 0;\n}"
+ },
+ {
+  "id": "R4e335703d6",
+  "output": "int main () {\n    char s [SIZE];\n    char *months [] = {\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"};\n    printf (\"enter the month : \");\n    gets (s);\n    int result = get_month (s, months);\n    if (!result) {\n        printf (\"%s invalid\\n\", s);\n        return 0;\n    }\n    printf (\"%s - %d.  is the month of the year.\\n\", s, result);\n    return 0;\n}"
+ },
+ {
+  "id": "R9fdda16e3c",
+  "output": "int main () {\n    int num, x, tmp, sum = 0;\n    scanf (\"%d\", & num);\n    tmp = num;\n    printf (\"Factors are: \");\n    do {\n        x = getFirst (tmp);\n        printf (\"%d \", x);\n        if (x != tmp)\n            tmp /= x;\n    } while (x != tmp);\n    printf (\"\\n\");\n    printf (\"Sum of factors is: \");\n    tmp = num;\n    do {\n        x = getFirst (tmp);\n        printf (\"%d \", x);\n        sum += x;\n        if (x != tmp) {\n            printf (\"+ \");\n            tmp /= x;\n        }\n    } while (x != tmp);\n    printf (\"= %d\\n\", sum);\n}"
+ },
+ {
+  "id": "R8c49ec85d8",
+  "output": "public void filter (String [] words, String text) {\n    for (String word : words) {\n        if (!text.toLowerCase ().contains (word.toLowerCase ())) {\n            continue;\n        }\n        System.out.println (text);\n        return;\n    }\n}"
+ },
+ {
+  "id": "R8d187f48ce",
+  "output": "def traceit(frame, event, arg) :\n    if event != \"line\" :\n        return traceit\n    filename = frame.f_globals [\"__file__\"]\n    if filename == \"<stdin>\" :\n        filename = \"traceit.py\"\n    if filename[-4:] in (\".pyc\", \".pyo\") :\n        filename = filename [: - 1]\n    lineno = frame.f_lineno\n    name = frame.f_globals [\"__name__\"]\n    line = linecache.getline(filename, lineno)\n    print \"%s:%s:%s: %s\" % (name, lineno, frame.f_code.co_name, line.rstrip())\n    return traceit"
+ },
+ {
+  "id": "R00a4c22b00",
+  "output": "def roundrobin(* iterables):\n    \"roundrobin('ABC', 'D', 'EF') --> A D E B F C\"\n    iter_items = []\n    for it in itertools.cycle(list(iterables)):\n        data = next(it)\n        iter_items.append(data)\n        yield data"
+ },
+ {
+  "id": "R2710a37612",
+  "output": "public static final void main (String...aArgs) {\n    log (\"Generating 10 random integers in range 1..10.\");\n    final int START = 1, END = 10;\n    Random randomGenerator = new Random ();\n    int remaining = 10;\n    while (remaining > 0) {\n        showRandomInteger (START, END, randomGenerator);\n        remaining --;\n    }\n    log (\"Done\");\n}"
+ },
+ {
+  "id": "Rf6f525dc34",
+  "output": "static void Main (string [] args) {\n    ProcessStartInfo procStartInfo = new ProcessStartInfo (getLibreOfficePath(), string.Format (CreateParamString (args)));\n    Process process = new Process () {StartInfo = procStartInfo,};\n    SetProcessStartInfoProperties(procStartInfo);\n    ExecuteProcess(process);\n    ValidateProcessExitCode(process);\n}"
+ },
+ {
+  "id": "R6ea07c8787",
+  "output": "public static void Rename (this FileSystemInfo item, string newName) {\n    if (item is FileInfo fileInfo) {\n        fileInfo.Rename (newName);\n    } else if (item is DirectoryInfo directoryInfo) {\n        directoryInfo.Rename (newName);\n    } else if (item == null) {\n        throw new ArgumentNullException (\"item\");\n    } else {\n        throw new ArgumentException (\"Item\", \"Unexpected subclass of FileSystemInfo \" + item.GetType ());\n    }\n}"
+ },
+ {
+  "id": "Rd744148380",
+  "output": "public void onRequestPermissionsResult (int requestCode, String permissions [], int [] grantResults) {\n    super.onRequestPermissionsResult (requestCode, permissions, grantResults);\n    if (grantResults.length > 0) {\n        int first = grantResults [0];\n        if (first == PackageManager.PERMISSION_GRANTED) {\n            return;\n        }\n        if (first == PackageManager.PERMISSION_DENIED) {\n            return;\n        }\n    }\n}"
+ },
+ {
+  "id": "R51669e3825",
+  "output": "def __init__(self) :\n    self.secondsRemaining, self.lastTick = 10.0, 0\n    self.isPaused = self.isRunning = False\n    self.keepGoing = True"
+ },
+ {
+  "id": "Ra853448a33",
+  "output": "int main () {\n    int counter = 0;\n    struct termios orig_attr, new_attr;\n    pthread_t pid;\n    tcgetattr (fileno (stdin), & orig_attr);\n    new_attr = orig_attr;\n    new_attr.c_lflag = new_attr.c_lflag & ~(ICANON | ECHO);\n    tcsetattr (fileno (stdin), TCSANOW, & new_attr);\n    if (pthread_create (&pid, NULL, thread, &counter) != 0) {\n        fprintf (stderr, \"Create thread failed\");\n        exit (1);\n    }\n    for (;;) {\n        getchar ();\n        __sync_add_and_fetch (& counter, 1);\n        printf (\"add: %d\\n\", counter);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R3713a963cf",
+  "output": "def json_scan(json_obj, key) :\n    result = None\n    for element in json_obj :\n        value = json_obj [element]\n        if str(element) == key :\n            result = value\n        elif type(value) == DictType :\n            result = json_scan(value, key)\n        elif type(value) == ListType :\n            result = json_scan(element, key)\n    return result"
+ },
+ {
+  "id": "R4474610115",
+  "output": "int main (void) {\n    int start;\n    if (scanf (\"%d\", &start) != 1)\n        exit (1);\n    int last = start;\n    int value;\n    while (scanf (\"%d\", &value) == 1)\n        last = value;\n    int i = start;\n    while (i <= last) {\n        printf (\"%d\\n\", i);\n        i++;\n    }\n}"
+ },
+ {
+  "id": "Refd906fcb2",
+  "output": "long pow (long a, int b) {\n    if (b == 0) return 1;\n    long rest = pow (a * a, b / 2);\n    return isEven (b) ? rest : a * rest;\n}"
+ },
+ {
+  "id": "Rd40ca7a94c",
+  "output": "public final void contextDestroyed (ServletContextEvent sce) {\n    final ClassLoader cl = Thread.currentThread ().getContextClassLoader ();\n    for (Enumeration < Driver > drivers = DriverManager.getDrivers (); drivers.hasMoreElements ();) {\n        Driver driver = drivers.nextElement ();\n        if (driver.getClass ().getClassLoader () != cl) {\n            log.trace (\"Not deregistering JDBC driver {} as it does not belong to this webapp's ClassLoader\", driver);\n            continue;\n        }\n        try {\n            log.info (\"Deregistering JDBC driver {}\", driver);\n            DriverManager.deregisterDriver (driver);\n        } catch (SQLException ex) {\n            log.error (\"Error deregistering JDBC driver {}\", driver, ex);\n        }\n    }\n}"
+ },
+ {
+  "id": "Rfaf0b51ec8",
+  "output": "def combinations(iterable, r) :\n    pool = tuple(iterable)\n    n = len(pool)\n    if r > n :\n        return\n    indices = list(range(r))\n    while True :\n        i = r - 1\n        while i >= 0 and indices [i] == i + n - r :\n            i -= 1\n        if i < 0 :\n            return\n        indices [i] += 1\n        for j in range(i + 1, r) :\n            indices [j] = indices [j - 1] + 1\n        chosen = tuple(pool [k] for k in indices)\n        if not (1 in chosen and 3 in chosen) :\n            yield chosen"
+ },
+ {
+  "id": "R3c52337f3a",
+  "output": "internal static string GetIPAddress (HttpRequestBase request) {\n    string forwarded = request.Headers [\"Forwarded\"];\n    if (!String.IsNullOrEmpty (forwarded)) {\n        string [] segments = forwarded.Split (',') [0].Split (';');\n        for (int s = 0; s < segments.Length; s++) {\n            string [] pair = segments [s].Trim ().Split ('=');\n            if (pair.Length != 2 || !pair [0].Equals (\"for\", StringComparison.OrdinalIgnoreCase)) {\n                continue;\n            }\n            string ip = pair [1].Trim ('\"');\n            if (ip.Length > 0 && ip [0] == '[') {\n                return ip.Substring (1, ip.IndexOf (']') - 1);\n            }\n            int colon = ip.IndexOf (':');\n            return colon == - 1 ? ip : ip.Substring (0, colon);\n        }\n    }\n    string xForwardedFor = request.Headers [\"X-Forwarded-For\"];\n    if (String.IsNullOrEmpty (xForwardedFor)) {\n        return request.UserHostAddress;\n    }\n    return xForwardedFor.Split (',') [0];\n}"
+ }
+]

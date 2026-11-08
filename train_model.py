@@ -1,3 +1,4 @@
+# SUPERSEDED: pair-level pipeline of the first submission. The manuscript's numbers come from repo/analysis (problem-grouped protocol).
 # gating_model.py
 import torch
 import torch.nn as nn

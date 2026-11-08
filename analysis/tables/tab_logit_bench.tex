@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Log-odds fusion against the mean-fusion gate of the original proposal, the equal-capacity direct classifier and gradient-boosted trees (test partition, validation-tuned thresholds, the same eight-seed runs as Tables~\ref{tab:ablation} and~\ref{tab:baselines-fixed}; trees: HistGradientBoosting on the same six inputs). Mean fusion averages the three expert scores with the gate's softmax weights; log-odds fusion averages their logits with the same weights and maps the result through a learned scale and bias (Section~\ref{subsec:phase4}). $\Delta F_1$: log-odds gate minus direct classifier in points, with the paired cluster bootstrap over problem groups and Holm adjustment of Table~\ref{tab:ablation} (\textsuperscript{*}: $p_{\text{Holm}}<0.05$); R@1\%: recall at 1\% false-positive rate read from the ROC curve of the ensemble-mean test score, the convention of Table~\ref{tab:baselines-fixed}. The last two columns report a classifier that sees only the lengths and complexities of the two programs (AUROC) and the log-odds gate's $F_1$ on a length-matched subset (positives and negatives balanced within deciles of the length ratio).}
+\label{tab:logit-bench}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l|cccc|c|cccc|cc}
+\toprule
+ & \multicolumn{4}{c|}{$F_1$ (\%)} & $\Delta F_1$ & \multicolumn{4}{c|}{R@1\% FPR} & Length-only & Matched \\
+\textbf{Regime} & Mean & Log-odds & Direct & Trees & log-odds$-$direct & Mean & Log-odds & Direct & Trees & AUROC & $F_1$ \\
+\midrule
+A (random negatives) & 90.7\,{\scriptsize$\pm$0.5} & 90.8\,{\scriptsize$\pm$0.3} & 91.2\,{\scriptsize$\pm$0.5} & 91.8\,{\scriptsize$\pm$0.7} & -0.4 & 83.5 & 85.2 & 84.9 & 85.8 & 0.75 & 88.9 \\
+B (hard, expert-mined) & 89.7\,{\scriptsize$\pm$0.7} & 90.3\,{\scriptsize$\pm$0.7} & 90.4\,{\scriptsize$\pm$0.5} & 92.1\,{\scriptsize$\pm$0.2} & -0.1 & 23.5 & 22.4 & 27.1 & 52.6 & 0.49 & 90.5 \\
+C (hard, identifier-mined) & 80.7\,{\scriptsize$\pm$0.4} & 80.7\,{\scriptsize$\pm$0.5} & 81.3\,{\scriptsize$\pm$0.2} & 81.6\,{\scriptsize$\pm$0.7} & -0.6$^{*}$ & 18.5 & 21.7 & 23.3 & 25.3 & 0.74 & 78.3 \\
+\bottomrule
+\end{tabular}
+\end{table*}

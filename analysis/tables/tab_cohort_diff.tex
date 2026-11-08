@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\caption{Paired differences in mean cohort AUROC with 95\% cluster-bootstrap intervals (clusters: source submissions; 2,000 resamples) and two-sided bootstrap $p$ (smallest attainable 0.0005). ``Filtered'' rows remove assignment boilerplate; ``token'' is the unfiltered token expert unless marked.}
+\label{tab:cohort-diff}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l|cc|cc}
+\toprule
+ & \multicolumn{2}{c|}{PROGpedia} & \multicolumn{2}{c}{IR-Plag} \\
+\textbf{Comparison} & $\Delta$ [95\% CI] & $p$ & $\Delta$ [95\% CI] & $p$ \\
+\midrule
+Dolos default $-$ JPlag & +0.113 [+0.071, +0.173] & $<$0.001 & +0.059 [-0.051, +0.156] & 0.2760 \\
+Gate (CodeBERT) $-$ Dolos default & -0.417 [-0.562, -0.274] & $<$0.001 & -0.405 [-0.494, -0.325] & $<$0.001 \\
+Token filtered $-$ Dolos $-$M 0.5 & +0.004 [-0.016, +0.024] & 0.6440 & +0.027 [-0.067, +0.127] & 0.5820 \\
+Gate (CodeBERT) filtered $-$ Dolos $-$M 0.5 & -0.381 [-0.533, -0.235] & $<$0.001 & -0.417 [-0.555, -0.271] & $<$0.001 \\
+Gate (UniXcoder) filtered $-$ Dolos $-$M 0.5 & -0.002 [-0.018, +0.018] & 0.8940 & -0.087 [-0.223, +0.058] & 0.2240 \\
+Gate (CodeBERT) $-$ JPlag & -0.303 [-0.449, -0.148] & $<$0.001 & -0.347 [-0.418, -0.287] & $<$0.001 \\
+Gate (CodeBERT) $-$ token & -0.434 [-0.572, -0.286] & $<$0.001 & -0.304 [-0.393, -0.225] & $<$0.001 \\
+Token filtered $-$ JPlag & +0.162 [+0.108, +0.242] & $<$0.001 & +0.294 [+0.219, +0.370] & $<$0.001 \\
+Gate (CodeBERT) filtered $-$ JPlag & -0.223 [-0.387, -0.047] & 0.0080 & -0.149 [-0.249, -0.021] & 0.0280 \\
+Gate (CodeBERT) filtered $-$ token filtered & -0.385 [-0.528, -0.245] & $<$0.001 & -0.444 [-0.550, -0.331] & $<$0.001 \\
+Gate (UniXcoder) filtered $-$ token filtered & -0.006 [-0.023, +0.009] & 0.4640 & -0.114 [-0.186, -0.060] & $<$0.001 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,82 @@
+{
+ "gate|plain": {
+  "PROGpedia": 0.513510531850251,
+  "IR-Plag": 0.15445614865664575
+ },
+ "gate|filt": {
+  "PROGpedia": 0.5935886156320385,
+  "IR-Plag": 0.3517576044502308
+ },
+ "gate|tok_only": {
+  "PROGpedia": 0.5870659879514711,
+  "IR-Plag": 0.7041543377914546
+ },
+ "gate|emb_only": {
+  "PROGpedia": 0.5144087500409339,
+  "IR-Plag": 0.424499940821399
+ },
+ "gate|pooled": {
+  "PROGpedia": 0.6514808629240303,
+  "IR-Plag": 0.3638300390578767
+ },
+ "direct|plain": {
+  "PROGpedia": 0.9497121524707731,
+  "IR-Plag": 0.45889454373298616
+ },
+ "direct|filt": {
+  "PROGpedia": 0.9761137854624444,
+  "IR-Plag": 0.7946384187477809
+ },
+ "direct|tok_only": {
+  "PROGpedia": 0.9764807234453894,
+  "IR-Plag": 0.7953722334004023
+ },
+ "direct|emb_only": {
+  "PROGpedia": 0.9498177681234301,
+  "IR-Plag": 0.46573559001065223
+ },
+ "direct|pooled": {
+  "PROGpedia": 0.9692188104533784,
+  "IR-Plag": 0.7939046040951591
+ },
+ "token|plain": {
+  "PROGpedia": 0.947695655179691,
+  "IR-Plag": 0.4579713575571074
+ },
+ "sem|plain": {
+  "PROGpedia": 0.6616347139293074,
+  "IR-Plag": 0.14288081429754998
+ },
+ "token|tok_only": {
+  "PROGpedia": 0.978814977337753,
+  "IR-Plag": 0.7953959048408097
+ },
+ "sem|tok_only": {
+  "PROGpedia": 0.6616347139293074,
+  "IR-Plag": 0.14288081429754998
+ },
+ "token|emb_only": {
+  "PROGpedia": 0.947695655179691,
+  "IR-Plag": 0.4579713575571074
+ },
+ "sem|emb_only": {
+  "PROGpedia": 0.6416303718985711,
+  "IR-Plag": 0.4249260267487277
+ },
+ "token|pooled": {
+  "PROGpedia": 0.978814977337753,
+  "IR-Plag": 0.7953959048408097
+ },
+ "sem|pooled": {
+  "PROGpedia": 0.7399891449231594,
+  "IR-Plag": 0.43902236951118473
+ },
+ "token|filt": {
+  "PROGpedia": 0.978814977337753,
+  "IR-Plag": 0.7953959048408097
+ },
+ "sem|filt": {
+  "PROGpedia": 0.6416303718985711,
+  "IR-Plag": 0.4249260267487277
+ }
+}

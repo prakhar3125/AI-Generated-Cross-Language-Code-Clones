@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Regime C: hard negatives mined only by the TF-IDF cosine of identifier vocabularies (no expert score used in the mining), same test partition, validation-tuned thresholds, mean over eight seeds. A reading audit of 50 random regime-C test negatives rated 8 as the same task and 5 as unsure, so the specificity here is a lower bound.}
+\label{tab:regime-c}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{System} & Acc. & Prec. & Rec. & Spec. & $F_1$ \\
+\midrule
+Gating network & 80.1 & 74.0 & 88.8 & 72.4 & 80.7\,{\scriptsize$\pm$0.5} \\
+Direct classifier & 80.8 & 75.0 & 88.9 & 73.8 & 81.3\,{\scriptsize$\pm$0.2} \\
+Logistic regression & 80.9 & 75.7 & 87.3 & 75.2 & 81.1 \\
+Static averaging & 73.8 & 69.0 & 80.0 & 68.2 & 74.1 \\
+CodeBERT only & 63.5 & 57.5 & 85.1 & 44.4 & 68.6 \\
+AST only & 60.0 & 54.5 & 88.6 & 34.7 & 67.5 \\
+Token only & 79.0 & 74.1 & 85.1 & 73.7 & 79.2 \\
+JPlag & 65.2 & 86.3 & 30.8 & 95.7 & 45.4 \\
+JPlag + norm. & 65.1 & 86.4 & 30.4 & 95.8 & 44.9 \\
+Dolos & 61.1 & 58.0 & 62.3 & 60.1 & 60.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

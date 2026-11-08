@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Problem-grouped evaluation protocol. A \emph{group} is a connected component of snippets linked by any GPTCloneBench pair; each group lies in exactly one split. Regimes B (nearest-neighbor mining with the expert scores) and C (mining by identifier overlap) replace the independent negatives (regime A) by an equal number of mined independent pairs.}
+\label{tab:protocol}
+\footnotesize
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Pair type} & \textbf{Train} & \textbf{Val.} & \textbf{Test} \\
+\midrule
+Exact & -- & -- & 23 \\
+Renamed & -- & -- & 102 \\
+Refactored (MT3 + T4) & -- & -- & 1{,}599 \\
+Same-language (train/val) & 2{,}586 & 557 & -- \\
+Cross-language & 1{,}392 & 300 & 928 \\
+Independent negatives & 3{,}978 & 857 & 3{,}000 \\
+Hard negatives (regime B) & 3{,}978 & 857 & 3{,}000 \\
+Identifier-mined negatives (regime C) & 3{,}978 & 857 & 3{,}000 \\
+\midrule
+Problem groups & 814 & 179 & 1{,}586 \\
+Cross-language problems & 232 & 50 & 602 \\
+\bottomrule
+\end{tabular}
+\end{table}

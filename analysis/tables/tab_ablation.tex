@@ -1,0 +1,36 @@
+\begin{table*}[t]
+\centering
+\caption{Component ablation on the problem-grouped test partition, for both negative regimes. $\Delta F_1$ is the change (points) relative to the full trained gate, averaged over eight seeds, with a 95\% cluster-bootstrap interval (resampling base-problem groups, 20{,}000 resamples). $p$ is the two-sided bootstrap $p$ value of the seed-averaged $\Delta F_1$, Holm-adjusted across the comparisons of that regime (floor $1.5\times10^{-3}$).}
+\label{tab:ablation}
+\footnotesize
+\begin{tabular}{ll|ccc|ccc}
+\toprule
+ & & \multicolumn{3}{c|}{Regime A} & \multicolumn{3}{c}{Regime B} \\
+\textbf{Group} & \textbf{Configuration} & $\Delta F_1$ & 95\% CI & $p_{\mathrm{Holm}}$ & $\Delta F_1$ & 95\% CI & $p_{\mathrm{Holm}}$ \\
+\midrule
+--- & Full trained gate ($F_1$) & \multicolumn{3}{c|}{$90.8\pm0.3$} & \multicolumn{3}{c}{$90.3\pm0.7$} \\
+\midrule
+Single expert & Semantic (CodeBERT) alone & -17.4 & [-18.7, -16.2] & $<0.002$ & -26.5 & [-27.8, -25.3] & $<0.002$ \\
+ & Structural (AST) alone & -20.1 & [-21.3, -19.0] & $<0.002$ & -26.4 & [-27.8, -25.2] & $<0.002$ \\
+ & Syntactic (Token) alone & +0.7 & [-0.1, +1.4] & 0.31 & -6.4 & [-7.5, -5.3] & $<0.002$ \\
+\midrule
+Leave-one-out & without semantic expert & -0.1 & [-0.7, +0.5] & 0.76 & -0.3 & [-0.7, +0.1] & 0.46 \\
+ & without structural expert & -0.2 & [-0.6, +0.2] & 0.76 & -0.8 & [-1.2, -0.5] & $<0.002$ \\
+ & without syntactic expert & -24.9 & [-25.9, -23.8] & $<0.002$ & -25.7 & [-27.0, -24.5] & $<0.002$ \\
+\midrule
+Fusion rule & Equal weights (static averaging) & -11.7 & [-12.7, -10.7] & $<0.002$ & -26.7 & [-28.0, -25.4] & $<0.002$ \\
+ & Random weights per pair & -24.2 & [-25.2, -23.2] & $<0.002$ & -26.3 & [-27.5, -25.0] & $<0.002$ \\
+\midrule
+Input features & without X5, X6 (retrained) & -0.2 & [-0.3, 0.0] & 0.04 & -0.3 & [-0.6, -0.1] & 0.004 \\
+\midrule
+Decision rule & Fixed threshold 0.50 & +1.3 & [+0.8, +1.7] & $<0.002$ & +0.1 & [-0.1, +0.2] & 0.55 \\
+ & Adaptive threshold (Eq.~\ref{eq:eq12}) & +0.9 & [+0.5, +1.2] & $<0.002$ & +0.6 & [+0.5, +0.8] & $<0.002$ \\
+\midrule
+Capacity control & Direct classifier (no routing) & +0.4 & [+0.1, +0.8] & 0.08 & +0.1 & [-0.2, +0.4] & 0.59 \\
+ & Logistic regression & -0.7 & [-1.4, -0.1] & 0.08 & -3.3 & [-4.2, -2.5] & $<0.002$ \\
+\midrule
+External baseline & JPlag & -44.0 & [-46.8, -41.1] & $<0.002$ & -44.8 & [-47.5, -42.1] & $<0.002$ \\
+ & JPlag + token normalization & -44.5 & [-47.3, -41.6] & $<0.002$ & -45.3 & [-48.0, -42.5] & $<0.002$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

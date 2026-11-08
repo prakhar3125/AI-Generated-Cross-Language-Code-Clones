@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\caption{Effect of the semantic encoder on the three negative regimes (test partition, validation-tuned thresholds; eight seeds for trained systems). ``UniXcoder expert'' replaces the CodeBERT cosine of the first expert by the cosine of mean-pooled UniXcoder embeddings (first 512 tokens), everything else unchanged. Siamese heads are MLPs over $[|e_1-e_2|, e_1\odot e_2]$ of frozen embeddings. The CodeBERT gating network uses log-odds fusion; the UniXcoder gating network was not rerun and uses mean fusion.}
+\label{tab:ux}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l|ccc|ccc|ccc}
+\toprule
+ & \multicolumn{3}{c|}{Regime A (random)} & \multicolumn{3}{c|}{Regime B (mined, expert scores)} & \multicolumn{3}{c}{Regime C (mined, identifiers)} \\
+\textbf{System} & $F_1$ & Rec. & Spec. & $F_1$ & Rec. & Spec. & $F_1$ & Rec. & Spec. \\
+\midrule
+UniXcoder cosine, zero-shot & 96.9 & 97.5 & 96.7 & 90.8 & 97.5 & 84.8 & 87.2 & 93.9 & 81.0 \\
+UniXcoder siamese head (frozen) & 98.9 & 99.0 & 99.0 & 95.1 & 97.5 & 93.4 & 88.8 & 94.9 & 83.4 \\
+Gating network, UniXcoder expert & 96.9\,{\scriptsize$\pm$0.1} & 97.8 & 96.5 & 94.2\,{\scriptsize$\pm$0.4} & 97.6 & 91.4 & 86.5\,{\scriptsize$\pm$0.4} & 95.8 & 77.2 \\
+Direct classifier, UniXcoder expert & 97.0\,{\scriptsize$\pm$0.1} & 98.7 & 95.8 & 94.8\,{\scriptsize$\pm$0.1} & 97.6 & 92.6 & 86.4\,{\scriptsize$\pm$0.5} & 95.8 & 77.0 \\
+Static averaging, UniXcoder expert & 94.9 & 94.4 & 95.9 & 84.0 & 90.5 & 77.9 & 84.3 & 92.3 & 76.3 \\
+\midrule
+Gating network, CodeBERT expert & 90.8\,{\scriptsize$\pm$0.3} & 93.4 & 89.0 & 90.3\,{\scriptsize$\pm$0.7} & 91.1 & 90.6 & 80.7\,{\scriptsize$\pm$0.5} & 88.8 & 72.4 \\
+CodeBERT siamese head (frozen) & 89.9 & 91.3 & 89.6 & 87.3 & 93.6 & 81.5 & 79.7 & 88.4 & 70.5 \\
+Token $k$-gram only & 91.4 & 89.1 & 94.9 & 83.9 & 89.1 & 79.5 & 79.2 & 85.1 & 73.7 \\
+JPlag 6.3.0 & 46.8 & 30.8 & 99.4 & 45.5 & 30.8 & 96.1 & 45.4 & 30.8 & 95.7 \\
+Dolos 2.10.0 & 72.1 & 59.5 & 95.1 & 65.8 & 60.7 & 78.8 & 60.0 & 62.3 & 60.1 \\
+\bottomrule
+\end{tabular}
+\end{table*}

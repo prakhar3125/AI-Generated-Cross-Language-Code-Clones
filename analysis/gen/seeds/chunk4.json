@@ -1,0 +1,352 @@
+[
+ {
+  "id": "T297",
+  "task": "translate",
+  "row": 297,
+  "source_lang": "java",
+  "code": "public ListNode switchPairs () {\n    if (this == null || this.next == null) return this;\n    ListNode top = this.next;\n    ListNode first = this;\n    ListNode second = first.next;\n    do {\n        ListNode third = second.next;\n        second.next = first;\n        first.next = third;\n        first = third;\n        System.out.println (\"@@@ \" + this.toString ());\n        if (first != null) {\n            second.next.next = first.next;\n            second = first.next;\n        }\n    } while (first != null && second != null);\n    return top;\n}"
+ },
+ {
+  "id": "T252",
+  "task": "translate",
+  "row": 252,
+  "source_lang": "java",
+  "code": "public void actionPerformed (ActionEvent e) {\n    try {\n        InputStream is = new BufferedInputStream (new FileInputStream (file));\n        XMLDecoder xd = new XMLDecoder (is);\n        model = (DefaultTableModel) xd.readObject ();\n        table.setModel (model);\n    } catch (IOException ex) {\n        ex.printStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "T10",
+  "task": "translate",
+  "row": 10,
+  "source_lang": "java",
+  "code": "Node reverse (Node n, Node p) {\n    if (n == null) return null;\n    if (n.next == null) {\n        n.next = p;\n        return n;\n    }\n    Node r = reverse (n.next, n);\n    n.next = p;\n    return r;\n}"
+ },
+ {
+  "id": "T146",
+  "task": "translate",
+  "row": 146,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    HashSet < Integer > hset = new HashSet < Integer > ();\n    for (int i = 0;\n    i < A.length; i ++) {\n        if (A [i] <= X) hset.add (A [i]);\n        if (hset.size () == X) return i;\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T110",
+  "task": "translate",
+  "row": 110,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    long throwCatchTime = 0, newExceptionTime = 0, newObjectTime = 0, noStackExceptionTime = 0;\n    for (int i = 0;\n    i < 30; i ++) {\n        throwCatchTime += throwCatchLoop ();\n        newExceptionTime += newExceptionLoop ();\n        newObjectTime += newObjectLoop ();\n        noStackExceptionTime += newNoStackExceptionLoop ();\n    }\n    System.out.println (\"throwCatchTime = \" + throwCatchTime / 30);\n    System.out.println (\"newExceptionTime = \" + newExceptionTime / 30);\n    System.out.println (\"newStringTime = \" + newObjectTime / 30);\n    System.out.println (\"noStackExceptionTime = \" + noStackExceptionTime / 30);\n}"
+ },
+ {
+  "id": "T34",
+  "task": "translate",
+  "row": 34,
+  "source_lang": "java",
+  "code": "protected void onActivityResult (int requestCode, int resultCode, Intent data) {\n    super.onActivityResult (requestCode, resultCode, data);\n    if (requestCode == IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {\n        DBHelper dbHelper = new DBHelper (this);\n        SQLiteDatabase sql = dbHelper.getWritableDatabase ();\n        sql.execSQL (\"insert statement for inserting path to database\");\n        sql.close ();\n        dbHelper.close ();\n    }\n}"
+ },
+ {
+  "id": "T314",
+  "task": "translate",
+  "row": 314,
+  "source_lang": "java",
+  "code": "public String getName (String value) {\n    StringBuilder buffer = new StringBuilder ();\n    String high, low;\n    if (value.length () < getPartDivider ()) {\n        high = \"\";\n        low = value;\n    } else {\n        int index = value.length () - getPartDivider ();\n        high = value.substring (0, index);\n        low = value.substring (index);\n    }\n    String highName = getHighProcessor ().getName (high);\n    String lowName = getLowProcessor ().getName (low);\n    if (! highName.isEmpty ()) {\n        buffer.append (highName);\n        buffer.append (SEPARATOR);\n        buffer.append (getToken ());\n        if (! lowName.isEmpty ()) {\n            buffer.append (SEPARATOR);\n        }\n    }\n    if (! lowName.isEmpty ()) {\n        buffer.append (lowName);\n    }\n    return buffer.toString ();\n}"
+ },
+ {
+  "id": "T22",
+  "task": "translate",
+  "row": 22,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    for (int i = 0;\n    i < 9; i ++) {\n        for (int j = 0;\n        j < 9; j ++) {\n            for (int k = 0;\n            k < 9; k ++) {\n                if (condition1) {\n                    System.out.println (\"Breaking from Loop K and J\");\n                    k = 9;\n                    j = 9;\n                }\n                if (condition2) {\n                    System.out.println (\"Breaking from Loop K, J and I\");\n                    k = 9;\n                    j = 9;\n                    i = 9;\n                }\n            }\n        }\n    }\n    System.out.println (\"End of I , J , K\");\n}"
+ },
+ {
+  "id": "T543",
+  "task": "translate",
+  "row": 543,
+  "source_lang": "java",
+  "code": "public void actionPerformed (ActionEvent e) {\n    long duration = System.currentTimeMillis () - startTime;\n    float progress = (float) duration / (float) RUN_TIME;\n    linePoint = new Point ();\n    linePoint.x = getWidth () / 2;\n    if (progress < 0.5f) {\n        linePoint.y = Math.round (getHeight () * (progress * 2));\n    } else {\n        if (progress > 1f) {\n            progress = 1f;\n            ((Timer) e.getSource ()).stop ();\n            linePoint = null;\n            ballPoint = null;\n        } else {\n            linePoint.y = Math.round (getHeight () * (progress * 2));\n            linePoint.y = getHeight () - (linePoint.y - getHeight ());\n            ballPoint.y = linePoint.y;\n        }\n    }\n    repaint ();\n}"
+ },
+ {
+  "id": "T653",
+  "task": "translate",
+  "row": 653,
+  "source_lang": "java",
+  "code": "public void actionPerformed (ActionEvent e) {\n    ImageIcon widthIcon = new ImageIcon (\"LR-arrows.png\");\n    String scaleWidth = (String) JOptionPane.showInputDialog (null, \"What should the new width be?\", \"\", JOptionPane.QUESTION_MESSAGE, widthIcon, null, null);\n    ImageIcon heightIcon = new ImageIcon (\"UD-arrows.png\");\n    String scaleHeight = (String) JOptionPane.showInputDialog (null, \"What should the new height be?\", \"\", JOptionPane.QUESTION_MESSAGE, widthIcon, null, null);\n    double x = Double.parseDouble (scaleWidth);\n    double y = Double.parseDouble (scaleHeight);\n    int newWidth = (int) x;\n    int newHeight = (int) y;\n    frame.setSize (newWidth, newHeight);\n    scale (newWidth, newHeight);\n}"
+ },
+ {
+  "id": "T229",
+  "task": "translate",
+  "row": 229,
+  "source_lang": "java",
+  "code": "public void run () {\n    try {\n        synchronized (lock) {\n            for (int i = 0;\n            i < 5; i ++) {\n                while (id != token % N) lock.wait ();\n                System.out.println (id + \" \" + i);\n                token ++;\n                lock.notifyAll ();\n            }\n        }\n    } catch (InterruptedException e) {\n        e.printStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "T147",
+  "task": "translate",
+  "row": 147,
+  "source_lang": "java",
+  "code": "public int solution (final int X, final int [] A) {\n    Set < Integer > emptyPosition = new HashSet < Integer > ();\n    for (int i = 1;\n    i <= X; i ++) {\n        emptyPosition.add (i);\n    }\n    for (int i = 0;\n    i < A.length; i ++) {\n        emptyPosition.remove (A [i]);\n        if (emptyPosition.size () == 0) {\n            return i;\n        }\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T124",
+  "task": "translate",
+  "row": 124,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    int len = A.length;\n    if (X > len) {\n        return - 1;\n    }\n    int [] isFilled = new int [X];\n    int jumped = 0;\n    Arrays.fill (isFilled, 0);\n    for (int i = 0;\n    i < len; i ++) {\n        int x = A [i];\n        if (x <= X) {\n            if (isFilled [x - 1] == 0) {\n                isFilled [x - 1] = 1;\n                jumped += 1;\n                if (jumped == X) {\n                    return i;\n                }\n            }\n        }\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T614",
+  "task": "translate",
+  "row": 614,
+  "source_lang": "java",
+  "code": "public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {\n    String lsStart = \"\";\n    String lsInsert = \"\";\n    String lsEnd = \"\";\n    String lsText = \"\";\n    Log.d (\"debug\", moPattern.toString ());\n    Log.d (\"debug\", \"source: \" + source + \", start: \" + start + \", end:\" + end + \", dest: \" + dest + \", dstart: \" + dstart + \", dend: \" + dend);\n    lsText = dest.toString ();\n    if (lsText.length () > 0) {\n        lsStart = lsText.substring (0, dstart);\n        Log.d (\"debug\", \"lsStart : \" + lsStart);\n        if (source != \"\") {\n            lsInsert = source.toString ();\n            Log.d (\"debug\", \"lsInsert: \" + lsInsert);\n        }\n        lsEnd = lsText.substring (dend);\n        Log.d (\"debug\", \"lsEnd   : \" + lsEnd);\n        lsText = lsStart + lsInsert + lsEnd;\n        Log.d (\"debug\", \"lsText  : \" + lsText);\n    }\n    Matcher loMatcher = moPattern.matcher (lsText);\n    Log.d (\"debug\", \"loMatcher.matches(): \" + loMatcher.matches () + \", lsText: \" + lsText);\n    if (! loMatcher.matches ()) {\n        return \"\";\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T592",
+  "task": "translate",
+  "row": 592,
+  "source_lang": "java",
+  "code": "private int [] randNums (int total, int n) {\n    final int [] results = new int [n];\n    if (total == 0) {\n        Arrays.fill (results, 0);\n        return results;\n    }\n    final BigInteger [] rs = new BigInteger [n];\n    final BigInteger totalPlus1 = BigInteger.valueOf (total + 1L);\n    while (true) {\n        for (int i = 0;\n        i < n; ++ i) {\n            rs [i] = new BigInteger (256, rand);\n        }\n        BigInteger sum = BigInteger.ZERO;\n        for (BigInteger r : rs) {\n            sum = sum.add (r);\n        }\n        if (sum.compareTo (BigInteger.ZERO) == 0) {\n            continue;\n        }\n        for (int i = 0;\n        i < n; ++ i) {\n            results [i] = sum.mod (rs [i]).mod (totalPlus1).intValue ();\n        }\n        return results;\n    }\n}"
+ },
+ {
+  "id": "T633",
+  "task": "translate",
+  "row": 633,
+  "source_lang": "java",
+  "code": "public void unzip () {\n    try {\n        FileInputStream fin = new FileInputStream (_zipFile);\n        ZipInputStream zin = new ZipInputStream (fin);\n        ZipEntry ze = null;\n        while ((ze = zin.getNextEntry ()) != null) {\n            Log.v (\"Decompress\", \"Unzipping \" + ze.getName ());\n            if (ze.isDirectory ()) {\n                _dirChecker (ze.getName ());\n            } else {\n                FileOutputStream fout = new FileOutputStream (_location + ze.getName ());\n                BufferedOutputStream bufout = new BufferedOutputStream (fout);\n                byte [] buffer = new byte [1024];\n                int read = 0;\n                while ((read = zin.read (buffer)) != - 1) {\n                    bufout.write (buffer, 0, read);\n                }\n                bufout.close ();\n                zin.closeEntry ();\n                fout.close ();\n            }\n        }\n        zin.close ();\n        Log.d (\"Unzip\", \"Unzipping complete. path :  \" + _location);\n    } catch (Exception e) {\n        Log.e (\"Decompress\", \"unzip\", e);\n        Log.d (\"Unzip\", \"Unzipping failed\");\n    }\n}"
+ },
+ {
+  "id": "T837",
+  "task": "translate",
+  "row": 837,
+  "source_lang": "java",
+  "code": "public void run () {\n    synchronized (list) {\n        for (int i = 0;\n        i < 10; i ++) {\n            while (list.isEmpty ()) {\n                System.out.println (\"Consumer is waiting\");\n                try {\n                    list.wait ();\n                } catch (InterruptedException ex) {\n                    ex.printStackTrace ();\n                }\n            }\n            int k = list.remove (0);\n            System.out.println (\"consume=\" + k);\n            list.notifyAll ();\n            try {\n                Thread.sleep (500);\n            } catch (InterruptedException ex) {\n                ex.printStackTrace ();\n            }\n        }\n    }\n}"
+ },
+ {
+  "id": "T692",
+  "task": "translate",
+  "row": 692,
+  "source_lang": "java",
+  "code": "int findCombinationsCount (int amount, int coins [], int checkFromIndex) {\n    if (amount == 0) return 1;\n    else if (amount < 0 || coins.length == checkFromIndex) return 0;\n    else {\n        int withFirstCoin = findCombinationsCount (amount - coins [checkFromIndex], coins, checkFromIndex);\n        int withoutFirstCoin = findCombinationsCount (amount, coins, checkFromIndex + 1);\n        return withFirstCoin + withoutFirstCoin;\n    }\n}"
+ },
+ {
+  "id": "T512",
+  "task": "translate",
+  "row": 512,
+  "source_lang": "java",
+  "code": "static int findMIN (int [] A, int c) {\n    int x = A [c];\n    int position = c;\n    while (c < A.length) {\n        if (x > A [c]) {\n            x = A [c];\n            position = c;\n        }\n        c ++;\n    }\n    return position;\n}"
+ },
+ {
+  "id": "T14",
+  "task": "translate",
+  "row": 14,
+  "source_lang": "java",
+  "code": "public Node reverse (Node previous, Node current) {\n    if (previous == null) return null;\n    if (previous.equals (head)) previous.setNext (null);\n    if (current == null) {\n        head = previous;\n        return head;\n    } else {\n        Node temp = current.getNext ();\n        current.setNext (previous);\n        reverse (current, temp);\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T249",
+  "task": "translate",
+  "row": 249,
+  "source_lang": "java",
+  "code": "public static void main (String...a) {\n    System.out.print (\"Enter the String\");\n    Scanner sc = new Scanner (System.in);\n    String st = sc.nextLine ();\n    int [] ar = new int [256];\n    for (int i = 0;\n    i < st.length (); i ++) {\n        ar [st.charAt (i)] = ar [st.charAt (i)] + 1;\n    }\n    for (int i = 0;\n    i < 256; i ++) {\n        char ch = (char) i;\n        if (ar [i] > 0) {\n            if (ar [i] == 1) {\n                System.out.print (ch);\n            } else {\n                System.out.print (ch + \"\" + ar [i]);\n            }\n        }\n    }\n}"
+ },
+ {
+  "id": "T372",
+  "task": "translate",
+  "row": 372,
+  "source_lang": "java",
+  "code": "private String capitalize (String s) {\n    if (s == null || s.length () == 0) {\n        return \"\";\n    }\n    char first = s.charAt (0);\n    if (Character.isUpperCase (first)) {\n        return s;\n    } else {\n        return Character.toUpperCase (first) + s.substring (1);\n    }\n}"
+ },
+ {
+  "id": "T60",
+  "task": "translate",
+  "row": 60,
+  "source_lang": "java",
+  "code": "public static boolean isPermutation (String str1, String str2) {\n    char [] x = str1.toCharArray ();\n    char [] y = str2.toCharArray ();\n    Arrays.sort (x);\n    Arrays.sort (y);\n    if (Arrays.equals (x, y)) return true;\n    return false;\n}"
+ },
+ {
+  "id": "T172",
+  "task": "translate",
+  "row": 172,
+  "source_lang": "java",
+  "code": "public void isAvailable () {\n    URL url = new URL (\"URL HERE\");\n    HttpURLConnection connection = (HttpURLConnection) url.openConnection ();\n    connection.setRequestProperty (\"Connection\", \"close\");\n    connection.setConnectTimeout (10000);\n    connection.connect ();\n    if (connection.getResponseCode () == 200) {\n        return true;\n    } else return false;\n}"
+ },
+ {
+  "id": "T713",
+  "task": "translate",
+  "row": 713,
+  "source_lang": "java",
+  "code": "public static void setCursorColor (EditText view,@ColorInt\nint color) {\n    try {\n        Field field = TextView.class.getDeclaredField (\"mCursorDrawableRes\");\n        field.setAccessible (true);\n        int drawableResId = field.getInt (view);\n        field = TextView.class.getDeclaredField (\"mEditor\");\n        field.setAccessible (true);\n        Object editor = field.get (view);\n        Drawable drawable = ContextCompat.getDrawable (view.getContext (), drawableResId);\n        drawable.setColorFilter (color, PorterDuff.Mode.SRC_IN);\n        Drawable [] drawables = {drawable, drawable};\n        field = editor.getClass ().getDeclaredField (\"mCursorDrawable\");\n        field.setAccessible (true);\n        field.set (editor, drawables);\n    } catch (Exception ignored) {\n    }\n}"
+ },
+ {
+  "id": "Rbf38b9a69d",
+  "task": "refactor",
+  "key": "java:bf38b9a69d66547e",
+  "lang": "java",
+  "code": "private void transform (XSSFWorkbook workbookOld, HSSFWorkbook workbookNew, Integer hash, XSSFCellStyle styleOld, HSSFCellStyle styleNew) {\n    styleNew.setAlignment (styleOld.getAlignment ());\n    styleNew.setBorderBottom (styleOld.getBorderBottom ());\n    styleNew.setBorderLeft (styleOld.getBorderLeft ());\n    styleNew.setBorderRight (styleOld.getBorderRight ());\n    styleNew.setBorderTop (styleOld.getBorderTop ());\n    styleNew.setDataFormat (this.transform (workbookOld, workbookNew, styleOld.getDataFormat ()));\n    styleNew.setFillBackgroundColor (styleOld.getFillBackgroundColor ());\n    styleNew.setFillForegroundColor (styleOld.getFillForegroundColor ());\n    styleNew.setFillPattern (styleOld.getFillPattern ());\n    styleNew.setFont (this.transform (workbookNew, (XSSFFont) styleOld.getFont ()));\n    styleNew.setHidden (styleOld.getHidden ());\n    styleNew.setIndention (styleOld.getIndention ());\n    styleNew.setLocked (styleOld.getLocked ());\n    styleNew.setVerticalAlignment (styleOld.getVerticalAlignment ());\n    styleNew.setWrapText (styleOld.getWrapText ());\n    this.styleMap.put (hash, styleNew);\n}"
+ },
+ {
+  "id": "Rb9c3635eed",
+  "task": "refactor",
+  "key": "java:b9c3635eed8d6546",
+  "lang": "java",
+  "code": "public static void main (String args []) {\n    inp = new Scanner (System.in);\n    String str = inp.nextLine ();\n    List < Character > arrlist = new ArrayList < Character > ();\n    for (int i = 0;\n    i < str.length (); i ++) {\n        arrlist.add (str.charAt (i));\n    }\n    for (int i = 0;\n    i < str.length (); i ++) {\n        int freq = Collections.frequency (arrlist, str.charAt (i));\n        System.out.println (\"Frequency of \" + str.charAt (i) + \"  is:   \" + freq);\n    }\n}"
+ },
+ {
+  "id": "Rea67761d7d",
+  "task": "refactor",
+  "key": "java:ea67761d7d4b0aed",
+  "lang": "java",
+  "code": "public static void main (String [] args) {\n    String str1 = \"\";\n    String str2 = null;\n    String str3 = \"Starts with upper case\";\n    String str4 = \"starts with lower case\";\n    System.out.println (startWithUpperCase (str1));\n    System.out.println (startWithUpperCase (str2));\n    System.out.println (startWithUpperCase (str3));\n    System.out.println (startWithUpperCase (str4));\n}"
+ },
+ {
+  "id": "R357f96f327",
+  "task": "refactor",
+  "key": "csharp:357f96f3274038df",
+  "lang": "csharp",
+  "code": "public static DataTable GetWorksheetAsDataTable(ExcelWorksheet worksheet) {\n    DataTable dt = new DataTable(worksheet.Name);\n    List<DataColumn> dataColumns = GetDataColumns(worksheet).ToList();\n    dt.Columns.AddRange(dataColumns.ToArray());\n    int headerOffset = 1;\n    int width = dt.Columns.Count;\n    int depth = GetTableDepth(worksheet, headerOffset);\n    for (int rowNum = 1; rowNum <= depth; rowNum++) { \n        DataRow row = dt.NewRow();\n        for (int colNum = 1; colNum <= width; colNum++) {\n            object val = worksheet.Cells[rowNum + headerOffset, colNum].Value;\n            row[colNum - 1] = val == null ? null : val.ToString();\n        }\n        dt.Rows.Add(row);\n    } \n    return dt;\n}"
+ },
+ {
+  "id": "Re3d1dfab68",
+  "task": "refactor",
+  "key": "python:e3d1dfab689fb49a",
+  "lang": "python",
+  "code": "def create_lookup_list(messages, labels) :\n  lookup_list = []\n  for message, label in zip(messages, labels):\n    lookup_list.append({\"message\":message, \"label\":label})\n  return lookup_list"
+ },
+ {
+  "id": "Rfe9a432a46",
+  "task": "refactor",
+  "key": "csharp:fe9a432a46d50a10",
+  "lang": "csharp",
+  "code": "public override void OnException (ExceptionContext filterContext) {\n    filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;\n    filterContext.ExceptionHandled = true;\n    filterContext.HttpContext.Response.ClearContent ();\n    var controllerName = (string) filterContext.RouteData.Values [\"controller\"];\n    var actionName = (string) filterContext.RouteData.Values [\"action\"];\n    var model = new HandleErrorInfo (filterContext.Exception, controllerName, actionName);\n    filterContext.Result = new ViewResult {ViewName = View, MasterName = Master, ViewData = new ViewDataDictionary < HandleErrorInfo > (model), TempData = filterContext.Controller.TempData};\n    filterContext.Exception = null;\n}"
+ },
+ {
+  "id": "Rb8f6c8b5d0",
+  "task": "refactor",
+  "key": "c:b8f6c8b5d0f913fb",
+  "lang": "c",
+  "code": "int main (void) {\n    char s [1000], alp [1000];\n    int num [1000];\n    int m = 0, n = 0;\n    int i, j;\n    unsigned char ch;\n    scanf (\"%999[^\\n]\", s);\n    for (i = 0; ch = s[i]; i++) {\n        if (isalpha (ch)) {\n            alp[n++] = s[i];\n        }\n        else if (isdigit (ch)) {\n            num[m] = 0;\n            while (isdigit (ch = s[i])) {\n                num[m] = num[m] * 10 + s[i] - '0';\n                ++i;\n            }\n            ++m;\n            --i;\n        }\n        else {\n            printf (\"include invalid character (%c).\\n\", ch);\n            return -1;\n        }\n    }\n    for (i = 0; i < m; i++) {\n        for (j = 0; j < num[i]; j++)\n            printf (\"%c\", alp[i]);\n    }\n    puts (\"\");\n    return 0;\n}"
+ },
+ {
+  "id": "R8b80f20070",
+  "task": "refactor",
+  "key": "c:8b80f200702375ef",
+  "lang": "c",
+  "code": "int main () {\n    double v;\n    int err;\n    err = scanf (\"%lf\", &v);\n    if (1 == err) {\n        printf (\"%lf\\n\", v);\n    }\n    else {\n        printf (\"read failed\\n\");\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R4e335703d6",
+  "task": "refactor",
+  "key": "c:4e335703d6130861",
+  "lang": "c",
+  "code": "int main () {\n    char s [SIZE];\n    char *months [] = {\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"};\n    int result;\n    printf (\"enter the month : \");\n    gets (s);\n    result = get_month (s, months);\n    if (result)\n        printf (\"%s - %d.  is the month of the year.\\n\", s, result);\n    else\n        printf (\"%s invalid\\n\", s);\n    return 0;\n}"
+ },
+ {
+  "id": "R9fdda16e3c",
+  "task": "refactor",
+  "key": "c:9fdda16e3c73b8e3",
+  "lang": "c",
+  "code": "int main () {\n    int num, x, tmp, sum = 0;\n    scanf (\"%d\", & num);\n    tmp = num;\n    printf (\"Factors are: \");\n    while (1) {\n        x = getFirst (tmp);\n        printf (\"%d \", x);\n        if (x == tmp)\n            break;\n        tmp /= x;\n    }\n    printf (\"\\n\");\n    printf (\"Sum of factors is: \");\n    tmp = num;\n    while (1) {\n        x = getFirst (tmp);\n        printf (\"%d \", x);\n        sum += x;\n        if (x == tmp)\n            break;\n        printf (\"+ \");\n        tmp /= x;\n    }\n    printf (\"= %d\\n\", sum);\n}"
+ },
+ {
+  "id": "R8c49ec85d8",
+  "task": "refactor",
+  "key": "java:8c49ec85d899beca",
+  "lang": "java",
+  "code": "public void filter (String [] words, String text) {\n    for (int i = 0;\n    i < words.length; i ++) {\n        if (text.toLowerCase ().contains (words [i].toLowerCase ())) {\n            System.out.println (text);\n            break;\n        }\n    }\n}"
+ },
+ {
+  "id": "R8d187f48ce",
+  "task": "refactor",
+  "key": "python:8d187f48ce36b4cd",
+  "lang": "python",
+  "code": "def traceit(frame, event, arg) :\n\tif event == \"line\" :\n\t\tlineno = frame.f_lineno\n\t\tfilename = frame.f_globals [\"__file__\"]\n\t\tif filename == \"<stdin>\" :\n\t\t\tfilename = \"traceit.py\"\n\t\tif (filename.endswith(\".pyc\") or\n\t\tfilename.endswith(\".pyo\")) :\n\t\t\tfilename = filename [: - 1]\n\t\tname = frame.f_globals [\"__name__\"]\n\t\tline = linecache.getline(filename, lineno)\n\t\tprint \"%s:%s:%s: %s\" % (name, lineno, frame.f_code.co_name, line.rstrip())\n\treturn traceit"
+ },
+ {
+  "id": "R00a4c22b00",
+  "task": "refactor",
+  "key": "python:00a4c22b00ff298d",
+  "lang": "python",
+  "code": "def roundrobin(* iterables): \n\t\t  \"roundrobin('ABC', 'D', 'EF') --> A D E B F C\" \n\t\t  # Create a list of all iterables\n\t\t  iters = list(iterables)\n\t\t  # Create a list to store individual iterator items\n\t\t  iter_items = []\n\t\t  while iters: \n\t\t\t  # Iterate through iterables list\n\t\t\t  for i in iters: \n\t\t\t\t  # Pop next item in the iterator and append it to iter_items list\n\t\t\t\t  data = i.__next__()\n\t\t\t\t  iter_items.append(data)\n\t\t\t\t  yield data"
+ },
+ {
+  "id": "R2710a37612",
+  "task": "refactor",
+  "key": "java:2710a37612de7f90",
+  "lang": "java",
+  "code": "public static final void main (String...aArgs) {\n    log (\"Generating 10 random integers in range 1..10.\");\n    int START = 1;\n    int END = 10;\n    Random randomGenerator = new Random ();\n    for (int idx = 1;\n    idx <= 10; ++ idx) {\n        showRandomInteger (START, END, randomGenerator);\n    }\n    log (\"Done\");\n}"
+ },
+ {
+  "id": "Rf6f525dc34",
+  "task": "refactor",
+  "key": "csharp:f6f525dc348f2a5e",
+  "lang": "csharp",
+  "code": "static void Main (string [] args) {\n    string libreOfficePath = getLibreOfficePath();\n    ProcessStartInfo procStartInfo = new ProcessStartInfo (libreOfficePath, string.Format (CreateParamString (args)));\n    SetProcessStartInfoProperties(procStartInfo);\n    Process process = new Process () {StartInfo = procStartInfo,};\n    ExecuteProcess(process);\n    ValidateProcessExitCode(process);\n}"
+ },
+ {
+  "id": "R6ea07c8787",
+  "task": "refactor",
+  "key": "csharp:6ea07c878726b79a",
+  "lang": "csharp",
+  "code": "public static void Rename (this FileSystemInfo item, string newName) {\n    if (item == null) {\n        throw new ArgumentNullException (\"item\");\n    }\n    switch (item) {\n        case FileInfo fileInfo:\n            fileInfo.Rename (newName);\n            break;\n        case DirectoryInfo directoryInfo:\n            directoryInfo.Rename (newName);\n            break;\n        default:\n            throw new ArgumentException (\"Item\", \"Unexpected subclass of FileSystemInfo \" + item.GetType ());\n    }\n}"
+ },
+ {
+  "id": "Rd744148380",
+  "task": "refactor",
+  "key": "java:d744148380d101ec",
+  "lang": "java",
+  "code": "public void onRequestPermissionsResult (int requestCode, String permissions [], int [] grantResults) {\n    super.onRequestPermissionsResult (requestCode, permissions, grantResults);\n    if (grantResults.length == 0 || grantResults == null) {\n    } else if (grantResults [0] == PackageManager.PERMISSION_GRANTED) {\n    } else if (grantResults [0] == PackageManager.PERMISSION_DENIED) {\n    }\n}"
+ },
+ {
+  "id": "R51669e3825",
+  "task": "refactor",
+  "key": "python:51669e3825f984b1",
+  "lang": "python",
+  "code": "def __init__(self) :\n\tself.secondsRemaining = 10.0\n\tself.lastTick = 0\n\tself.isPaused = False\n\tself.isRunning = False\n\tself.keepGoing = True"
+ },
+ {
+  "id": "Ra853448a33",
+  "task": "refactor",
+  "key": "c:a853448a33f79c7f",
+  "lang": "c",
+  "code": "int main () {\n    int counter = 0;\n    char ch;\n    struct termios orig_attr, new_attr;\n    tcgetattr (fileno (stdin), & orig_attr);\n    memcpy (& new_attr, & orig_attr, sizeof (new_attr));\n    new_attr.c_lflag &= ~(ICANON | ECHO);\n    tcsetattr (fileno (stdin), TCSANOW, & new_attr);\n    pthread_t pid;\n    if (pthread_create (&pid, NULL, thread, &counter)) {\n        fprintf (stderr, \"Create thread failed\");\n        exit (1);\n    }\n    while (1) {\n        char c = getchar ();\n        __sync_add_and_fetch (& counter, 1);\n        printf (\"add: %d\\n\", counter);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R3713a963cf",
+  "task": "refactor",
+  "key": "python:3713a963cf1b3147",
+  "lang": "python",
+  "code": "def json_scan(json_obj, key) :\n\tresult = None\n\tfor element in json_obj :\n\t\tif str(element) == key :\n\t\t\tresult = json_obj [element]\n\t\telse :\n\t\t\tif type(json_obj [element]) == DictType :\n\t\t\t\tresult = json_scan(json_obj [element], key)\n\t\t\telif type(json_obj [element]) == ListType :\n\t\t\t\tresult = json_scan(element, key)\n\treturn result"
+ },
+ {
+  "id": "R4474610115",
+  "task": "refactor",
+  "key": "c:4474610115642e1a",
+  "lang": "c",
+  "code": "int main (void) {\n    int start;\n    if (scanf (\"%d\", &start) != 1)\n        exit (1);\n    int end = start;\n    while (scanf (\"%d\", &end) == 1)\n        ;\n    for (int i = start; i <= end; i++)\n        printf (\"%d\\n\", i);\n}"
+ },
+ {
+  "id": "Refd906fcb2",
+  "task": "refactor",
+  "key": "java:efd906fcb2769978",
+  "lang": "java",
+  "code": "long pow (long a, int b) {\n    if (b == 0) return 1;\n    if (b == 1) return a;\n    if (isEven (b)) return pow (a * a, b / 2);\n    else return a * pow (a * a, b / 2);\n}"
+ },
+ {
+  "id": "Rd40ca7a94c",
+  "task": "refactor",
+  "key": "java:d40ca7a94c1a39d7",
+  "lang": "java",
+  "code": "public final void contextDestroyed (ServletContextEvent sce) {\n    ClassLoader cl = Thread.currentThread ().getContextClassLoader ();\n    Enumeration < Driver > drivers = DriverManager.getDrivers ();\n    while (drivers.hasMoreElements ()) {\n        Driver driver = drivers.nextElement ();\n        if (driver.getClass ().getClassLoader () == cl) {\n            try {\n                log.info (\"Deregistering JDBC driver {}\", driver);\n                DriverManager.deregisterDriver (driver);\n            } catch (SQLException ex) {\n                log.error (\"Error deregistering JDBC driver {}\", driver, ex);\n            }\n        } else {\n            log.trace (\"Not deregistering JDBC driver {} as it does not belong to this webapp's ClassLoader\", driver);\n        }\n    }\n}"
+ },
+ {
+  "id": "Rfaf0b51ec8",
+  "task": "refactor",
+  "key": "python:faf0b51ec8fbbf6b",
+  "lang": "python",
+  "code": "def combinations(iterable, r) :\n\tpool = tuple(iterable)\n\tn = len(pool)\n\tif r > n :\n\t\treturn\n\tindices = list(range(r))\n\twhile True :\n\t\tfor i in reversed(range(r)) :\n\t\t\tif indices [i] ! = i + n - r :\n\t\t\t\tbreak\n\t\telse :\n\t\t\treturn\n\t\tindices [i] += 1\n\t\tfor j in range(i + 1, r) :\n\t\t\tindices [j] = indices [j - 1] + 1\n\t\tif 1 in tuple(pool [i] for i in indices) and 3 in tuple(pool [i] for i in indices) :\n\t\t\tpass\n\t\telse :\n\t\t\tyield tuple(pool [i] for i in indices)"
+ },
+ {
+  "id": "R3c52337f3a",
+  "task": "refactor",
+  "key": "csharp:3c52337f3ab6922d",
+  "lang": "csharp",
+  "code": "internal static string GetIPAddress (HttpRequestBase request) {\n    string forwarded = request.Headers [\"Forwarded\"];\n    if (! String.IsNullOrEmpty (forwarded)) {\n        foreach (string segment in forwarded.Split (',') [0].Split (';')) {\n            string [] pair = segment.Trim ().Split ('=');\n            if (pair.Length == 2 && pair [0].Equals (\"for\", StringComparison.OrdinalIgnoreCase)) {\n                string ip = pair [1].Trim ('\"');\n                int left = ip.IndexOf ('[');\n                if (left == 0) {\n                    int right = ip.IndexOf (']');\n                    ip = ip.Substring (1, right - 1);\n                } else {\n                    int colon = ip.IndexOf (':');\n                    if (colon != - 1) {\n                        ip = ip.Substring (0, colon);\n                    }\n                }\n                return ip;\n            }\n        }\n    }\n    string xForwardedFor = request.Headers [\"X-Forwarded-For\"];\n    if (! String.IsNullOrEmpty (xForwardedFor)) {\n        return xForwardedFor.Split (',') [0];\n    }\n    return request.UserHostAddress;\n}"
+ }
+]

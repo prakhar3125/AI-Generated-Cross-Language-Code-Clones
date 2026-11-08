@@ -1,0 +1,26 @@
+{
+ "fidelity": {
+  "n_pairs": 1692,
+  "S_CodeBERT": {
+   "corr": 0.9997207400665713,
+   "mean_abs_diff": 0.00196512116930595,
+   "max_abs_diff": 0.04358708858490001
+  },
+  "S_AST": {
+   "corr": 0.8907159339067587,
+   "mean_abs_diff": 0.05452638517942224,
+   "max_abs_diff": 0.26576851160130666
+  },
+  "S_Token": {
+   "corr": 0.9995025272874414,
+   "mean_abs_diff": 0.00046184295407250824,
+   "max_abs_diff": 0.1836734693877551
+  }
+ },
+ "false_pair_sample_600": {
+  "exact": 67,
+  "renamed": 182,
+  "refactored": 351,
+  "unparsed": 0
+ }
+}

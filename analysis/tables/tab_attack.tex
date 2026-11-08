@@ -1,0 +1,42 @@
+\begin{table*}[t]
+\centering
+\caption{Attack A1 on same-language pairs: every identifier declared in the second snippet is renamed to $v_0,v_1,\dots$ and string literals are masked, for positives (refactored test pairs) and negatives alike (300 positives and 300 negatives of regime A or B; no execution check). Recall and FPR at the frozen validation threshold, AUROC on the pair set; original / attacked. Gate and first expert use the CodeBERT expert (regimes A, B) or the UniXcoder expert (UX).}
+\label{tab:attack}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ll|cc|cc|cc}
+\toprule
+\textbf{Regime} & \textbf{System} & \multicolumn{2}{c|}{Recall} & \multicolumn{2}{c|}{FPR} & \multicolumn{2}{c}{AUROC} \\
+ & & orig. & attack & orig. & attack & orig. & attack \\
+\midrule
+A & Gating network & 95.1 & 77.7 & 5.6 & 2.8 & 0.984 & 0.936 \\
+ & Direct classifier & 95.8 & 77.0 & 6.0 & 3.2 & 0.985 & 0.938 \\
+ & First expert alone & 81.0 & 78.0 & 38.3 & 40.7 & 0.825 & 0.802 \\
+ & Token expert & 96.7 & 79.7 & 6.7 & 3.3 & 0.986 & 0.915 \\
+ & Gating network (mean fusion) & 94.1 & 75.5 & 5.5 & 2.8 & 0.983 & 0.936 \\
+ & JPlag & 47.3 & 47.0 & 1.0 & 1.0 & 0.734 & 0.732 \\
+ & JPlag + TokenNorm & 47.0 & 46.7 & 1.0 & 1.0 & 0.732 & 0.730 \\
+ & Dolos & 87.3 & 86.0 & 7.3 & 8.3 & 0.942 & 0.939 \\
+\midrule
+B & Gating network & 94.3 & 57.0 & 9.5 & 5.4 & 0.972 & 0.911 \\
+ & Direct classifier & 96.3 & 66.7 & 11.5 & 6.1 & 0.974 & 0.916 \\
+ & First expert alone & 100.0 & 100.0 & 99.0 & 99.0 & 0.529 & 0.497 \\
+ & Token expert & 96.7 & 79.7 & 28.0 & 15.3 & 0.956 & 0.866 \\
+ & Gating network (mean fusion) & 94.2 & 63.7 & 10.9 & 5.8 & 0.969 & 0.914 \\
+ & JPlag & 47.3 & 47.0 & 7.3 & 7.3 & 0.708 & 0.706 \\
+ & JPlag + TokenNorm & 47.0 & 46.7 & 7.3 & 7.3 & 0.706 & 0.704 \\
+ & Dolos & 87.3 & 86.0 & 22.3 & 22.0 & 0.893 & 0.888 \\
+\midrule
+A, UX & Gating network & 96.7 & 74.7 & 4.3 & 3.3 & 0.996 & 0.944 \\
+ & Direct classifier & 97.3 & 75.3 & 3.9 & 2.5 & 0.997 & 0.941 \\
+ & First expert alone & 96.7 & 74.7 & 4.7 & 3.7 & 0.995 & 0.939 \\
+ & Token expert & 96.7 & 79.7 & 6.7 & 3.3 & 0.986 & 0.915 \\
+\midrule
+B, UX & Gating network & 96.5 & 66.1 & 9.4 & 6.7 & 0.974 & 0.917 \\
+ & Direct classifier & 96.3 & 65.0 & 9.2 & 5.2 & 0.981 & 0.914 \\
+ & First expert alone & 96.7 & 73.3 & 19.7 & 19.3 & 0.964 & 0.862 \\
+ & Token expert & 96.7 & 79.7 & 28.0 & 15.3 & 0.956 & 0.866 \\
+
+\bottomrule
+\end{tabular}
+\end{table*}

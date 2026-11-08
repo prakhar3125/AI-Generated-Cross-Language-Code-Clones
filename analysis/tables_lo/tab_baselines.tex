@@ -1,0 +1,49 @@
+\begin{table*}[t]
+\centering
+\caption{Fixed-weight and non-routing baselines on the three negative regimes (test partition; weights and thresholds chosen on the validation partition; gradient-boosted trees and the trained models are means over eight seeds). Best convex weights: grid over the three-simplex in steps of 0.05, applied to the raw scores, to their logits or to their $z$-scores (training statistics); the hand-coded rule scores same-language pairs by the token expert and cross-language pairs by the semantic expert with one threshold per language relation. AUC: area under the ROC curve of the ensemble-mean score; R@1\% and R@5\%: recall at 1\% and 5\% false-positive rate read from the test ROC curve (an oracle operating point). The block after the CodeBERT rows gives the raw expert cosine, AST statistics and the external tools (continuous similarities; cross-language pairs score zero for the tools); tuned rows: settings tried on the validation partition (recall at fixed false-positive rate not computed; the validation-selected Dolos setting in regime A is the default). With the CodeBERT expert the selected convex weights are $(0.20,0,0.80)$, $(0,0,1)$ and $(0.05,0,0.95)$ in regimes A, B and C, that is the token expert alone or almost alone; with the UniXcoder expert they are $(0.25,0,0.75)$, $(0.70,0,0.30)$ and $(0.80,0,0.20)$ for regimes A, B and C. The gating network of the CodeBERT block is the log-odds gate; the UniXcoder and whitened gating networks were not rerun and use mean fusion.}
+\label{tab:baselines-fixed}
+\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{l|cccc|cccc|cccc}
+\toprule
+ & \multicolumn{4}{c|}{Regime A (random)} & \multicolumn{4}{c|}{Regime B (mined, expert scores)} & \multicolumn{4}{c}{Regime C (mined, identifiers)} \\
+\textbf{System} & $F_1$ & AUC & R@1\% & R@5\% & $F_1$ & AUC & R@1\% & R@5\% & $F_1$ & AUC & R@1\% & R@5\% \\
+\midrule
+\multicolumn{13}{l}{\emph{CodeBERT expert}} \\
+Static averaging (equal weights) & 79.1 & 0.889 & 61.9 & 68.6 & 63.6 & 0.657 & 21.3 & 51.2 & 74.1 & 0.831 & 20.0 & 55.2 \\
+Best convex weights, raw scores & 91.5 & 0.955 & 81.0 & 88.3 & 83.9 & 0.919 & 24.4 & 73.2 & 79.7 & 0.883 & 22.0 & 63.3 \\
+Best convex weights, logits & 91.2 & 0.961 & 80.2 & 88.2 & 83.8 & 0.919 & 24.4 & 73.2 & 79.5 & 0.884 & 20.9 & 64.0 \\
+Best convex weights, $z$-scores & 91.2 & 0.954 & 81.0 & 88.2 & 83.8 & 0.919 & 24.4 & 73.2 & 79.8 & 0.883 & 22.0 & 63.2 \\
+Hand-coded rule by language relation & 86.8 & 0.952 & 69.8 & 80.8 & 76.9 & 0.696 & 7.6 & 10.9 & 79.8 & 0.881 & 22.4 & 51.9 \\
+Token $k$-gram only & 91.4 & 0.961 & 81.5 & 88.8 & 83.9 & 0.919 & 24.4 & 73.2 & 79.2 & 0.883 & 22.0 & 63.2 \\
+Logistic regression & 90.0 & 0.966 & 83.4 & 87.7 & 87.0 & 0.949 & 27.0 & 80.1 & 81.1 & 0.901 & 23.8 & 68.0 \\
+Gradient-boosted trees & 91.8 & 0.979 & 85.8 & 91.7 & 92.1 & 0.974 & 52.6 & 89.6 & 81.6 & 0.910 & 25.3 & 67.0 \\
+Direct classifier (no routing) & 91.2 & 0.977 & 84.9 & 92.1 & 90.4 & 0.964 & 27.1 & 85.8 & 81.3 & 0.910 & 23.3 & 68.0 \\
+Gating network & 90.8 & 0.976 & 85.2 & 90.8 & 90.3 & 0.961 & 22.4 & 84.8 & 80.7 & 0.906 & 21.7 & 67.0 \\
+\midrule
+CodeBERT cosine (first expert alone) & 73.3 & 0.829 & 43.2 & 53.1 & 63.8 & 0.532 & 15.8 & 30.0 & 68.6 & 0.766 & 20.6 & 39.6 \\
+AST statistics (second expert alone) & 70.7 & 0.790 & 19.3 & 33.2 & 63.9 & 0.346 & 7.5 & 9.7 & 67.5 & 0.729 & 9.3 & 23.7 \\
+JPlag 6.3.0 & 46.8 & 0.652 & 30.8 & 30.8 & 45.5 & 0.636 & 14.4 & 30.8 & 45.4 & 0.635 & 15.2 & 30.8 \\
+JPlag + TokenNorm & 46.3 & 0.650 & 30.4 & 30.4 & 45.1 & 0.634 & 14.3 & 30.4 & 44.9 & 0.633 & 15.1 & 30.4 \\
+Dolos 2.10.0 & 72.1 & 0.766 & 55.7 & 59.5 & 65.8 & 0.723 & 17.4 & 50.7 & 60.0 & 0.706 & 14.5 & 47.8 \\
+JPlag, min.\ match 5 (tuned) & 62.8 & 0.729 & -- & -- & 57.5 & 0.676 & -- & -- & 58.5 & 0.684 & -- & -- \\
+Dolos, $k=35$, window 25 (tuned) & 70.6 & 0.773 & -- & -- & 66.9 & 0.741 & -- & -- & 63.4 & 0.723 & -- & -- \\
+\midrule
+\multicolumn{13}{l}{\emph{UniXcoder expert (regimes A, B, C)}} \\
+UniXcoder cosine (zero-shot) & 96.9 & 0.997 & 95.5 & 98.3 & 90.8 & 0.972 & 24.7 & 89.1 & 87.2 & 0.948 & 25.7 & 75.2 \\
+Best convex weights, raw scores & 97.1 & 0.998 & 95.7 & 98.7 & 91.7 & 0.973 & 26.4 & 90.5 & 87.1 & 0.951 & 26.8 & 75.7 \\
+Hand-coded rule by language relation & 95.5 & 0.992 & 91.5 & 97.1 & 88.3 & 0.965 & 38.7 & 85.0 & 85.4 & 0.938 & 32.9 & 69.7 \\
+Gradient-boosted trees & 97.3 & 0.998 & 96.6 & 98.7 & 94.4 & 0.983 & 50.2 & 93.5 & 86.5 & 0.951 & 29.9 & 74.0 \\
+Direct classifier (no routing) & 97.0 & 0.998 & 96.8 & 98.9 & 94.8 & 0.983 & 53.2 & 95.2 & 86.4 & 0.953 & 32.6 & 74.2 \\
+Gating network & 96.9 & 0.998 & 96.2 & 98.6 & 94.2 & 0.976 & 24.7 & 91.8 & 86.5 & 0.950 & 25.7 & 75.6 \\
+\midrule
+\multicolumn{13}{l}{\emph{Whitened CodeBERT expert (embedding space whitened with training statistics; regimes A, B, C)}} \\
+Zero-shot cosine of the first expert & 96.3 & 0.988 & 93.8 & 96.6 & 88.1 & 0.944 & 22.4 & 78.3 & 85.1 & 0.923 & 22.2 & 67.0 \\
+Best convex weights, raw scores & 97.1 & 0.991 & 95.4 & 97.4 & 88.0 & 0.949 & 21.9 & 79.9 & 84.9 & 0.924 & 24.5 & 68.2 \\
+Hand-coded rule by language relation & 95.4 & 0.988 & 93.1 & 96.6 & 88.9 & 0.957 & 30.7 & 85.5 & 85.8 & 0.937 & 29.1 & 74.2 \\
+Gradient-boosted trees & 97.0 & 0.991 & 95.3 & 97.5 & 92.2 & 0.974 & 47.3 & 88.1 & 86.3 & 0.933 & 24.3 & 68.8 \\
+Direct classifier (no routing) & 97.1 & 0.991 & 95.7 & 97.6 & 93.4 & 0.972 & 27.1 & 91.3 & 86.8 & 0.936 & 27.8 & 72.8 \\
+Gating network & 95.8 & 0.984 & 73.8 & 97.0 & 91.6 & 0.947 & 15.0 & 56.3 & 84.6 & 0.909 & 12.2 & 49.3 \\
+\bottomrule
+\end{tabular}
+\end{table*}

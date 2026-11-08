@@ -1,0 +1,48 @@
+\begin{table}[t]
+\centering
+\caption{(a) Regime C: hard negatives mined only by the TF-IDF cosine of identifier vocabularies (no expert score used in the mining), same test partition, validation-tuned thresholds, mean over eight seeds. A reading audit of 50 random regime-C test negatives rated 8 as the same task and 5 as unsure, so the specificity here is a lower bound.}
+\label{tab:regime-c}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{System} & Acc. & Prec. & Rec. & Spec. & $F_1$ \\
+\midrule
+Gating network & 80.1 & 74.0 & 88.8 & 72.4 & 80.7\,{\scriptsize$\pm$0.5} \\
+Direct classifier & 80.8 & 75.0 & 88.9 & 73.8 & 81.3\,{\scriptsize$\pm$0.2} \\
+Logistic regression & 80.9 & 75.7 & 87.3 & 75.2 & 81.1 \\
+Static averaging & 73.8 & 69.0 & 80.0 & 68.2 & 74.1 \\
+CodeBERT only & 63.5 & 57.5 & 85.1 & 44.4 & 68.6 \\
+AST only & 60.0 & 54.5 & 88.6 & 34.7 & 67.5 \\
+Token only & 79.0 & 74.1 & 85.1 & 73.7 & 79.2 \\
+JPlag & 65.2 & 86.3 & 30.8 & 95.7 & 45.4 \\
+JPlag + norm. & 65.1 & 86.4 & 30.4 & 95.8 & 44.9 \\
+Dolos & 61.1 & 58.0 & 62.3 & 60.1 & 60.0 \\
+\bottomrule
+\end{tabular}
+\par\vspace{4pt}
+\label{tab:split-variance}
+\noindent{\footnotesize \textbf{(b)} Sensitivity to the train/validation group assignment: five assignments of the non-test groups (draw 0 is the one used throughout; negatives are regenerated inside each side), three seeds each, evaluated on the fixed test partition with validation-tuned thresholds. $\Delta$ is direct classifier minus gate ($F_1$, points).}
+\par\vspace{2pt}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Reg.} & & Gate $F_1$ & Dir. $F_1$ & $\Delta$ & Cross-lang. rec. & FPR \\
+\midrule
+A & draw 0 & 90.6 & 91.2 & +0.6 & 88.8 & 11.6 \\
+ & draw 1 & 91.0 & 91.5 & +0.6 & 88.2 & 10.5 \\
+ & draw 2 & 90.6 & 90.4 & -0.2 & 89.3 & 11.7 \\
+ & draw 3 & 90.5 & 92.1 & +1.5 & 87.9 & 11.4 \\
+ & draw 4 & 90.5 & 91.9 & +1.4 & 88.9 & 11.8 \\
+\multicolumn{2}{l}{\emph{mean $\pm$ s.d.}} & $90.6\pm0.2$ & $91.4\pm0.6$ & $+0.8\pm0.7$ & $88.6\pm0.5$ & $11.4\pm0.5$ \\
+\midrule
+B & draw 0 & 90.5 & 90.0 & -0.5 & 86.5 & 8.4 \\
+ & draw 1 & 90.7 & 90.8 & +0.0 & 88.6 & 9.8 \\
+ & draw 2 & 90.0 & 90.5 & +0.6 & 90.9 & 12.1 \\
+ & draw 3 & 90.5 & 90.9 & +0.4 & 88.6 & 10.0 \\
+ & draw 4 & 89.7 & 90.3 & +0.6 & 90.4 & 12.7 \\
+\multicolumn{2}{l}{\emph{mean $\pm$ s.d.}} & $90.3\pm0.4$ & $90.5\pm0.3$ & $+0.2\pm0.5$ & $89.0\pm1.8$ & $10.6\pm1.8$ \\
+\bottomrule
+\end{tabular}
+\end{table}

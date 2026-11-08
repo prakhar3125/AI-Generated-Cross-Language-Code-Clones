@@ -1,0 +1,352 @@
+[
+ {
+  "id": "T471",
+  "task": "translate",
+  "row": 471,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    int large [] = new int [10];\n    int array [] = {33, 55, 13, 46, 87, 42, 10, 34, 43, 56};\n    int k = 0;\n    for (int i = 0;\n    i < array.length; i ++) {\n        large [k ++] = getMax (0, array);\n    }\n    System.out.println (\"Largest 5 is: \" + Arrays.toString (Arrays.copyOf (large, 5)));\n}"
+ },
+ {
+  "id": "T23",
+  "task": "translate",
+  "row": 23,
+  "source_lang": "java",
+  "code": "public static String center (String s, int size, char pad) {\n    if (s == null || size <= s.length ()) return s;\n    StringBuilder sb = new StringBuilder (size);\n    for (int i = 0;\n    i < (size - s.length ()) / 2; i ++) {\n        sb.append (pad);\n    }\n    sb.append (s);\n    while (sb.length () < size) {\n        sb.append (pad);\n    }\n    return sb.toString ();\n}"
+ },
+ {
+  "id": "T135",
+  "task": "translate",
+  "row": 135,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    Set < Integer > set = new HashSet < Integer > ();\n    int sum1 = 0, sum2 = 0;\n    for (int i = 0;\n    i <= X; i ++) {\n        sum1 += i;\n    }\n    for (int i = 0;\n    i < A.length; i ++) {\n        if (set.contains (A [i])) continue;\n        set.add (A [i]);\n        sum2 += A [i];\n        if (sum1 == sum2) return i;\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T668",
+  "task": "translate",
+  "row": 668,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    Scanner scanner = new Scanner (System.in);\n    String line = scanner.nextLine ();\n    int trys = Integer.parseInt (line.trim ());\n    for (int i = 0;\n    i < trys; i ++) {\n        double probability = processTry (scanner);\n        System.out.println (probability);\n    }\n    scanner.close ();\n}"
+ },
+ {
+  "id": "T159",
+  "task": "translate",
+  "row": 159,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    int size = A.length;\n    int [] check = new int [X];\n    int cmp = 0;\n    int time = - 1;\n    for (int x = 0;\n    x < size; x ++) {\n        int temp = A [x];\n        if (temp <= X) {\n            if (check [temp - 1] > 0) {\n                continue;\n            }\n            check [temp - 1] ++;\n            cmp ++;\n        }\n        if (cmp == X) {\n            time = x;\n            break;\n        }\n    }\n    return time;\n}"
+ },
+ {
+  "id": "T545",
+  "task": "translate",
+  "row": 545,
+  "source_lang": "java",
+  "code": "private String join (String [] input, String delimiter) {\n    StringBuilder sb = new StringBuilder ();\n    for (String value : input) {\n        sb.append (value);\n        sb.append (delimiter);\n    }\n    int length = sb.length ();\n    if (length > 0) {\n        sb.setLength (length - delimiter.length ());\n    }\n    return sb.toString ();\n}"
+ },
+ {
+  "id": "T721",
+  "task": "translate",
+  "row": 721,
+  "source_lang": "java",
+  "code": "public static String numLetters (String s) {\n    int [] count = new int [26];\n    for (int i = 0;\n    i < s.length (); i ++) {\n        char c = s.charAt (i);\n        count [(int) (c - 'a')] ++;\n    }\n    String ans = \"\";\n    for (int i = 0;\n    i < 26; i ++) {\n        if (count [i] != 0) {\n            ans += String.valueOf (count [i]) + (char) (i + 'a');\n        }\n    }\n    return ans;\n}"
+ },
+ {
+  "id": "T338",
+  "task": "translate",
+  "row": 338,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    int n = 0;\n    Scanner s = new Scanner (System.in);\n    System.out.print (\"Enter an integer number: \");\n    n = s.nextInt ();\n    if (n <= 0) System.out.print (\"Enter numbers greater than 0\");\n    else {\n        NumberToWord a = new NumberToWord ();\n        System.out.print (\"After conversion number in words is :\");\n        a.pw ((n / 1000000000), \" Hundred\");\n        a.pw ((n / 10000000) % 100, \" crore\");\n        a.pw (((n / 100000) % 100), \" lakh\");\n        a.pw (((n / 1000) % 100), \" thousand\");\n        a.pw (((n / 100) % 10), \" hundred\");\n        a.pw ((n % 100), \" \");\n    }\n}"
+ },
+ {
+  "id": "T654",
+  "task": "translate",
+  "row": 654,
+  "source_lang": "java",
+  "code": "public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {\n    int dotPos = - 1;\n    int len = dest.length ();\n    for (int i = 0;\n    i < len; i ++) {\n        char c = dest.charAt (i);\n        if (c == '.' || c == ',') {\n            dotPos = i;\n            break;\n        }\n    }\n    if (dotPos >= 0) {\n        if (source.equals (\".\") || source.equals (\",\")) {\n            return \"\";\n        }\n        if (dend <= dotPos) {\n            return null;\n        }\n        if (len - dotPos > decimalDigits) {\n            return \"\";\n        }\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T102",
+  "task": "translate",
+  "row": 102,
+  "source_lang": "java",
+  "code": "public static boolean isAnagram (String s1, String s2) {\n    if (s1.length () != s2.length ()) {\n        return false;\n    }\n    for (int i = 0;\n    i < s2.length (); i ++) {\n        if (! s1.contains (\"\" + s2.charAt (i))) {\n            return false;\n        }\n        s1 = s1.replaceFirst (\"\" + s2.charAt (i), \"\");\n        s2 = s2.replaceFirst (\"\" + s2.charAt (i), \"\");\n    }\n    return true;\n}"
+ },
+ {
+  "id": "T245",
+  "task": "translate",
+  "row": 245,
+  "source_lang": "java",
+  "code": "public static void main (String...a) {\n    System.out.print (\"Enter the String\");\n    Scanner sc = new Scanner (System.in);\n    String st = sc.nextLine ();\n    int [] ar = new int [256];\n    for (int i = 0;\n    i < st.length (); i ++) {\n        ar [st.charAt (i)] = ar [st.charAt (i)] + 1;\n    }\n    for (int i = 0;\n    i < 256; i ++) {\n        char ch = (char) i;\n        if (ar [i] > 0) {\n            if (ar [i] == 1) {\n                System.out.print (ch);\n            } else {\n                System.out.print (ch + \"\" + ar [i]);\n            }\n        }\n    }\n}"
+ },
+ {
+  "id": "T634",
+  "task": "translate",
+  "row": 634,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    List < Object > lc = Arrays.asList (new Object [] {'A', 'B', 'C', 'D'});\n    List < Object > lC = Arrays.asList (new Object [] {'a', 'b', 'c'});\n    List < Object > li = Arrays.asList (new Object [] {1, 2, 3, 4});\n    List < List < Object > > llo = new ArrayList < List < Object > > ();\n    llo.add (lc);\n    llo.add (lC);\n    llo.add (li);\n    CartesianIterable < Object > ci = new CartesianIterable < Object > (llo);\n    for (List < Object > lo : ci) show (lo);\n}"
+ },
+ {
+  "id": "T682",
+  "task": "translate",
+  "row": 682,
+  "source_lang": "java",
+  "code": "public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {\n    int dotPos = - 1;\n    int len = dest.length ();\n    for (int i = 0;\n    i < len; i ++) {\n        char c = dest.charAt (i);\n        if (c == '.' || c == ',') {\n            dotPos = i;\n            break;\n        }\n    }\n    if (dotPos >= 0) {\n        if (source.equals (\".\") || source.equals (\",\")) {\n            return \"\";\n        }\n        if (dend <= dotPos) {\n            return null;\n        }\n        if (len - dotPos > decimalDigits) {\n            return \"\";\n        }\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T596",
+  "task": "translate",
+  "row": 596,
+  "source_lang": "java",
+  "code": "public ResponseEntity < ? > match (@PathVariable\nString matchId,@RequestBody\nString body, HttpServletRequest request, HttpServletResponse response) {\n    Product p;\n    try {\n        p = service.getProduct (request.getProductId ());\n    } catch (Exception ex) {\n        return new ResponseEntity < String > (HttpStatus.BAD_REQUEST);\n    }\n    return new ResponseEntity (p, HttpStatus.OK);\n}"
+ },
+ {
+  "id": "T501",
+  "task": "translate",
+  "row": 501,
+  "source_lang": "java",
+  "code": "static int findMIN (int [] A, int c) {\n    int x = A [c];\n    int position = c;\n    while (c < A.length) {\n        if (x > A [c]) {\n            x = A [c];\n            position = c;\n        }\n        c ++;\n    }\n    return position;\n}"
+ },
+ {
+  "id": "T744",
+  "task": "translate",
+  "row": 744,
+  "source_lang": "java",
+  "code": "public int tortoiseMoves () {\n    switch (tGen ()) {\n        case 1 :\n        case 2 :\n        case 3 :\n        case 4 :\n        case 5 :\n            return 3;\n        case 6 :\n        case 7 :\n        case 8 :\n            return 1;\n        case 9 :\n        case 10 :\n            return - 6;\n        default :\n            return 0;\n    }\n}"
+ },
+ {
+  "id": "T586",
+  "task": "translate",
+  "row": 586,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String s = \"harikrishna\";\n    String s2 = \"\";\n    for (int i = 0;\n    i < s.length (); i ++) {\n        Boolean found = false;\n        for (int j = 0;\n        j < s2.length (); j ++) {\n            if (s.charAt (i) == s2.charAt (j)) {\n                found = true;\n                break;\n            }\n        }\n        if (found == false) {\n            s2 = s2.concat (String.valueOf (s.charAt (i)));\n        }\n    }\n    System.out.println (s2);\n}"
+ },
+ {
+  "id": "T407",
+  "task": "translate",
+  "row": 407,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) throws IOException {\n    FileReader file = new FileReader (\"D:\\\\Test.txt\");\n    BufferedReader br = new BufferedReader (file);\n    String str;\n    int xSum = 0;\n    int ySum = 0;\n    while ((str = br.readLine ()) != null) {\n        if (str.contains (\"x=\")) {\n            xSum += Integer.parseInt (str.split (\"=\") [1].trim ());\n        }\n        if (str.contains (\"y=\")) {\n            ySum += Integer.parseInt (str.split (\"=\") [1].trim ());\n        }\n    }\n    System.out.println (\"Sum x is: \" + xSum + \" Sum y is: \" + ySum);\n}"
+ },
+ {
+  "id": "T883",
+  "task": "translate",
+  "row": 883,
+  "source_lang": "java",
+  "code": "private void transform (HSSFWorkbook workbookOld, XSSFWorkbook workbookNew, HSSFRow rowOld, XSSFRow rowNew) {\n    XSSFCell cellNew;\n    rowNew.setHeight (rowOld.getHeight ());\n    for (Cell cell : rowOld) {\n        cellNew = rowNew.createCell (cell.getColumnIndex (), cell.getCellType ());\n        if (cellNew != null) this.transform (workbookOld, workbookNew, (HSSFCell) cell, cellNew);\n    }\n    this.lastColumn = Math.max (this.lastColumn, rowOld.getLastCellNum ());\n}"
+ },
+ {
+  "id": "T477",
+  "task": "translate",
+  "row": 477,
+  "source_lang": "java",
+  "code": "private static float getRandomNumberBetween (float numberOne, float numberTwo) throws Exception {\n    if (numberOne == numberTwo) {\n        throw new Exception (\"Both the numbers can not be equal\");\n    }\n    float rand = (float) Math.random ();\n    float highRange = Math.max (numberOne, numberTwo);\n    float lowRange = Math.min (numberOne, numberTwo);\n    float lowRand = (float) Math.floor (rand - 1);\n    float highRand = (float) Math.ceil (rand + 1);\n    float genRand = (highRange - lowRange) * ((rand - lowRand) / (highRand - lowRand)) + lowRange;\n    return genRand;\n}"
+ },
+ {
+  "id": "T842",
+  "task": "translate",
+  "row": 842,
+  "source_lang": "java",
+  "code": "public static void main (final String [] args) throws IOException {\n    BufferedReader br = new BufferedReader (new InputStreamReader (System.in));\n    System.out.println (\"Enter some text, or '\" + EXIT_COMMAND + \"' to quit\");\n    while (true) {\n        System.out.print (\"><![CDATA[ \");\n        String input = br.readLine ();\n        System.out.println (input);\n        if (input.length () == EXIT_COMMAND.length () && input.toLowerCase ().equals (EXIT_COMMAND)) {\n            System.out.println (\"Exiting.\");\n            return;\n        }\n        System.out.println (\"...response goes here...\");\n    }\n}"
+ },
+ {
+  "id": "T181",
+  "task": "translate",
+  "row": 181,
+  "source_lang": "java",
+  "code": "public Key secondMaxKey () {\n    if (size () < 2) {\n        return null;\n    }\n    Node max = null;\n    Node max_2 = null;\n    Node second = first.next;\n    if (first.key.compareTo (second.key) > 0) {\n        max = first;\n        max_2 = second;\n    } else {\n        max = second;\n        max_2 = first;\n    }\n    for (Node x = second.next;\n    x != null; x = x.next) {\n        if (x.key.compareTo (max.key) > 0) {\n            max_2 = max;\n            max = x;\n        } else if ((x.key.compareTo (max_2.key) > 0) && (x.key.compareTo (max.key) < 0)) {\n            max_2 = x;\n        }\n    }\n    return max_2.key;\n}"
+ },
+ {
+  "id": "T216",
+  "task": "translate",
+  "row": 216,
+  "source_lang": "java",
+  "code": "public static void print (Object...toPrint) {\n    for (Object item : toPrint) {\n        if (item.getClass () == int [].class) {\n            System.out.println (Arrays.toString ((int []) item));\n        } else if (item.getClass () == double [].class) {\n            System.out.println (Arrays.toString ((double []) item));\n        } else if (item instanceof Object []) {\n            System.out.println (Arrays.toString ((Object []) item));\n        } else {\n            System.out.println (item);\n        }\n    }\n}"
+ },
+ {
+  "id": "T156",
+  "task": "translate",
+  "row": 156,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    Set < Integer > set = new HashSet < Integer > ();\n    int sum1 = 0, sum2 = 0;\n    for (int i = 0;\n    i <= X; i ++) {\n        sum1 += i;\n    }\n    for (int i = 0;\n    i < A.length; i ++) {\n        if (set.contains (A [i])) continue;\n        set.add (A [i]);\n        sum2 += A [i];\n        if (sum1 == sum2) return i;\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T462",
+  "task": "translate",
+  "row": 462,
+  "source_lang": "java",
+  "code": "public void actionPerformed (ActionEvent e) {\n    int x = (int) (Math.random () * getWidth ());\n    int y = (int) (Math.random () * getHeight ());\n    int width = (int) (Math.random () * (getWidth () / 4));\n    int height = (int) (Math.random () * (getHeight () / 4));\n    if (x + width > getWidth ()) {\n        x = getWidth () - width;\n    }\n    if (y + height > getHeight ()) {\n        y = getHeight () - height;\n    }\n    Color color = new Color ((int) (Math.random () * 255), (int) (Math.random () * 255), (int) (Math.random () * 255));\n    lstShapes.add (new MyRectangle (x, y, width, height, color));\n    repaint ();\n}"
+ },
+ {
+  "id": "R106ccba12f",
+  "task": "refactor",
+  "key": "csharp:106ccba12f958dbf",
+  "lang": "csharp",
+  "code": "public static IList ToAnonymousList (this IEnumerable enumerable) {\n    var enumerator = enumerable.GetEnumerator ();\n    if (! enumerator.MoveNext ())\n        throw new Exception (\"?? No elements??\");\n    var value = enumerator.Current;\n    var returnList = (IList) typeof (List < >).MakeGenericType (value.GetType ()).GetConstructor (Type.EmptyTypes).Invoke (null);\n    returnList.Add (value);\n    while (enumerator.MoveNext ())\n        returnList.Add (enumerator.Current);\n    return returnList;\n}"
+ },
+ {
+  "id": "R3968bf5162",
+  "task": "refactor",
+  "key": "java:3968bf5162a797c5",
+  "lang": "java",
+  "code": "public void run () {\n    int i = 1;\n    while (i < 50) {\n        while (s.getState () != 3) {\n            synchronized (s) {\n                try {\n                    s.wait ();\n                } catch (InterruptedException e) {\n                    e.printStackTrace ();\n                }\n            }\n        }\n        synchronized (s) {\n            if (s.getState () == 3) System.out.println (\"t1 \" + i);\n            s.setState (1);\n            i = i + 3;\n            s.notifyAll ();\n        }\n    }\n}"
+ },
+ {
+  "id": "R3d67d34140",
+  "task": "refactor",
+  "key": "java:3d67d341404bd8a0",
+  "lang": "java",
+  "code": "public static void main (String [] args) {\n    Scanner sc = new Scanner (System.in);\n    String [] [] array = new String [7] [];\n    array [0] = new String [] {\"continents\", \"Asia\", \"Europe\", \"Africa\", \"Australia\", \"South America\", \"North America\"};\n    array [1] = new String [] {\"profession\", \"teacher\", \"doctor\", \"lawyer\"};\n    array [2] = new String [] {\"brand\", \"apple\", \"samsung\"};\n    array [3] = new String [] {\"name\", \"lisa\", \"peter\", \"sam\", \"jack\"};\n    array [4] = new String [] {\"profession\", \"engineer\", \"Professor\", \"Dentist\", \"Driver\"};\n    array [5] = new String [] {\"sex\", \"value\", \"male\", \"female\"};\n    array [6] = new String [] {\"exp\", \"value\", \"1\", \"2\", \"3\", \"4\"};\n    int index = sc.nextInt ();\n    String [] tempReference = array [index - 1];\n    for (int i = index - 1;\n    i < array.length - 1; i ++) {\n        array [i] = array [i + 1];\n    }\n    array [array.length - 1] = tempReference;\n    for (String [] tempArray : array) {\n        for (String s : tempArray) {\n            System.out.print (s + \" \");\n        }\n        System.out.println ();\n    }\n}"
+ },
+ {
+  "id": "Rd41c27729f",
+  "task": "refactor",
+  "key": "python:d41c27729f87b304",
+  "lang": "python",
+  "code": "def is_prime(n) :\n\tif n < 2 :\n\t\treturn False;\n\tif n % 2 == 0 :\n\t\treturn n == 2\n\tk = 3\n\twhile k * k < = n :\n\t\tif n % k == 0 :\n\t\t\treturn False\n\t\tk += 2\n\treturn True"
+ },
+ {
+  "id": "Refa2e73039",
+  "task": "refactor",
+  "key": "c:efa2e73039073af0",
+  "lang": "c",
+  "code": "int main (void) {\n    char line [128], *p = line;\n    int sum = 0, len, n;\n    printf (\"enter numbers: \");\n    scanf (\"%127[^\\n]\", line);\n    while (sscanf (p, \"%d%n\", &n, &len) == 1) {\n        sum += n;\n        p += len;\n    }\n    printf (\"sum: %d\\n\", sum);\n    return 0;\n}"
+ },
+ {
+  "id": "R0113c1db9b",
+  "task": "refactor",
+  "key": "python:0113c1db9b6c027c",
+  "lang": "python",
+  "code": "def foo(thing = None, thing_seq = None) :\n\tif thing_seq is not None :\n\t\tfor _thing in thing_seq :\n\t\t\tfoo(thing = _thing)\n\tif thing is not None :\n\t\tprint \"did foo with\", thing"
+ },
+ {
+  "id": "Rc5f95dbda1",
+  "task": "refactor",
+  "key": "csharp:c5f95dbda1e6fa14",
+  "lang": "csharp",
+  "code": "private static void GetUserData (string userName, UserSession user) {\n    using (Entities ctx = CommonSERT.GetContext ())\n    {\n        var result = (from ur in ctx.datUserRoles\n            where ur.AccountName.Equals (userName, StringComparison.CurrentCultureIgnoreCase)\n            select new {Active = ur.active, ID = ur.ID,}).FirstOrDefault ();\n        if (result != null)\n            user.UserActive = result.Active;\n        user.UserID = result.ID;\n    }\n}"
+ },
+ {
+  "id": "Rf9eb0ff068",
+  "task": "refactor",
+  "key": "python:f9eb0ff0689bef5a",
+  "lang": "python",
+  "code": "def function(argument) :\n\tmax_arg = max(argument)\n\targument.remove(max_arg)\n\tfor length in range(1, len(argument) + 1) :\n\t\tfor combo in combinations(argument, length) :\n\t\t\tif sum(combo) == max_arg :\n\t\t\t\treturn \"true\"\n\treturn \"false\""
+ },
+ {
+  "id": "R1479812111",
+  "task": "refactor",
+  "key": "csharp:1479812111badf72",
+  "lang": "csharp",
+  "code": "public void doWork () {\n    int h = 0;\n    while (h <= 0) \n    {\n        Thread.Sleep (3000);\n        h.Dump ();\n        h ++;\n    }\n}"
+ },
+ {
+  "id": "R314ba9cd4a",
+  "task": "refactor",
+  "key": "c:314ba9cd4ac6960f",
+  "lang": "c",
+  "code": "int main (void) {\n    int i, base;\n    int word [32];\n    unsigned long int number;\n    printf (\"Enter the decimal number to be converted: \");\n    scanf (\"%ld\", & number);\n    printf (\"\\nEnter the new base: \");\n    scanf (\"%d\", & base);\n    i = wordCalculator (word, number, base);\n    printf (\"The number is: \");\n    for (; i >= 0; i--) {\n        if (word[i] <= 9)\n            printf (\"%d\", word[i]);\n        else\n            printf (\"%c\", (65 - 10 + word[i]));\n    }\n    printf (\"\\n\");\n}"
+ },
+ {
+  "id": "R7ca8e2a2eb",
+  "task": "refactor",
+  "key": "java:7ca8e2a2eb1c6b81",
+  "lang": "java",
+  "code": "static boolean isImmutable (Object obj) {\n    Class < ? > objClass = obj.getClass ();\n    Class < ? > superClass = objClass.getSuperclass ();\n    if (! Immutable.class.equals (superClass)) {\n        return false;\n    }\n    if (! Modifier.isFinal (objClass.getModifiers ())) {\n        return false;\n    }\n    Field [] objFields = objClass.getDeclaredFields ();\n    for (int i = 0;\n    i < objFields.length; i ++) {\n        if (! Modifier.isFinal (objFields [i].getModifiers ()) || ! isValidFieldType (objFields [i].getType ())) {\n            return false;\n        }\n    }\n    return true;\n}"
+ },
+ {
+  "id": "R8db01bf25f",
+  "task": "refactor",
+  "key": "python:8db01bf25f4b4c46",
+  "lang": "python",
+  "code": "def flatten(xs) :\n\tres = []\n\tfor x in xs :\n\t\tif isinstance(x, list) :\n\t\t\tres.extend(flatten(x))\n\t\telse :\n\t\t\tres.append(x)\n\treturn res"
+ },
+ {
+  "id": "Re6ed6fb8d3",
+  "task": "refactor",
+  "key": "csharp:e6ed6fb8d32d1f33",
+  "lang": "csharp",
+  "code": "public static IEnumerable < T > TakeLast < T > (this IEnumerable < T > input, int count) {\n    if (count <= 0)\n        yield break;\n    var inputList = input as IList < T >;\n    if (inputList != null) {\n        int last = inputList.Count;\n        int index = last - count;\n        if (index < 0)\n            index = 0;\n        while (index != last) {\n            yield return inputList [index];\n            index ++;\n        }\n    } else {\n        T [] buffer = new T [count];\n        int index = 0;\n        int listIndex = 0;\n        foreach (T item in input) {\n            if (listIndex >= count)\n                buffer [index] = item;\n            listIndex ++;\n            index = (index + 1) % count;\n        }\n        if (listIndex < count)\n            index = 0;\n        else\n            listIndex = count;\n        while (listIndex > 0) {\n            yield return buffer [index];\n            index = (index + 1) % count;\n            listIndex --;\n        }\n    }\n}"
+ },
+ {
+  "id": "Rc93ef31bfe",
+  "task": "refactor",
+  "key": "python:c93ef31bfe9a61d0",
+  "lang": "python",
+  "code": "def matched(s) :\n\tp_list = []\n\tfor i in range(0, len(s)) :\n\t\tif s [i] == '(' :\n\t\t\tp_list.append('(')\n\t\telif s [i] == ')' :\n\t\t\tif not p_list :\n\t\t\t\treturn False\n\t\t\telse :\n\t\t\t\tp_list.pop()\n\tif not p_list :\n\t\treturn True\n\telse :\n\t\treturn False"
+ },
+ {
+  "id": "R077660cd40",
+  "task": "refactor",
+  "key": "c:077660cd40d52f78",
+  "lang": "c",
+  "code": "int main (void) {\n    int ch;\n    int numWords = 0;\n    int numLetters = 0;\n    bool prevWasASpace = true;\n    printf (\"Enter a sentence: \");\n    while ((ch = getchar ()) != EOF && ch != '\\n') {\n        if (ch == ' ')\n            prevWasASpace = true;\n        else {\n            if (prevWasASpace)\n                numWords++;\n            prevWasASpace = false;\n            numLetters++;\n        }\n    }\n    if (numWords > 0) {\n        double avg = numLetters / (float) (numWords);\n        printf (\"Average word length: %.1f (C = %d, N = %d)\\n\", avg, numLetters, numWords);\n    }\n    else\n        printf (\"You didn't enter any words\\n\");\n    return 0;\n}"
+ },
+ {
+  "id": "R076547cbe5",
+  "task": "refactor",
+  "key": "csharp:076547cbe5373ea5",
+  "lang": "csharp",
+  "code": "public static bool IsWindowOnAnyScreen(Window Window, short WindowSizeX, short WindowSizeY, bool AutoAdjustWindow) {\n    var Screen = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(Window).Handle);\n    bool leftSideTest = false, topSideTest = false, bottomSideTest = false, rightSideTest = false;\n    leftSideTest = (Window.Left >= Screen.WorkingArea.Left);\n    topSideTest = (Window.Top >= Screen.WorkingArea.Top);\n    bottomSideTest = ((Window.Top + WindowSizeY) <= Screen.WorkingArea.Bottom);\n    rightSideTest = ((Window.Left + WindowSizeX) <= Screen.WorkingArea.Right);\n    if (leftSideTest && topSideTest && bottomSideTest && rightSideTest)\n        return true;\n    else {\n        if (AutoAdjustWindow) {\n            if (!leftSideTest)\n                Window.Left = Window.Left - (Window.Left - Screen.WorkingArea.Left);\n            if (!topSideTest)\n                Window.Top = Window.Top - (Window.Top - Screen.WorkingArea.Top);\n            if (!bottomSideTest)\n                Window.Top = Window.Top - ((Window.Top + WindowSizeY) - Screen.WorkingArea.Bottom);\n            if (!rightSideTest)\n                Window.Left = Window.Left - ((Window.Left + WindowSizeX) - Screen.WorkingArea.Right);\n        }\n    }\n    return false;\n}"
+ },
+ {
+  "id": "Rb740b5ce4e",
+  "task": "refactor",
+  "key": "c:b740b5ce4e245375",
+  "lang": "c",
+  "code": "int main () {\n    int blah = 1;\n    int *blah1 = &blah;\n    int **blah2 = &blah1;\n    int ***blah3 = &blah2;\n    int ****blah4 = &blah3;\n    int *****blah5 = &blah4;\n    int ******blah6 = &blah5;\n    int *******blah7 = &blah6;\n    int ********blah8 = &blah7;\n    int *********blah9 = &blah8;\n    mega_pointer (blah9);\n    return 0;\n}"
+ },
+ {
+  "id": "R2d627295b4",
+  "task": "refactor",
+  "key": "python:2d627295b4cf5605",
+  "lang": "python",
+  "code": "from sklearn.linear_model import LinearRegression\nimport numpy as np\nfrom scipy import stats\nclass MyLinearRegression(LinearRegression):\n\tdef fit(self, X, y, n_jobs = 1) :\n\t\tsuper().fit(X, y, n_jobs)\n\t\tresidual = (self.predict(X) - y) ** 2\n\t\tssr = np.sum(residual, axis = 0) / float(X.shape[0] - X.shape[1])\n\t\tserr = np.array([np.sqrt(np.diagonal(ssr[i] * np.linalg.inv(np.dot(X.T, X)))) for i in range(ssr.shape[0])])\n\t\tself.t = self.coef_ / serr"
+ },
+ {
+  "id": "R27ef16612d",
+  "task": "refactor",
+  "key": "c:27ef16612d101273",
+  "lang": "c",
+  "code": "int main () {\n    int a [50] = {1, 2, -3, 0, 0, 6, 7, -8, 0, SENTINEL};\n    int count = 0;\n    int i;\n    for (i = 0; i < 50; i++) {\n        if (a[i] == SENTINEL)\n            break;\n        count += (a[i] != 0);\n    }\n    printf (\"Total Element :%d \", count);\n    return 0;\n}"
+ },
+ {
+  "id": "R80bf6ba91c",
+  "task": "refactor",
+  "key": "java:80bf6ba91cc0f9d1",
+  "lang": "java",
+  "code": "public static void main (final String [] args) throws IOException {\n    BufferedReader br = new BufferedReader (new InputStreamReader (System.in));\n    System.out.println (\"Enter some text, or '\" + EXIT_COMMAND + \"' to quit\");\n    while (true) {\n        System.out.print (\"><![CDATA[ \");\n        String input = br.readLine ();\n        System.out.println (input);\n        if (input.length () == EXIT_COMMAND.length () && input.toLowerCase ().equals (EXIT_COMMAND)) {\n            System.out.println (\"Exiting.\");\n            return;\n        }\n        System.out.println (\"...response goes here...\");\n    }\n}"
+ },
+ {
+  "id": "R5813b54ca5",
+  "task": "refactor",
+  "key": "c:5813b54ca541933e",
+  "lang": "c",
+  "code": "int main () {\n    double integralSum = 0;\n    int i;\n    for (i = 1; i < (parts + 1); ++i) {\n        integralSum = integralSum + (step * fabs (pow ((x + (step * i)), 2) + 4));\n    }\n    printf (\"%f\\n\", integralSum);\n    return 0;\n}"
+ },
+ {
+  "id": "R14e363aee6",
+  "task": "refactor",
+  "key": "csharp:14e363aee683805e",
+  "lang": "csharp",
+  "code": "public static void Main () {\n    string baseIP = \"192.168.1.\";\n    Console.WriteLine (\"Pinging 255 destinations of D-class in {0}*\", baseIP);\n    CreatePingers (255);\n    PingOptions po = new PingOptions (ttl, true);\n    System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding ();\n    byte [] data = enc.GetBytes (\"abababababababababababababababab\");\n    SpinWait wait = new SpinWait ();\n    int cnt = 1;\n    Stopwatch watch = Stopwatch.StartNew ();\n    foreach (Ping p in pingers) {\n        lock (@lock)\n        {\n            instances += 1;\n        } p.SendAsync (string.Concat (baseIP, cnt.ToString ()), timeOut, data, po);\n        cnt += 1;\n    }\n    while (instances > 0) {\n        wait.SpinOnce ();\n    }\n    watch.Stop ();\n    DestroyPingers ();\n    Console.WriteLine (\"Finished in {0}. Found {1} active IP-addresses.\", watch.Elapsed.ToString (), result);\n    Console.ReadKey ();\n}"
+ },
+ {
+  "id": "R9582f81645",
+  "task": "refactor",
+  "key": "python:9582f81645be3563",
+  "lang": "python",
+  "code": "def __init__(self, a = None, b = None, ** kwargs) :\n\tself.relations = {\n\t\"e\" : {\"req\" : [\"a\", \"b\"], \"func\" : lambda a, b : a + b},\n\t\"C\" : {\"req\" : [\"e\", \"a\"], \"func\" : lambda e, a : e * 1 / (a * b)},\n\t\"A\" : {\"req\" : [\"C\", \"e\"], \"func\" : lambda e, C : cmplx_func_A(e, C)},\n\t\"a\" : {\"req\" : [\"e\", \"b\"], \"func\" : lambda e, b : e / b},\n\t\"b\" : {\"req\" : [\"e\", \"a\"], \"func\" : lambda e, a : e / a}}\n\tself.a = a\n\tself.b = b\n\tself.e = None\n\tself.C = None\n\tself.A = None\n\tif kwargs :\n\t\tfor key in kwargs :\n\t\t\tsetattr(self, key, kwargs [key])"
+ },
+ {
+  "id": "Rcc630548aa",
+  "task": "refactor",
+  "key": "csharp:cc630548aac1d1d6",
+  "lang": "csharp",
+  "code": "public IDisposable Enter (string key) {\n    Locker locker;\n    lock (this.globalLock)\n    {\n        if (! this.locks.TryGetValue (key, out locker)) {\n            this.locks [key] = locker = new Locker (this, key);\n        }\n        locker.WaitCount ++;\n    } locker.Enter ();\n    locker.WaitCount --;\n    return locker;\n}"
+ },
+ {
+  "id": "R8868947157",
+  "task": "refactor",
+  "key": "c:8868947157b369ff",
+  "lang": "c",
+  "code": "int main (void) {\n    char first [25];\n    int index = 0, n;\n    printf (\"Enter the number of last names :\\n\");\n    scanf (\"%d\", & n);\n    printf (\"Enter the first name \\n\");\n    scanf (\"%s\", first);\n    char last [n] [25];\n    for (int i = 0; i < n; i++)\n        scanf (\"%s\", last[i]);\n    for (int i = 0; i < n; i++) {\n        if (strcmp (last[i], first) == 0)\n            index++;\n    }\n    if (index == 0)\n        printf (\"First name not repeated\\n\");\n    else\n        printf (\"First name repeated %d times\", index);\n    return 0;\n}"
+ }
+]

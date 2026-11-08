@@ -1,0 +1,32 @@
+\begin{table}[t]
+\centering
+\caption{Flagging behaviour on the cohorts (mean over cohorts; seeds averaged for trained systems), in per cent. Det.: derived pair flagged; False: share of the cohort's non-derived pairs flagged. ``Transferred'' is the validation threshold of the benchmark; ``adaptive'' is the label-free rule of Eq.~\ref{eq:eq12} and its $k$ rule with $\mu,\sigma$ computed over all pairs of the cohort. bp.: assignment boilerplate.}
+\label{tab:cohort-thr}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ll|cc|cc}
+\toprule
+ & & \multicolumn{2}{c|}{PROGpedia} & \multicolumn{2}{c}{IR-Plag} \\
+\textbf{System} & \textbf{Rule} & Det. & False & Det. & False \\
+\midrule
+Gate, CodeBERT expert & transferred & 24 & 10 & 100 & 100 \\
+ & adaptive & 21 & 6 & 100 & 100 \\
+ & bp.\ removed, transferred & 25 & 5 & 20 & 14 \\
+ & bp.\ removed, adaptive & 23 & 2 & 16 & 4 \\
+\midrule
+Gate, UniXcoder expert & transferred & 95 & 70 & 99 & 99 \\
+ & adaptive & 65 & 10 & 55 & 67 \\
+ & bp.\ removed, transferred & 52 & 0 & 15 & 7 \\
+ & bp.\ removed, adaptive & 70 & 1 & 16 & 9 \\
+\midrule
+Token $k$-gram only & transferred & 100 & 88 & 100 & 100 \\
+ & bp.\ removed, transferred & 98 & 30 & 90 & 47 \\
+\midrule
+JPlag 6.3.0 & transferred & 82 & 53 & 59 & 67 \\
+JPlag + TokenNorm & transferred & 82 & 51 & 63 & 71 \\
+\midrule
+Dolos 2.10.0 & default ($-$M 0.9) & 98 & 70 & 100 & 98 \\
+ & $-$M 0.5 (boilerplate) & 94 & 18 & 72 & 36 \\
+\bottomrule
+\end{tabular}
+\end{table}

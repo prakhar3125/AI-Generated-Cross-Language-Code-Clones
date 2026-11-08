@@ -1,0 +1,302 @@
+[
+ {
+  "id": "T234",
+  "outputs": {
+   "python": "def main():\n    name = \"AnuvratAnuvra\"\n    counts = {}\n    for ch in name:\n        counts[ch] = counts.get(ch, 0) + 1\n    for key, value in counts.items():\n        if value > 1:\n            print(str(key) + \":\" + str(value))\n",
+   "c": "int main(void) {\n    const char *name = \"AnuvratAnuvra\";\n    int freq[256] = {0};\n    for (const char *p = name; *p != '\\0'; p++) {\n        freq[(unsigned char) *p]++;\n    }\n    for (int i = 0; i < 256; i++) {\n        if (freq[i] > 1) {\n            printf(\"%c:%d\\n\", (char) i, freq[i]);\n        }\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    string name = \"AnuvratAnuvra\";\n    var counts = new Dictionary<char, int>();\n    foreach (char ch in name) {\n        if (counts.ContainsKey(ch)) counts[ch]++;\n        else counts[ch] = 1;\n    }\n    foreach (var entry in counts) {\n        if (entry.Value > 1) {\n            Console.WriteLine(entry.Key + \":\" + entry.Value);\n        }\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T240",
+  "outputs": {
+   "python": "def main():\n    print(\"Enter the String\", end=\"\")\n    st = input()\n    ar = [0] * 256\n    for ch in st:\n        ar[ord(ch)] += 1\n    for i in range(256):\n        ch = chr(i)\n        if ar[i] > 0:\n            if ar[i] == 1:\n                print(ch, end=\"\")\n            else:\n                print(ch + str(ar[i]), end=\"\")\n",
+   "c": "int main(void) {\n    char st[1024];\n    printf(\"Enter the String\");\n    if (fgets(st, sizeof(st), stdin) == NULL) return 0;\n    st[strcspn(st, \"\\n\")] = '\\0';\n    int ar[256] = {0};\n    for (const char *p = st; *p != '\\0'; p++) {\n        ar[(unsigned char) *p]++;\n    }\n    for (int i = 0; i < 256; i++) {\n        if (ar[i] > 0) {\n            if (ar[i] == 1) {\n                printf(\"%c\", (char) i);\n            } else {\n                printf(\"%c%d\", (char) i, ar[i]);\n            }\n        }\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    Console.Write(\"Enter the String\");\n    string st = Console.ReadLine();\n    int[] ar = new int[256];\n    foreach (char ch in st) {\n        ar[ch]++;\n    }\n    for (int i = 0; i < 256; i++) {\n        char ch = (char) i;\n        if (ar[i] > 0) {\n            if (ar[i] == 1) {\n                Console.Write(ch);\n            } else {\n                Console.Write(ch.ToString() + ar[i]);\n            }\n        }\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T365",
+  "outputs": {
+   "python": "import random\n\nSYMBOLS = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()\"\n\ndef generate_random_password(length):\n    if length < 1:\n        raise ValueError(\"length must be greater than 0\")\n    buf = [random.choice(SYMBOLS) for _ in range(length)]\n    random.shuffle(buf)\n    return \"\".join(buf)\n",
+   "c": "static const char SYMBOLS[] = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()\";\n\nchar *generate_random_password(int length) {\n    if (length < 1) {\n        return NULL;\n    }\n    size_t n = sizeof(SYMBOLS) - 1;\n    char *buf = malloc((size_t) length + 1);\n    for (int idx = 0; idx < length; ++idx) {\n        buf[idx] = SYMBOLS[rand() % n];\n    }\n    buf[length] = '\\0';\n    for (int i = length - 1; i > 0; --i) {\n        int j = rand() % (i + 1);\n        char tmp = buf[i];\n        buf[i] = buf[j];\n        buf[j] = tmp;\n    }\n    return buf;\n}\n",
+   "csharp": "private static readonly Random RANDOM = new Random();\nprivate const string SYMBOLS = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()\";\n\npublic static string GenerateRandomPassword(int length) {\n    if (length < 1) {\n        throw new ArgumentException(\"length must be greater than 0\");\n    }\n    var buf = new char[length];\n    for (int idx = 0; idx < buf.Length; ++idx) {\n        buf[idx] = SYMBOLS[RANDOM.Next(SYMBOLS.Length)];\n    }\n    for (int i = buf.Length - 1; i > 0; --i) {\n        int j = RANDOM.Next(i + 1);\n        char tmp = buf[i];\n        buf[i] = buf[j];\n        buf[j] = tmp;\n    }\n    return new string(buf);\n}\n"
+  }
+ },
+ {
+  "id": "T506",
+  "outputs": {
+   "python": "def main():\n    text = input()\n    arrlist = list(text)\n    for ch in text:\n        freq = arrlist.count(ch)\n        print(\"Frequency of \" + ch + \"  is:   \" + str(freq))\n",
+   "c": "int main(void) {\n    char str[1024];\n    if (fgets(str, sizeof(str), stdin) == NULL) return 0;\n    str[strcspn(str, \"\\n\")] = '\\0';\n    int len = (int) strlen(str);\n    for (int i = 0; i < len; i++) {\n        int freq = 0;\n        for (int j = 0; j < len; j++) {\n            if (str[j] == str[i]) freq++;\n        }\n        printf(\"Frequency of %c  is:   %d\\n\", str[i], freq);\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    string str = Console.ReadLine();\n    var arrlist = new List<char>(str);\n    foreach (char ch in str) {\n        int freq = arrlist.Count(c => c == ch);\n        Console.WriteLine(\"Frequency of \" + ch + \"  is:   \" + freq);\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T434",
+  "outputs": {
+   "python": "class Histogram:\n    def __init__(self, words):\n        self.words = words\n\n    def find_in_line(self, token):\n        return token if token in self.words else None\n\ndef valid_name(input_tokens, histogram):\n    user = \"\"\n    name = next(input_tokens)\n    if histogram.find_in_line(name) is not None:\n        print(\"This name exist\")\n    else:\n        print(\"Name not found\")\n        user = valid_name(input_tokens, histogram)\n    return user\n",
+   "c": "typedef struct {\n    const char **tokens;\n    int pos;\n} TokenStream;\n\nconst char *next_token(TokenStream *ts) {\n    return ts->tokens[ts->pos++];\n}\n\nint find_in_line(TokenStream *ts, const char *name) {\n    for (int i = ts->pos; ts->tokens[i] != NULL; i++) {\n        if (strcmp(ts->tokens[i], name) == 0) return 1;\n    }\n    return 0;\n}\n\nconst char *valid_name(TokenStream *input, TokenStream *histogram) {\n    const char *user = \"\";\n    const char *name = next_token(input);\n    if (find_in_line(histogram, name)) {\n        printf(\"This name exist\\n\");\n    } else {\n        printf(\"Name not found\\n\");\n        user = valid_name(input, histogram);\n    }\n    return user;\n}\n",
+   "csharp": "public class TokenScanner {\n    private readonly Queue<string> _tokens;\n    private readonly HashSet<string> _histogram;\n\n    public TokenScanner(IEnumerable<string> tokens, HashSet<string> histogram = null) {\n        _tokens = new Queue<string>(tokens);\n        _histogram = histogram;\n    }\n\n    public string Next() {\n        return _tokens.Dequeue();\n    }\n\n    public string FindInLine(string name) {\n        return _histogram != null && _histogram.Contains(name) ? name : null;\n    }\n}\n\npublic static string ValidName(TokenScanner input, TokenScanner histogram) {\n    string user = \"\";\n    string name = input.Next();\n    if (histogram.FindInLine(name) != null) {\n        Console.WriteLine(\"This name exist\");\n    } else {\n        Console.WriteLine(\"Name not found\");\n        user = ValidName(input, histogram);\n    }\n    return user;\n}\n"
+  }
+ },
+ {
+  "id": "T639",
+  "outputs": {
+   "python": "from pathlib import Path\nfrom urllib.parse import urlparse\n\ndef get_protocol(file):\n    try:\n        return urlparse(Path(file).absolute().as_uri()).scheme\n    except Exception:\n        return \"unknown\"\n",
+   "c": "char *file_to_uri(const char *file) {\n    if (file == NULL) return NULL;\n    char *uri = malloc(strlen(file) + 8);\n    strcpy(uri, \"file://\");\n    strcat(uri, file);\n    return uri;\n}\n\nconst char *url_get_protocol(const char *uri) {\n    static const char *protos[] = {\"http\", \"https\", \"ftp\", \"file\"};\n    for (int i = 0; i < 4; i++) {\n        size_t n = strlen(protos[i]);\n        if (strncmp(uri, protos[i], n) == 0 && uri[n] == ':') return protos[i];\n    }\n    return NULL;\n}\n\nconst char *get_protocol(const char *file) {\n    const char *result;\n    char *uri = file_to_uri(file);\n    if (uri != NULL) {\n        const char *p = url_get_protocol(uri);\n        result = (p != NULL) ? p : \"unknown\";\n        free(uri);\n    } else {\n        result = \"unknown\";\n    }\n    return result;\n}\n",
+   "csharp": "public static string GetProtocol(string file) {\n    string result;\n    try {\n        result = new Uri(file).Scheme;\n    } catch (Exception) {\n        result = \"unknown\";\n    }\n    return result;\n}\n"
+  }
+ },
+ {
+  "id": "T848",
+  "outputs": {
+   "python": "def main():\n    for i in range(1, 16):\n        if (i & 1) > 0: print(\"A\", end=\"\")\n        if (i & 2) > 0: print(\"B\", end=\"\")\n        if (i & 4) > 0: print(\"C\", end=\"\")\n        if (i & 8) > 0: print(\"D\", end=\"\")\n        print()\n",
+   "c": "int main(void) {\n    for (int i = 1; i < 16; ++i) {\n        if ((i & 1) > 0) printf(\"A\");\n        if ((i & 2) > 0) printf(\"B\");\n        if ((i & 4) > 0) printf(\"C\");\n        if ((i & 8) > 0) printf(\"D\");\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    for (int i = 1; i < 16; ++i) {\n        if ((i & 1) > 0) Console.Write(\"A\");\n        if ((i & 2) > 0) Console.Write(\"B\");\n        if ((i & 4) > 0) Console.Write(\"C\");\n        if ((i & 8) > 0) Console.Write(\"D\");\n        Console.WriteLine(\"\");\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T613",
+  "outputs": {
+   "python": "def sort(numbers, digit):\n    if len(numbers) == 0 or digit <= 0:\n        return numbers\n    space = [[] for _ in range(10)]\n    for num in numbers:\n        space[(num // digit) % 10].append(num)\n    k = 0\n    for i in range(10):\n        space[i] = sort(space[i], digit // 10)\n        for value in space[i]:\n            numbers[k] = value\n            k += 1\n    return numbers\n",
+   "c": "int *sort(int *numbers, int count, int digit) {\n    if (count == 0 || digit <= 0) return numbers;\n    int *buckets[10];\n    int lens[10];\n    for (int b = 0; b < 10; b++) {\n        buckets[b] = malloc(sizeof(int) * (size_t) count);\n        lens[b] = 0;\n    }\n    for (int j = 0; j < count; j++) {\n        int idx = (numbers[j] / digit) % 10;\n        buckets[idx][lens[idx]++] = numbers[j];\n    }\n    int k = 0;\n    for (int i = 0; i < 10; i++) {\n        sort(buckets[i], lens[i], digit / 10);\n        for (int j = 0; j < lens[i]; j++) {\n            numbers[k++] = buckets[i][j];\n        }\n        free(buckets[i]);\n    }\n    return numbers;\n}\n",
+   "csharp": "public static int[] Sort(int[] numbers, int digit) {\n    if (numbers.Length == 0 || digit <= 0) return numbers;\n    var space = new List<int>[10];\n    for (int i = 0; i < 10; i++) space[i] = new List<int>();\n    foreach (int num in numbers) {\n        space[(num / digit) % 10].Add(num);\n    }\n    int k = 0;\n    for (int i = 0; i < 10; i++) {\n        int[] sortedBucket = Sort(space[i].ToArray(), digit / 10);\n        foreach (int value in sortedBucket) {\n            numbers[k++] = value;\n        }\n    }\n    return numbers;\n}\n"
+  }
+ },
+ {
+  "id": "T18",
+  "outputs": {
+   "python": "import threading\nimport traceback\nfrom datetime import datetime\n\nclass TextView:\n    def __init__(self, context):\n        self.context = context\n\nclass MyActivity:\n    def setContentView(self, view):\n        pass\n\n    def on_tick(self):\n        pass\n\n    def onCreate(self, savedInstanceState):\n        self.tv = TextView(self)\n        self.setContentView(self.tv)\n        fmt = \"%d.%m.%Y, %H:%M\"\n        oldTime = \"19.02.2018, 12:00\"\n        newTime = \"20.02.2018, 14:00\"\n        diff = 0\n        try:\n            oldDate = datetime.strptime(oldTime, fmt)\n            newDate = datetime.strptime(newTime, fmt)\n            self.oldLong = int(oldDate.timestamp() * 1000)\n            self.newLong = int(newDate.timestamp() * 1000)\n            diff = self.newLong - self.oldLong\n        except ValueError:\n            traceback.print_exc()\n        counter = threading.Timer(diff / 1000.0, self.on_tick)\n        counter.start()\n",
+   "c": "#include <time.h>\n\ntypedef struct {\n    int ignored;\n} Bundle;\n\nstatic long oldLong, newLong, diff;\n\nstatic void my_count_start(long millisInFuture, long interval) {\n    (void) millisInFuture;\n    (void) interval;\n}\n\nvoid onCreate(Bundle *savedInstanceState) {\n    (void) savedInstanceState;\n    struct tm oldTm, newTm;\n    strptime(\"19.02.2018, 12:00\", \"%d.%m.%Y, %H:%M\", &oldTm);\n    strptime(\"20.02.2018, 14:00\", \"%d.%m.%Y, %H:%M\", &newTm);\n    oldLong = (long) timegm(&oldTm) * 1000L;\n    newLong = (long) timegm(&newTm) * 1000L;\n    diff = newLong - oldLong;\n    my_count_start(diff, 1000);\n}\n",
+   "csharp": "public class Bundle { }\n\npublic class MyCount {\n    private readonly long _millisInFuture;\n    private readonly long _interval;\n\n    public MyCount(long millisInFuture, long interval) {\n        _millisInFuture = millisInFuture;\n        _interval = interval;\n    }\n\n    public void Start() { }\n}\n\npublic void OnCreate(Bundle savedInstanceState) {\n    var formatter = \"dd.MM.yyyy, HH:mm\";\n    string oldTime = \"19.02.2018, 12:00\";\n    string newTime = \"20.02.2018, 14:00\";\n    long diff = 0;\n    try {\n        var oldDate = DateTime.ParseExact(oldTime, formatter, CultureInfo.InvariantCulture);\n        var newDate = DateTime.ParseExact(newTime, formatter, CultureInfo.InvariantCulture);\n        var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);\n        long oldLong = (long) oldDate.ToUniversalTime().Subtract(epoch).TotalMilliseconds;\n        long newLong = (long) newDate.ToUniversalTime().Subtract(epoch).TotalMilliseconds;\n        diff = newLong - oldLong;\n    } catch (FormatException e) {\n        Console.WriteLine(e.StackTrace);\n    }\n    MyCount counter = new MyCount(diff, 1000);\n    counter.Start();\n}\n"
+  }
+ },
+ {
+  "id": "T130",
+  "outputs": {
+   "python": "def solution(X, A):\n    hset = set()\n    for i in range(len(A)):\n        if A[i] <= X:\n            hset.add(A[i])\n        if len(hset) == X:\n            return i\n    return -1\n",
+   "c": "int solution(int X, const int *A, int n) {\n    int *seen = calloc((size_t) X + 1, sizeof(int));\n    int distinct = 0;\n    for (int i = 0; i < n; i++) {\n        if (A[i] <= X && A[i] >= 1 && !seen[A[i]]) {\n            seen[A[i]] = 1;\n            distinct++;\n        }\n        if (distinct == X) {\n            free(seen);\n            return i;\n        }\n    }\n    free(seen);\n    return -1;\n}\n",
+   "csharp": "public static int Solution(int X, int[] A) {\n    var hset = new HashSet<int>();\n    for (int i = 0; i < A.Length; i++) {\n        if (A[i] <= X) hset.Add(A[i]);\n        if (hset.Count == X) return i;\n    }\n    return -1;\n}\n"
+  }
+ },
+ {
+  "id": "T686",
+  "outputs": {
+   "python": "import sys\n\nclass Grocery:\n    def __init__(self, numOfItems):\n        self.numOfItems = numOfItems\n        self.items = []\n\n    def add_item(self, item):\n        if item in self.items:\n            return False\n        self.items.append(item)\n        return True\n\n    def __str__(self):\n        return \"Grocery items: \" + \", \".join(self.items)\n\ndef main():\n    print(\"Enter How Many Items: \", end=\"\")\n    try:\n        numOfItems = int(input().strip())\n    except ValueError:\n        print(\"Number of items you entered is invalid!\")\n        sys.exit(0)\n    grocery = Grocery(numOfItems)\n    for i in range(numOfItems):\n        print(\"Enter Item \" + str(i + 1) + \" : \", end=\"\")\n        if not grocery.add_item(input()):\n            print(\"First Item Duplicate Detected!\")\n            sys.exit(0)\n    print(grocery)\n",
+   "c": "#define MAX_ITEMS 100\n#define ITEM_LEN 64\n\ntypedef struct {\n    int numOfItems;\n    int count;\n    char items[MAX_ITEMS][ITEM_LEN];\n} Grocery;\n\nint grocery_add_item(Grocery *g, const char *item) {\n    for (int i = 0; i < g->count; i++) {\n        if (strcmp(g->items[i], item) == 0) return 0;\n    }\n    snprintf(g->items[g->count], ITEM_LEN, \"%s\", item);\n    g->count++;\n    return 1;\n}\n\nvoid grocery_print(const Grocery *g) {\n    printf(\"Grocery items:\");\n    for (int i = 0; i < g->count; i++) {\n        printf(\" %s\", g->items[i]);\n    }\n    printf(\"\\n\");\n}\n\nint main(void) {\n    char line[ITEM_LEN];\n    printf(\"Enter How Many Items: \");\n    if (fgets(line, sizeof(line), stdin) == NULL) return 0;\n    char *end;\n    long val = strtol(line, &end, 10);\n    if (end == line) {\n        printf(\"Number of items you entered is invalid!\\n\");\n        return 0;\n    }\n    int numOfItems = (int) val;\n    Grocery grocery;\n    grocery.numOfItems = numOfItems;\n    grocery.count = 0;\n    for (int i = 0; i < numOfItems; i++) {\n        printf(\"Enter Item %d : \", i + 1);\n        if (fgets(line, sizeof(line), stdin) == NULL) return 0;\n        line[strcspn(line, \"\\n\")] = '\\0';\n        if (!grocery_add_item(&grocery, line)) {\n            printf(\"First Item Duplicate Detected!\\n\");\n            return 0;\n        }\n    }\n    grocery_print(&grocery);\n    return 0;\n}\n",
+   "csharp": "public class Grocery {\n    private readonly int _numOfItems;\n    private readonly List<string> _items = new List<string>();\n\n    public Grocery(int numOfItems) {\n        _numOfItems = numOfItems;\n    }\n\n    public bool AddItem(string item) {\n        if (_items.Contains(item)) return false;\n        _items.Add(item);\n        return true;\n    }\n\n    public override string ToString() {\n        return \"Grocery items: \" + string.Join(\", \", _items);\n    }\n}\n\npublic static void Main(string[] args) {\n    Console.Write(\"Enter How Many Items: \");\n    int numOfItems;\n    try {\n        numOfItems = int.Parse(Console.ReadLine().Trim());\n    } catch (FormatException) {\n        Console.Write(\"Number of items you entered is invalid!\");\n        return;\n    }\n    Grocery grocery = new Grocery(numOfItems);\n    for (int i = 0; i < numOfItems; i++) {\n        Console.Write(\"Enter Item \" + (i + 1) + \" : \");\n        if (!grocery.AddItem(Console.ReadLine())) {\n            Console.WriteLine(\"First Item Duplicate Detected!\");\n            return;\n        }\n    }\n    Console.WriteLine(grocery.ToString());\n}\n"
+  }
+ },
+ {
+  "id": "T139",
+  "outputs": {
+   "python": "def solution(X, A):\n    empty_position = set(range(1, X + 1))\n    for i in range(len(A)):\n        empty_position.discard(A[i])\n        if not empty_position:\n            return i\n    return -1\n",
+   "c": "int solution(int X, const int *A, int n) {\n    int *present = calloc((size_t) X + 1, sizeof(int));\n    int remaining = X;\n    for (int i = 0; i < n; i++) {\n        if (A[i] >= 1 && A[i] <= X && present[A[i]]) {\n            present[A[i]] = 0;\n            remaining--;\n        }\n        if (remaining == 0) {\n            free(present);\n            return i;\n        }\n    }\n    free(present);\n    return -1;\n}\n",
+   "csharp": "public static int Solution(int X, int[] A) {\n    var emptyPosition = new HashSet<int>(Enumerable.Range(1, X));\n    for (int i = 0; i < A.Length; i++) {\n        emptyPosition.Remove(A[i]);\n        if (emptyPosition.Count == 0) return i;\n    }\n    return -1;\n}\n"
+  }
+ },
+ {
+  "id": "T247",
+  "outputs": {
+   "python": "def main():\n    print(\"Enter the String\", end=\"\")\n    text = input()\n    counts = {}\n    for ch in text:\n        counts[ord(ch)] = counts.get(ord(ch), 0) + 1\n    for code in range(256):\n        if counts.get(code, 0) > 0:\n            if counts[code] == 1:\n                print(chr(code), end=\"\")\n            else:\n                print(chr(code) + str(counts[code]), end=\"\")\n",
+   "c": "int main(void) {\n    printf(\"Enter the String\");\n    char st[1024];\n    if (fgets(st, sizeof(st), stdin) == NULL) return 0;\n    st[strcspn(st, \"\\n\")] = '\\0';\n    int ar[256] = {0};\n    for (int i = 0; st[i] != '\\0'; i++) {\n        ar[(unsigned char) st[i]]++;\n    }\n    for (int i = 0; i < 256; i++) {\n        char ch = (char) i;\n        if (ar[i] > 0) {\n            if (ar[i] == 1) printf(\"%c\", ch);\n            else printf(\"%c%d\", ch, ar[i]);\n        }\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    Console.Write(\"Enter the String\");\n    string st = Console.ReadLine();\n    var ar = new Dictionary<int, int>();\n    foreach (char ch in st) {\n        int code = ch;\n        if (ar.ContainsKey(code)) ar[code]++;\n        else ar[code] = 1;\n    }\n    for (int i = 0; i < 256; i++) {\n        char ch = (char) i;\n        if (ar.TryGetValue(i, out int n)) {\n            if (n == 1) Console.Write(ch);\n            else Console.Write(ch.ToString() + n);\n        }\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T33",
+  "outputs": {
+   "python": "def get_rows(i, j, array):\n    another = [None] * (j - i + 1)\n    while i <= j:\n        for k in range(len(another)):\n            another[k] = array[i]\n            i += 1\n    return another\n",
+   "c": "int **getRows(int i, int j, int **array) {\n    int rows = j - i + 1;\n    int **another = malloc(sizeof(int *) * (size_t) rows);\n    while (i <= j) {\n        for (int k = 0; k < rows; k++) {\n            another[k] = array[i];\n            i++;\n        }\n    }\n    return another;\n}\n",
+   "csharp": "public static int[][] GetRows(int i, int j, int[][] array) {\n    int[][] another = new int[j - i + 1][];\n    while (i <= j) {\n        for (int k = 0; k < another.Length; k++) {\n            another[k] = array[i];\n            i++;\n        }\n    }\n    return another;\n}\n"
+  }
+ },
+ {
+  "id": "T158",
+  "outputs": {
+   "python": "def solution(X, A):\n    empty_position = set(range(1, X + 1))\n    for i, value in enumerate(A):\n        empty_position.discard(value)\n        if len(empty_position) == 0:\n            return i\n    return -1\n",
+   "c": "int solution(int X, const int *A, int n) {\n    int *present = calloc((size_t) X + 2, sizeof(int));\n    for (int v = 1; v <= X; v++) {\n        present[v] = 1;\n    }\n    int remaining = X;\n    for (int i = 0; i < n; i++) {\n        if (A[i] >= 1 && A[i] <= X && present[A[i]]) {\n            present[A[i]] = 0;\n            remaining--;\n        }\n        if (remaining == 0) {\n            free(present);\n            return i;\n        }\n    }\n    free(present);\n    return -1;\n}\n",
+   "csharp": "public static int Solution(int X, int[] A) {\n    var emptyPosition = new HashSet<int>();\n    for (int v = 1; v <= X; v++) {\n        emptyPosition.Add(v);\n    }\n    for (int i = 0; i < A.Length; i++) {\n        emptyPosition.Remove(A[i]);\n        if (emptyPosition.Count == 0) {\n            return i;\n        }\n    }\n    return -1;\n}\n"
+  }
+ },
+ {
+  "id": "T445",
+  "outputs": {
+   "python": "LETTER_PRIMES = {\n    'a': 2, 'b': 3, 'c': 5, 'd': 7, 'e': 11, 'f': 13, 'g': 17, 'h': 19,\n    'i': 23, 'j': 29, 'k': 31, 'l': 37, 'm': 41, 'n': 43, 'o': 47, 'p': 53,\n    'q': 59, 'r': 61, 's': 67, 't': 71, 'u': 73, 'v': 79, 'w': 83, 'x': 89,\n    'y': 97, 'z': 101\n}\n\ndef word_prime_map():\n    return LETTER_PRIMES\n\ndef is_anagram(word, anagram_word):\n    if len(word) != len(anagram_word):\n        return False\n    primes = word_prime_map()\n    words_char_num = 1\n    anagram_word_num = 1\n    for ch in word:\n        words_char_num *= primes[ch]\n    for ch in anagram_word:\n        anagram_word_num *= primes[ch]\n    return anagram_word_num == words_char_num\n",
+   "c": "static const int LETTER_PRIMES[26] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};\n\nstatic int wordPrimeMap(char c) {\n    return LETTER_PRIMES[c - 'a'];\n}\n\nint isAnagram(const char *word, const char *anagram_word) {\n    if (strlen(word) != strlen(anagram_word)) return 0;\n    unsigned long long words_char_num = 1;\n    unsigned long long anagram_word_num = 1;\n    for (const char *p = word; *p; p++) {\n        words_char_num *= (unsigned long long) wordPrimeMap(*p);\n    }\n    for (const char *p = anagram_word; *p; p++) {\n        anagram_word_num *= (unsigned long long) wordPrimeMap(*p);\n    }\n    return anagram_word_num == words_char_num;\n}\n",
+   "csharp": "private static readonly Dictionary<char, int> WordPrimeMap = new Dictionary<char, int> {\n    {'a', 2}, {'b', 3}, {'c', 5}, {'d', 7}, {'e', 11}, {'f', 13}, {'g', 17}, {'h', 19},\n    {'i', 23}, {'j', 29}, {'k', 31}, {'l', 37}, {'m', 41}, {'n', 43}, {'o', 47}, {'p', 53},\n    {'q', 59}, {'r', 61}, {'s', 67}, {'t', 71}, {'u', 73}, {'v', 79}, {'w', 83}, {'x', 89},\n    {'y', 97}, {'z', 101}\n};\n\npublic static bool IsAnagram(string word, string anagram_word) {\n    if (word.Length != anagram_word.Length) return false;\n    long wordsCharNum = 1;\n    long anagramWordNum = 1;\n    foreach (char c in word) {\n        wordsCharNum *= WordPrimeMap[c];\n    }\n    foreach (char c in anagram_word) {\n        anagramWordNum *= WordPrimeMap[c];\n    }\n    return anagramWordNum == wordsCharNum;\n}\n"
+  }
+ },
+ {
+  "id": "T826",
+  "outputs": {
+   "python": "import subprocess\n\ndef main(args):\n    process = subprocess.Popen([args[0]], stdout=subprocess.PIPE, text=True)\n    for line in process.stdout:\n        print(line, end=\"\")\n    print(\"Program terminated!\")\n    process.wait()\n",
+   "c": "int main(int argc, char **argv) {\n    (void) argc;\n    FILE *fp = popen(argv[1], \"r\");\n    if (fp == NULL) return 1;\n    char line[1024];\n    while (fgets(line, sizeof(line), fp) != NULL) {\n        printf(\"%s\", line);\n    }\n    printf(\"Program terminated!\\n\");\n    pclose(fp);\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    var startInfo = new ProcessStartInfo(args[0]) {\n        RedirectStandardOutput = true,\n        UseShellExecute = false\n    };\n    using (Process process = Process.Start(startInfo)) {\n        using (StreamReader reader = process.StandardOutput) {\n            string line;\n            while ((line = reader.ReadLine()) != null) {\n                Console.WriteLine(line);\n            }\n        }\n        Console.WriteLine(\"Program terminated!\");\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T774",
+  "outputs": {
+   "python": "def main():\n    password = \"admin\"\n    print(\"Insert the admin pass: \", end=\"\")\n    test = input()\n    if password == test:\n        print(\"Access granted\", end=\"\")\n    else:\n        for i in range(1, 3):\n            print(\"You have \" + str(i) + \" try(es): \", end=\"\")\n            test = input()\n            if password == test:\n                print(\"Access granted\", end=\"\")\n                break\n            elif i == 2:\n                print(\"Access denied\", end=\"\")\n",
+   "c": "int main(void) {\n    const char *pass = \"admin\";\n    char test[128];\n    printf(\"Insert the admin pass: \");\n    if (fgets(test, sizeof(test), stdin) == NULL) return 0;\n    test[strcspn(test, \"\\n\")] = '\\0';\n    if (strcmp(pass, test) == 0) {\n        printf(\"Access granted\");\n    } else {\n        for (int i = 1; i < 3; i++) {\n            printf(\"You have %d try(es): \", i);\n            if (fgets(test, sizeof(test), stdin) == NULL) return 0;\n            test[strcspn(test, \"\\n\")] = '\\0';\n            if (strcmp(pass, test) == 0) {\n                printf(\"Access granted\");\n                break;\n            } else if (i == 2) {\n                printf(\"Access denied\");\n            }\n        }\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    string pass = \"admin\";\n    Console.Write(\"Insert the admin pass: \");\n    string test = Console.ReadLine();\n    if (pass.Equals(test)) {\n        Console.Write(\"Access granted\");\n    } else {\n        for (int i = 1; i < 3; i++) {\n            Console.Write(\"You have \" + i + \" try(es): \");\n            test = Console.ReadLine();\n            if (pass.Equals(test)) {\n                Console.Write(\"Access granted\");\n                break;\n            } else if (i == 2) {\n                Console.Write(\"Access denied\");\n            }\n        }\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T729",
+  "outputs": {
+   "python": "CHARACTER_MAPPING = {'A': 1, 'C': 2, 'G': 3, 'T': 4}\n\ndef solution(S, P, Q):\n    character_input = list(S)\n    integer_input = [CHARACTER_MAPPING[ch] for ch in character_input]\n    result = [0] * len(P)\n    for index in range(len(P)):\n        if P[index] == Q[index]:\n            result[index] = integer_input[P[index]]\n            break\n        result[index] = min(integer_input[P[index]:Q[index] + 1])\n    return result\n",
+   "c": "int character_mapping(char c) {\n    switch (c) {\n        case 'A': return 1;\n        case 'C': return 2;\n        case 'G': return 3;\n        case 'T': return 4;\n    }\n    return 0;\n}\n\nint *solution(const char *S, const int *P, const int *Q, int m) {\n    int len = (int) strlen(S);\n    int *integer_input = malloc(sizeof(int) * (size_t) len);\n    for (int i = 0; i < len; i++) {\n        integer_input[i] = character_mapping(S[i]);\n    }\n    int *result = calloc((size_t) m, sizeof(int));\n    for (int index = 0; index < m; index++) {\n        if (P[index] == Q[index]) {\n            result[index] = integer_input[P[index]];\n            break;\n        }\n        int minVal = integer_input[P[index]];\n        for (int i = P[index] + 1; i <= Q[index]; i++) {\n            if (integer_input[i] < minVal) minVal = integer_input[i];\n        }\n        result[index] = minVal;\n    }\n    free(integer_input);\n    return result;\n}\n",
+   "csharp": "private static readonly Dictionary<char, int> CharacterMapping = new Dictionary<char, int> {\n    {'A', 1}, {'C', 2}, {'G', 3}, {'T', 4}\n};\n\npublic static int[] Solution(string S, int[] P, int[] Q) {\n    var integerInput = S.Select(c => CharacterMapping[c]).ToArray();\n    int[] result = new int[P.Length];\n    for (int index = 0; index < P.Length; index++) {\n        if (P[index] == Q[index]) {\n            result[index] = integerInput[P[index]];\n            break;\n        }\n        result[index] = integerInput.Skip(P[index]).Take(Q[index] - P[index] + 1).Min();\n    }\n    return result;\n}\n"
+  }
+ },
+ {
+  "id": "T126",
+  "outputs": {
+   "python": "def solution(X, A):\n    leaves = set()\n    for i in range(len(A)):\n        leaves.add(A[i])\n        if X in leaves and len(leaves) == X:\n            return i\n    return -1\n",
+   "c": "int solution(int X, const int *A, int n) {\n    int *seen = calloc((size_t) X + 1, sizeof(int));\n    int distinct = 0;\n    int hasX = 0;\n    for (int i = 0; i < n; i++) {\n        if (A[i] >= 1 && A[i] <= X && !seen[A[i]]) {\n            seen[A[i]] = 1;\n            distinct++;\n            if (A[i] == X) hasX = 1;\n        }\n        if (hasX && distinct == X) {\n            free(seen);\n            return i;\n        }\n    }\n    free(seen);\n    return -1;\n}\n",
+   "csharp": "public static int Solution(int X, int[] A) {\n    var leaves = new HashSet<int>();\n    for (int i = 0; i < A.Length; i++) {\n        leaves.Add(A[i]);\n        if (leaves.Contains(X) && leaves.Count == X) return i;\n    }\n    return -1;\n}\n"
+  }
+ },
+ {
+  "id": "T641",
+  "outputs": {
+   "python": "class ReverseLineReader:\n    def __init__(self, filename):\n        self.filename = filename\n        self.currentPos = None\n        self.currentLineEnd = None\n\n    def findPrevLine(self):\n        pass\n\n    def read(self):\n        with open(self.filename, \"rb\") as fh:\n            if self.currentLineEnd is None:\n                fh.seek(0, 2)\n                self.currentLineEnd = fh.tell()\n            if self.currentPos is None:\n                self.currentPos = self.currentLineEnd\n            start = max(self.currentPos - 1, 0)\n            fh.seek(start)\n            chunk = fh.read(self.currentPos - start)\n            self.currentPos = start\n            if not chunk:\n                return \"\"\n            return chunk.decode(\"utf-8\")[::-1]\n",
+   "c": "static long currentPos = -1;\nstatic long currentLineEnd = -1;\n\nvoid findPrevLine(void) {\n}\n\nint read(char *buf, size_t bufsize, const char *filename) {\n    FILE *fh = fopen(filename, \"rb\");\n    if (fh == NULL) return -1;\n    if (currentLineEnd < 0) {\n        fseek(fh, 0, SEEK_END);\n        currentLineEnd = ftell(fh);\n    }\n    if (currentPos < 0) {\n        currentPos = currentLineEnd;\n    }\n    long start = currentPos - 1;\n    if (start < 0) start = 0;\n    fseek(fh, start, SEEK_SET);\n    size_t want = (size_t) (currentPos - start);\n    size_t got = fread(buf, 1, want < bufsize - 1 ? want : bufsize - 1, fh);\n    buf[got] = '\\0';\n    currentPos = start;\n    fclose(fh);\n    for (size_t i = 0; i < got / 2; i++) {\n        char tmp = buf[i];\n        buf[i] = buf[got - 1 - i];\n        buf[got - 1 - i] = tmp;\n    }\n    return (int) got;\n}\n",
+   "csharp": "public class ReverseLineReader {\n    private readonly string _filename;\n    private long? _currentPos;\n    private long? _currentLineEnd;\n\n    public ReverseLineReader(string filename) {\n        _filename = filename;\n    }\n\n    public void FindPrevLine() {\n    }\n\n    public string Read() {\n        using (var fh = new FileStream(_filename, FileMode.Open, FileAccess.Read)) {\n            if (_currentLineEnd == null) {\n                _currentLineEnd = fh.Seek(0, SeekOrigin.End);\n            }\n            if (_currentPos == null) {\n                _currentPos = _currentLineEnd;\n            }\n            long start = Math.Max(_currentPos.Value - 1, 0);\n            fh.Seek(start, SeekOrigin.Begin);\n            int count = (int) (_currentPos.Value - start);\n            var buf = new byte[count];\n            int got = fh.Read(buf, 0, count);\n            _currentPos = start;\n            if (got == 0) return \"\";\n            var bytes = new byte[got];\n            Array.Copy(buf, bytes, got);\n            Array.Reverse(bytes);\n            return Encoding.UTF8.GetString(bytes);\n        }\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T605",
+  "outputs": {
+   "python": "import xml.etree.ElementTree as ET\n\ndef walk(elem, path):\n    if elem.tag == \"dad\":\n        return\n    path.append(elem.tag)\n    print(\"/\".join(path))\n    for child in elem:\n        walk(child, path)\n    path.pop()\n\ndef main():\n    tree = ET.parse(\"family.xml\")\n    walk(tree.getroot(), [])\n",
+   "c": "extern void *xml_open(const char *filename);\nextern void *xml_next(void *node);\nextern const char *xml_name(void *node);\nextern int xml_is_start(void *node);\nextern void xml_skip_element(void *node);\n\nstatic void walk(void *node, char *path, size_t pathLen) {\n    const char *name = xml_name(node);\n    if (strcmp(name, \"dad\") == 0) {\n        return;\n    }\n    size_t cur = strlen(path);\n    if (cur) path[cur++] = '/';\n    strcpy(path + cur, name);\n    printf(\"%s\\n\", path);\n    void *child = xml_next(node);\n    while (child != NULL) {\n        walk(child, path, pathLen);\n        child = xml_next(node);\n    }\n    path[cur] = '\\0';\n}\n\nint main(void) {\n    void *root = xml_open(\"family.xml\");\n    if (root == NULL) return 1;\n    char path[1024];\n    path[0] = '\\0';\n    walk(root, path, sizeof(path));\n    return 0;\n}\n",
+   "csharp": "public static void Walk(XmlReader reader, List<string> path) {\n    while (reader.Read()) {\n        if (reader.NodeType == XmlNodeType.Element) {\n            if (reader.LocalName == \"dad\") {\n                reader.Skip();\n                continue;\n            }\n            path.Add(reader.LocalName);\n            Console.WriteLine(string.Join(\"/\", path));\n            if (!reader.IsEmptyElement) {\n                Walk(reader, path);\n            }\n            path.RemoveAt(path.Count - 1);\n        } else if (reader.NodeType == XmlNodeType.EndElement) {\n            return;\n        }\n    }\n}\n\npublic static void Main(string[] args) {\n    using (XmlReader reader = XmlReader.Create(\"family.xml\")) {\n        Walk(reader, new List<string>());\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T759",
+  "outputs": {
+   "python": "import javafx.scene as scene\nimport javafx.scene.layout as layout\nimport javafx.scene.web as web\nimport javafx.stage as stage\n\nclass HTMLEditorTest:\n    def start(self, primaryStage):\n        htmlEditor = web.HTMLEditor()\n        pane = layout.Pane()\n        pane.getChildren().add(htmlEditor)\n        root = stage.Scene(pane, 400, 400)\n        stageOne = primaryStage\n        stageOne.setScene(root)\n        stageOne.show()\n        while True:\n            node = pane.lookup(\".tool-bar\")\n            if node is None:\n                break\n            pane.getChildren().remove(node)\n        stageOne.hide()\n        stageOne.show()\n\ndef main():\n    stageOne = stage.Stage()\n    HTMLEditorTest().start(stageOne)\n",
+   "c": "typedef struct {\n    int hasToolBar;\n} Pane;\n\ntypedef struct {\n    Pane *pane;\n} Stage;\n\nvoid *pane_lookup(Pane *pane, const char *selector) {\n    (void) selector;\n    return pane->hasToolBar ? pane : NULL;\n}\n\nvoid pane_remove_child(Pane *pane, void *node) {\n    (void) node;\n    pane->hasToolBar = 0;\n}\n\nvoid stage_show(Stage *s) {\n    (void) s;\n}\n\nvoid htmleditor_test_start(Stage *primaryStage) {\n    Pane pane;\n    pane.hasToolBar = 1;\n    primaryStage->pane = &pane;\n    stage_show(primaryStage);\n    while (1) {\n        void *node = pane_lookup(&pane, \".tool-bar\");\n        if (node == NULL) {\n            break;\n        }\n        pane_remove_child(&pane, node);\n    }\n    stage_show(primaryStage);\n    stage_show(primaryStage);\n}\n\nint main(void) {\n    Stage stageOne;\n    htmleditor_test_start(&stageOne);\n    return 0;\n}\n",
+   "csharp": "public class Node { }\n\npublic class Pane : Node {\n    public readonly List<Node> Children = new List<Node>();\n\n    public Node Lookup(string selector) {\n        return selector == \".tool-bar\" && Children.Count > 0 ? Children[0] : null;\n    }\n}\n\npublic class HTMLEditor : Node { }\n\npublic class Stage {\n    public void SetScene(object root) { }\n    public void Show() { }\n    public void Hide() { }\n}\n\npublic static void Start(Stage primaryStage) {\n    HTMLEditor htmlEditor = new HTMLEditor();\n    Pane pane = new Pane();\n    pane.Children.Add(htmlEditor);\n    var root = new { Width = 400, Height = 400 };\n    primaryStage.SetScene(root);\n    primaryStage.Show();\n    while (true) {\n        Node node = pane.Lookup(\".tool-bar\");\n        if (node == null) {\n            break;\n        }\n        pane.Children.Remove(node);\n    }\n    primaryStage.Hide();\n    primaryStage.Show();\n}\n\npublic static void Main(string[] args) {\n    Stage stageOne = new Stage();\n    Start(stageOne);\n}\n"
+  }
+ },
+ {
+  "id": "T723",
+  "outputs": {
+   "python": "def main():\n    words = [\"apple\", \"banana\", \"cherry\"]\n    text = \"I like apples a lot\"\n    for word in words:\n        if word.lower() in text.lower():\n            print(text)\n            break\n",
+   "c": "void to_lower(char *s) {\n    for (; *s; s++) {\n        *s = (char) tolower((unsigned char) *s);\n    }\n}\n\nint main(void) {\n    const char *words[] = {\"apple\", \"banana\", \"cherry\"};\n    const char *text = \"I like apples a lot\";\n    for (int i = 0; i < 3; i++) {\n        char w[64];\n        char t[1024];\n        snprintf(w, sizeof(w), \"%s\", words[i]);\n        snprintf(t, sizeof(t), \"%s\", text);\n        to_lower(w);\n        to_lower(t);\n        if (strstr(t, w) != NULL) {\n            printf(\"%s\\n\", text);\n            break;\n        }\n    }\n    return 0;\n}\n",
+   "csharp": "public static void Main(string[] args) {\n    string[] words = { \"apple\", \"banana\", \"cherry\" };\n    string text = \"I like apples a lot\";\n    if (words.Any(word => text.ToLower().Contains(word.ToLower()))) {\n        Console.WriteLine(text);\n    }\n}\n"
+  }
+ },
+ {
+  "id": "T309",
+  "outputs": {
+   "python": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def __lt__(self, other):\n        return self.name < other.name\n\n    def __eq__(self, other):\n        return self.name == other.name\n\n    def __hash__(self):\n        return hash(self.name)\n\n    def __repr__(self):\n        return \"Animal(\" + self.name + \")\"\n\nCat = \"cat\"\nMouse = \"mouse\"\nDog = \"dog\"\nHorse = \"horse\"\nTiger = \"tiger\"\nLion = \"lion\"\n\ndef main():\n    cats = [Animal(Cat), Animal(Mouse)]\n    dogs = [Animal(Dog), Animal(Horse)]\n    zoo = [Animal(Tiger), Animal(Lion)]\n    all_animals = cats + dogs + zoo\n    seen = set()\n    unique = []\n    for animal in sorted(all_animals):\n        key = (animal.name,)\n        if key not in seen:\n            seen.add(key)\n            unique.append(animal)\n    print([repr(a) for a in unique])\n",
+   "c": "typedef struct {\n    char name[32];\n} Animal;\n\nstatic int animal_cmp(const void *a, const void *b) {\n    const Animal *pa = (const Animal *) a;\n    const Animal *pb = (const Animal *) b;\n    return strcmp(pa->name, pb->name);\n}\n\nint main(void) {\n    Animal cats[2] = {{\"cat\"}, {\"mouse\"}};\n    Animal dogs[2] = {{\"dog\"}, {\"horse\"}};\n    Animal zoo[2] = {{\"tiger\"}, {\"lion\"}};\n    Animal all[6];\n    memcpy(&all[0], cats, sizeof(cats));\n    memcpy(&all[2], dogs, sizeof(dogs));\n    memcpy(&all[4], zoo, sizeof(zoo));\n    qsort(all, 6, sizeof(Animal), animal_cmp);\n    Animal unique[6];\n    int count = 0;\n    for (int i = 0; i < 6; i++) {\n        if (count == 0 || strcmp(unique[count - 1].name, all[i].name) != 0) {\n            unique[count++] = all[i];\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"Animal(%s)\\n\", unique[i].name);\n    }\n    return 0;\n}\n",
+   "csharp": "public class Animal : IComparable<Animal> {\n    public string Name;\n\n    public Animal(string name) {\n        Name = name;\n    }\n\n    public int CompareTo(Animal other) {\n        return string.Compare(Name, other.Name, StringComparison.Ordinal);\n    }\n\n    public override string ToString() {\n        return \"Animal(\" + Name + \")\";\n    }\n}\n\npublic static void Main(string[] args) {\n    var cats = new List<Animal> { new Animal(\"cat\"), new Animal(\"mouse\") };\n    var dogs = new List<Animal> { new Animal(\"dog\"), new Animal(\"horse\") };\n    var zoo = new List<Animal> { new Animal(\"tiger\"), new Animal(\"lion\") };\n    var allAnimals = new List<Animal>();\n    allAnimals.AddRange(cats);\n    allAnimals.AddRange(dogs);\n    allAnimals.AddRange(zoo);\n    var unique = new List<Animal>();\n    foreach (Animal animal in allAnimals.OrderBy(a => a.Name)) {\n        if (!unique.Any(a => a.Name == animal.Name)) {\n            unique.Add(animal);\n        }\n    }\n    Console.WriteLine(string.Join(\", \", unique.Select(a => a.ToString())));\n}\n"
+  }
+ },
+ {
+  "id": "Rf3d83a68bd",
+  "output": "def curry(func) :\n    def curried(*args) :\n        return lambda *more_args: func(*args, *more_args)\n    return curried\n"
+ },
+ {
+  "id": "R7c5881afbf",
+  "output": "public static String Combine (String path1, String path2) {\n    if (path1 == null)\n        throw new ArgumentNullException (\"path1\");\n    if (path2 == null)\n        throw new ArgumentNullException (\"path2\");\n    return CombineNoChecks (path1, path2);\n}\n"
+ },
+ {
+  "id": "R0f80f0fb62",
+  "output": "public static Double Correlation (Double [] Xs, Double [] Ys) {\n    int n = Xs.Length < Ys.Length ? Xs.Length : Ys.Length;\n    Double sumX2 = 0;\n    Double sumY2 = 0;\n    Double sumXY = 0;\n    Double avgX = 0;\n    Double avgY = 0;\n    for (int i = 0; i < n; ++ i) {\n        avgX += Xs [i];\n        avgY += Ys [i];\n        sumXY += Xs [i] * Ys [i];\n    }\n    avgX /= n;\n    avgY /= n;\n    for (int i = 0; i < n; ++ i) {\n        sumX2 += Xs [i] * Xs [i];\n        sumY2 += Ys [i] * Ys [i];\n    }\n    Double stdX = Math.Sqrt (sumX2 - n * avgX * avgX);\n    Double stdY = Math.Sqrt (sumY2 - n * avgY * avgY);\n    Double covariance = (sumXY - n * avgX * avgY);\n    return covariance / stdX / stdY;\n}\n"
+ },
+ {
+  "id": "Recd81e23e8",
+  "output": "int main (int argc, char **argv) {\n    char **ipnport = arguments_handle (argc, argv);\n    ret[0] = (char *) calloc (20, 1);\n    ret[1] = (char *) calloc (20, 1);\n    printf (\"IP is :%s port range is %s\\n\", ipnport [1], ipnport [0]);\n    return 0x0;\n}\n"
+ },
+ {
+  "id": "Radd810f35f",
+  "output": "public static String join (String separator, String...values) {\n    if (values.length == 0) return \"\";\n    int totalSize = (values.length - 1) * separator.length ();\n    for (int i = 0; i < values.length; i ++) {\n        if (values [i] == null) values [i] = \"\";\n        else totalSize += values [i].length ();\n    }\n    StringBuilder sb = new StringBuilder (totalSize);\n    for (int i = 0; i < values.length; i ++) {\n        if (i > 0) sb.append (separator);\n        sb.append (values [i]);\n    }\n    return sb.toString ();\n}\n"
+ },
+ {
+  "id": "Ra654f3cacb",
+  "output": "public static boolean isPalindrome (String str) {\n    String upper = str.toUpperCase ();\n    int left = 0;\n    int right = upper.length () - 1;\n    while (left < right) {\n        if (upper.charAt (left) != upper.charAt (right)) {\n            return false;\n        }\n        left ++;\n        right --;\n    }\n    return true;\n}\n"
+ },
+ {
+  "id": "Rc8ce82f32f",
+  "output": "int main (int argc, char **argv) {\n    char c;\n    printf (\"Press key\");\n    for (;;) {\n        if (kbhit ()) break;\n        printf (\".\");\n        fflush (stdout);\n        sleep (1);\n    }\n    c = getchar ();\n    printf (\"\\nChar received:%c\\n\", c);\n    printf (\"Done.\\n\");\n    return 0;\n}\n"
+ },
+ {
+  "id": "Rdddd23f55c",
+  "output": "public void SendEmail (MyInternalSystemEmailMessage email) {\n    var mimeMessage = BuildMailMessage (email);\n    Send (mimeMessage);\n}\n\nprivate MimeKit.MimeMessage BuildMailMessage (MyInternalSystemEmailMessage email) {\n    var mailMessage = new System.Net.Mail.MailMessage {\n        From = new System.Net.Mail.MailAddress (email.FromAddress),\n        Subject = email.Subject,\n        Body = email.Body,\n        IsBodyHtml = email.IsHtml\n    };\n    mailMessage.To.Add (email.ToRecipients);\n    mailMessage.ReplyToList.Add (email.FromAddress);\n    foreach (System.Net.Mail.Attachment attachment in email.Attachments) {\n        mailMessage.Attachments.Add (attachment);\n    }\n    return MimeKit.MimeMessage.CreateFromMailMessage (mailMessage);\n}\n\nprivate void Send (MimeKit.MimeMessage mimeMessage) {\n    var gmailMessage = new Google.Apis.Gmail.v1.Data.Message {Raw = Encode (mimeMessage.ToString ())};\n    Google.Apis.Gmail.v1.UsersResource.MessagesResource.SendRequest request = service.Users.Messages.Send (gmailMessage, ServiceEmail);\n    request.Execute ();\n}\n"
+ },
+ {
+  "id": "Rfa50623d34",
+  "output": "def upgrade() :\n\turl = context.config.get_main_option(\"sqlalchemy.url\")\n\tengine = sa.create_engine(url)\n\tDBSession.configure(bind = engine)\n\top.create_table(\n\t'client_credential',\n\tsa.Column('id', sa.Integer(), nullable = False),\n\tsa.Column('created_at', sa.DateTime(), nullable = False),\n\tsa.Column('updated_at', sa.DateTime(), nullable = False),\n\tsa.Column('client_id', sa.Integer(), nullable = False),\n\tsa.Column('key', sa.String(length = 22), nullable = False),\n\tsa.Column('secret', sa.String(length = 44), nullable = False),\n\tsa.Column('is_active', sa.Boolean(), nullable = False),\n\tsa.ForeignKeyConstraint(['client_id'], ['client.id'],),\n\tsa.PrimaryKeyConstraint('id'),\n\tsa.UniqueConstraint('key'))\n\top.bulk_insert(ClientCredential, [\n\t{'secret' : client.secret,\n\t'key' : client.key,\n\t'is_active' : True,\n\t'client_id' : client.id,\n\t'created_at' : sa.func.now(),\n\t'updated_at' : sa.func.now()} for client in Client.query.all()])\n\tfor column in (u'key', u'secret'):\n\t\top.drop_column(u'client', column)\n"
+ },
+ {
+  "id": "R6977f1c997",
+  "output": "def scan(sentence) :\n\ttuples = []\n\twords = sentence.split()\n\tfor word in words :\n\t\tif word in lexicons :\n\t\t\ttuples.append((lexicons [word], word))\n\t\telif word.isdigit() :\n\t\t\ttuples.append(('number', int(word)))\n\t\telse :\n\t\t\ttuples.append(('error', word))\n\treturn tuples\n"
+ },
+ {
+  "id": "Rbcec8876d4",
+  "output": "def contains(small, big) :\n\tn = len(small)\n\tfor i in range(len(big) - n + 1) :\n\t\tif big [i:i + n] == small :\n\t\t\treturn i, i + n\n\treturn False\n"
+ },
+ {
+  "id": "Rab8fdb571d",
+  "output": "int main () {\n    char *token;\n    char *str = malloc (100);\n    strcpy (str, \"test string.\");\n    token = strtok (str, \" \");\n    while (token != NULL) {\n        printf (\"%s\\n\", token);\n        token = strtok (NULL, \" \");\n    }\n    free (str);\n    return 0;\n}\n"
+ },
+ {
+  "id": "R6b8d361ee9",
+  "output": "static void Main (string [] args) {\n    if (args.Length != 2) {\n        Console.WriteLine (\"Usage:  repchar {inputfile} {outputfile}\");\n        return;\n    }\n    ProcessFiles (args [0], args [1]);\n}\n\nstatic void ProcessFiles (string inputPath, string outputPath) {\n    using (StreamReader input = new StreamReader (inputPath))\n    using (StreamWriter output = new StreamWriter (outputPath))\n    {\n        int readSize = 0;\n        int blockSize = 100000;\n        char [] inBuffer = new char [blockSize];\n        char [] outBuffer = new char [blockSize * 3];\n        while ((readSize = input.ReadBlock (inBuffer, 0, blockSize)) > 0) {\n            int writeSize = TransformBlock (inBuffer, outBuffer, readSize);\n            output.Write (outBuffer, 0, writeSize);\n        }\n    }\n}\n"
+ },
+ {
+  "id": "Rc34ff3d7d3",
+  "output": "private void initData () {\n    testData = new ArrayList < EventStatus > ();\n    Object [] [] events = {\n        {\"Mach-1\", 1477468500000L, 1, 0},\n        {\"Mach-1\", 1477472100000L, 2, 0},\n        {\"Mach-1\", 1477474200000L, 5, 0},\n        {\"Mach-1\", 1477476000000L, 3, 0},\n        {\"Mach-1\", 1477479600000L, 4, 0},\n        {\"Mach-1\", 1477486800000L, 1, 0},\n        {\"Mach-2\", 1477465200000L, 3, 1},\n        {\"Mach-2\", 1477472400000L, 2, 1},\n        {\"Mach-2\", 1477474200000L, 5, 1},\n        {\"Mach-2\", 1477476000000L, 2, 1},\n        {\"Mach-2\", 1477479600000L, 3, 1},\n        {\"Mach-2\", 1477486800000L, 4, 1}\n    };\n    for (Object [] row : events) {\n        testData.add (new EventStatus ((String) row [0], (Long) row [1], (Integer) row [2], (Integer) row [3]));\n    }\n    LinkedHashSet < String > names = new LinkedHashSet < > ();\n    for (EventStatus eventStatus : testData) {\n        names.add (eventStatus.getName ());\n    }\n    catArray = names.toArray (new String [0]);\n}\n"
+ },
+ {
+  "id": "R73c281cc62",
+  "output": "private static IEnumerable < T [] > EnumerateCombos < T > (IEnumerable < T > items, List < T > currentCombo, int startIndex, int threshold) {\n    if (currentCombo.Count < threshold) {\n        int i = startIndex;\n        while (i < items.Count ()) {\n            var item = items.Skip (i).First ();\n            currentCombo.Add (item);\n            yield return currentCombo.ToArray ();\n            foreach (var combo in EnumerateCombos (items, currentCombo, i + 1, threshold)) {\n                yield return combo;\n            }\n            currentCombo.RemoveAt (currentCombo.Count - 1);\n            i ++;\n        }\n    }\n}\n"
+ },
+ {
+  "id": "R91d065403d",
+  "output": "public static File createTempDir () {\n    File baseDir = new File (System.getProperty (\"java.io.tmpdir\"));\n    String baseName = System.currentTimeMillis () + \"-\";\n    int counter = 0;\n    while (counter < TEMP_DIR_ATTEMPTS) {\n        File tempDir = new File (baseDir, baseName + counter);\n        boolean created = tempDir.mkdir ();\n        if (created) {\n            return tempDir;\n        }\n        counter ++;\n    }\n    throw new IllegalStateException (\"Failed to create directory within \" + TEMP_DIR_ATTEMPTS + \" attempts (tried \" + baseName + \"0 to \" + baseName + (TEMP_DIR_ATTEMPTS - 1) + ')');\n}\n"
+ },
+ {
+  "id": "R8cfbeb65a3",
+  "output": "public static IList < ReportFile > ReadFiles (int year, int month) {\n    string [] fileNames = new string [] {\"{0:YYYYMMDD}----1234D.dat\", \"{0:YYYYMMDD}----5678D.dat\"};\n    List < ReportFile > reportList = new List < ReportFile > ();\n    int days = DateTime.DaysInMonth (year, month);\n    for (int day = 1; day <= days; day ++) {\n        DateTime date = new DateTime (year, month, day);\n        reportList.AddRange (\n            from fileTemplate in fileNames\n            let file = string.Format (fileTemplate, date)\n            where File.Exists (file)\n            select new ReportFile () {Date = date, Path = file, Lines = GetReportLines (file)});\n    }\n    IList < ReportFile > files = reportList;\n    return files;\n}\n"
+ },
+ {
+  "id": "R8f617cb401",
+  "output": "int main () {\n    unsigned long *data = malloc (sizeof (unsigned long) * 9);\n    unsigned long total = 0;\n    for (int i = 1; i < 9; i += 2)\n        total += data [i];\n    printf (\"%lu\\n\", total);\n    free (data);\n    return 0;\n}\n"
+ },
+ {
+  "id": "R593eed57e6",
+  "output": "static void Main (string [] args) {\n    Console.WriteLine (\"Enter A Number :\");\n    int n = int.Parse (Console.ReadLine ());\n    bool byThree = n % 3 == 0;\n    bool byFive = n % 5 == 0;\n    if (byThree && byFive) {\n        Console.WriteLine (\"This Number is Divisible by 3 and 5!\");\n    } else if (byThree) {\n        Console.WriteLine (\"\\nThe number is divisible by 3 but not by 5\");\n    } else if (byFive) {\n        Console.WriteLine (\"The number is divisible by 5 but not by 3\");\n    } else {\n        Console.WriteLine (\"\\nThis Number is Not Divisible by 3 and 5!\");\n    }\n    Console.ReadLine ();\n}\n"
+ },
+ {
+  "id": "Rc5e1a6cc9a",
+  "output": "void initialize () {\n    ConcurrentQueue < string > queue = new ConcurrentQueue < string > ();\n    foreach (string url in websites) {\n        queue.Enqueue (url);\n    }\n    List < Thread > threads = Enumerable.Range (0, threadCountFromTheUser)\n        .Select (_ => new Thread (work))\n        .ToList ();\n}\n"
+ },
+ {
+  "id": "R35e99f1126",
+  "output": "static void Main (string [] args) {\n    var EDGES = BuildEdges ();\n    var POINTS = new List < double [] > (EDGES.Count * 2);\n    FillPoints (EDGES, ref POINTS);\n    PrintPoints (POINTS);\n    Console.WriteLine ();\n    var edgeIndices = new int [EDGES.Count, 2];\n    FillEdges (EDGES, POINTS, ref edgeIndices);\n    PrintEdgeIndices (edgeIndices);\n    Console.ReadKey (true);\n}\n\nstatic List < Edge > BuildEdges () {\n    var edges = new List < Edge > ();\n    void Add (int x1, int y1, int x2, int y2) {\n        edges.Add (new Edge (new Point (x1, y1), new Point (x2, y2)));\n    }\n    Add (5, 50, 20, 100);\n    Add (20, 100, 30, 50);\n    Add (30, 50, 10, 0);\n    Add (5, 50, 30, 50);\n    Add (5, 50, 10, 0);\n    Add (20, 100, 80, 100);\n    Add (10, 0, 80, 100);\n    return edges;\n}\n\nstatic void PrintPoints (List < double [] > points) {\n    for (int i = 0; i < points.Count; i ++) {\n        Console.WriteLine (\"{0} {1} {2}\", i, points [i] [0], points [i] [1]);\n    }\n}\n\nstatic void PrintEdgeIndices (int [,] edgeIndices) {\n    for (int i = 0; i < edgeIndices.GetLength (0); i ++) {\n        Console.WriteLine (\"({0}, {1})\", edgeIndices [i, 0], edgeIndices [i, 1]);\n    }\n}\n"
+ },
+ {
+  "id": "Ra1eaef8d13",
+  "output": "private static void removeEven (int [] k, int n) {\n    int counter = 0;\n    int i = 0;\n    while (i < n) {\n        if (k [i] % 2 == 1) {\n            k [counter ++] = k [i];\n        }\n        i ++;\n    }\n    Arrays.fill (k, counter, n, 0);\n}\n"
+ },
+ {
+  "id": "R7fe68d314b",
+  "output": "public static List < string > LoadCitiesByState (string state) {\n    DataTable dt = null;\n    try {\n        dt = SharedDataAccess.GetCities (state);\n    }\n    catch {\n        dt = new DataTable ();\n    }\n    List < string > cities = new List < string > ();\n    foreach (DataRow row in dt.Rows) {\n        cities.Add (row [0].ToString ());\n    }\n    return cities;\n}\n"
+ },
+ {
+  "id": "R83b1b1f08f",
+  "output": "void main (int argc, char **argv) {\n    int myargc = argc;\n    char **myargv = calloc ((size_t) (argc - 1), sizeof (char *));\n    for (int i = 1; i < argc; i++) {\n        myargv [i - 1] = strdup (argv [i]);\n    }\n    getch ();\n}\n"
+ },
+ {
+  "id": "R08feb9bb95",
+  "output": "public void ResetFields (Control.ControlCollection Controls) {\n    foreach (Control control in Controls) {\n        switch (control) {\n            case TextBox txt:\n                txt.Text = string.Empty;\n                break;\n            case NumericUpDown numericUpDown:\n                numericUpDown.Value = 3;\n                break;\n            default:\n                if (control.Controls.Count > 0) {\n                    this.ResetFields (control.Controls);\n                }\n                break;\n        }\n    }\n}\n"
+ }
+]

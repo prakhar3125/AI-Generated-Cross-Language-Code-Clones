@@ -1,0 +1,502 @@
+{
+ "A000": {
+  "label": "different",
+  "pid": "H007695",
+  "regime": "B"
+ },
+ "A001": {
+  "label": "different",
+  "pid": "H006898",
+  "regime": "B"
+ },
+ "A002": {
+  "label": "different",
+  "pid": "G006078",
+  "regime": "C"
+ },
+ "A003": {
+  "label": "same",
+  "pid": "G006536",
+  "regime": "C"
+ },
+ "A004": {
+  "label": "different",
+  "pid": "G006890",
+  "regime": "C"
+ },
+ "A005": {
+  "label": "different",
+  "pid": "G006234",
+  "regime": "C"
+ },
+ "A006": {
+  "label": "different",
+  "pid": "H004990",
+  "regime": "B"
+ },
+ "A007": {
+  "label": "different",
+  "pid": "G006623",
+  "regime": "C"
+ },
+ "A008": {
+  "label": "different",
+  "pid": "G006207",
+  "regime": "C"
+ },
+ "A009": {
+  "label": "different",
+  "pid": "H005615",
+  "regime": "B"
+ },
+ "A010": {
+  "label": "different",
+  "pid": "H004956",
+  "regime": "B"
+ },
+ "A011": {
+  "label": "different",
+  "pid": "H004885",
+  "regime": "B"
+ },
+ "A012": {
+  "label": "different",
+  "pid": "G005309",
+  "regime": "C"
+ },
+ "A013": {
+  "label": "same",
+  "pid": "G005860",
+  "regime": "C"
+ },
+ "A014": {
+  "label": "different",
+  "pid": "H005605",
+  "regime": "B"
+ },
+ "A015": {
+  "label": "different",
+  "pid": "H006078",
+  "regime": "B"
+ },
+ "A016": {
+  "label": "different",
+  "pid": "H007171",
+  "regime": "B"
+ },
+ "A017": {
+  "label": "different",
+  "pid": "H007018",
+  "regime": "B"
+ },
+ "A018": {
+  "label": "same",
+  "pid": "G007171",
+  "regime": "C"
+ },
+ "A019": {
+  "label": "different",
+  "pid": "G007021",
+  "regime": "C"
+ },
+ "A020": {
+  "label": "different",
+  "pid": "H007157",
+  "regime": "B"
+ },
+ "A021": {
+  "label": "different",
+  "pid": "H005194",
+  "regime": "B"
+ },
+ "A022": {
+  "label": "different",
+  "pid": "G005615",
+  "regime": "C"
+ },
+ "A023": {
+  "label": "different",
+  "pid": "H007229",
+  "regime": "B"
+ },
+ "A024": {
+  "label": "different",
+  "pid": "H005636",
+  "regime": "B"
+ },
+ "A025": {
+  "label": "different",
+  "pid": "H007190",
+  "regime": "B"
+ },
+ "A026": {
+  "label": "different",
+  "pid": "H004926",
+  "regime": "B"
+ },
+ "A027": {
+  "label": "different",
+  "pid": "H006207",
+  "regime": "B"
+ },
+ "A028": {
+  "label": "different",
+  "pid": "H005167",
+  "regime": "B"
+ },
+ "A029": {
+  "label": "different",
+  "pid": "G007018",
+  "regime": "C"
+ },
+ "A030": {
+  "label": "different",
+  "pid": "G005622",
+  "regime": "C"
+ },
+ "A031": {
+  "label": "different",
+  "pid": "G005763",
+  "regime": "C"
+ },
+ "A032": {
+  "label": "different",
+  "pid": "H006897",
+  "regime": "B"
+ },
+ "A033": {
+  "label": "different",
+  "pid": "G004940",
+  "regime": "C"
+ },
+ "A034": {
+  "label": "different",
+  "pid": "G007229",
+  "regime": "C"
+ },
+ "A035": {
+  "label": "different",
+  "pid": "G007190",
+  "regime": "C"
+ },
+ "A036": {
+  "label": "same",
+  "pid": "G005167",
+  "regime": "C"
+ },
+ "A037": {
+  "label": "different",
+  "pid": "G007491",
+  "regime": "C"
+ },
+ "A038": {
+  "label": "different",
+  "pid": "G004944",
+  "regime": "C"
+ },
+ "A039": {
+  "label": "different",
+  "pid": "H007021",
+  "regime": "B"
+ },
+ "A040": {
+  "label": "different",
+  "pid": "H004955",
+  "regime": "B"
+ },
+ "A041": {
+  "label": "different",
+  "pid": "G006855",
+  "regime": "C"
+ },
+ "A042": {
+  "label": "different",
+  "pid": "H006536",
+  "regime": "B"
+ },
+ "A043": {
+  "label": "different",
+  "pid": "G004926",
+  "regime": "C"
+ },
+ "A044": {
+  "label": "different",
+  "pid": "H006234",
+  "regime": "B"
+ },
+ "A045": {
+  "label": "unsure",
+  "pid": "H005663",
+  "regime": "B"
+ },
+ "A046": {
+  "label": "unsure",
+  "pid": "G005663",
+  "regime": "C"
+ },
+ "A047": {
+  "label": "different",
+  "pid": "H005827",
+  "regime": "B"
+ },
+ "A048": {
+  "label": "unsure",
+  "pid": "G004896",
+  "regime": "C"
+ },
+ "A049": {
+  "label": "different",
+  "pid": "G006144",
+  "regime": "C"
+ },
+ "A050": {
+  "label": "different",
+  "pid": "H007465",
+  "regime": "B"
+ },
+ "A051": {
+  "label": "same",
+  "pid": "G004877",
+  "regime": "C"
+ },
+ "A052": {
+  "label": "unsure",
+  "pid": "G005183",
+  "regime": "C"
+ },
+ "A053": {
+  "label": "different",
+  "pid": "H005860",
+  "regime": "B"
+ },
+ "A054": {
+  "label": "different",
+  "pid": "G006897",
+  "regime": "C"
+ },
+ "A055": {
+  "label": "different",
+  "pid": "H006471",
+  "regime": "B"
+ },
+ "A056": {
+  "label": "different",
+  "pid": "H006144",
+  "regime": "B"
+ },
+ "A057": {
+  "label": "different",
+  "pid": "G004883",
+  "regime": "C"
+ },
+ "A058": {
+  "label": "different",
+  "pid": "G004990",
+  "regime": "C"
+ },
+ "A059": {
+  "label": "same",
+  "pid": "G006701",
+  "regime": "C"
+ },
+ "A060": {
+  "label": "different",
+  "pid": "H006623",
+  "regime": "B"
+ },
+ "A061": {
+  "label": "different",
+  "pid": "G005194",
+  "regime": "C"
+ },
+ "A062": {
+  "label": "different",
+  "pid": "H006863",
+  "regime": "B"
+ },
+ "A063": {
+  "label": "different",
+  "pid": "H007344",
+  "regime": "B"
+ },
+ "A064": {
+  "label": "different",
+  "pid": "G006898",
+  "regime": "C"
+ },
+ "A065": {
+  "label": "different",
+  "pid": "H005204",
+  "regime": "B"
+ },
+ "A066": {
+  "label": "different",
+  "pid": "G006271",
+  "regime": "C"
+ },
+ "A067": {
+  "label": "different",
+  "pid": "H006855",
+  "regime": "B"
+ },
+ "A068": {
+  "label": "different",
+  "pid": "H004883",
+  "regime": "B"
+ },
+ "A069": {
+  "label": "different",
+  "pid": "H005863",
+  "regime": "B"
+ },
+ "A070": {
+  "label": "different",
+  "pid": "G006471",
+  "regime": "C"
+ },
+ "A071": {
+  "label": "different",
+  "pid": "G007465",
+  "regime": "C"
+ },
+ "A072": {
+  "label": "different",
+  "pid": "G007157",
+  "regime": "C"
+ },
+ "A073": {
+  "label": "different",
+  "pid": "G006520",
+  "regime": "C"
+ },
+ "A074": {
+  "label": "different",
+  "pid": "H006890",
+  "regime": "B"
+ },
+ "A075": {
+  "label": "different",
+  "pid": "H005622",
+  "regime": "B"
+ },
+ "A076": {
+  "label": "different",
+  "pid": "G004956",
+  "regime": "C"
+ },
+ "A077": {
+  "label": "different",
+  "pid": "G007344",
+  "regime": "C"
+ },
+ "A078": {
+  "label": "unsure",
+  "pid": "G005475",
+  "regime": "C"
+ },
+ "A079": {
+  "label": "different",
+  "pid": "G004955",
+  "regime": "C"
+ },
+ "A080": {
+  "label": "same",
+  "pid": "G006863",
+  "regime": "C"
+ },
+ "A081": {
+  "label": "same",
+  "pid": "H006701",
+  "regime": "B"
+ },
+ "A082": {
+  "label": "different",
+  "pid": "H005183",
+  "regime": "B"
+ },
+ "A083": {
+  "label": "different",
+  "pid": "G005827",
+  "regime": "C"
+ },
+ "A084": {
+  "label": "same",
+  "pid": "G005863",
+  "regime": "C"
+ },
+ "A085": {
+  "label": "different",
+  "pid": "H005309",
+  "regime": "B"
+ },
+ "A086": {
+  "label": "different",
+  "pid": "H005475",
+  "regime": "B"
+ },
+ "A087": {
+  "label": "different",
+  "pid": "H006520",
+  "regime": "B"
+ },
+ "A088": {
+  "label": "different",
+  "pid": "G005636",
+  "regime": "C"
+ },
+ "A089": {
+  "label": "different",
+  "pid": "H004944",
+  "regime": "B"
+ },
+ "A090": {
+  "label": "different",
+  "pid": "G005605",
+  "regime": "C"
+ },
+ "A091": {
+  "label": "different",
+  "pid": "H006271",
+  "regime": "B"
+ },
+ "A092": {
+  "label": "different",
+  "pid": "H004877",
+  "regime": "B"
+ },
+ "A093": {
+  "label": "different",
+  "pid": "G005204",
+  "regime": "C"
+ },
+ "A094": {
+  "label": "different",
+  "pid": "H004940",
+  "regime": "B"
+ },
+ "A095": {
+  "label": "different",
+  "pid": "H004896",
+  "regime": "B"
+ },
+ "A096": {
+  "label": "unsure",
+  "pid": "G007695",
+  "regime": "C"
+ },
+ "A097": {
+  "label": "different",
+  "pid": "G004885",
+  "regime": "C"
+ },
+ "A098": {
+  "label": "different",
+  "pid": "H005763",
+  "regime": "B"
+ },
+ "A099": {
+  "label": "different",
+  "pid": "H007491",
+  "regime": "B"
+ }
+}

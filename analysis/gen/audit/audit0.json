@@ -1,0 +1,352 @@
+[
+ {
+  "id": "A000",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "#include <stdio.h>\n#include <string.h>\nint main() {\n\t\tchar line[] = \"- Here's, a fancier, sample string.\";\n\t\tchar *seg;\n\t\tseg = strtok (line, \" ,.-\");\n\t\tprintf (\"Splitting string \\\"%s\\\" into tokens:\\n\", line);\n\t\tdo {\n\t\t\tprintf (\"%s\\n\", seg);\n\t\t\tseg = strtok (NULL, \" ,.-\");\n\t\t} while(seg != NULL);\n\t\treturn 0;\n}",
+  "code2": "#include <stdio.h>\n#include <string.h>\n\n#define EXIT_COMMAND \"exit\"\n\nint main() {\n  char input[50];\n  printf(\"Enter some text, or '%s' to quit\\n\", EXIT_COMMAND);\n  while (true) {\n    printf(\"><![CDATA[ \");\n    scanf(\"%s\", input);\n    printf(\"%s\\n\", input);\n    if (strlen(input) == strlen(EXIT_COMMAND) && !strcasecmp(input, EXIT_COMMAND)) {\n      printf(\"Exiting.\\n\");\n      return 0;\n    }\n    printf(\"...response goes here...\\n\");\n  }\n  return 0;\n}"
+ },
+ {
+  "id": "A001",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "using System;\n\npublic class CountChars\n{\n    public static void Main (string [] args)\n    {\n        string test = \"The quick brown fox jumped over the lazy dog.\";\n        int countA = 0, countO = 0, countSpace = 0, countDot = 0;\n        for (int i = 0; i < test.Length; i++)\n        {\n            switch (test[i])\n            {\n                case 'a':\n                case 'A':\n                    countA++;\n                    break;\n                case 'o':\n                case 'O':\n                    countO++;\n                    break;\n                case ' ':\n                    countSpace++;\n                    break;\n                case '.':\n                    countDot++;\n                    break;\n            }\n        }\n        Console.WriteLine(\"A: {0}\\nO: {1}\\nSpace: {2}\\nDot: {3}\", countA, countO, countSpace, countDot);\n    }\n}",
+  "code2": "static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> source, int size) \n            {\n              List<T[]> largeGroup = new List<T[]>();\n              int j = 0;\n              T[] currentGroup = new T[size];\n              foreach (var item in source)\n              {\n                if (j == size)\n                {\n                  largeGroup.Add(currentGroup);\n                  currentGroup = new T[size];\n                  j = 0;\n                }\n                currentGroup[j++] = item;\n              }\n              if (currentGroup.Length == size)\n                largeGroup.Add(currentGroup);"
+ },
+ {
+  "id": "A002",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "private void btnAdd_Click (object sender, RoutedEventArgs e) {\n    string customer = btnEditCustomer1.Text;\n    string piece = btnPiece.Text;\n    string material = txtMaterial.Text;\n    int quantity = Convert.ToInt32 (txtQuantity.Text);\n    float weight = float.Parse (txtWeight.Text);\n    if (customer != null && piece != null && material != null) {\n        var item = new Liste {Customer = customer, Piece = piece, Material = material, Quantity = quantity, Weight = weight};\n        AllItems.Add (item);\n    }\n}",
+  "code2": "private void txt_miktar_TextChanged (object sender, TextChangedEventArgs e) {\n    if ((sender as TextBox).Text.Length < 1) {\n        return;\n    }\n    try {\n        int adet = int.Parse ((sender as TextBox).Text);\n    }\n    catch {\n        string s = \"\";\n        s = (sender as TextBox).Text.Substring (0, (sender as TextBox).Text.Length - 1);\n        (sender as TextBox).Text = s;\n        (sender as TextBox).Select (s.Length, s.Length);\n    }\n}"
+ },
+ {
+  "id": "A003",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "private void transform (HSSFWorkbook workbookOld, XSSFWorkbook workbookNew, HSSFRow rowOld, XSSFRow rowNew) {\n    XSSFCell cellNew;\n    rowNew.setHeight (rowOld.getHeight ());\n    for (Cell cell : rowOld) {\n        cellNew = rowNew.createCell (cell.getColumnIndex (), cell.getCellType ());\n        if (cellNew != null) this.transform (workbookOld, workbookNew, (HSSFCell) cell, cellNew);\n    }\n    this.lastColumn = Math.max (this.lastColumn, rowOld.getLastCellNum ());\n}",
+  "code2": "private void transform (HSSFRow rowOld, XSSFRow rowNew) {\n    XSSFCell cellNew;\n    rowNew.setHeight (rowOld.getHeight ());\n    if (rowOld.getRowStyle () != null) {\n        Integer hash = rowOld.getRowStyle ().hashCode ();\n        if (! this.styleMap.containsKey (hash)) this.transform (hash, rowOld.getRowStyle (), this.workbookNew.createCellStyle ());\n        rowNew.setRowStyle (this.styleMap.get (hash));\n    }\n    for (Cell cell : rowOld) {\n        cellNew = rowNew.createCell (cell.getColumnIndex (), cell.getCellType ());\n        if (cellNew != null) this.transform ((HSSFCell) cell, cellNew);\n    }\n    this.lastColumn = Math.max (this.lastColumn, rowOld.getLastCellNum ());\n}"
+ },
+ {
+  "id": "A004",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "static Boolean Main ()\n{\n    HiResTimer timer = new HiResTimer ();\n    Int64 counterAtStart = timer.Value;\n    int incrementValue;\n    for (int count = 0; count < 10000; count ++) {\n        incrementValue = count + 1;\n        incrementValue--;\n    }\n    Int64 counterAtEnd = timer.Value;\n    Int64 timeElapsedInTicks = counterAtEnd - counterAtStart;\n    Int64 timeElapseInTenthsOfMilliseconds = (timeElapsedInTicks * 10000) / timer.Frequency;\n    MessageBox.Show (\"Time Spent in operation (tenths of ms) \" + timeElapseInTenthsOfMilliseconds + \"\\nCounter Value At Start: \" + counterAtStart + \"\\nCounter Value At End : \" + counterAtEnd + \"\\nCounter Frequency : \" + timer.Frequency);\n    return true;\n}",
+  "code2": "static int CountDays(DayOfWeek day, DateTime start, DateTime end) \n{ \n    int count = (int)Math.Floor((end - start).TotalDays / 7); \n    int diff = (end.DayOfWeek - day + 7) % 7; \n    if((end - start).TotalDays % 7 >= diff) \n        count ++; \n    return count; \n}"
+ },
+ {
+  "id": "A005",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public static void main (String [] args) {\n    try {\n        InetAddress address = InetAddress.getByName (\"192.168.1.103\");\n        boolean reachable = address.isReachable (10000);\n        System.out.println (\"Is host reachable? \" + reachable);\n    } catch (Exception e) {\n        e.printStackTrace ();\n    }\n}",
+  "code2": "public void run () {\n    try {\n        for (int i = 0;\n        i < 2; i ++) {\n            System.out.println (\"tic\");\n        }\n    } catch (Exception e) {\n        e.getStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "A006",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public static void throwException (String className) throws CheckedException, UncheckedException {\n    Class < ? > exceptionClass;\n    try {\n        exceptionClass = Class.forName (className);\n    } catch (ClassNotFoundException e) {\n        throw new IllegalArgumentException (e);\n    }\n    try {\n        if (CheckedException.class.isAssignableFrom (exceptionClass)) {\n            throw exceptionClass.asSubclass (CheckedException.class).newInstance ();\n        } else if (UncheckedException.class.isAssignableFrom (exceptionClass)) {\n            throw exceptionClass.asSubclass (UncheckedException.class).newInstance ();\n        } else {\n            throw new IllegalArgumentException (\"Not a valid exception type: \" + exceptionClass.getName ());\n        }\n    } catch (InstantiationException | IllegalAccessException e) {\n        throw new IllegalStateException (e);\n    }\n}",
+  "code2": "def getName(value):\n    negative = False\n    if value.startswith(\"-\"):\n        negative = True\n        value = value[1:]\n    decimals = value.find(\".\")\n    decimalValue = None\n    if 0 <= decimals:\n        decimalValue = value[decimals+1:]\n        value = value[:decimals]\n    name = processor.getName(value)\n    if name == \"\":\n        name = ZERO_TOKEN\n    elif negative:\n        name = MINUS + SEPARATOR + name\n    if decimalValue and decimalValue != \"\":\n        zeroDecimalValue = \"\"\n        for i in range(len(decimalValue)):\n            zeroDecimalValue += \"0\"\n        if decimalValue == zeroDecimalValue:\n            name += SEPARATOR + UNION_AND + SEPARATOR + \"zero\" + SEPARATOR + SCALE.getName(-len(decimalValue))\n        else:\n            name += SEPARATOR + UNION_AND + SEPARATOR + processor.getName(decimalValue) + SEPARATOR + SCALE.getName(-len(decimalValue))\n    return name"
+ },
+ {
+  "id": "A007",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def future6(A):\n    known = []\n    result = []\n    for index in range(len(A)-1, -1, -1):\n        current_value = A[index]\n        for item in known[:]:\n            if item[1] > current_value:\n                known.remove(item)\n        if len(known) > 0: \n            result.append(known[-1][0])\n        else:\n            result.append(-1)\n        tup = (index,current_value)\n        known.append(tup)\n    return np.array(result)[::-1]",
+  "code2": "def remove_item(todolist, name) :\n\tresult = [item for item in todolist if name ! = item [1]]\n\tif len(todolist) == len(result) :\n\t\treturn False\n\telse :\n\t\treturn result"
+ },
+ {
+  "id": "A008",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def __init__(self, ev_list = None):\n\tself._trigger = Event()\n\tif ev_list: \n\t\tself._t_list = [Thread(target = self._triggerer, args = (x,)) for x in ev_list]\n\telse:\n\t\tself._t_list = []",
+  "code2": "def __init__(self, verbosity = 1) :\n        TestResult.__init__(self)\n        self.OutStd = None\n        self.ErrStd = None\n        self.successes = 0"
+ },
+ {
+  "id": "A009",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static String numLetters (String s) {\n    int [] count = new int [26];\n    for (int i = 0;\n    i < s.length (); i ++) {\n        char c = s.charAt (i);\n        count [(int) (c - 'a')] ++;\n    }\n    String ans = \"\";\n    for (int i = 0;\n    i < 26; i ++) {\n        if (count [i] != 0) {\n            ans += String.valueOf (count [i]) + (char) (i + 'a');\n        }\n    }\n    return ans;\n}",
+  "code2": "int main (void) {\n    char *str = \"12 45 16 789 99\";\n    char *end = str;\n    int numbers [MAX_NUMBERS];\n    int i, count = 0;\n    for (i = 0; i < MAX_NUMBERS; i++) {\n        numbers[i] = (int) strtol (end, &end, 10);\n        count++;\n        if (*end == '\\0')\n            break;\n    }\n    for (i = 0; i < count; i++) {\n        printf (\"%d\\n\", numbers [i]);\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A010",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "// Type 3 Code Clone Variants\npublic static boolean isPalindrome (String str) {\n    str = str.toUpperCase ();\n    char [] strChars = str.toCharArray ();\n    List<Character> word = new ArrayList <> ();\n    for (char c : strChars) {\n        word.add (c);\n    }\n    while (true) {\n        if ((word.size () == 1) || (word.size () == 0)) {\n            return true;\n        }\n        if (word.get (0).equalsIgnoreCase(word.get (word.size () - 1))) {\n            word.remove (0);\n            word.remove (word.size () - 1);\n        } else {\n            return false;\n        }\n    }\n}",
+  "code2": "public static void Main (string [] args) {\n    String output = \"\";\n    Dictionary<string, int> wordsMultiset = new Dictionary<string, int>();\n    String [] words = \"AAABBBBCC\".Split(\"\");\n    foreach (string word in words) {\n        if (wordsMultiset.ContainsKey(word))\n        {\n            int existingCount = wordsMultiset[word];\n            wordsMultiset[word] = existingCount+1;\n        }\n        else\n        {\n            wordsMultiset.Add(word, 1);\n        }\n    }\n    foreach (KeyValuePair<string, int> entry in wordsMultiset) {\n        if (!String.IsNullOrEmpty(entry.Key)) output += entry.Value + \"\" + entry.Key;\n    }\n    Console.WriteLine(output);\n}"
+ },
+ {
+  "id": "A011",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public String inputStreamToString (InputStream inputStream) throws IOException {\n        int character;\n        String result = \"\";\n        while ((character = inputStream.read()) != -1) {\n             result += (char) character;\n        }\n        return result;\n}",
+  "code2": "private bool IsOk (string str) {\n    char ? last = null;\n    var i = 1;\n    foreach (var c in str) {\n        if (last == c) {\n            i ++;\n            if (i > 2)\n                return false;\n        } else {\n            i = 1;\n        }\n        last = c;\n    }\n    return true;\n}"
+ },
+ {
+  "id": "A012",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public void itemStateChanged(ItemEvent e){\n    size = Integer.parseInt(box.getSelectedItem().toString());\n    if(e.getStateChange() == ItemEvent.SELECTED) {\n        List<Integer> numbers = IntStream.rangeClosed(1, size).boxed().collect(Collectors.toList());\n        numbers.forEach(num -> System.out.print(num + \" \"));\n        System.out.println();\n    }\n}",
+  "code2": "#include <stdio.h>\nint main () {\n    int num;\n    printf (\"Enter an integer: \");\n    fscanf (stdin, \"%d\", &num) == 1 ? printf (\"You entered: %d\\n\", num) : puts (\"Invalid input\");\n    return 0;\n}"
+ },
+ {
+  "id": "A013",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public static void main(String[] args) {\n\t    Scanner scan = new Scanner (System.in);\n\t    int numOfItems = 20;\n\t    String[] arrayOfNames = new String[numOfItems];\n\t    String temp;\n\t    int maxItems;\n\t    while (maxItems < arrayOfNames.length) {\n\t      System.out.print(\"Enter Item \" + (maxItems + 1) + \" : \");\n\t      temp = scan.nextLine();\n\t      if (arrOfNames[0].equals(temp)) {\n\t\tmaxItems = maxItems;\n\t\tbreak;\n\t      } else {\n\t\tarrayOfNames[maxItems] = temp;\n\t\tmaxItems++;\n\t      }\n\t    }\n\t    for (int i = 0; i < maxItems; i++) {\n\t      System.out.print(\"Item # \" + (i + 1) + \" : \");\n\t      System.out.println(arrayOfNames[i] + \"\\n\");\n\t    }\n}",
+  "code2": "public static void Main (string [] args) {\n    Scanner scan = new Scanner (Console.ReadLine ());\n    int numOfItems = 0;\n    Console.WriteLine (\"Enter How Many Items: \");\n    try {\n        numOfItems = Convert.ToInt32(scan.NextLine ().Trim ());\n    } catch (NumberFormatException e) {\n        Console.WriteLine (\"Number of items you entered is invalid!\");\n        Environment.Exit (0);\n    }\n    Grocery grocery = new Grocery(numOfItems);\n    for (int i = 0; i < numOfItems; i ++) {\n        Console.WriteLine (\"Enter Item \" + (i + 1) + \" : \");\n        if (! grocery.AddItem (scan.NextLine ())) {\n            Console.WriteLine (\"First Item Duplicate Detected!\");\n            Environment.Exit (0);\n        }\n    }\n    scan.Close ();\n    Console.WriteLine (grocery.ToString ());\n}"
+ },
+ {
+  "id": "A014",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static void main (String [] args) {\n    Address address = new Address ();\n    address.setSomeCrap (null);\n    Person person = new Person ();\n    person.setAddress (address);\n    long startTime = System.currentTimeMillis ();\n    for (int i = 0;\n    i < 1000000; i ++) {\n        try {\n            System.out.println (person.getAddress ().getSomeCrap () == null ? \"\" : person.getAddress ().getSomeCrap ().getCrap ());\n        } catch (NullPointerException npe) {\n        }\n    }\n    long endTime = System.currentTimeMillis ();\n    System.out.println ((endTime - startTime) / 1000F);\n    long startTime1 = System.currentTimeMillis ();\n    for (int i = 0;\n    i < 1000000; i ++) {\n        if (person != null && person.getAddress () != null && person.getAddress ().getSomeCrap () != null) {\n            System.out.println (person.getAddress ().getSomeCrap ().getCrap ());\n        }\n    }\n    long endTime1 = System.currentTimeMillis ();\n    System.out.println ((endTime1 - startTime1) / 1000F);\n}",
+  "code2": "String * tokenizer(const char * text, const char ** delims, int * len) {\n    *len = 1;\n    for (int i = 0; delims[i] != NULL; i++) {\n        int ind = find_substring(text, delims[i]);\n        if (ind >= 0) {\n            int tailLen;\n            String * tail = tokenizer(text+ind+strlen(delims[i]), delims, &tailLen);\n            *len = 2 + tailLen;\n            char * token1 = malloc((ind+1)*sizeof(char));\n            strncpy(token1, text, ind);\n            String * list = malloc(3*sizeof(String));\n            list[0] = token1;\n            list[1] = delims[i];\n            memcpy(list+2, tail, sizeof(String)*tailLen);\n            return list;\n        }    \n    }\n    char * token1 = malloc((strlen(text)+1)*sizeof(char));\n    strcpy(token1, text);\n    String * list = malloc(2*sizeof(String));\n    list[0] = token1;\n    return list;\n}"
+ },
+ {
+  "id": "A015",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "private void btnAdd_Click (object sender, RoutedEventArgs e) {\n    string customer = btnEditCustomer1.Text;\n    string piece = btnPiece.Text;\n    string material = txtMaterial.Text;\n    int quantity = Convert.ToInt32 (txtQuantity.Text);\n    float weight = float.Parse (txtWeight.Text);\n    if (customer != null && piece != null && material != null) {\n        var item = new Liste {Customer = customer, Piece = piece, Material = material, Quantity = quantity, Weight = weight};\n        AllItems.Add (item);\n    }\n}",
+  "code2": "protected override void onActivityResult (int requestCode, int resultCode, Intent data) {\n    base.onActivityResult (requestCode, resultCode, data);\n    if (requestCode == IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {\n        DBHelper dbHelper = new DBHelper (this);\n        SQLiteDatabase sql = dbHelper.getWritableDatabase ();\n        sql.execSQL (\"insert statement for inserting path to database\");\n        sql.close ();\n        dbHelper.close ();\n    }\n}"
+ },
+ {
+  "id": "A016",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public boolean isPrime () {\n      int sqrt = (int) Math.sqrt ((double) value);\n      int i = 2;\n      while (i <= sqrt) {\n        if (value % i == 0) return false;\n        i++;\n      }\n      return true;\n}",
+  "code2": "static int findMIN (int [] A, int c) {\n    int x = A[c];\n    int position = c;\n    for (int i = c; i < A.length; i++) {\n        if (x > A[i] && i != A.length) {\n            x = A[i];\n            position = i;\n        }\n    }\n    return position;\n}"
+ },
+ {
+  "id": "A017",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "public static void AssignValueToProperty (this ObjectAccessor accessor, string propertyName, object value) {\n    var index = propertyName.IndexOf ('.');\n    if (index == - 1) {\n        accessor [propertyName] = value;\n    } else {\n        accessor = ObjectAccessor.Create (accessor [propertyName.Substring (0, index)]);\n        AssignValueToProperty (accessor, propertyName.Substring (index + 1), value);\n    }\n}",
+  "code2": "private int Compare (string [] x, string [] y) {\n    if (x.Length > y.Length)\n        return - Compare (y, x);\n    for (int i = 0; i != x.Length; ++ i) {\n        int cmp = int.Parse (x [i]).CompareTo (int.Parse (y [i]));\n        if (cmp != 0)\n            return cmp;\n    }\n    return x.Length == y.Length ? 0 : - 1;\n}"
+ },
+ {
+  "id": "A018",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public boolean isPrime () {\n      int sqrt = (int) Math.sqrt ((double) value);\n      int i = 2;\n      while (i <= sqrt) {\n        if (value % i == 0) return false;\n        i++;\n      }\n      return true;\n}",
+  "code2": "bool isPrime(int number) {\n    if (number < 2) return false;\n    if (number != 2 && number % 2 == 0) return false;\n    for (int i = 3; i * i <= number; i = i + 2)\n    { if (number % i == 0)  return false;}\n    return true;\n}"
+ },
+ {
+  "id": "A019",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "int main () {\n    short s1, s2, s3 = 0;\n    unsigned int addr = 4194624;\n    s1 = f (addr, 20, 30);\n    s2 = f (addr, 8, 18);\n    s3 = f (addr, 0, 6);\n    printf (\"%d\\n\", s1);\n    printf (\"%d\\n\", s2);\n    printf (\"%d\\n\", s3);\n    return 0;\n}",
+  "code2": "int main () \n{\n    char s1[] = \"oppa\";\n    char s2[] = \"gangnam\";\n    char s3[] = \"style\";\n    char result[STR_SIZE] = s1;\n    strcat(result, \" \");\n    strcat(result, s2);\n    strcat(result, \" \");\n    strcat(result, s3);\n    printf(\"%s\\n\", result);\n    return 0;\n}"
+ },
+ {
+  "id": "A020",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "#include<stdio.h> \n  \nint main() \n{ \n    int num = 0; \n    int rem = 0; \n    int i = 0; \n      \n    printf(\"Enter Number to convert into words: \"); \n    scanf(\"%d\", &num); \n      \n    while(num > 0)  \n    { \n        if (i == 0)  \n        { \n            rem = num % 1000; \n            printText(rem); \n            num = num / 1000; \n            i++; \n        } \n        else if (num > 0)  \n        { \n            rem = num % 100; \n            if (rem > 0) \n                text = denom.values()[i - 1] + \" \" + text; \n            printText(rem); \n            num = num / 100; \n            i++; \n        } \n    } \n    if (i > 0) \n        printf (\"%s\", text); \n    else\n        printf (\"Zero\"); \n    return 0; \n}",
+  "code2": "#include <stdio.h>\n#include <ctype.h>\nint main() {\n    char s[1000], alp[1000];\n    int m = 0, n = 0, i, j;\n    unsigned char ch;\n    int num[1000] = {0};\n    fgets(s, sizeof(s), stdin);\n    for(i = 0; ch = s[i], ch != '\\0'; i++) {\n        if (isalpha(ch)) alp[n++] = ch;\n        else if (isdigit(ch)) {\n            while (isdigit(ch = s[i])) {\n                num[m] = num[m] * 10 + (ch - '0');\n                ++i;\n            } --i; ++m;\n        } else {\n            printf(\"invalid character: %c\\n\", ch);\n            return -1;\n        }\n    }\n    for(i = 0; i < m; i++){\n        for(j = 0; j < num[i]; j++){\n            printf(\"%c\", alp[i]);\n        }\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A021",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public boolean isExpectedPassword (final String password, final byte [] salt, final byte [] hash) {\n    Validate.notNull (password, \"Password must not be null\");\n    Validate.notNull (salt, \"Salt must not be null\");\n    Validate.notNull (hash, \"Hash must not be null\");\n    try {\n        final byte [] passwordBytes = password.getBytes (\"UTF-8\");\n        final byte [] all = ArrayUtils.addAll (passwordBytes, salt);\n        SHA3.DigestSHA3 md = new SHA3.Digest512 ();\n        md.update (all);\n        final byte [] digest = md.digest ();\n        return Arrays.equals (digest, hash);\n    } catch (UnsupportedEncodingException e) {\n        final String message = String.format (\"Caught UnsupportedEncodingException e: <%s>\", e.getMessage ());\n        LOGGER.error (message);\n    }\n    return false;\n}",
+  "code2": "def main(args): \n    s = \"[\" + \" {\\\"lon\\\": 0.001, \\\"lat\\\": 0.001, \\\"desc\\\": \\\"test\\\"},\" + \" {\\\"lon\\\": 0.002, \\\"lat\\\": 0.001, \\\"desc\\\": \\\"test3\\\"},\" + \" {\\\"lon\\\": 0.002, \\\"lat\\\": 0.005, \\\"desc\\\": \\\"test4\\\"},\" + \" {\\\"lon\\\": 0.002, \\\"lat\\\": 0.001, \\\"desc\\\": \\\"test5\\\"},\" + \" {\\\"lon\\\": 0.001, \\\"lat\\\": 0.001, \\\"desc\\\": \\\"test2\\\"}]\"\n    \n    json_string = json.loads(s) \n    tl = sorted(json_string, key=lambda l: (l['lon'], l['lat'])) \n    current = None\n    fl = [] \n    for l in tl: \n        current = current or l\n        if l == current: \n            current['desc'] = current['desc'] + ',' + l['desc'] \n        else: \n            fl.append(current) \n            current = l \n    print(json.dumps(fl))"
+ },
+ {
+  "id": "A022",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static String numLetters (String s) {\n    int [] count = new int [26];\n    for (int i = 0;\n    i < s.length (); i ++) {\n        char c = s.charAt (i);\n        count [(int) (c - 'a')] ++;\n    }\n    String ans = \"\";\n    for (int i = 0;\n    i < 26; i ++) {\n        if (count [i] != 0) {\n            ans += String.valueOf (count [i]) + (char) (i + 'a');\n        }\n    }\n    return ans;\n}",
+  "code2": "int main () {\n    int count = 0;\n    for (int i = 0; i < 6; i++) {\n        while (count < i) {\n            printf (\"*\");\n            count++;\n        }\n        count = 0;\n        while (count < 5-i) {\n            printf (\"+\");\n            count++;\n        }\n        printf (\"\\n\");\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "A023",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "public static string GetServByPort (short port, ProtocolType proto) {\n    StringBuilder ans = new StringBuilder ();\n    switch (proto) {\n        case ProtocolType.Tcp :\n            ans.Append ((TcpServices) port);\n            break;\n        case ProtocolType.Udp :\n            ans.Append ((UdpServices) port);\n            break;\n    }\n    ans.Append (\"(\").Append (port).Append (\")\");\n    return ans.ToString ();\n}",
+  "code2": "public static void ProcessSQLScriptFile (string script) {\n    try {\n        SqlConnection con = new SqlConnection (Properties.Settings.Default.SQLConDefault);\n        con.Open ();\n        Server server = new Server (new ServerConnection (con));\n        server.ConnectionContext.ExecuteNonQuery (script);\n        con.Close ();\n    }\n    catch (SqlException e) {\n        Console.WriteLine (\"SQL Exception: \" + e.Message);\n    }\n    catch (Exception e) {\n        Console.WriteLine (\"Exception: \" + e.Message);\n    }\n}"
+ },
+ {
+  "id": "A024",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "protected Node getTrueParent () {\n    if (getEdges () != null && ! getEdges ().isEmpty ()) {\n        for (Edge e : getEdges ()) {\n            if (e != null && e.getNode2 () == this && ! e.isPseudo ()) {\n                return e.getNode1 ();\n            }\n        }\n    }\n    return null;\n}",
+  "code2": "def find_neighbors(pindex, triang): \n    neighbors = [] \n    for simplex in triang.vertices: \n        if pindex in simplex: \n            for i in range(len(simplex)): \n                if simplex[i] != pindex: \n                    neighbors.append(simplex[i]) \n    return list(set(neighbors))"
+ },
+ {
+  "id": "A025",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "private void LoadGroup (TGroup group, string groupName, TGrid grid) {\n    VList < T > returnList = FetchInformation (group);\n    List < T > tempList;\n    if (Session [groupName] != null) {\n        tempList = (List < T >) Session [groupName];\n    }\n    for (int i = 0; i < tempList.Count; i++) {\n        returnList.Add(tempList[i]);\n    }\n    grid.DataSource = returnList;\n    grid.DataBind ();\n}",
+  "code2": "public static String dt2JSON (DataTable dt) {\n    var rows = new List < Object > ();\n    foreach (DataRow row in dt.Rows) {\n        var rowData = new Dictionary < string, object > ();\n        foreach (DataColumn col in dt.Columns)\n            rowData [col.ColumnName] = row [col];\n        rows.Add (rowData);\n    }\n    var js = new JavaScriptSerializer ();\n    return js.Serialize (new {rows = rows});\n}"
+ },
+ {
+  "id": "A026",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public String getName (String value) {\n    boolean negative = false;\n    if (value.startsWith (\"-\")) {\n        negative = true;\n        value = value.substring (1);\n    }\n    int decimals = value.indexOf (\".\");\n    String decimalValue = null;\n    if (0 <= decimals) {\n        decimalValue = value.substring (decimals + 1);\n        value = value.substring (0, decimals);\n    }\n    String name = processor.getName (value);\n    if (\"\".equals (name)) {\n        name = ZERO_TOKEN;\n    } else if (negative) {\n        name = MINUS.concat (SEPARATOR).concat (name);\n    }\n    if (! (null == decimalValue || \"\".equals (decimalValue))) {\n        String zeroDecimalValue = \"\";\n        for (int i = 0;\n        i < decimalValue.length (); i ++) {\n            zeroDecimalValue = zeroDecimalValue + \"0\";\n        }\n        if (decimalValue.equals (zeroDecimalValue)) {\n            name = name.concat (SEPARATOR).concat (UNION_AND).concat (SEPARATOR).concat (\"zero\").concat (SEPARATOR).concat (SCALE.getName (- decimalValue.length ()));\n        } else {\n            name = name.concat (SEPARATOR).concat (UNION_AND).concat (SEPARATOR).concat (processor.getName (decimalValue)).concat (SEPARATOR).concat (SCALE.getName (- decimalValue.length ()));\n        }\n    }\n    return name;\n}",
+  "code2": "Object *tokenizer(char *value, char **delimeters, int arraySize) {\n    Object *list;\n    list = (Object*)malloc(arraySize * sizeof(Object));\n    for (int i=0; i<arraySize; i++) {\n        if (strstr(value, delimeters[i]) != NULL) {\n            char **strArr = strsplit(value, \"\\\\\");\n            int j = 0;\n            while (strArr[j]) {\n                list[j] = strArr[j];\n                if (!listContains(list, delimeters[i])) {\n                    list[j+1] = delimeters[i];\n                }\n                j++;\n            }\n        }\n    }\n    return list;\n}\n\nint listContains(Object *list, char *value){\n    for (int i=0; i<sizeof(list); i++) {\n        if (strcmp(list[i], value) == 0) {\n            return 1;\n        }\n    }\n    return 0;\n}\n\nchar** strsplit(char* a_str, const char a_delim) {\n    char** result = 0;\n    size_t count = 0;\n    char* tmp = a_str;\n    char* last_comma = 0;\n    char delim[2];\n    delim[0] = a_delim;\n    delim[1] = 0;\n    while (*tmp) {\n        if (a_delim == *tmp) {\n            count++;\n            last_comma = tmp;\n        }\n        tmp++;\n    }\n    count += last_comma < (a_str + strlen(a_str) - 1);\n    count++;\n    result = malloc(sizeof(char*) * count);\n    if (result) {\n        size_t idx  = 0;\n        char* token = strtok(a_str, delim);\n        while (token) {\n            assert(idx < count);\n            *(result + idx++) = strdup(token);\n            token = strtok(0, delim);\n        }\n        assert(idx == count - 1);\n        *(result + idx) = 0;\n    }\n    return result;\n}"
+ },
+ {
+  "id": "A027",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def __init__(self, ev_list = None):\n\tself._trigger = Event()\n\tif ev_list: \n\t\tself._t_list = [Thread(target = self._triggerer, args = (x,)) for x in ev_list]\n\telse:\n\t\tself._t_list = []",
+  "code2": "def search(request) :\n\tif request.method == \"GET\" :\n\t\tsearch_terms = request.GET ['title']\n\t\tsearch_terms = search_terms.split(',')\n\t\tsearch_terms = set(search_terms)\n\t\tqueryargs = [Q(title__contains = i) for i in search_terms]\n\t\tjobs = Job.objects.filter(* queryargs)"
+ },
+ {
+  "id": "A028",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static String compressBad (String str) {\n    int countConsecutive = 0;\n    String compressedString = \"\";\n    for (int i = 0;\n    i < str.length (); i ++) {\n        countConsecutive ++;\n        if (str.length () == (i + 1)) {\n            compressedString += \"\" + str.charAt (i) + countConsecutive;\n            countConsecutive = 0;\n            break;\n        } else if (str.charAt (i) != str.charAt (i + 1)) {\n            compressedString += \"\" + str.charAt (i) + countConsecutive;\n            countConsecutive = 0;\n        }\n    }\n    return compressedString;\n}",
+  "code2": "int solution(int X, int A[], int len_A) {\n    if (X > len_A) {\n        return -1;\n    }\n    int isFilled[X];\n    memset(isFilled, 0, sizeof(isFilled));\n    int jumped = 0;\n    for (int i=0; i < len_A; i++) {\n        int x = A[i];\n        if (x <= X) {\n            if (isFilled[x-1] == 0) {\n                isFilled[x-1] = 1;\n                jumped += 1;\n                if (jumped == X) {\n                    return i;\n                }\n            }\n        }\n    }\n    return -1;\n}"
+ },
+ {
+  "id": "A029",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "public static void AssignValueToProperty (this ObjectAccessor accessor, string propertyName, object value) {\n    var index = propertyName.IndexOf ('.');\n    if (index == - 1) {\n        accessor [propertyName] = value;\n    } else {\n        accessor = ObjectAccessor.Create (accessor [propertyName.Substring (0, index)]);\n        AssignValueToProperty (accessor, propertyName.Substring (index + 1), value);\n    }\n}",
+  "code2": "[TestMethod] public void Test_ThatMyEventIsRaised()\n{\n    Dictionary<string, int> receivedEvents = new Dictionary<string, int>();\n    MyClass myClass = new MyClass();\n    myClass.PropertyChanged += delegate(object sender, PropertyChangedEventArgs e)\n    {\n        receivedEvents[e.PropertyName] = receivedEvents.ContainsKey(e.PropertyName) ? receivedEvents[e.PropertyName]++ : 1;\n    };\n    myClass.MyProperty = \"testing\";\n    Assert.IsTrue(receivedEvents.ContainsKey(\"MyProperty\"));\n    Assert.AreEqual(1, receivedEvents[\"MyProperty\"]);\n    Assert.IsTrue(receivedEvents.ContainsKey(\"MyOtherProperty\"));\n    Assert.AreEqual(1, receivedEvents[\"MyOtherProperty\"]);\n}"
+ },
+ {
+  "id": "A030",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "private BSTNode mirrorViewOne (BSTNode node) {\n    if(node!=null){\n        mirrorViewOne(node.left);\n        node.swapChildren();\n        mirrorViewOne(node.right);\n    }\n    return node;\n}",
+  "code2": "struct node *reverse(struct node *n, struct node *p) {\n    if (n == NULL) \n        return NULL;\n    if (n->next == NULL) {\n        n->next = p;\n        return n;\n    }\n    struct node *r = reverse(n->next, n);\n    n->next = p;\n    return r;\n}"
+ },
+ {
+  "id": "A031",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public void start (final Stage primaryStage) {\n    Alert alert = new Alert (Alert.AlertType.CONFIRMATION);\n    alert.setTitle (\"Title\");\n    alert.setHeaderText (\"Some Text\");\n    alert.setContentText (\"Choose your option.\");\n    ButtonType buttonTypeOne = new ButtonType (\"Yes\");\n    alert.initModality (Modality.NONE);\n    ButtonType buttonTypeCancel = new ButtonType (\"No\", ButtonBar.ButtonData.CANCEL_CLOSE);\n    alert.getButtonTypes ().setAll (buttonTypeOne, buttonTypeCancel);\n    Button b = new Button (\"close alert\");\n    b.setOnAction ((ActionEvent event) -> {\n        for (ButtonType bt : alert.getDialogPane ().getButtonTypes ()) {\n            System.out.println (\"bt = \" + bt);\n            if (bt.getButtonData () == ButtonBar.ButtonData.CANCEL_CLOSE) {\n                Button cancelButton = (Button) alert.getDialogPane ().lookupButton (bt);\n                cancelButton.fire ();\n                break;\n            }\n        }\n    });\n    final Scene scene = new Scene (new Group (b), 400, 300);\n    primaryStage.setScene (scene);\n    primaryStage.show ();\n    Optional < ButtonType > result = alert.showAndWait ();\n    if (result.get () == buttonTypeOne) {\n        System.out.println (\"one \");\n    } else if (result.get () == buttonTypeCancel) {\n        System.out.println (\"cancel \");\n    }\n}",
+  "code2": "def start(primaryStage):\n\ty1 = 15\n\tp1 = ProgressBar()\n\tp1.layoutY = y1\n\tvb1 = HBox(10)\n\tvb1.children.add(Label(\"Progressbar 1\"), p1)\n\ty2 = 15\n\tp2 = ProgressBar()\n\tp2.layoutY = y2\n\tvb2 = HBox(10)\n\tvb2.children.add(Label(\"Progressbar 2\"), p2)\n\ty3 = 15\n\tp3 = ProgressBar()\n\tp3.layoutY = y3\n\tvb3 = HBox(10)\n\tvb3.children.add(Label(\"Progressbar 3\"), p3)\n\ttextChooser = TextChooser(vb1, vb2, vb3)\n\ttextChooser.style = \"-fx-font: 10px \\\"Verdana\\\";\"\n\troot = StackPane()\n\troot.children.add(textChooser)\n\tscene = Scene(root, 300, 250)\n\tprimaryStage.title = \"Hello World!\"\n\tprimaryStage.scene = scene\n\tprimaryStage.show()"
+ },
+ {
+  "id": "A032",
+  "lang1": "python",
+  "lang2": "python",
+  "code1": "def download(url, fileName = None):\n    if not fileName:\n        fileName = url[url.rfind('/') + 1:]",
+  "code2": "def func(ax, data, color, position) :\n    ax.plot(data[0], data[1], color=color, linewidth=2, zorder=1)\n    ax.spines[position].set_color(color)\n    for pos in ['left', 'right', 'top', 'bottom']:\n        if pos != position:\n            ax.spines[pos].set_color('white')"
+ },
+ {
+  "id": "A033",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public static void duplication() {\n    int[] array = IntStream.generate(() -> new Random().nextInt(100) + 1).distinct().limit(20).toArray();\n}",
+  "code2": "def randNums(total,n):\n        results = [0]*n\n        if total == 0:\n            return results\n        rs = [0]*n\n        totalPlus1 = total+1\n        while(True):\n            for i in range(n):\n                # Generate a random integer in between 0 and 256.\n                rs[i] = random.randint(0,256)\n            sum = 0\n            for i in range(n):\n                sum += rs[i]\n            if sum == 0:\n                continue\n            for i in range(n):\n                results[i] = sum%rs[i]%totalPlus1\n            break\n        return results"
+ },
+ {
+  "id": "A034",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "public static string GetServByPort (short port, ProtocolType proto) {\n    StringBuilder ans = new StringBuilder ();\n    switch (proto) {\n        case ProtocolType.Tcp :\n            ans.Append ((TcpServices) port);\n            break;\n        case ProtocolType.Udp :\n            ans.Append ((UdpServices) port);\n            break;\n    }\n    ans.Append (\"(\").Append (port).Append (\")\");\n    return ans.ToString ();\n}",
+  "code2": "public void PrintRandom () {\n    Random r = new Random ();\n    int strLength = r.Next (1, 10);\n    var sb = new StringBuilder ();\n    for (int i = 0; i < strLength; i ++) {\n        int whichType = r.Next (0, 3);\n        switch (whichType) {\n            case 0 :\n                sb.Append ((char) (97 + r.Next (0, 26)));\n                break;\n            case 1 :\n                sb.Append ((char) (65 + r.Next (0, 26)));\n                break;\n            case 2 :\n                sb.Append ((char) (48 + r.Next (0, 10)));\n                break;\n        }\n    }\n    Console.WriteLine (sb.ToString ());\n    Console.ReadLine ();\n}"
+ },
+ {
+  "id": "A035",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "private void LoadGroup (TGroup group, string groupName, TGrid grid) {\n    VList < T > returnList = FetchInformation (group);\n    List < T > tempList;\n    if (Session [groupName] != null) {\n        tempList = (List < T >) Session [groupName];\n    }\n    for (int i = 0; i < tempList.Count; i++) {\n        returnList.Add(tempList[i]);\n    }\n    grid.DataSource = returnList;\n    grid.DataBind ();\n}",
+  "code2": "static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> source, int size) \n            {\n              List<Queue<T>> largeGroup = new List<Queue<T>>();\n              int count = 0;\n              Queue<T> group = new Queue<T>();\n              foreach (var item in source)\n              {\n                group.Enqueue(item);\n                if (++count % size == 0)\n                {\n                  largeGroup.Add(group);\n                  group = new Queue<T>();\n                }\n              }\n              largeGroup.Add(group);"
+ },
+ {
+  "id": "A036",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static String compressBad (String str) {\n    int countConsecutive = 0;\n    String compressedString = \"\";\n    for (int i = 0;\n    i < str.length (); i ++) {\n        countConsecutive ++;\n        if (str.length () == (i + 1)) {\n            compressedString += \"\" + str.charAt (i) + countConsecutive;\n            countConsecutive = 0;\n            break;\n        } else if (str.charAt (i) != str.charAt (i + 1)) {\n            compressedString += \"\" + str.charAt (i) + countConsecutive;\n            countConsecutive = 0;\n        }\n    }\n    return compressedString;\n}",
+  "code2": "char* compressBad(char* str)\n{\n    char* compressedString;\n    if(str != NULL && strlen(str) > 0)\n    {\n        int countConsecutive = 1;\n        char prevChar = str[0];\n        int i, j = 0;\n        for(i = 1; i < strlen(str); i++)\n        {\n            if(str[i] != prevChar)\n            {\n                compressedString[j++] = prevChar;\n                compressedString[j++] = countConsecutive + '0'; \n                prevChar = str[i];\n                countConsecutive = 1;\n                continue;\n            }\n            countConsecutive++;\n        }\n        compressedString[j++] = prevChar;\n        compressedString[j++] = countConsecutive + '0'; \n        compressedString[j] = '\\0';\n    }\n    return compressedString;\n}"
+ },
+ {
+  "id": "A037",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public static void main (String [] args) {\n    String needle = \"ABC\";\n    String haystack = \"ABCDSGDABCSAGAABCCCCAAABAABC\";\n    int numberOfOccurences = 0;\n    int index = haystack.indexOf (needle);\n    while (index != - 1) {\n        numberOfOccurences ++;\n        haystack = haystack.substring (index + needle.length ());\n        index = haystack.indexOf (needle);\n    }\n    System.out.println (\"\" + numberOfOccurences);\n}",
+  "code2": "public static void main (String args []) {\n    int i;\n    int large [] = new int [5];\n    int array [] = {33, 55, 13, 46, 87, 42, 10, 34, 43, 56};\n    int max = 0, index;\n    for (int j = 0;\n    j < 5; j ++) {\n        max = array [0];\n        index = 0;\n        for (i = 1; i < array.length; i ++) {\n            if (max < array [i]) {\n                max = array [i];\n                index = i;\n            }\n        }\n        large [j] = max;\n        array [index] = Integer.MIN_VALUE;\n        System.out.println (\"Largest \" + j + \" : \" + large [j]);\n    }\n}"
+ },
+ {
+  "id": "A038",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public void tick (float delta) {\n    for (Iterator<Entity> iterator = entities.iterator(); iterator.hasNext(); ) {\n        Entity e = iterator.next();\n        e.tick (delta);\n        if (e.checkStrength()) {\n            entities.remove(e);\n            break;\n        }\n    }\n    player.tick (delta);\n}",
+  "code2": "public static int Delta (int a, int b) {\n    int delta = 0;\n    if (a == b) {\n        return 0;\n    } else if (a < b) {\n        while (a < b) {\n            a ++;\n            delta ++;\n        }\n        return delta;\n    } else {\n        while (b < a) {\n            b ++;\n            delta ++;\n        }\n        return delta;\n    }\n}"
+ },
+ {
+  "id": "A039",
+  "lang1": "c",
+  "lang2": "c",
+  "code1": "int main () {\n    short s1, s2, s3 = 0;\n    unsigned int addr = 4194624;\n    s1 = f (addr, 20, 30);\n    s2 = f (addr, 8, 18);\n    s3 = f (addr, 0, 6);\n    printf (\"%d\\n\", s1);\n    printf (\"%d\\n\", s2);\n    printf (\"%d\\n\", s3);\n    return 0;\n}",
+  "code2": "int main (void) {\n    char c_min = -128;\n    char c_max = 127;\n    char uc = '45';\n    printf (\"'1'=%d\\n\", 1);\n    printf (\"'45'=%d\\n\", 45);\n    printf (\"'0'=%d\\n\", 0);\n    printf (\"lowest possible value for char=%d\\n\", c_min);\n    printf (\"highest possible value for char=%d\\n\", c_max);\n    printf (\"'45' converted to an (unsigned) char=%u\\n\", uc);\n    return 0;\n}"
+ },
+ {
+  "id": "A040",
+  "lang1": "java",
+  "lang2": "python",
+  "code1": "public static void main (String [] args) {\n    int a = 150, b = 1500, c = 15000, d = b, e = a, f;\n    Random randomValue = new Random();\n    for(int i = 0; i < c; i++){\n        f = a + (int)(Math.random() * b);\n        if (f<a || f>b) System.err.println (\"Number Out of Range :\" + f);\n        else System.out.println(f);\n        d = Math.min(f, d); e = Math.max(f, e);\n    }\n    System.out.println(\"Generated \"+ c +\" numbers from \"+ d +\" to \"+ e);\n}",
+  "code2": "def countLines(is):\n  try:\n    lnr = LineNumberReader(InputStreamReader(is))\n    buf = [0] * 8192\n    previousN = -1\n    while (n := lnr.read(buf)) != -1:\n      previousN = n\n    ln = lnr.getLineNumber()\n    if previousN == -1:\n      return 0\n    else:\n      lastChar = buf[previousN - 1]\n      if lastChar == \"\\n\" or lastChar == \"\\r\":\n        return ln\n    return ln + 1\n  finally:\n    is.close()"
+ },
+ {
+  "id": "A041",
+  "lang1": "csharp",
+  "lang2": "csharp",
+  "code1": "public void actionPerformed (ActionEvent e) \n{\n    Console.WriteLine ();\n    Console.WriteLine (\"Create Dialog\");\n    JDialog dialog = new JDialog ();\n    dialog.getContentPane ().setLayout (null);\n    for (int i = 0; i < 200; i ++) {\n        dialog.add (new JTextField (\"some text\"));\n    }\n    dialog.setTitle (\"Dialog \" + count ++);\n    dialog.setLocation (count * 25, count * 25);\n    dialog.setVisible (true);\n    Console.WriteLine (\"\\tCreated \" + dialog.getTitle ());\n}",
+  "code2": "int [] A = {9, 5, 4, 3, 2, 1, 34, 53};\nint t = 4;\nint count = 0;\n\nint [] B = new int [count];\nint [] C = new int [A.Length - count];\n\nfor (int i = 0, j = 0, k = 0; i < A.Length; i ++) {\n  if (A [i] <= t) {\n    B[j] = A [i];\n    Console.WriteLine ($\"B = {B[j]}\");\n    j ++;\n  } else {\n    C [k] = A [i];\n    Console.WriteLine($\"C = {C[k]}\");\n    k ++;\n  }\n}"
+ },
+ {
+  "id": "A042",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "private void transform (HSSFWorkbook workbookOld, XSSFWorkbook workbookNew, HSSFRow rowOld, XSSFRow rowNew) {\n    XSSFCell cellNew;\n    rowNew.setHeight (rowOld.getHeight ());\n    for (Cell cell : rowOld) {\n        cellNew = rowNew.createCell (cell.getColumnIndex (), cell.getCellType ());\n        if (cellNew != null) this.transform (workbookOld, workbookNew, (HSSFCell) cell, cellNew);\n    }\n    this.lastColumn = Math.max (this.lastColumn, rowOld.getLastCellNum ());\n}",
+  "code2": "public void start (Stage primaryStage) {\n    final HTMLEditor htmlEditor = new HTMLEditor ();\n    primaryStage.setScene (new Scene (htmlEditor));\n    primaryStage.show ();\n    for (Node toolBar = htmlEditor.lookup (\".tool-bar\");\n    toolBar != null; toolBar = htmlEditor.lookup (\".tool-bar\")) {\n        Parent parent = (Parent) toolBar.getParent ();\n        int index = parent.getChildren ().indexOf (toolBar);\n        parent.getChildren ().remove (index);\n    }\n}"
+ },
+ {
+  "id": "A043",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public String getName (String value) {\n    boolean negative = false;\n    if (value.startsWith (\"-\")) {\n        negative = true;\n        value = value.substring (1);\n    }\n    int decimals = value.indexOf (\".\");\n    String decimalValue = null;\n    if (0 <= decimals) {\n        decimalValue = value.substring (decimals + 1);\n        value = value.substring (0, decimals);\n    }\n    String name = processor.getName (value);\n    if (\"\".equals (name)) {\n        name = ZERO_TOKEN;\n    } else if (negative) {\n        name = MINUS.concat (SEPARATOR).concat (name);\n    }\n    if (! (null == decimalValue || \"\".equals (decimalValue))) {\n        String zeroDecimalValue = \"\";\n        for (int i = 0;\n        i < decimalValue.length (); i ++) {\n            zeroDecimalValue = zeroDecimalValue + \"0\";\n        }\n        if (decimalValue.equals (zeroDecimalValue)) {\n            name = name.concat (SEPARATOR).concat (UNION_AND).concat (SEPARATOR).concat (\"zero\").concat (SEPARATOR).concat (SCALE.getName (- decimalValue.length ()));\n        } else {\n            name = name.concat (SEPARATOR).concat (UNION_AND).concat (SEPARATOR).concat (processor.getName (decimalValue)).concat (SEPARATOR).concat (SCALE.getName (- decimalValue.length ()));\n        }\n    }\n    return name;\n}",
+  "code2": "void concat(const int *a, const int *b, int *c, int n) {\n    while (n--) {\n      *c++ = *a ? *a++ : *b++;\n    }\n}"
+ },
+ {
+  "id": "A044",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public static void main (String [] args) {\n    try {\n        InetAddress address = InetAddress.getByName (\"192.168.1.103\");\n        boolean reachable = address.isReachable (10000);\n        System.out.println (\"Is host reachable? \" + reachable);\n    } catch (Exception e) {\n        e.printStackTrace ();\n    }\n}",
+  "code2": "public void run () {\n    try {\n        int retValue = pro.waitFor ();\n        println (\"Command exit with return value \" + retValue);\n        outStream.close ();\n        outStream = null;\n    } catch (InterruptedException e) {\n        e.printStackTrace ();\n    } catch (IOException e) {\n        e.printStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "A045",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public static void main(String[] args) {\n    String needle = \"ABC\";\n    String haystack = \"ABCDSGDABCSAGAABCCCCAAABAABC\";\n    char[] haystackArray = haystack.toCharArray();\n    char[] needleArray = needle.toCharArray();\n    int numberOfOccurrences = 0;\n    for(int i=0; i<haystackArray.length; i++) {\n        boolean isNeedleFound = true;\n        for(int j=0; j<needleArray.length; j++) {\n            if(haystackArray[i + j] != needleArray[j]) {\n                isNeedleFound = false;\n                break;\n            }\n        }\n        if(isNeedleFound) {\n            numberOfOccurrences++;\n        }\n    }\n    System.out.println(numberOfOccurrences);\n}",
+  "code2": "public static List < Int32 > LocateSubset (Byte [] superSet, Byte [] subSet) {\n    if ((superSet == null) || (subSet == null)) {\n        throw new ArgumentNullException ();\n    }\n    if ((superSet.Length < subSet.Length) || (superSet.Length == 0) || (subSet.Length == 0)) {\n        return new List < Int32 > ();\n    }\n    var result = new List < Int32 > ();\n    Int32 currentIndex = 0;\n    Int32 maxIndex = superSet.Length - subSet.Length;\n    while (currentIndex < maxIndex) {\n        Int32 matchCount = CountMatches (superSet, currentIndex, subSet);\n        if (matchCount == subSet.Length) {\n            result.Add (currentIndex);\n        }\n        currentIndex ++;\n        if (matchCount > 0) {\n            currentIndex += matchCount - 1;\n        }\n    }\n    return result;\n}"
+ },
+ {
+  "id": "A046",
+  "lang1": "java",
+  "lang2": "csharp",
+  "code1": "public static void main(String[] args) {\n    String needle = \"ABC\";\n    String haystack = \"ABCDSGDABCSAGAABCCCCAAABAABC\";\n    char[] haystackArray = haystack.toCharArray();\n    char[] needleArray = needle.toCharArray();\n    int numberOfOccurrences = 0;\n    for(int i=0; i<haystackArray.length; i++) {\n        boolean isNeedleFound = true;\n        for(int j=0; j<needleArray.length; j++) {\n            if(haystackArray[i + j] != needleArray[j]) {\n                isNeedleFound = false;\n                break;\n            }\n        }\n        if(isNeedleFound) {\n            numberOfOccurrences++;\n        }\n    }\n    System.out.println(numberOfOccurrences);\n}",
+  "code2": "public static int IndexOf (byte [] haystack, byte [] needle) {\n    if (needle.Length == 0) {\n        return 0;\n    }\n    int [] charTable = MakeCharTable (needle);\n    int [] offsetTable = MakeOffsetTable (needle);\n    for (int i = needle.Length - 1; i < haystack.Length;) {\n        int j;\n        for (j = needle.Length - 1; needle [j] == haystack [i]; -- i, -- j) {\n            if (j == 0) {\n                return i;\n            }\n        }\n        i += Math.Max (offsetTable [needle.Length - 1 - j], charTable [haystack [i]]);\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "A047",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public ListNode switchPairs () {\n    if (this == null || this.next == null) return this;\n    ListNode top = this.next;\n    ListNode first = this;\n    ListNode second = first.next;\n    do {\n        ListNode third = second.next;\n        second.next = first;\n        first.next = third;\n        first = third;\n        System.out.println (\"@@@ \" + this.toString ());\n        if (first != null) {\n            second.next.next = first.next;\n            second = first.next;\n        }\n    } while (first != null && second != null);\n    return top;\n}",
+  "code2": "int main () {\n    int i, j, flag = 0, rem = 0;\n    printf (\"2\\n\");\n    for (i = 3; i <= 100; i++) {\n        for (j = 2; j <= i / 2; j++) {\n            rem = i % j;\n            if (rem == 0) {\n                flag = 1;\n                break;\n            }\n        }\n        if (flag == 0)\n            printf (\"%d\\n\", i);\n        flag = 0;\n    }\n    getch ();\n    return 0;\n}"
+ },
+ {
+  "id": "A048",
+  "lang1": "java",
+  "lang2": "c",
+  "code1": "public static void main (String [] args) {\n    int temp = 0;\n    out : for (int i = 0;\n    i < 3; ++ i) {\n        System.out.println (\"I am here\");\n        for (int j = 0;\n        j < 20; ++ j) {\n            if (temp == 0) {\n                System.out.println (\"j: \" + j);\n                if (j == 1) {\n                    temp = j;\n                    continue out;\n                }\n            }\n        }\n    }\n    System.out.println (\"temp = \" + temp);\n}",
+  "code2": "int main () {\n    int i, j;\n    for (i = 1; i <= 5; i++) {\n        int temp = 4;\n        int sum = 0;\n        for (j = 1; j <= i; j++) {\n            if (j == 1)\n                sum = i;\n            else {\n                sum = sum + temp--;\n            }\n            printf (\"%d \", sum);\n        }\n        printf (\"\\n\");\n    }\n}"
+ },
+ {
+  "id": "A049",
+  "lang1": "java",
+  "lang2": "java",
+  "code1": "public void run() {\n    int i = 0;\n    while(i < 100) {\n        Object richObj = richObjects.loan();\n        String taskResult = executeTask();\n        richObjects.giveBack(richObj);\n        if(taskResult != null) {\n            i = resultCounter.increaseAndGet();\n            System.out.println(i);\n        }\n    }\n}",
+  "code2": "public static void main (String [] args) {\n    for (int i = 1;\n    i < 16; ++ i) {\n        if ((i & 1) > 0) System.out.print (\"A\");\n        if ((i & 2) > 0) System.out.print (\"B\");\n        if ((i & 4) > 0) System.out.print (\"C\");\n        if ((i & 8) > 0) System.out.print (\"D\");\n        System.out.println (\"\");\n    }\n}"
+ }
+]

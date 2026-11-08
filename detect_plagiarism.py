@@ -1228,8 +1228,12 @@ def adaptive_threshold(original_scores: List[float], complexities: List[float] =
     sigma = statistics.stdev(original_scores) if len(original_scores) > 1 else 0.10
     avg_comp = np.mean(complexities) if complexities and len(complexities) > 0 else 0.5
     
-    # Use documented k values from methodology
-    k = 1.8 if avg_comp >= 0.6 else 1.2
+    # Simple assignments (low complexity) constrain the solution space, so honest students
+    # converge on similar-looking code and the detector needs more evidence before flagging --
+    # hence the larger multiplier. Complex assignments admit many distinct correct solutions,
+    # so genuine convergence is unlikely and a smaller margin is already informative.
+    # (Matches Equation 13 / Section "Adaptive Threshold" in the manuscript.)
+    k = 1.2 if avg_comp >= 0.6 else 1.8
     threshold = mu + k * sigma
     
     # Reasonable bounds

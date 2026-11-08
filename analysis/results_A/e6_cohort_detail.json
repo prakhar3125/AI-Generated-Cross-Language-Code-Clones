@@ -1,0 +1,144 @@
+{
+ "per_group": {
+  "IRPlag-case-01": {
+   "Gate (CodeBERT)": 0.19180672268907567,
+   "Gate, boilerplate removed": 0.7184873949579832,
+   "Token only": 0.3258403361344538,
+   "Token, boilerplate removed": 0.8230042016806725,
+   "JPlag": 0.4866596638655463,
+   "Dolos default": 0.4794117647058824,
+   "Dolos -M 0.5": 0.9396008403361342,
+   "n_cohorts": 40
+  },
+  "IRPlag-case-02": {
+   "Gate (CodeBERT)": 0.12215997510115156,
+   "Gate, boilerplate removed": 0.3092125739184563,
+   "Token only": 0.46514161220043565,
+   "Token, boilerplate removed": 0.6981014628073452,
+   "JPlag": 0.5230314347961407,
+   "Dolos default": 0.586756924992219,
+   "Dolos -M 0.5": 0.5370370370370371,
+   "n_cohorts": 54
+  },
+  "IRPlag-case-03": {
+   "Gate (CodeBERT)": 0.11360698125404005,
+   "Gate, boilerplate removed": 0.3485778926955397,
+   "Token only": 0.3066418875242405,
+   "Token, boilerplate removed": 0.7516968325791856,
+   "JPlag": 0.3703943115707821,
+   "Dolos default": 0.40182611506140914,
+   "Dolos -M 0.5": 0.5127666451195863,
+   "n_cohorts": 52
+  },
+  "IRPlag-case-04": {
+   "Gate (CodeBERT)": 0.25599128540305005,
+   "Gate, boilerplate removed": 0.4070961718020542,
+   "Token only": 0.5456738250855898,
+   "Token, boilerplate removed": 0.8092903828197947,
+   "JPlag": 0.6007625272331155,
+   "Dolos default": 0.8574540927482103,
+   "Dolos -M 0.5": 0.9310613134142547,
+   "n_cohorts": 54
+  },
+  "IRPlag-case-05": {
+   "Gate (CodeBERT)": 0.11907404471222449,
+   "Gate, boilerplate removed": 0.20770572379895352,
+   "Token only": 0.6369906453147297,
+   "Token, boilerplate removed": 0.8636435706358013,
+   "JPlag": 0.46876486443634063,
+   "Dolos default": 0.6235135563659426,
+   "Dolos -M 0.5": 0.9358649120025369,
+   "n_cohorts": 53
+  },
+  "IRPlag-case-06": {
+   "Gate (CodeBERT)": 0.1626297577854671,
+   "Gate, boilerplate removed": 0.24106113033448676,
+   "Token only": 0.399736365134289,
+   "Token, boilerplate removed": 0.815620365793376,
+   "JPlag": 0.39677047289504036,
+   "Dolos default": 0.498681825671445,
+   "Dolos -M 0.5": 0.824270884824518,
+   "n_cohorts": 51
+  },
+  "IRPlag-case-07": {
+   "Gate (CodeBERT)": 0.12209589718240235,
+   "Gate, boilerplate removed": 0.3142198055692865,
+   "Token only": 0.48764211566979737,
+   "Token, boilerplate removed": 0.815455594002307,
+   "JPlag": 0.6542263964409293,
+   "Dolos default": 0.43598615916955014,
+   "Dolos -M 0.5": 0.7394957983193278,
+   "n_cohorts": 51
+  },
+  "Progpedia19": {
+   "Gate (CodeBERT)": 0.679737915198543,
+   "Gate, boilerplate removed": 0.8123441149689219,
+   "Token only": 0.9329743853675917,
+   "Token, boilerplate removed": 0.9842531374955462,
+   "JPlag": 0.7692109743061879,
+   "Dolos default": 0.9028663050793776,
+   "Dolos -M 0.5": 0.9711093075735382,
+   "n_cohorts": 134
+  },
+  "Progpedia56": {
+   "Gate (CodeBERT)": 0.3497276688453159,
+   "Gate, boilerplate removed": 0.3780501089324619,
+   "Token only": 0.9622004357298475,
+   "Token, boilerplate removed": 0.9734567901234568,
+   "JPlag": 0.8637708787218592,
+   "Dolos default": 0.9571350762527234,
+   "Dolos -M 0.5": 0.9781681190994916,
+   "n_cohorts": 136
+  }
+ },
+ "weights": {
+  "plain|PROGpedia": {
+   "derived": [
+    0.9189059734344482,
+    0.046606987714767456,
+    0.034487735480070114
+   ],
+   "honest": [
+    0.5587241053581238,
+    0.20330290496349335,
+    0.23797304928302765
+   ]
+  },
+  "plain|IR-Plag": {
+   "derived": [
+    0.9872449636459351,
+    0.008384506218135357,
+    0.004370009992271662
+   ],
+   "honest": [
+    0.9865226745605469,
+    0.008939363062381744,
+    0.004538470413535833
+   ]
+  },
+  "filt|PROGpedia": {
+   "derived": [
+    0.8645343780517578,
+    0.07007379084825516,
+    0.0653921440243721
+   ],
+   "honest": [
+    0.3344917297363281,
+    0.22980067133903503,
+    0.43570733070373535
+   ]
+  },
+  "filt|IR-Plag": {
+   "derived": [
+    0.7915582656860352,
+    0.08989053964614868,
+    0.11855235695838928
+   ],
+   "honest": [
+    0.4996732771396637,
+    0.16565939784049988,
+    0.3346669375896454
+   ]
+  }
+ }
+}

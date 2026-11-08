@@ -1,0 +1,41 @@
+{
+  "gate_f1_per_seed": [
+    81.07,
+    80.62,
+    81.01,
+    79.81,
+    80.79
+  ],
+  "direct_classifier_f1_per_seed": [
+    81.52,
+    81.25,
+    80.94,
+    80.78,
+    82.5
+  ],
+  "logistic_regression_f1_per_seed": [
+    77.75,
+    77.75,
+    77.75,
+    77.75,
+    77.75
+  ],
+  "seeds_used": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "mcnemar_gate_vs_direct": {
+    "b": 36,
+    "c": 58,
+    "p_value": 0.029766410087911824
+  },
+  "mcnemar_gate_vs_logreg": {
+    "b": 109,
+    "c": 50,
+    "p_value": 3.3064765101721643e-06
+  },
+  "test_n": 1592
+}

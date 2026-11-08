@@ -1,0 +1,66 @@
+{
+ "held_names": [
+  "almostincreasingsequence",
+  "binary_search",
+  "collatz",
+  "countlines",
+  "cumulative_sum",
+  "deep_reverse",
+  "factorial",
+  "find_nth",
+  "flatten",
+  "int_to_roman",
+  "is_sorted",
+  "isanagram",
+  "isprime",
+  "merge",
+  "merge_sort",
+  "removeduplicates",
+  "reverse",
+  "rotateimage",
+  "same_structure",
+  "searchwordlist",
+  "shuffle",
+  "sublist"
+ ],
+ "n_train": [
+  7956,
+  7369
+ ],
+ "n_val": [
+  1714,
+  1599
+ ],
+ "gate|full": {
+  "f1": [
+   0.8065036199426621,
+   0.004365065875108919
+  ],
+  "convergence_flag_rate": 0.21373056994818654,
+  "test_fpr": 0.25954166666666667
+ },
+ "gate|heldout": {
+  "f1": [
+   0.8054821046110205,
+   0.0022464896372668577
+  ],
+  "convergence_flag_rate": 0.21502590673575128,
+  "test_fpr": 0.26779166666666665
+ },
+ "direct|full": {
+  "f1": [
+   0.8098672827187363,
+   0.004641402634713893
+  ],
+  "convergence_flag_rate": 0.24093264248704666,
+  "test_fpr": 0.2779583333333333
+ },
+ "direct|heldout": {
+  "f1": [
+   0.8137428727115944,
+   0.003555394756282735
+  ],
+  "convergence_flag_rate": 0.2137305699481865,
+  "test_fpr": 0.25983333333333336
+ }
+}

@@ -1,3 +1,5 @@
+> **Deprecated.** The Stage 1-4 pair-level pipeline below (`train_model.py`, `reproduce.py`, pair-level 70/15/15 split, batch 64) was used for the first submission and is superseded. Every number in the revised manuscript comes from `repo/analysis` (problem-grouped splits, batch size chosen by grid search, three negative regimes); the figures printed below (10,608 pairs, validation F1 0.8157) are kept for the record only.
+
 # Enhancing Plagiarism Detection in AI-Generated Code: Dynamic Multi-Modal Semantic-Structural Analysis
 ### **System File Registry & Descriptions**
 ---
@@ -261,3 +263,34 @@ GPTCloneBench is based on:
 
 
 
+
+
+---
+
+## Problem-grouped evaluation (revision 2)
+
+All numbers in the revised manuscript come from `repo/analysis` (run with `python -I <script>` from that folder; fixed seeds reproduce every model).
+
+| Script | Purpose |
+| :--- | :--- |
+| `build_protocol.py` | Builds problem groups (connected components of snippet hashes), the train/val/test split, positives and regime-A (random independent) negatives; writes `data/pairs.csv`, `data/problem_group_manifest.csv`, `data/cross_language_problem_manifest.csv`, `data/protocol_stats.json`. Needs the GPTCloneBench release (Zenodo 10198952) and `eval_dataset/`. |
+| `feature_pipeline.py`, `compute_pair_features.py` | One-pass snippet features (CodeBERT windows, tree-sitter AST vector and 5-gram tokens, cyclomatic complexity) and the six gate inputs per pair. |
+| `build_hard_negatives.py` | Regime-B nearest-neighbour independent negatives. |
+| `run_experiments.py`, `evaluate_all.py`, `post_analysis.py` | Hyper-parameter grid, 8-seed training of gate / direct classifier / ablations, decision rules, cluster-aware statistics, threshold study, operating points (`REGIME=A|B`). |
+| `run_jplag.py` | Real JPlag 6.3.0 (+ `--normalize`) on same-language pairs (needs a JDK and the JPlag jar, not included). |
+| `build_probe_claude.py`, `eval_probe2.py` | Zero-shot probe: translations and same-language rewrites by four current models (seeds in `gen/seeds`, outputs in `gen/out`). |
+| `make_tables.py` | Generates every LaTeX table of the manuscript. |
+| `build_cohorts.py`, `encode_unixcoder_cohort.py`, `jplag_cohort.py` | Cohort sets with real derived submissions: PROGpedia assignments Progpedia19/56 from the Maisch et al. replication package (Zenodo 10.5281/zenodo.18089904, CC BY 4.0) and the seven IR-Plag tasks (Karnalim et al.); one cohort per derived file; JPlag run once per assignment. Download both datasets yourself into `tools/maisch_dl/x/datasets` and `tools/irplag_dl/x/IR-Plag-Dataset`. |
+| `eval_cohorts.py`, `analyze_cohorts.py`, `sens_filter.py` | Frozen models scored on every cohort pair (plain and boilerplate-removed features), cohort AUROC, detection and false-flag rates, the label-free adaptive threshold per cohort, cluster-bootstrap intervals, and the boilerplate-filter sensitivity sweep (`results_*/cohort_eval.json`, `results_A/sens_filter.json`). |
+| `dolos_benchmark.py`, `dolos_cohort.py`, `dolos_cohort_runs.py`, `dolos_bench_stats.py` | Dolos 2.10.0 (official container `ghcr.io/dodona-edu/dolos-cli`, pulled with Docker) on the benchmark's same-language pairs and on the cohorts (one run per cohort, default and `-M 0.5`), plus the cluster-bootstrap comparison with the gate and JPlag. |
+| `eval_cohort_variants.py`, `eval_probe2_ux.py`, `encode_unixcoder_probe2.py` | Robustness of the boilerplate filter on the gate's inputs, and the generator probe repeated with the UniXcoder expert (`REGIME=A|B SEM=ux`). |
+| `e1_baselines.py`, `e2_retrained_ablation.py`, `e3_encoder_control.py` | Fixed-weight and non-routing baselines (best convex weights, hand-coded rule, gradient-boosted trees), ablation by retraining without an expert, and the encoder / pooling / normalization control. |
+| `compute_whiten_feature.py` (`SEM=wh`) | Whitened CodeBERT semantic expert (training-split ZCA) used as a drop-in replacement; `run_experiments.py` and `e1_baselines.py` then run with `SEM=wh`. |
+| `e4_build.py`, `e4_tools.py`, `e4_eval.py` | Lexical attack A1 (rename declared identifiers, mask string literals) on same-language pairs; JPlag, Dolos and the learned systems on original and attacked pairs. |
+| `e6_weights_and_tasks.py`, `e7_probe_reanalysis.py` | Per-assignment cohort AUROC and gate weights on derived versus honest pairs; probe AUROC, recall at fixed FPR and cluster-bootstrap intervals over seed problems. |
+| `e8_tune_tools.py`, `e8_tool_metrics.py`, `failure_pooled.py`, `make_pr_figure.py`, `make_tables4.py` | Tuning of JPlag / Dolos settings, operating-point metrics of every system, failure analysis pooled over seeds, stacked precision-recall figure, tables of these experiments. |
+| `make_tables2.py`, `make_tables3.py` | Stronger-encoder, external-check and cohort tables and Fig. `fig_cohort.pdf` (run after `make_tables.py`). |
+
+Outputs: `analysis/results_A`, `analysis/results_B` (scores, per-pair predictions, JSON summaries).
+
+Note: `analysis/data/pairs.csv` holds the protocol pairs plus the regime-B (`hard_independent`) and regime-C (`tfidf_independent`) negative pools (31,992 rows); the package copy omits the regime-C rows.

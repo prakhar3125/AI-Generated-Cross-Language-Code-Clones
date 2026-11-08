@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Real-code evaluation of the three fusion rules trained on each benchmark regime and applied unchanged: mean cohort AUROC (share of a cohort's non-derived pairs scored below its derived pair) on the 270 PROGpedia and 355 IR-Plag cohorts (Java), and on the 100 cross-language cohorts (honest Java submissions of two PROGpedia assignments; derived submission: a translation of one of them into Python or C\# made by Claude, parse-checked but not checked for behavioural equivalence; none of the cohort programs occurs in any benchmark pair). Token expert: $k$-gram overlap alone. The last three columns give the differences of the log-odds gate to the mean-fusion gate, the direct classifier and the token expert; the first two on the Java cohorts and all three on the cross-language cohorts are paired cluster bootstraps over source submissions, Holm-adjusted (\textsuperscript{*}: $p<0.05$), and the token-expert difference on the Java cohorts is a point difference without a test. JPlag and Dolos cannot score the cross-language pairs.}
+\label{tab:logit-real}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ll|cccc|ccc}
+\toprule
+\textbf{Cohorts} & \textbf{Regime} & Mean & Log-odds & Direct & Token & log-odds$-$mean & log-odds$-$direct & log-odds$-$token \\
+\midrule
+PROGpedia (270) & A & 0.514 & 0.905 & 0.950 & 0.948 & +0.392$^{*}$ & -0.044$^{*}$ & -0.042 \\
+ & B & 0.841 & 0.867 & 0.804 & 0.948 & +0.025 & +0.063$^{*}$ & -0.081 \\
+ & C & 0.861 & 0.907 & 0.951 & 0.948 & +0.046$^{*}$ & -0.044$^{*}$ & -0.041 \\
+\midrule
+IR-Plag (355) & A & 0.154 & 0.410 & 0.459 & 0.458 & +0.255$^{*}$ & -0.049 & -0.048 \\
+ & B & 0.277 & 0.374 & 0.376 & 0.458 & +0.098$^{*}$ & -0.002 & -0.084 \\
+ & C & 0.403 & 0.411 & 0.470 & 0.458 & +0.008 & -0.059$^{*}$ & -0.047 \\
+\midrule
+Cross-language (100) & A & 0.406 & 0.834 & 0.843 & 0.676 & +0.428$^{*}$ & -0.009 & +0.158$^{*}$ \\
+ & B & 0.730 & 0.804 & 0.748 & 0.676 & +0.073$^{*}$ & +0.055$^{*}$ & +0.128$^{*}$ \\
+ & C & 0.762 & 0.808 & 0.951 & 0.676 & +0.046 & -0.143$^{*}$ & +0.132$^{*}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

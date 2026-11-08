@@ -1,0 +1,352 @@
+[
+ {
+  "id": "T422",
+  "task": "translate",
+  "row": 422,
+  "source_lang": "java",
+  "code": "private static String decrypt (final String s) {\n    final List < Integer > crypt = new ArrayList < > ();\n    final String [] groups = s.split (\"#\");\n    for (int i = 0;\n    i < groups.length; i ++) {\n        final String group = groups [i];\n        int j = 0;\n        if ((i == (groups.length - 1)) && ! s.endsWith (\"#\")) {\n            j = group.length ();\n        }\n        if (group.length () > 2) {\n            j = group.length () - 2;\n        }\n        for (int k = 0;\n        k < j; k ++) {\n            crypt.add (Integer.valueOf (group.substring (k, k + 1)));\n        }\n        if (j < group.length ()) {\n            crypt.add (Integer.valueOf (group.substring (j, group.length ())));\n        }\n    }\n    final StringBuilder n = new StringBuilder (crypt.size ());\n    for (final Integer c : crypt) {\n        final char d = (char) (('a' + c) - 1);\n        n.append (d);\n    }\n    return n.toString ();\n}"
+ },
+ {
+  "id": "T515",
+  "task": "translate",
+  "row": 515,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    try {\n        Robot robot = new Robot ();\n        BufferedImage bi = robot.createScreenCapture (new Rectangle (Toolkit.getDefaultToolkit ().getScreenSize ()));\n        ImageIO.write (bi, \"jpg\", new File (\"C:/imageTest.jpg\"));\n    } catch (AWTException e) {\n        e.printStackTrace ();\n    } catch (IOException e) {\n        e.printStackTrace ();\n    }\n}"
+ },
+ {
+  "id": "T621",
+  "task": "translate",
+  "row": 621,
+  "source_lang": "java",
+  "code": "public int [] zeroFront (int [] nums) {\n    if (nums == null) {\n        return null;\n    }\n    int [] result = new int [nums.length];\n    int zeroesPos = 0;\n    int othersPos = result.length - 1;\n    for (int i = 0;\n    i < nums.length; ++ i) {\n        if (nums [i] == 0) {\n            result [zeroesPos] = 0;\n            ++ zeroesPos;\n        } else {\n            result [othersPos] = nums [i];\n            -- othersPos;\n        }\n    }\n    return result;\n}"
+ },
+ {
+  "id": "T748",
+  "task": "translate",
+  "row": 748,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    Scanner input = new Scanner (System.in);\n    final int valid = 6;\n    Scanner one = new Scanner (System.in);\n    System.out.println (\"Enter your username: \");\n    String s = one.nextLine ();\n    if (s.length () < valid) {\n        System.out.println (\"Enter a valid username\");\n        System.out.println (\"User name must contain \" + valid + \" characters\");\n        System.out.println (\"Enter again: \");\n        s = one.nextLine ();\n    }\n    System.out.println (\"Username accepted: \" + s);\n    Scanner two = new Scanner (System.in);\n    System.out.println (\"Enter your age: \");\n    int a = two.nextInt ();\n    System.out.println (\"Age accepted: \" + a);\n    Scanner three = new Scanner (System.in);\n    System.out.println (\"Enter your sex: \");\n    String sex = three.nextLine ();\n    System.out.println (\"Sex accepted: \" + sex);\n}"
+ },
+ {
+  "id": "T334",
+  "task": "translate",
+  "row": 334,
+  "source_lang": "java",
+  "code": "public String getName (String value) {\n    StringBuilder buffer = new StringBuilder ();\n    int number;\n    if (\"\".equals (value)) {\n        number = 0;\n    } else if (value.length () > 4) {\n        number = Integer.valueOf (value.substring (value.length () - 4), 10);\n    } else {\n        number = Integer.valueOf (value, 10);\n    }\n    number %= 1000;\n    if (number >= 100) {\n        buffer.append (unitProcessor.getName (number / 100));\n        buffer.append (SEPARATOR);\n        buffer.append (SCALE.getName (EXPONENT));\n    }\n    String tensName = tensProcessor.getName (number % 100);\n    if (! \"\".equals (tensName) && (number >= 100)) {\n        buffer.append (SEPARATOR);\n    }\n    buffer.append (tensName);\n    return buffer.toString ();\n}"
+ },
+ {
+  "id": "T492",
+  "task": "translate",
+  "row": 492,
+  "source_lang": "java",
+  "code": "public static void main (String [] s) throws VTDException {\n    VTDGen vg = new VTDGen ();\n    AutoPilot ap = new AutoPilot ();\n    ap.selectXPath (\"//part/*[text()]\");\n    if (! vg.parseFile (\"d:\\\\xml\\\\soap.xml\", false)) {\n        System.out.println (\"invalid xml\");\n        System.exit (0);\n    }\n    VTDNav vn = vg.getNav ();\n    ap.bind (vn);\n    int i = 0;\n    while ((i = ap.evalXPath ()) != - 1) {\n        System.out.println (\" \" + vn.toRawString (i) + \" = \" + vn.toNormalizedString (vn.getText ()));\n    }\n}"
+ },
+ {
+  "id": "T484",
+  "task": "translate",
+  "row": 484,
+  "source_lang": "java",
+  "code": "public static final void main (String...aArgs) {\n    log (\"Generating 10 random integers in range 1..10.\");\n    int START = 1;\n    int END = 10;\n    Random randomGenerator = new Random ();\n    for (int idx = 1;\n    idx <= 10; ++ idx) {\n        showRandomInteger (START, END, randomGenerator);\n    }\n    log (\"Done\");\n}"
+ },
+ {
+  "id": "T79",
+  "task": "translate",
+  "row": 79,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    List < String > list = new ArrayList < String > ();\n    Scanner stdin = new Scanner (System.in);\n    do {\n        System.out.println (\"Current list is \" + list);\n        System.out.println (\"Add more? (y/n)\");\n        if (stdin.next ().startsWith (\"y\")) {\n            System.out.println (\"Enter : \");\n            list.add (stdin.next ());\n        } else {\n            break;\n        }\n    } while (true);\n    stdin.close ();\n    System.out.println (\"List is \" + list);\n    String [] arr = list.toArray (new String [0]);\n    System.out.println (\"Array is \" + Arrays.toString (arr));\n}"
+ },
+ {
+  "id": "T710",
+  "task": "translate",
+  "row": 710,
+  "source_lang": "java",
+  "code": "public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {\n    int dotPos = - 1;\n    int len = dest.length ();\n    for (int i = 0;\n    i < len; i ++) {\n        char c = dest.charAt (i);\n        if (c == '.' || c == ',') {\n            dotPos = i;\n            break;\n        }\n    }\n    if (dotPos >= 0) {\n        if (source.equals (\".\") || source.equals (\",\")) {\n            return \"\";\n        }\n        if (dend <= dotPos) {\n            return null;\n        }\n        if (len - dotPos > decimalDigits) {\n            return \"\";\n        }\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T368",
+  "task": "translate",
+  "row": 368,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) throws UnknownHostException, IOException {\n    InetAddress inet;\n    inet = InetAddress.getByAddress (new byte [] {127, 0, 0, 1});\n    System.out.println (\"Sending Ping Request to \" + inet);\n    System.out.println (inet.isReachable (5000) ? \"Host is reachable\" : \"Host is NOT reachable\");\n    inet = InetAddress.getByAddress (new byte [] {(byte) 173, (byte) 194, 32, 38});\n    System.out.println (\"Sending Ping Request to \" + inet);\n    System.out.println (inet.isReachable (5000) ? \"Host is reachable\" : \"Host is NOT reachable\");\n}"
+ },
+ {
+  "id": "T305",
+  "task": "translate",
+  "row": 305,
+  "source_lang": "java",
+  "code": "public final void contextDestroyed (ServletContextEvent sce) {\n    ClassLoader cl = Thread.currentThread ().getContextClassLoader ();\n    Enumeration < Driver > drivers = DriverManager.getDrivers ();\n    while (drivers.hasMoreElements ()) {\n        Driver driver = drivers.nextElement ();\n        if (driver.getClass ().getClassLoader () == cl) {\n            try {\n                log.info (\"Deregistering JDBC driver {}\", driver);\n                DriverManager.deregisterDriver (driver);\n            } catch (SQLException ex) {\n                log.error (\"Error deregistering JDBC driver {}\", driver, ex);\n            }\n        } else {\n            log.trace (\"Not deregistering JDBC driver {} as it does not belong to this webapp's ClassLoader\", driver);\n        }\n    }\n}"
+ },
+ {
+  "id": "T398",
+  "task": "translate",
+  "row": 398,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    Scanner input = new Scanner (System.in);\n    System.out.print (\"\\t\\tPlease enter the maximum: \");\n    int max = input.nextInt ();\n    System.out.print (\"\\t\\tPlease enter the minimum: \");\n    int min = input.nextInt ();\n    System.out.print (\"enter: \");\n    Scanner lineInput = new Scanner (System.in);\n    String word = lineInput.nextLine ();\n    String [] lengthword = word.split (\"\\\\s+\");\n    int countwords = lengthword.length;\n    if (countwords <= max && countwords >= min) {\n        System.out.println (\"YAY!!!!!!!!! YOU'RE WTHIN THE RAAAANGE!!!!!!!!!!!!!!!!!!!!!!!\");\n    } else {\n        System.out.println (\"Ohh!!!!!!!!! YOU'RE Not in RAAAANGE!!!!!!!!!!!!!!!!!!!!!!!\");\n    }\n}"
+ },
+ {
+  "id": "T732",
+  "task": "translate",
+  "row": 732,
+  "source_lang": "java",
+  "code": "public int [] solution (String S, int [] P, int [] Q) {\n    int [] answer = new int [P.length];\n    char [] chars = S.toCharArray ();\n    int [] [] cumulativeAnswers = new int [4] [chars.length + 1];\n    for (int iii = 0;\n    iii < chars.length; iii ++) {\n        if (iii > 0) {\n            for (int zzz = 0;\n            zzz < 4; zzz ++) {\n                cumulativeAnswers [zzz] [iii + 1] = cumulativeAnswers [zzz] [iii];\n            }\n        }\n        switch (chars [iii]) {\n            case 'A' :\n                cumulativeAnswers [0] [iii + 1] ++;\n                break;\n            case 'C' :\n                cumulativeAnswers [1] [iii + 1] ++;\n                break;\n            case 'G' :\n                cumulativeAnswers [2] [iii + 1] ++;\n                break;\n            case 'T' :\n                cumulativeAnswers [3] [iii + 1] ++;\n                break;\n        }\n    }\n    for (int iii = 0;\n    iii < P.length; iii ++) {\n        for (int zzz = 0;\n        zzz < 4; zzz ++) {\n            if ((cumulativeAnswers [zzz] [Q [iii] + 1] - cumulativeAnswers [zzz] [P [iii]]) > 0) {\n                answer [iii] = zzz + 1;\n                break;\n            }\n        }\n    }\n    return answer;\n}"
+ },
+ {
+  "id": "T644",
+  "task": "translate",
+  "row": 644,
+  "source_lang": "java",
+  "code": "public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {\n    String lsStart = \"\";\n    String lsInsert = \"\";\n    String lsEnd = \"\";\n    String lsText = \"\";\n    Log.d (\"debug\", moPattern.toString ());\n    Log.d (\"debug\", \"source: \" + source + \", start: \" + start + \", end:\" + end + \", dest: \" + dest + \", dstart: \" + dstart + \", dend: \" + dend);\n    lsText = dest.toString ();\n    if (lsText.length () > 0) {\n        lsStart = lsText.substring (0, dstart);\n        Log.d (\"debug\", \"lsStart : \" + lsStart);\n        if (source != \"\") {\n            lsInsert = source.toString ();\n            Log.d (\"debug\", \"lsInsert: \" + lsInsert);\n        }\n        lsEnd = lsText.substring (dend);\n        Log.d (\"debug\", \"lsEnd   : \" + lsEnd);\n        lsText = lsStart + lsInsert + lsEnd;\n        Log.d (\"debug\", \"lsText  : \" + lsText);\n    }\n    Matcher loMatcher = moPattern.matcher (lsText);\n    Log.d (\"debug\", \"loMatcher.matches(): \" + loMatcher.matches () + \", lsText: \" + lsText);\n    if (! loMatcher.matches ()) {\n        return \"\";\n    }\n    return null;\n}"
+ },
+ {
+  "id": "T104",
+  "task": "translate",
+  "row": 104,
+  "source_lang": "java",
+  "code": "public static boolean isAnagram (String s1, String s2) {\n    if (s1.length () != s2.length ()) {\n        return false;\n    }\n    s1 = s1.toLowerCase ();\n    s2 = s2.toLowerCase ();\n    char [] c1 = s1.toCharArray ();\n    char [] c2 = s2.toCharArray ();\n    Arrays.sort (c1);\n    Arrays.sort (c2);\n    String sc1 = new String (c1);\n    String sc2 = new String (c2);\n    return sc1.equals (sc2);\n}"
+ },
+ {
+  "id": "T417",
+  "task": "translate",
+  "row": 417,
+  "source_lang": "java",
+  "code": "private byte [] readData (File f, int startByte, int chunkSize) throws Exception {\n    RandomAccessFile raf = new RandomAccessFile (f, \"r\");\n    raf.seek (startByte);\n    byte [] data = new byte [chunkSize];\n    int read = raf.read (data);\n    raf.close ();\n    if (read == data.length) return data;\n    else return Arrays.copyOf (data, read);\n}"
+ },
+ {
+  "id": "T197",
+  "task": "translate",
+  "row": 197,
+  "source_lang": "java",
+  "code": "private static int solution (int N) {\n    int gap = 0;\n    String binaryStr = Integer.toBinaryString (N);\n    String [] zeroArrays = binaryStr.split (\"1\");\n    System.out.println (Arrays.toString (zeroArrays));\n    for (String zeroArray : zeroArrays) {\n        gap = zeroArray.length () > gap ? zeroArray.length () : gap;\n    }\n    return gap;\n}"
+ },
+ {
+  "id": "T752",
+  "task": "translate",
+  "row": 752,
+  "source_lang": "java",
+  "code": "public static void main (String [] s) throws VTDException {\n    VTDGen vg = new VTDGen ();\n    if (! vg.parseFile (\"input.xml\", false)) return;\n    VTDNav vn = vg.getNav ();\n    AutoPilot ap = new AutoPilot (vn);\n    ap.selectXPath (\"/xml/item/@name\");\n    int i = 0;\n    while ((i = ap.evalXPath ()) != - 1) {\n        System.out.println (\" item name is ===>\" + vn.toString (i + 1));\n    }\n}"
+ },
+ {
+  "id": "T410",
+  "task": "translate",
+  "row": 410,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    Scanner scan = new Scanner (System.in);\n    int code;\n    int red, green, blue;\n    int rMask = 0xFF0000, gMask = 0xFF00, bMask = 0xFF;\n    System.out.println (\"Please enter the red color. Range [0, 255] only please.\");\n    red = scan.nextInt ();\n    System.out.println (\"Please enter the green color. Range [0, 255] only please.\");\n    green = scan.nextInt ();\n    System.out.println (\"Please enter the blue color. Range [0, 255] only please.\");\n    blue = scan.nextInt ();\n    code = 0;\n    code += (int) (red * Math.pow (2, 16));\n    code += (int) (green * Math.pow (2, 8));\n    code += (int) (blue * Math.pow (2, 0));\n    System.out.println (\"The code is \" + code + \".\");\n    red = 0;\n    green = 0;\n    blue = 0;\n    red = (code & rMask)>> 16;\n    green = (code & gMask)>> 8;\n    blue = (code & bMask);\n    System.out.println (\"Your red value is: \" + red);\n    System.out.println (\"Your green value is: \" + green);\n    System.out.println (\"Your blue value is: \" + blue);\n}"
+ },
+ {
+  "id": "T858",
+  "task": "translate",
+  "row": 858,
+  "source_lang": "java",
+  "code": "private HSSFFont transform (HSSFWorkbook workbookNew, XSSFFont fontOld) {\n    HSSFFont fontNew = workbookNew.createFont ();\n    fontNew.setBoldweight (fontOld.getBoldweight ());\n    fontNew.setCharSet (fontOld.getCharSet ());\n    fontNew.setColor (fontOld.getColor ());\n    fontNew.setFontName (fontOld.getFontName ());\n    fontNew.setFontHeight (fontOld.getFontHeight ());\n    fontNew.setItalic (fontOld.getItalic ());\n    fontNew.setStrikeout (fontOld.getStrikeout ());\n    fontNew.setTypeOffset (fontOld.getTypeOffset ());\n    fontNew.setUnderline (fontOld.getUnderline ());\n    return fontNew;\n}"
+ },
+ {
+  "id": "T145",
+  "task": "translate",
+  "row": 145,
+  "source_lang": "java",
+  "code": "public int solution (int X, int [] A) {\n    int list [] = A;\n    int sum = 0;\n    int searchedValue = X;\n    int sumV = searchedValue * (searchedValue + 1) / 2;\n    List < Integer > arrayList = new ArrayList < Integer > ();\n    for (int iii = 0;\n    iii < list.length; iii ++) {\n        if (list [iii] <= searchedValue && ! arrayList.contains (list [iii])) {\n            sum += list [iii];\n            if (sum == sumV) {\n                return iii;\n            }\n            arrayList.add (list [iii]);\n        }\n    }\n    return - 1;\n}"
+ },
+ {
+  "id": "T65",
+  "task": "translate",
+  "row": 65,
+  "source_lang": "java",
+  "code": "public void actionPerformed (ActionEvent e) {\n    System.out.println ();\n    System.out.println (\"Display Dialogs\");\n    for (Window window : Window.getWindows ()) {\n        if (window instanceof JDialog) {\n            JDialog dialog = (JDialog) window;\n            System.out.println (\"\\t\" + dialog.getTitle () + \" \" + dialog.isDisplayable ());\n        }\n    }\n}"
+ },
+ {
+  "id": "T239",
+  "task": "translate",
+  "row": 239,
+  "source_lang": "java",
+  "code": "public static void main (String [] args) {\n    String test = \"The quick brown fox jumped over the lazy dog.\";\n    int countA = 0, countO = 0, countSpace = 0, countDot = 0;\n    for (int i = 0;\n    i < test.length (); i ++) {\n        switch (test.charAt (i)) {\n            case 'a' :\n            case 'A' :\n                countA ++;\n                break;\n            case 'o' :\n            case 'O' :\n                countO ++;\n                break;\n            case ' ' :\n                countSpace ++;\n                break;\n            case '.' :\n                countDot ++;\n                break;\n        }\n    }\n    System.out.printf (\"%s%d%n%s%d%n%s%d%n%s%d\", \"A: \", countA, \"O: \", countO, \"Space: \", countSpace, \"Dot: \", countDot);\n}"
+ },
+ {
+  "id": "T94",
+  "task": "translate",
+  "row": 94,
+  "source_lang": "java",
+  "code": "public static byte [] readBytes (InputStream inputStream) throws IOException {\n    byte [] buffer = new byte [32 * 1024];\n    int bufferSize = 0;\n    for (;;) {\n        int read = inputStream.read (buffer, bufferSize, buffer.length - bufferSize);\n        if (read == - 1) {\n            return Arrays.copyOf (buffer, bufferSize);\n        }\n        bufferSize += read;\n        if (bufferSize == buffer.length) {\n            buffer = Arrays.copyOf (buffer, bufferSize * 2);\n        }\n    }\n}"
+ },
+ {
+  "id": "T749",
+  "task": "translate",
+  "row": 749,
+  "source_lang": "java",
+  "code": "public void start (Stage primaryStage) {\n    final HTMLEditor htmlEditor = new HTMLEditor ();\n    primaryStage.setScene (new Scene (htmlEditor));\n    primaryStage.show ();\n    for (Node toolBar = htmlEditor.lookup (\".tool-bar\");\n    toolBar != null; toolBar = htmlEditor.lookup (\".tool-bar\")) {\n        ((Pane) toolBar.getParent ()).getChildren ().remove (toolBar);\n    }\n}"
+ },
+ {
+  "id": "Ra03011d81d",
+  "task": "refactor",
+  "key": "c:a03011d81dd103ea",
+  "lang": "c",
+  "code": "int main () {\n    int a, b;\n    int i = 0;\n    while (1) {\n        scanf (\"%d %d\", & a, & b);\n        printf (\"%d: %d + %d = %d\\n\", ++ i, a, b, sum (a + 1, b + 1));\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R63b80bd2a7",
+  "task": "refactor",
+  "key": "java:63b80bd2a79e72fb",
+  "lang": "java",
+  "code": "public static void main (String [] args) {\n    if (args.length != 2) {\n        System.out.println (\"usage: ./zipf size skew\");\n        System.exit (- 1);\n    }\n    ZipfGenerator zipf = new ZipfGenerator (Integer.valueOf (args [0]), Double.valueOf (args [1]));\n    for (int i = 1;\n    i <= 10; i ++) {\n        System.out.println (i + \" \" + zipf.getProbability (i));\n    }\n    int hist [] = new int [12];\n    for (int i = 0;\n    i < 12; i ++) {\n        hist [i] = 0;\n    }\n    System.out.println (\"Testing the probability distribution:\");\n    int sum = 0;\n    for (int i = 1;\n    i <= 1000000; i ++) {\n        hist [zipf.next ()] ++;\n    }\n    for (int i = 0;\n    i < 12; i ++) System.out.println (i + \" \" + hist [i] / 1000000.0);\n}"
+ },
+ {
+  "id": "R4a34d3a4cc",
+  "task": "refactor",
+  "key": "python:4a34d3a4cc9abd82",
+  "lang": "python",
+  "code": "def binary_search(L, x) :\n\ti = bisect.bisect_left(L, x)\n\tif i == len(L) or L [i] ! = x :\n\t\treturn - 1\n\treturn i"
+ },
+ {
+  "id": "R359253b811",
+  "task": "refactor",
+  "key": "java:359253b8110a773b",
+  "lang": "java",
+  "code": "public Component getTableCellEditorComponent (JTable table, Object value, boolean isSelected, int row, int col) {\n    Component comp = super.getTableCellEditorComponent (table, value, isSelected, row, col);\n    if (value instanceof java.lang.String) {\n        DefaultStyledDocument sty_doc = new DefaultStyledDocument ();\n        try {\n            sty_doc.insertString (0, (String) value, null);\n        } catch (BadLocationException e) {\n            e.printStackTrace ();\n        }\n        JTextPane jtp_comp = new JTextPane (sty_doc);\n        jtp_comp.setEditable (false);\n        return jtp_comp;\n    }\n    return comp;\n}"
+ },
+ {
+  "id": "R1cabb3fa54",
+  "task": "refactor",
+  "key": "python:1cabb3fa54462019",
+  "lang": "python",
+  "code": "def access(obj, indexes) :\n\ttry :\n\t\treturn reduce(list.__getitem__, indexes, obj)\n\texcept Exception :\n\t\treturn None"
+ },
+ {
+  "id": "R7da0cb9ba0",
+  "task": "refactor",
+  "key": "csharp:7da0cb9ba0a1273c",
+  "lang": "csharp",
+  "code": "public string GetResultsWithHyphen (string inText) {\n    var counter = 0;\n    var outString = string.Empty;\n    while (counter < inText.Length) {\n        outString += counter % 4 == 0 ? string.Format (\"{0}-{1}\", outString, inText.Substring (counter, 1)) : inText.Substring (counter, 1);\n        counter ++;\n    }\n    return outString;\n}"
+ },
+ {
+  "id": "R17e5e197a9",
+  "task": "refactor",
+  "key": "python:17e5e197a9840ed0",
+  "lang": "python",
+  "code": "def recurse(node, depth, parent) :\n\tglobal k\n\tindent = \"  \" * depth\n\tif tree_.feature [node] ! = _tree.TREE_UNDEFINED :\n\t\tname = feature_name [node]\n\t\tthreshold = tree_.threshold [node]\n\t\ts = \"{} <= {} \".format(name, threshold, node)\n\t\tif node == 0 :\n\t\t\tpathto [node] = s\n\t\telse :\n\t\t\tpathto [node] = pathto [parent] + ' & ' + s\n\t\trecurse(tree_.children_left [node], depth + 1, node)\n\t\ts = \"{} > {}\".format(name, threshold)\n\t\tif node == 0 :\n\t\t\tpathto [node] = s\n\t\telse :\n\t\t\tpathto [node] = pathto [parent] + ' & ' + s\n\t\trecurse(tree_.children_right [node], depth + 1, node)\n\telse :\n\t\tk = k + 1\n\t\tprint (k, ')', pathto [parent], tree_.value [node])"
+ },
+ {
+  "id": "R0c1c130c91",
+  "task": "refactor",
+  "key": "c:0c1c130c918f3d35",
+  "lang": "c",
+  "code": "int main () {\n    for (int i = 0; i < 6; i++) {\n        for (int k = i; k < 5; k++) {\n            printf (\"+\");\n        }\n        for (int j = 0; j < i; j++) {\n            printf (\"*\");\n        }\n        printf (\"\\n\");\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R1ab11e56ab",
+  "task": "refactor",
+  "key": "python:1ab11e56ab682fe8",
+  "lang": "python",
+  "code": "def future6(A) :\n\tknown = []\n\tresult = []\n\tfor idx in xrange(len(A) - 1, - 1, - 1) :\n\t\tvalue = A [idx]\n\t\tknown = [(x, y) for x, y in known if y > value]\n\t\tif known :\n\t\t\tresult.append(known [- 1] [0])\n\t\telse :\n\t\t\tresult.append(- 1)\n\t\tknown.append((idx, value))\n\treturn np.array(result) [: : - 1]"
+ },
+ {
+  "id": "Rfbf7d4f5c2",
+  "task": "refactor",
+  "key": "python:fbf7d4f5c279ff47",
+  "lang": "python",
+  "code": "def stemming(verb):\n\tsuffixes = ['ing', 'ed', 'es', 's']\n\tverb = list(filter(lambda x: x not in suffixes, list(verb)))\n\treturn ''.join(verb)"
+ },
+ {
+  "id": "Rd908836b46",
+  "task": "refactor",
+  "key": "c:d908836b46925129",
+  "lang": "c",
+  "code": "int main(void) \n{ \n    char* a[50]; \n    for(int i=0;i<50;++i) \n    { \n        a[i] = malloc(10); \n    } \n    function(a); \n    for(int i=0;i<2;++i) \n    { \n        printf(\"a[%d]: %s\\n\", i, a[i]); \n    } \n}"
+ },
+ {
+  "id": "R63b6384687",
+  "task": "refactor",
+  "key": "python:63b6384687adbc38",
+  "lang": "python",
+  "code": "def merge(a, low, mid, high) :\n\tl = a [low : mid + 1]\n\tr = a [mid + 1 : high + 1]\n\tk = 0\n \ti = 0\n  \tj = 0\n\tc = [0 for i in range(low, high + 1)]\n\twhile (i < len(l) and j < len(r)) :\n\t\tif (l [i] <= r [j]) :\n\t\t\tc [k] = (l [i])\n\t\t\tk += 1\n\t\t\ti += 1\n\t\telse :\n\t\t\tc [k] = (r [j])\n\t\t\tj += 1\n\t\t\tk += 1\n\twhile (i < len(l)) :\n\t\tc [k] = (l [i])\n\t\tk += 1\n\t\ti += 1\n\twhile (j < len(r)) :\n\t\tc [k] = (r [j])\n\t\tk += 1\n\t\tj += 1\n\ta [low : high + 1] = c"
+ },
+ {
+  "id": "R06eb22ea20",
+  "task": "refactor",
+  "key": "csharp:06eb22ea2074711f",
+  "lang": "csharp",
+  "code": "public static void d (Exception e) {\n    try {\n        MethodBase site = e.TargetSite;\n        string methodName = site == null ? \"\" : site.Name;\n        methodName = ExtractBracketed (methodName);\n        StackTrace stkTrace = new System.Diagnostics.StackTrace (e, true);\n        for (int i = 0; i < 3; i ++) {\n            var frame = stkTrace.GetFrame (i);\n            int lineNum = frame.GetFileLineNumber ();\n            int colNum = frame.GetFileColumnNumber ();\n            string className = ExtractBracketed (frame.GetMethod ().ReflectedType.FullName);\n            Trace.WriteLine (ThreadAndDateInfo + \"Exception: \" + className + \".\" + methodName + \", Ln \" + lineNum + \" Col \" + colNum + \": \" + e.Message);\n            if (lineNum + colNum > 0)\n                break;\n        }\n    }\n    catch (Exception ee) {\n        Console.WriteLine (\"Tracing exception in d(Exception e)\" + ee.Message);\n    }\n}"
+ },
+ {
+  "id": "Reb0aa16636",
+  "task": "refactor",
+  "key": "java:eb0aa16636af0900",
+  "lang": "java",
+  "code": "bool isPrime (int number) {\n    if (number < 2) return false;\n    if (number == 2) return true;\n    if (number % 2 == 0) return false;\n    for (int i = 3;\n    (i * i) <= number; i += 2) {\n        if (number % i == 0) return false;\n    }\n    return true;\n}"
+ },
+ {
+  "id": "Rcfc9023e76",
+  "task": "refactor",
+  "key": "java:cfc9023e76b59521",
+  "lang": "java",
+  "code": "public static void main (String [] args) {\n    Scanner input = new Scanner (System.in);\n    String number = \"\";\n    int a = 0, total = 0;\n    boolean even = false;\n    System.out.println (\"Enter a number\");\n    number = input.nextLine ();\n    for (int counter = 0;\n    counter < number.length (); counter ++) {\n        a = Integer.parseInt (number.substring (counter, counter + 1));\n        if (a % 2 != 0 || a == 1) {\n            even = false;\n            total += a;\n        }\n    }\n    System.out.println (\"The sum is \" + total);\n}"
+ },
+ {
+  "id": "R7176808dc7",
+  "task": "refactor",
+  "key": "csharp:7176808dc7947865",
+  "lang": "csharp",
+  "code": "protected override void CalculateBiQuadCoefficients() {\n    double k = Math.Tan(Math.PI * Frequency / SampleRate);\n    double normDenom = 1 + k / Q + k * k;\n    A0 = k / Q / normDenom;\n    A1 = 0;\n    A2 = -A0;\n    B1 = 2 * (k * k - 1) / normDenom;\n    B2 = (1 - k / Q + k * k) / normDenom;\n}"
+ },
+ {
+  "id": "R5e98c898ba",
+  "task": "refactor",
+  "key": "c:5e98c898ba48fcf2",
+  "lang": "c",
+  "code": "int main (int argC, char *argV []) {\n    char *name = malloc (MAX_NAME_SZ);\n    if (name == NULL) {\n        printf (\"No memory\\n\");\n        return 1;\n    }\n    printf (\"What is your name? \");\n    fgets (name, MAX_NAME_SZ, stdin);\n    if ((strlen (name) > 0) && (name[strlen (name) - 1] == '\\n'))\n        name[strlen (name) - 1] = '\\0';\n    printf (\"Hello %s. Nice to meet you.\\n\", name);\n    free (name);\n    return 0;\n}"
+ },
+ {
+  "id": "R9f056ca258",
+  "task": "refactor",
+  "key": "java:9f056ca258d783a8",
+  "lang": "java",
+  "code": "private void printTree (OutputStreamWriter out, boolean isRight, String indent) throws IOException {\n    if (right != null) {\n        right.printTree (out, true, indent + (isRight ? \"        \" : \" |      \"));\n    }\n    out.write (indent);\n    if (isRight) {\n        out.write (\" /\");\n    } else {\n        out.write (\" \\\\\");\n    }\n    out.write (\"----- \");\n    printNodeValue (out);\n    if (left != null) {\n        left.printTree (out, false, indent + (isRight ? \" |      \" : \"        \"));\n    }\n}"
+ },
+ {
+  "id": "Rda752e8442",
+  "task": "refactor",
+  "key": "python:da752e8442e67170",
+  "lang": "python",
+  "code": "def mssl(l) :\n\tbest = cur = 0\n\tcuri = starti = besti = 0\n\tfor ind, i in enumerate(l) :\n\t\tif cur + i > 0 :\n\t\t\tcur += i\n\t\telse :\n\t\t\tcur, curi = 0, ind + 1\n\t\tif cur > best :\n\t\t\tstarti, besti, best = curi, ind + 1, cur\n\treturn starti, besti, best"
+ },
+ {
+  "id": "Ra2d10bef4b",
+  "task": "refactor",
+  "key": "csharp:a2d10bef4bb77c1e",
+  "lang": "csharp",
+  "code": "private void Dispose (bool disposing) {\n    if (! disposedValue) {\n        if (disposing) {\n        }\n        if (m_freeStack != null) {\n            SharpDX.Direct3D11.Texture2D texture;\n            while (m_freeStack.TryPop (out texture)) {\n                texture.Dispose ();\n            }\n            m_freeStack = null;\n        }\n        disposedValue = true;\n    }\n}"
+ },
+ {
+  "id": "Rb2a2baaff7",
+  "task": "refactor",
+  "key": "java:b2a2baaff764f7ca",
+  "lang": "java",
+  "code": "public static void main (String [] args) {\n    String set = new java.util.BitSet () {\n        {\n            set (1, 100 + 1);\n        }\n    }\n    .toString ();\n    System.out.append (set, 1, set.length () - 1);\n}"
+ },
+ {
+  "id": "R20dd558187",
+  "task": "refactor",
+  "key": "c:20dd558187115b9e",
+  "lang": "c",
+  "code": "int main (void) {\n    char *strings [10] = {}, *x;\n    int i;\n    size_t len;\n    puts (\"Enter 10 strings:\");\n    for (i = 0; i < 10; ++i)\n        getline (&strings[i], &len, stdin);\n    puts (\"The strings that end with ed are:\");\n    for (i = 0; i < 10; ++i) {\n        if ((x = strings[i])) {\n            len = strlen (x);\n            if (x[len - 1] == '\\n')\n                x[--len] = '\\0';\n            if (len > 1 && strcmp (x +len - 2, \"ed\") == 0)\n                puts (x);\n            free (x);\n        }\n    }\n    return 0;\n}"
+ },
+ {
+  "id": "R5b8db4fec9",
+  "task": "refactor",
+  "key": "csharp:5b8db4fec91cdbbc",
+  "lang": "csharp",
+  "code": "public override void Write(string value) {\n    string temp;\n    if(_bufferState > 0) {\n        if(value == AmpToken) {\n            _bufferState++;\n            return;\n        } \n        else {\n            temp = \"&\";\n            _bufferState = 0;\n            base.Write(temp);\n        }\n    }\n    base.Write(value);\n}"
+ },
+ {
+  "id": "R8d0d71b76a",
+  "task": "refactor",
+  "key": "csharp:8d0d71b76a5ead20",
+  "lang": "csharp",
+  "code": "public static string Format (this TimeSpan obj) {\n    StringBuilder sb = new StringBuilder ();\n    if (obj.Hours != 0) {\n        sb.Append (obj.Hours);\n        sb.Append (\" \");\n        sb.Append (\"hours\");\n        sb.Append (\" \");\n    }\n    if (obj.Minutes != 0 || sb.Length != 0) {\n        sb.Append (obj.Minutes);\n        sb.Append (\" \");\n        sb.Append (\"minutes\");\n        sb.Append (\" \");\n    }\n    if (obj.Seconds != 0 || sb.Length != 0) {\n        sb.Append (obj.Seconds);\n        sb.Append (\" \");\n        sb.Append (\"seconds\");\n        sb.Append (\" \");\n    }\n    if (obj.Milliseconds != 0 || sb.Length != 0) {\n        sb.Append (obj.Milliseconds);\n        sb.Append (\" \");\n        sb.Append (\"Milliseconds\");\n        sb.Append (\" \");\n    }\n    if (sb.Length == 0) {\n        sb.Append (0);\n        sb.Append (\" \");\n        sb.Append (\"Milliseconds\");\n    }\n    return sb.ToString ();\n}"
+ },
+ {
+  "id": "R241b8d374d",
+  "task": "refactor",
+  "key": "csharp:241b8d374d1e1e07",
+  "lang": "csharp",
+  "code": "protected override void CalculateBiQuadCoefficients () {\n    double k = Math.Tan (Math.PI * Frequency / SampleRate);\n    double denominator = (1 + k / Q + k * k);\n    double norm = 1 / denominator;\n    A0 = (1 + (k * k)) * norm;\n    A1 = (2 * (k * k - 1)) * norm;\n    A2 = A0;\n    B1 = A1;\n    B2 = (1 - (k / Q) + (k * k)) * norm;    \n}"
+ }
+]

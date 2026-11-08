@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Same-language test pairs only (the only pairs on which JPlag and Dolos can operate): $F_1$ and false-positive rate at the validation-tuned thresholds (trained systems: mean over eight seeds).}
+\label{tab:same-language}
+\footnotesize
+\begin{tabular}{l|cc|cc}
+\toprule
+ & \multicolumn{2}{c|}{Regime A} & \multicolumn{2}{c}{Regime B} \\
+\textbf{System} & $F_1$ & FPR & $F_1$ & FPR \\
+\midrule
+Gating network (log-odds fusion) & 94.8 & 6.0 & 91.5 & 9.3 \\
+Direct classifier (equal capacity) & 94.7 & 6.4 & 91.4 & 12.0 \\
+Logistic regression & 94.4 & 2.3 & 90.0 & 10.5 \\
+Static averaging & 80.6 & 31.0 & 63.8 & 99.9 \\
+CodeBERT only & 72.3 & 37.2 & 63.9 & 99.2 \\
+AST only & 69.9 & 59.9 & 63.9 & 100.0 \\
+Token $k$-gram only & 94.6 & 7.5 & 84.8 & 28.4 \\
+JPlag 6.3.0 & 63.8 & 0.9 & 61.4 & 6.1 \\
+JPlag + token normalization & 63.2 & 0.9 & 60.9 & 5.9 \\
+Dolos 2.10.0 & 91.5 & 7.5 & 81.1 & 32.7 \\
+\bottomrule
+\end{tabular}
+\end{table}

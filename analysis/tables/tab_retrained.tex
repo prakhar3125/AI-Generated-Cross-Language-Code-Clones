@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\caption{Ablation by retraining without an expert: its score, and every feature derived from it, is removed from the input and the model is retrained and re-tuned (eight seeds). Cells: $\Delta F_1$ against the full model of the same type and regime in points, then (in parentheses) cross-language recall in \%; $^\dagger$: not significant (Holm-adjusted cluster bootstrap $p\ge0.05$). The leave-one-out rows of Table~\ref{tab:ablation} leave the expert's score in the gate's input and are not comparable with these. Gating networks: log-odds fusion in the CodeBERT block, mean fusion in the UniXcoder block (not rerun).}
+\label{tab:ablation-retrained}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ll|ccc|ccc}
+\toprule
+ & & \multicolumn{3}{c|}{CodeBERT expert} & \multicolumn{3}{c}{UniXcoder expert} \\
+\textbf{Model} & \textbf{Removed} & A & B & C & A & B & C \\
+\midrule
+Gating network & none (reference $F_1$; XL rec.) & 90.8 (88.4) & 90.3 (87.1) & 80.7 (86.3) & 96.9 (98.3) & 94.2 (99.0) & 86.5 (98.0) \\
+ & semantic expert & +0.4$^\dagger$ (88.6) & -0.2$^\dagger$ (89.1) & +0.7 (84.9) & -6.5 (89.6) & -5.7 (91.4) & -5.7 (86.5) \\
+ & structural expert & -1.1 (88.6) & -2.9 (83.4) & -0.5$^\dagger$ (86.6) & +0.3$^\dagger$ (99.2) & -2.7 (99.1) & +0.2 (98.0) \\
+ & syntactic (token) expert & -14.2 (84.9) & -27.8 (69.9) & -10.7 (85.1) & +0.0$^\dagger$ (97.8) & -3.4 (97.7) & +0.7$^\dagger$ (94.1) \\
+\midrule
+Direct classifier & none (reference $F_1$; XL rec.) & 91.2 (89.2) & 90.4 (90.1) & 81.3 (86.7) & 97.0 (99.6) & 94.8 (99.5) & 86.4 (98.0) \\
+ & semantic expert & +0.1$^\dagger$ (88.7) & -0.2$^\dagger$ (89.1) & +0.0$^\dagger$ (86.0) & -5.7 (88.7) & -4.5 (89.1) & -5.3 (87.0) \\
+ & structural expert & -0.8 (90.8) & -4.1 (86.5) & -0.9 (87.2) & +0.4 (99.1) & -3.0 (98.8) & +0.0$^\dagger$ (98.2) \\
+ & syntactic (token) expert & -14.2 (87.9) & -24.7 (82.9) & -10.3 (87.9) & -0.3$^\dagger$ (99.2) & -0.6 (99.5) & +0.6 (96.9) \\
+\bottomrule
+\end{tabular}
+\end{table*}

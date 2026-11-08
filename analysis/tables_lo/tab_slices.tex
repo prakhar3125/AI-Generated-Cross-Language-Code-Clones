@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Detection rate (recall, \%) by derivation type and specificity on non-derived pairs at the validation-tuned threshold; slice sizes $n$ (23, 102, 1{,}599, 928 and 3{,}000 test pairs) are those of Table~\ref{tab:protocol}. Mean over eight seeds for trained systems.}
+\label{tab:clone-f1}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{l|ccccc|ccccc}
+\toprule
+ & \multicolumn{5}{c|}{Regime A: random independent negatives} & \multicolumn{5}{c}{Regime B: hard negatives} \\
+\textbf{System} & Exact & Renamed & Refact. & Cross-lang. & Spec. & Exact & Renamed & Refact. & Cross-lang. & Spec. \\
+\midrule
+Gating network & 100.0 & 100.0 & 95.9 & 88.4 & 89.0 & 100.0 & 93.0 & 93.2 & 87.1 & 90.6 \\
+Direct classifier & 100.0 & 100.0 & 96.2 & 89.2 & 89.4 & 100.0 & 94.5 & 95.6 & 90.1 & 88.0 \\
+Logistic regression & 100.0 & 100.0 & 91.1 & 87.3 & 91.0 & 100.0 & 73.5 & 92.6 & 90.3 & 83.8 \\
+Static averaging & 100.0 & 100.0 & 90.4 & 74.2 & 73.4 & 100.0 & 100.0 & 99.7 & 98.3 & 0.4 \\
+CodeBERT only & 100.0 & 95.1 & 79.3 & 79.6 & 66.0 & 100.0 & 100.0 & 99.6 & 98.6 & 1.0 \\
+AST only & 100.0 & 100.0 & 89.3 & 85.8 & 45.1 & 100.0 & 100.0 & 100.0 & 100.0 & 0.0 \\
+Token only & 100.0 & 100.0 & 97.1 & 73.8 & 94.9 & 100.0 & 100.0 & 97.1 & 73.8 & 79.5 \\
+JPlag & 91.3 & 90.2 & 44.0 & 0.0 & 99.4 & 91.3 & 90.2 & 44.0 & 0.0 & 96.1 \\
+JPlag + norm. & 91.3 & 90.2 & 43.3 & 0.0 & 99.4 & 91.3 & 90.2 & 43.3 & 0.0 & 96.1 \\
+Dolos & 100.0 & 100.0 & 90.9 & 0.0 & 95.1 & 100.0 & 100.0 & 92.9 & 0.0 & 78.8 \\
+\bottomrule
+\end{tabular}
+\end{table*}

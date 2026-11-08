@@ -1,0 +1,42 @@
+{
+  "seed": 42,
+  "groups_total": 3018,
+  "largest_group_sizes": [
+    223,
+    221,
+    206
+  ],
+  "heldout_cross_language_problems": 602,
+  "cross_language_rows_pulled_by_shared_snippets": 602,
+  "cross_language_problems_by_split": {
+    "train": 232,
+    "val": 50,
+    "test": 602
+  },
+  "pairs_by_split_slice_label": {
+    "aux|judge_rejected|0": 1000,
+    "test|cross-language|1": 928,
+    "test|exact|1": 23,
+    "test|independent|0": 3000,
+    "test|refactored|1": 1599,
+    "test|renamed|1": 102,
+    "train|cross-language|1": 1392,
+    "train|independent|0": 3978,
+    "train|same-language|1": 2586,
+    "val|cross-language|1": 300,
+    "val|independent|0": 857,
+    "val|same-language|1": 557
+  },
+  "distinct_groups_by_split": {
+    "train": 814,
+    "val": 179,
+    "test": 1586,
+    "aux": 889
+  },
+  "distinct_snippets": 10506,
+  "violations": {
+    "groups": 0,
+    "snippets": 0,
+    "aux_vs_trainval": 0
+  }
+}

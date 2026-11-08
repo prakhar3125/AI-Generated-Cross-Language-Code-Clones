@@ -1,0 +1,64 @@
+{
+ "base": {
+  "plain": {
+   "prog": 0.513510531850251,
+   "irplag": 0.15445614865664575,
+   "false_flag_at_val_thr_prog": 0.10075115918879224,
+   "false_flag_at_val_thr_irplag": 1.0
+  },
+  "filt": {
+   "prog": 0.5935886156320385,
+   "irplag": 0.3517576044502308,
+   "false_flag_at_val_thr_prog": 0.0541196168824947,
+   "false_flag_at_val_thr_irplag": 0.1370517220972896
+  }
+ },
+ "logit": {
+  "plain": {
+   "prog": 0.9053031962440221,
+   "irplag": 0.4098118120487632,
+   "false_flag_at_val_thr_prog": 0.5053713467208572,
+   "false_flag_at_val_thr_irplag": 1.0
+  },
+  "filt": {
+   "prog": 0.9520197356212683,
+   "irplag": 0.7789560894780446,
+   "false_flag_at_val_thr_prog": 0.2133329573474316,
+   "false_flag_at_val_thr_irplag": 0.522665404189845
+  }
+ },
+ "direct": {
+  "plain": {
+   "prog": 0.9497121524707731,
+   "irplag": 0.45889454373298616,
+   "false_flag_at_val_thr_prog": 0.8870637471967825,
+   "false_flag_at_val_thr_irplag": 1.0
+  },
+  "filt": {
+   "prog": 0.9761137854624444,
+   "irplag": 0.7946384187477809,
+   "false_flag_at_val_thr_prog": 0.4651553610131728,
+   "false_flag_at_val_thr_irplag": 0.6392058231743402
+  }
+ },
+ "token": {
+  "plain": {
+   "prog": 0.947695655179691,
+   "irplag": 0.4579713575571074
+  },
+  "filt": {
+   "prog": 0.978814977337753,
+   "irplag": 0.7953959048408097
+  }
+ },
+ "ast": {
+  "plain": {
+   "prog": 0.7390822062852714,
+   "irplag": 0.6728133506923896
+  },
+  "filt": {
+   "prog": 0.7390822062852714,
+   "irplag": 0.6728133506923896
+  }
+ }
+}

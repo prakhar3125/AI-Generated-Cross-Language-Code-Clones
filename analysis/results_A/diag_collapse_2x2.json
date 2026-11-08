@@ -1,0 +1,78 @@
+{
+ "train_old|cohort_old": {
+  "prog_auc": 0.889,
+  "prog_per_seed": [
+   0.947,
+   0.927,
+   0.778,
+   0.822,
+   0.941,
+   0.876,
+   0.937,
+   0.886
+  ],
+  "irplag_auc": 0.246,
+  "mean_weights_sem_str_syn": [
+   0.583,
+   0.225,
+   0.192
+  ]
+ },
+ "train_old|cohort_new": {
+  "prog_auc": 0.885,
+  "prog_per_seed": [
+   0.939,
+   0.919,
+   0.789,
+   0.834,
+   0.933,
+   0.864,
+   0.93,
+   0.875
+  ],
+  "irplag_auc": 0.232,
+  "mean_weights_sem_str_syn": [
+   0.592,
+   0.219,
+   0.19
+  ]
+ },
+ "train_new|cohort_old": {
+  "prog_auc": 0.517,
+  "prog_per_seed": [
+   0.469,
+   0.489,
+   0.52,
+   0.551,
+   0.44,
+   0.593,
+   0.469,
+   0.603
+  ],
+  "irplag_auc": 0.172,
+  "mean_weights_sem_str_syn": [
+   0.704,
+   0.128,
+   0.168
+  ]
+ },
+ "train_new|cohort_new": {
+  "prog_auc": 0.514,
+  "prog_per_seed": [
+   0.468,
+   0.495,
+   0.516,
+   0.547,
+   0.438,
+   0.597,
+   0.459,
+   0.593
+  ],
+  "irplag_auc": 0.155,
+  "mean_weights_sem_str_syn": [
+   0.703,
+   0.128,
+   0.168
+  ]
+ }
+}

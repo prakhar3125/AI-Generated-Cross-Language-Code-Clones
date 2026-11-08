@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Encoder control: zero-shot cosine $F_1$ (validation-tuned threshold, test partition) by encoder and pooling, and by embedding normalisation fitted on the training split only (centre: subtract the mean training embedding; whiten: centre and ZCA-whiten). ``CodeBERT, 3 windows'' is the symmetric top-3 window cosine of the semantic expert; the ``paper'' column additionally centres each snippet's windows across its own windows, as the expert does. The lower block gives the $F_1$ of a siamese head on the frozen, normalised first-512-token embeddings (three seeds). Last column: mean cosine of random independent test pairs in regime A, from none to whitened.}
+\label{tab:encoder-control}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l|cccc|ccc|ccc|c}
+\toprule
+ & \multicolumn{4}{c|}{Regime A} & \multicolumn{3}{c|}{Regime B} & \multicolumn{3}{c|}{Regime C} & \\
+\textbf{Encoder, pooling} & none & paper & centre & whiten & none & centre & whiten & none & centre & whiten & rand.\ cos. \\
+\midrule
+CodeBERT, first 512 tokens & 74.7 & -- & 75.1 & 96.2 & 63.2 & 63.1 & 87.8 & 69.3 & 70.8 & 85.1 & 0.96$\to$0.00 \\
+CodeBERT, 3 windows & 73.9 & 73.5 & 74.8 & 96.3 & 63.2 & 63.1 & 88.1 & 68.9 & 70.7 & 85.1 & 0.96$\to$0.01 \\
+UniXcoder, first 512 tokens & 97.0 & -- & 98.4 & 98.8 & 91.8 & 93.9 & 95.4 & 87.1 & 88.5 & 88.9 & 0.24$\to$0.00 \\
+\midrule
+\multicolumn{12}{l}{\emph{Siamese head on the frozen embeddings}} \\
+CodeBERT, first 512 tokens & 89.3 & -- & 90.9 & 95.1 & 87.7 & 87.5 & 88.7 & 79.6 & 80.0 & 83.6 &  \\
+UniXcoder, first 512 tokens & 98.9 & -- & 98.8 & 98.7 & 95.0 & 95.2 & 94.6 & 88.6 & 88.9 & 89.3 &  \\
+\bottomrule
+\end{tabular}
+\end{table*}
